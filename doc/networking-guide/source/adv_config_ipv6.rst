@@ -29,7 +29,7 @@ IPv6 attributes (``ipv6_ra_mode`` and ``ipv6_address_mode``) set.  The
 the next section. Finally, the subnets ``cidr`` needs to be provided.
 
 Not in scope
-~~~~~~~~~~~~
+------------
 
 Things not in the scope of this document include:
 
@@ -64,7 +64,8 @@ The attributes can also be left unset.
 
 
 IPv6 addressing
-~~~~~~~~~~~~~~~
+---------------
+
 
 The ``ipv6_address_mode`` attribute is used to control how addressing is
 handled by OpenStack. There are a number of different ways that guest
@@ -73,7 +74,7 @@ choices to users of the Networking API.
 
 
 Router advertisements
-~~~~~~~~~~~~~~~~~~~~~
+---------------------
 
 The ``ipv6_ra_mode`` attribute is used to control router
 advertisements for a subnet.
@@ -87,7 +88,6 @@ traffic.
 
 The ``ipv6_ra_mode`` is used to specify if the Networking service should
 transmit ICMPv6 packets, for a subnet.
-
 
 ipv6_ra_mode and ipv6_address_mode combinations
 -----------------------------------------------
@@ -186,11 +186,10 @@ ipv6_ra_mode and ipv6_address_mode combinations
      - *Invalid combination.*
 
 Tenant network considerations
------------------------------
-
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Dataplane
-~~~~~~~~~
+---------
 
 Both the Linux bridge and the Open vSwitch dataplane modules support
 forwarding IPv6
@@ -202,7 +201,7 @@ same network just fine without any participation or setup by OpenStack
 components after the ports are all connected and MAC addresses learned.
 
 Addresses for subnets
-~~~~~~~~~~~~~~~~~~~~~
+---------------------
 
 There are four methods for a subnet to get its ``cidr`` in OpenStack:
 
@@ -216,7 +215,7 @@ to tenants:
 #. Use of an external IPAM module to allocate the subnet
 
 Address modes for ports
-~~~~~~~~~~~~~~~~~~~~~~~
+-----------------------
 
 .. note:: That an external DHCPv6 server in theory could override the full
           address OpenStack assigns based on the EUI-64 address, but that
@@ -247,11 +246,11 @@ addressing and network information is provided to tenant instances:
 * ``ipv6_address_mode``: Determines how instances obtain IPv6 address,
   default gateway, or optional information.
 
-For the above two attributes to be effective, ``enable_dhcp`` must be
-set to True in file :file:`neutron.conf`.
+For the above two attributes to be effective, ``enable_dhcp`` of the
+subnet object must be set to True.
 
 Using SLAAC for addressing
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+--------------------------
 
 When using SLAAC, the currently supported combinations for ``ipv6_ra_mode`` and
 ``ipv6_address_mode`` are as follows.
@@ -277,12 +276,12 @@ routers being configured to send RA packets, when they are created.
 This results in the following values set for the address configuration
 flags in the RA messages:
 
-* Auto Configuration Flag = 1 Managed
-* Configuration Flag = 0
-* Other Configuration Flag = 0 New or existing
+* Auto Configuration Flag = 1
+* Managed Configuration Flag = 0
+* Other Configuration Flag = 0
 
-Neutron networks that contain a SLAAC enabled IPv6 subnet will result
-in all neutron ports attached to the network receiving IPv6 addresses.
+New or existing Neutron networks that contain a SLAAC enabled IPv6 subnet will
+result in all neutron ports attached to the network receiving IPv6 addresses.
 This is because when RA broadcast messages are sent out on a neutron
 network, they are received by all IPv6 capable ports on the network,
 and each port will then configure an IPv6 address based on the
@@ -291,7 +290,7 @@ address will be added to a port, in addition to other IPv4 and IPv6 addresses
 that the port already has been assigned.
 
 DHCPv6
-~~~~~~
+------
 
 For DHCPv6-stateless, the currently supported combinations are as
 follows:
@@ -323,7 +322,7 @@ the additional network information.
 * Other Configuration Flag = 1
 
 Router support
---------------
+~~~~~~~~~~~~~~
 
 The behavior of the neutron router for IPv6 is different than IPv4 in
 a few ways.
@@ -367,7 +366,7 @@ gateway for the subnet.
           of this section have not proven that to be true for all scenarios.
 
 Neutron's Distributed Router feature and IPv6
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+---------------------------------------------
 
 IPv6 does work when the Distributed Virtual Router functionality is enabled,
 but all ingress/egress traffic is via the centralized router (hence, not
@@ -375,10 +374,10 @@ distributed). More work is required to fully enable this functionality.
 
 
 Advanced services
------------------
+~~~~~~~~~~~~~~~~~
 
 VPNaaS
-~~~~~~
+------
 
 VPNaaS supports IPv6, but support in Kilo and prior releases will have
 some bugs that may limit how it can be used. More thorough and
@@ -391,17 +390,17 @@ support.
 
 
 LBaaS
-~~~~~
+-----
 
 TODO
 
 FWaaS
-~~~~~
+-----
 
 FWaaS allows creation of IPv6 based rules.
 
 NAT & Floating IPs
-~~~~~~~~~~~~~~~~~~
+------------------
 
 At the current time OpenStack Networking does not provide any facility
 to support any flavor of NAT with IPv6. Unlike IPv4 there is no
@@ -410,13 +409,13 @@ that the IPv6 addressing amongst the tenants are using GUAs with no
 overlap across the tenants.
 
 Security considerations
------------------------
+~~~~~~~~~~~~~~~~~~~~~~~
 
 .. todo:: Initially this is probably just stating the security group rules
           relative to IPv6 that are applied.   Need some help for these
 
 Configuring interfaces of the guest
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-----------------------------------
 
 OpenStack currently doesn't support the privacy extensions defined by RFC 4941.
 The interface identifier and DUID used must be directly derived from the MAC
@@ -433,7 +432,7 @@ always 1500, but in Liberty changes are planned to allow the RA to send the
 proper MTU of the network.
 
 OpenStack control & management network considerations
------------------------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 As of the Kilo release, considerable effort has gone in to ensuring
 the tenant network can handle dual stack IPv6 and IPv4 transport

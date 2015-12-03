@@ -8,6 +8,8 @@
     autogenerate-config-doc tool from the openstack-doc-tools repository, or
     ask for help on the documentation mailing list, IRC channel or meeting.
 
+.. _heat-metadata_api:
+
 .. list-table:: Description of metadata API configuration options
    :header-rows: 1
    :class: config-ref-table
@@ -16,5 +18,5 @@
      - Description
    * - **[DEFAULT]**
      -
-   * - ``heat_metadata_server_url`` = `` ``
+   * - ``heat_metadata_server_url`` =
      - (StrOpt) URL of the Heat metadata server.

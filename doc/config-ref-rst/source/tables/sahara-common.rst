@@ -8,6 +8,8 @@
     autogenerate-config-doc tool from the openstack-doc-tools repository, or
     ask for help on the documentation mailing list, IRC channel or meeting.
 
+.. _sahara-common:
+
 .. list-table:: Description of common configuration options
    :header-rows: 1
    :class: config-ref-table
@@ -52,7 +54,7 @@
      - (IntOpt) Maximum length of job binary data in kilobytes that may be stored or retrieved in a single operation.
    * - ``job_canceling_timeout`` = ``300``
      - (IntOpt) Timeout for canceling job execution (in seconds). Sahara will try to cancel job execution during this time.
-   * - ``job_workflow_postfix`` = `` ``
+   * - ``job_workflow_postfix`` =
      - (StrOpt) Postfix for storing jobs in hdfs. Will be added to '/user/<hdfs user>/' path.
    * - ``memcached_servers`` = ``None``
      - (ListOpt) Memcached servers or None for in process cache.
@@ -70,12 +72,12 @@
      - (IntOpt) Max interval size between periodic tasks execution in seconds.
    * - ``plugins`` = ``vanilla, hdp, spark, cdh``
      - (ListOpt) List of plugins to be loaded. Sahara preserves the order of the list when returning it.
-   * - ``proxy_command`` = `` ``
+   * - ``proxy_command`` =
      - (StrOpt) Proxy command used to connect to instances. If set, this command should open a netcat socket, that Sahara will use for SSH and HTTP connections. Use {host} and {port} to describe the destination. Other available keywords: {tenant_id}, {network_id}, {router_id}.
    * - ``remote`` = ``ssh``
      - (StrOpt) A method for Sahara to execute commands on VMs.
    * - ``rootwrap_command`` = ``sudo sahara-rootwrap /etc/sahara/rootwrap.conf``
-     - (StrOpt) Rootwrap command to leverage.  Use in conjunction with use_rootwrap=True
+     - (StrOpt) Rootwrap command to leverage. Use in conjunction with use_rootwrap=True
    * - ``swift_topology_file`` = ``etc/sahara/swift.topology``
      - (StrOpt) File with Swift topology.It should contain mapping between Swift nodes and racks.
    * - ``use_external_key_manager`` = ``False``

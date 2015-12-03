@@ -27,8 +27,8 @@
     <xi:include href="drivers/glusterfs-driver.xml"/>
     <xi:include href="drivers/hds-hnas-driver.xml"/>
     <xi:include href="drivers/hitachi-storage-volume-driver.xml"/>
-    <xi:include href="drivers/hp-3par-driver.xml"/>
-    <xi:include href="drivers/hp-lefthand-driver.xml"/>
+    <xi:include href="drivers/hpe-3par-driver.xml"/>
+    <xi:include href="drivers/hpe-lefthand-driver.xml"/>
     <xi:include href="drivers/hp-msa-driver.xml"/>
     <xi:include href="drivers/huawei-storage-driver.xml"/>
     <xi:include href="drivers/ibm-gpfs-volume-driver.xml"/>
@@ -43,6 +43,7 @@
     <xi:include href="drivers/nfs-volume-driver.xml"/>
     <xi:include href="drivers/prophetstor-dpl-driver.xml"/>
     <xi:include href="drivers/pure-storage-driver.xml"/>
+    <xi:include href="drivers/quobyte-driver.xml"/>
     <xi:include href="drivers/scality-sofs-driver.xml"/>
     <xi:include href="drivers/sheepdog-driver.xml"/>
     <xi:include href="drivers/smbfs-volume-driver.xml"/>

@@ -8,6 +8,8 @@
     autogenerate-config-doc tool from the openstack-doc-tools repository, or
     ask for help on the documentation mailing list, IRC channel or meeting.
 
+.. _trove-db_pxc:
+
 .. list-table:: Description of Percona XtraDB Cluster database configuration options
    :header-rows: 1
    :class: config-ref-table
@@ -54,7 +56,7 @@
      - (StrOpt) Class that implements datastore-specific task manager logic.
    * - ``tcp_ports`` = ``3306, 4444, 4567, 4568``
      - (ListOpt) List of TCP ports and/or port ranges to open in the security group (only applicable if trove_security_groups_support is True).
-   * - ``udp_ports`` = `` ``
+   * - ``udp_ports`` =
      - (ListOpt) List of UDP ports and/or port ranges to open in the security group (only applicable if trove_security_groups_support is True).
    * - ``usage_timeout`` = ``450``
      - (IntOpt) Maximum time (in seconds) to wait for a Guest to become active.

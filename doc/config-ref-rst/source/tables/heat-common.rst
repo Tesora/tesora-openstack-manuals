@@ -8,6 +8,8 @@
     autogenerate-config-doc tool from the openstack-doc-tools repository, or
     ask for help on the documentation mailing list, IRC channel or meeting.
 
+.. _heat-common:
+
 .. list-table:: Description of common configuration options
    :header-rows: 1
    :class: config-ref-table
@@ -38,7 +40,7 @@
      - (StrOpt) Fully qualified class name to use as a keystone backend.
    * - ``memcached_servers`` = ``None``
      - (ListOpt) Memcached servers or None for in process cache.
-   * - ``password`` = `` ``
+   * - ``password`` =
      - (StrOpt) Password for Redis server (optional).
    * - ``periodic_interval`` = ``60``
      - (IntOpt) Seconds between running periodic tasks.
@@ -51,13 +53,13 @@
    * - **[cache]**
      -
    * - ``backend`` = ``dogpile.cache.null``
-     - (StrOpt) Dogpile.cache backend module. It is recommended that Memcache with pooling (oslo_cache.memcache_pool) or Redis (dogpile.cache.redis) be used in production deployments.  Small workloads (single process) like devstack can use the dogpile.cache.memory backend.
+     - (StrOpt) Dogpile.cache backend module. It is recommended that Memcache with pooling (oslo_cache.memcache_pool) or Redis (dogpile.cache.redis) be used in production deployments. Small workloads (single process) like devstack can use the dogpile.cache.memory backend.
    * - ``backend_argument`` = ``[]``
      - (MultiStrOpt) Arguments supplied to the backend module. Specify this option once per argument to be passed to the dogpile.cache backend. Example format: "<argname>:<value>".
    * - ``config_prefix`` = ``cache.oslo``
      - (StrOpt) Prefix for building the configuration dictionary for the cache region. This should not need to be changed unless there is another dogpile.cache region with the same configuration name.
    * - ``debug_cache_backend`` = ``False``
-     - (BoolOpt) Extra debugging from the cache backend (cache keys, get/set/delete/etc calls). This is only really useful if you need to see the specific cache-backend get/set/delete calls with the keys/values.  Typically this should be left set to false.
+     - (BoolOpt) Extra debugging from the cache backend (cache keys, get/set/delete/etc calls). This is only really useful if you need to see the specific cache-backend get/set/delete calls with the keys/values. Typically this should be left set to false.
    * - ``enabled`` = ``False``
      - (BoolOpt) Global toggle for caching.
    * - ``expiration_time`` = ``600``
@@ -74,7 +76,7 @@
      - (ListOpt) Memcache servers in the format of "host:port". (dogpile.cache.memcache and oslo_cache.memcache_pool backends only).
    * - ``memcache_socket_timeout`` = ``3``
      - (IntOpt) Timeout in seconds for every call to a server. (dogpile.cache.memcache and oslo_cache.memcache_pool backends only).
-   * - ``proxies`` = `` ``
+   * - ``proxies`` =
      - (ListOpt) Proxy classes to import that will affect the way the dogpile.cache backend functions. See the dogpile.cache documentation on changing-backend-behavior.
    * - **[constraint_validation_cache]**
      -

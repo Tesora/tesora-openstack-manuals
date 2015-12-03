@@ -8,6 +8,8 @@
     autogenerate-config-doc tool from the openstack-doc-tools repository, or
     ask for help on the documentation mailing list, IRC channel or meeting.
 
+.. _nova-ec2:
+
 .. list-table:: Description of EC2 configuration options
    :header-rows: 1
    :class: config-ref-table
@@ -48,5 +50,5 @@
      - (IntOpt) Number of minutes to lockout if triggered.
    * - ``lockout_window`` = ``15``
      - (IntOpt) Number of minutes for lockout window.
-   * - ``region_list`` = `` ``
+   * - ``region_list`` =
      - (ListOpt) List of region=fqdn pairs separated by commas

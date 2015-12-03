@@ -8,6 +8,8 @@
     autogenerate-config-doc tool from the openstack-doc-tools repository, or
     ask for help on the documentation mailing list, IRC channel or meeting.
 
+.. _nova-authentication:
+
 .. list-table:: Description of authentication configuration options
    :header-rows: 1
    :class: config-ref-table
@@ -17,6 +19,4 @@
    * - **[DEFAULT]**
      -
    * - ``auth_strategy`` = ``keystone``
-     - (StrOpt) The strategy to use for auth: keystone or noauth2. noauth2 is designed for
-testing only, as it does no actual credential checking. noauth2 provides
-administrative credentials only if 'admin' is specified as the username.
+     - (StrOpt) The strategy to use for auth: keystone or noauth2. noauth2 is designed for testing only, as it does no actual credential checking. noauth2 provides administrative credentials only if 'admin' is specified as the username.

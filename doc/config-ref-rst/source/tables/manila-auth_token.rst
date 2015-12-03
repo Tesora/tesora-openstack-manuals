@@ -8,6 +8,8 @@
     autogenerate-config-doc tool from the openstack-doc-tools repository, or
     ask for help on the documentation mailing list, IRC channel or meeting.
 
+.. _manila-auth_token:
+
 .. list-table:: Description of Authorization Token configuration options
    :header-rows: 1
    :class: config-ref-table
@@ -24,7 +26,7 @@
      - (StrOpt) This option is deprecated and may be removed in a future release. Single shared secret with the Keystone configuration used for bootstrapping a Keystone installation, or otherwise bypassing the normal authentication process. This option should not be used, use `admin_user` and `admin_password` instead.
    * - ``admin_user`` = ``None``
      - (StrOpt) Service username.
-   * - ``auth_admin_prefix`` = `` ``
+   * - ``auth_admin_prefix`` =
      - (StrOpt) Prefix to prepend at the beginning of the path. Deprecated, use identity_uri.
    * - ``auth_host`` = ``127.0.0.1``
      - (StrOpt) Host providing the admin Identity API endpoint. Deprecated, use identity_uri.
@@ -79,7 +81,7 @@
    * - ``memcache_secret_key`` = ``None``
      - (StrOpt) (Optional, mandatory if memcache_security_strategy is defined) This string is used for key derivation.
    * - ``memcache_security_strategy`` = ``None``
-     - (StrOpt) (Optional) If defined, indicate whether token data should be authenticated or authenticated and encrypted. Acceptable values are MAC or ENCRYPT.  If MAC, token data is authenticated (with HMAC) in the cache. If ENCRYPT, token data is encrypted and authenticated in the cache. If the value is not one of these options or empty, auth_token will raise an exception on initialization.
+     - (StrOpt) (Optional) If defined, indicate whether token data should be authenticated or authenticated and encrypted. Acceptable values are MAC or ENCRYPT. If MAC, token data is authenticated (with HMAC) in the cache. If ENCRYPT, token data is encrypted and authenticated in the cache. If the value is not one of these options or empty, auth_token will raise an exception on initialization.
    * - ``memcache_use_advanced_pool`` = ``False``
      - (BoolOpt) (Optional) Use the advanced (eventlet safe) memcached client pool. The advanced pool will only work under python 2.x.
    * - ``memcached_servers`` = ``None``

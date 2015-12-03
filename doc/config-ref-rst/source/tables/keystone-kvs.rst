@@ -8,6 +8,8 @@
     autogenerate-config-doc tool from the openstack-doc-tools repository, or
     ask for help on the documentation mailing list, IRC channel or meeting.
 
+.. _keystone-kvs:
+
 .. list-table:: Description of KVS configuration options
    :header-rows: 1
    :class: config-ref-table
@@ -16,7 +18,7 @@
      - Description
    * - **[kvs]**
      -
-   * - ``backends`` = `` ``
+   * - ``backends`` =
      - (ListOpt) Extra dogpile.cache backend modules to register with the dogpile.cache library.
    * - ``config_prefix`` = ``keystone.kvs``
      - (StrOpt) Prefix for building the configuration dictionary for the KVS region. This should not need to be changed unless there is another dogpile.cache region with the same configuration name.

@@ -8,6 +8,8 @@
     autogenerate-config-doc tool from the openstack-doc-tools repository, or
     ask for help on the documentation mailing list, IRC channel or meeting.
 
+.. _cinder-drbd:
+
 .. list-table:: Description of DRBD configuration options
    :header-rows: 1
    :class: config-ref-table
@@ -17,10 +19,6 @@
    * - **[DEFAULT]**
      -
    * - ``drbdmanage_devs_on_controller`` = ``True``
-     - (BoolOpt) If set, the c-vol node will receive a useable
-                /dev/drbdX device, even if the actual data is stored on
-                other nodes only.
-                This is useful for debugging, maintenance, and to be
-                able to do the iSCSI export from the c-vol node.
+     - (BoolOpt) If set, the c-vol node will receive a useable /dev/drbdX device, even if the actual data is stored on other nodes only. This is useful for debugging, maintenance, and to be able to do the iSCSI export from the c-vol node.
    * - ``drbdmanage_redundancy`` = ``1``
      - (StrOpt) Number of nodes that should replicate the data.

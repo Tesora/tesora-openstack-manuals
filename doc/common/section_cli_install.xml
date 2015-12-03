@@ -182,6 +182,10 @@
                     and extensions</para>
             </listitem>
             <listitem>
+                <para><literal>cloudkitty</literal> - Rating service
+                    API</para>
+            </listitem>
+            <listitem>
                 <para><literal>glance</literal> - Image service
                     API</para>
             </listitem>
@@ -191,6 +195,10 @@
             </listitem>
             <listitem>
                 <para><literal>heat</literal> - Orchestration
+                    API</para>
+            </listitem>
+            <listitem>
+                <para><literal>monasca</literal> - Monitoring
                     API</para>
             </listitem>
             <listitem>

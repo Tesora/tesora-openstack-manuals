@@ -8,6 +8,8 @@
     autogenerate-config-doc tool from the openstack-doc-tools repository, or
     ask for help on the documentation mailing list, IRC channel or meeting.
 
+.. _trove-db_redis:
+
 .. list-table:: Description of Redis database configuration options
    :header-rows: 1
    :class: config-ref-table
@@ -44,7 +46,7 @@
      - (StrOpt) Class that implements datastore-specific task manager logic.
    * - ``tcp_ports`` = ``6379, 16379``
      - (ListOpt) List of TCP ports and/or port ranges to open in the security group (only applicable if trove_security_groups_support is True).
-   * - ``udp_ports`` = `` ``
+   * - ``udp_ports`` =
      - (ListOpt) List of UDP ports and/or port ranges to open in the security group (only applicable if trove_security_groups_support is True).
    * - ``volume_support`` = ``True``
      - (BoolOpt) Whether to provision a Cinder volume for datadir.

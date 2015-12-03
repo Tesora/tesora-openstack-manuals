@@ -8,6 +8,8 @@
     autogenerate-config-doc tool from the openstack-doc-tools repository, or
     ask for help on the documentation mailing list, IRC channel or meeting.
 
+.. _ceilometer-api:
+
 .. list-table:: Description of API configuration options
    :header-rows: 1
    :class: config-ref-table
@@ -28,7 +30,7 @@
      - (BoolOpt) Refresh Event Pipeline configuration on-the-fly.
    * - ``refresh_pipeline_cfg`` = ``False``
      - (BoolOpt) Refresh Pipeline configuration on-the-fly.
-   * - ``reserved_metadata_keys`` = `` ``
+   * - ``reserved_metadata_keys`` =
      - (ListOpt) List of metadata keys reserved for metering use. And these keys are additional to the ones included in the namespace.
    * - ``reserved_metadata_length`` = ``256``
      - (IntOpt) Limit on length of reserved metadata values.
@@ -55,6 +57,6 @@
    * - **[oslo_middleware]**
      -
    * - ``max_request_body_size`` = ``114688``
-     - (IntOpt) The maximum body size for each  request, in bytes.
+     - (IntOpt) The maximum body size for each request, in bytes.
    * - ``secure_proxy_ssl_header`` = ``X-Forwarded-Proto``
      - (StrOpt) The HTTP Header that will be used to determine what the original request protocol scheme was, even if it was hidden by an SSL termination proxy.

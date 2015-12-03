@@ -8,6 +8,8 @@
     autogenerate-config-doc tool from the openstack-doc-tools repository, or
     ask for help on the documentation mailing list, IRC channel or meeting.
 
+.. _cinder-images:
+
 .. list-table:: Description of images configuration options
    :header-rows: 1
    :class: config-ref-table
@@ -16,8 +18,8 @@
      - Description
    * - **[DEFAULT]**
      -
-   * - ``allowed_direct_url_schemes`` = `` ``
-     - (ListOpt) A list of url schemes that can be downloaded directly via the direct_url.  Currently supported schemes: [file].
+   * - ``allowed_direct_url_schemes`` =
+     - (ListOpt) A list of url schemes that can be downloaded directly via the direct_url. Currently supported schemes: [file].
    * - ``glance_api_insecure`` = ``False``
      - (BoolOpt) Allow to perform insecure SSL (https) requests to glance
    * - ``glance_api_servers`` = ``$glance_host:$glance_port``

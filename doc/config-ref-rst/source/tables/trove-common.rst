@@ -8,6 +8,8 @@
     autogenerate-config-doc tool from the openstack-doc-tools repository, or
     ask for help on the documentation mailing list, IRC channel or meeting.
 
+.. _trove-common:
+
 .. list-table:: Description of common configuration options
    :header-rows: 1
    :class: config-ref-table
@@ -22,7 +24,7 @@
      - (IntOpt) Page size for listing databases.
    * - ``default_datastore`` = ``None``
      - (StrOpt) The default datastore id or name to use if one is not provided by the user. If the default value is None, the field becomes required in the instance create request.
-   * - ``default_neutron_networks`` = `` ``
+   * - ``default_neutron_networks`` =
      - (ListOpt) List of IDs for management networks which should be attached to the instance regardless of what NICs are specified in the create API call.
    * - ``default_password_length`` = ``36``
      - (IntOpt) Character length of generated passwords.

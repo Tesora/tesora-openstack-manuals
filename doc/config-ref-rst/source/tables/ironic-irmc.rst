@@ -8,6 +8,8 @@
     autogenerate-config-doc tool from the openstack-doc-tools repository, or
     ask for help on the documentation mailing list, IRC channel or meeting.
 
+.. _ironic-irmc:
+
 .. list-table:: Description of iRMC configuration options
    :header-rows: 1
    :class: config-ref-table
@@ -30,7 +32,7 @@
      - (StrOpt) Ironic conductor node's "NFS" or "CIFS" root path
    * - ``remote_image_share_type`` = ``CIFS``
      - (StrOpt) Share type of virtual media, either "NFS" or "CIFS"
-   * - ``remote_image_user_domain`` = `` ``
+   * - ``remote_image_user_domain`` =
      - (StrOpt) Domain name of remote_image_user_name
    * - ``remote_image_user_name`` = ``None``
      - (StrOpt) User name of remote_image_server

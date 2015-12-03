@@ -8,6 +8,8 @@
     autogenerate-config-doc tool from the openstack-doc-tools repository, or
     ask for help on the documentation mailing list, IRC channel or meeting.
 
+.. _ceilometer-auth:
+
 .. list-table:: Description of authorization configuration options
    :header-rows: 1
    :class: config-ref-table
@@ -28,7 +30,7 @@
      - (StrOpt) Password to use for OpenStack service access.
    * - ``os_region_name`` = ``None``
      - (StrOpt) Region name to use for OpenStack service endpoints.
-   * - ``os_tenant_id`` = `` ``
+   * - ``os_tenant_id`` =
      - (StrOpt) Tenant ID to use for OpenStack service access.
    * - ``os_tenant_name`` = ``admin``
      - (StrOpt) Tenant name to use for OpenStack service access.

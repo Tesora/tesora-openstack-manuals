@@ -8,6 +8,8 @@
     autogenerate-config-doc tool from the openstack-doc-tools repository, or
     ask for help on the documentation mailing list, IRC channel or meeting.
 
+.. _heat-clients_heat:
+
 .. list-table:: Description of heat clients configuration options
    :header-rows: 1
    :class: config-ref-table
@@ -26,5 +28,5 @@
      - (BoolOpt) If set, then the server's certificate will not be verified.
    * - ``key_file`` = ``None``
      - (StrOpt) Optional PEM-formatted file that contains the private key.
-   * - ``url`` = `` ``
+   * - ``url`` =
      - (StrOpt) Optional heat url in format like http://0.0.0.0:8004/v1/%(tenant_id)s.

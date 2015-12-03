@@ -8,6 +8,8 @@
     autogenerate-config-doc tool from the openstack-doc-tools repository, or
     ask for help on the documentation mailing list, IRC channel or meeting.
 
+.. _ironic-glance:
+
 .. list-table:: Description of glance configuration options
    :header-rows: 1
    :class: config-ref-table
@@ -16,8 +18,8 @@
      - Description
    * - **[glance]**
      -
-   * - ``allowed_direct_url_schemes`` = `` ``
-     - (ListOpt) A list of URL schemes that can be downloaded directly via the direct_url.  Currently supported schemes: [file].
+   * - ``allowed_direct_url_schemes`` =
+     - (ListOpt) A list of URL schemes that can be downloaded directly via the direct_url. Currently supported schemes: [file].
    * - ``auth_strategy`` = ``keystone``
      - (StrOpt) Authentication strategy to use when connecting to glance. Only "keystone" and "noauth" are currently supported by ironic.
    * - ``glance_api_insecure`` = ``False``

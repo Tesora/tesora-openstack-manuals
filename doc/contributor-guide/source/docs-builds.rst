@@ -68,7 +68,7 @@ Guides for deployers and administrators
 
    * - Architecture Design Guide
      - http://git.openstack.org/cgit/openstack/openstack-manuals/tree/doc/arch-design
-     - http://docs.openstack.org/arch-design/content
+     - http://docs.openstack.org/arch-design/
 
    * - Configuration Reference
      - http://git.openstack.org/cgit/openstack/openstack-manuals/tree/doc/config-reference
@@ -92,7 +92,7 @@ Guides for deployers and administrators
 
    * - Virtual Machine Image Guide
      - http://git.openstack.org/cgit/openstack/openstack-manuals/tree/doc/image-guide
-     - http://docs.openstack.org/image-guide/content
+     - http://docs.openstack.org/image-guide/
 
 Guides for end users
 --------------------

@@ -8,6 +8,8 @@
     autogenerate-config-doc tool from the openstack-doc-tools repository, or
     ask for help on the documentation mailing list, IRC channel or meeting.
 
+.. _trove-db_cassandra:
+
 .. list-table:: Description of Cassandra database configuration options
    :header-rows: 1
    :class: config-ref-table
@@ -34,7 +36,7 @@
      - (StrOpt) Root controller implementation for cassandra.
    * - ``tcp_ports`` = ``7000, 7001, 9042, 9160``
      - (ListOpt) List of TCP ports and/or port ranges to open in the security group (only applicable if trove_security_groups_support is True).
-   * - ``udp_ports`` = `` ``
+   * - ``udp_ports`` =
      - (ListOpt) List of UDP ports and/or port ranges to open in the security group (only applicable if trove_security_groups_support is True).
    * - ``volume_support`` = ``True``
      - (BoolOpt) Whether to provision a Cinder volume for datadir.

@@ -8,6 +8,8 @@
     autogenerate-config-doc tool from the openstack-doc-tools repository, or
     ask for help on the documentation mailing list, IRC channel or meeting.
 
+.. _ceilometer-inspector:
+
 .. list-table:: Description of inspector configuration options
    :header-rows: 1
    :class: config-ref-table
@@ -20,5 +22,5 @@
      - (StrOpt) Inspector to use for inspecting the hypervisor layer. Known inspectors are libvirt, hyperv, vmware, xenapi and powervm.
    * - ``libvirt_type`` = ``kvm``
      - (StrOpt) Libvirt domain type.
-   * - ``libvirt_uri`` = `` ``
+   * - ``libvirt_uri`` =
      - (StrOpt) Override the default libvirt URI (which is dependent on libvirt_type).

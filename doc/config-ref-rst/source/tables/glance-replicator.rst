@@ -8,6 +8,8 @@
     autogenerate-config-doc tool from the openstack-doc-tools repository, or
     ask for help on the documentation mailing list, IRC channel or meeting.
 
+.. _glance-replicator:
+
 .. list-table:: Description of replicator configuration options
    :header-rows: 1
    :class: config-ref-table
@@ -24,11 +26,11 @@
      - (StrOpt) Command to be given to replicator
    * - ``dontreplicate`` = ``created_at date deleted_at location updated_at``
      - (StrOpt) List of fields to not replicate.
-   * - ``mastertoken`` = `` ``
+   * - ``mastertoken`` =
      - (StrOpt) Pass in your authentication token if you have one. This is the token used for the master.
    * - ``metaonly`` = ``False``
      - (BoolOpt) Only replicate metadata, not images.
-   * - ``slavetoken`` = `` ``
+   * - ``slavetoken`` =
      - (StrOpt) Pass in your authentication token if you have one. This is the token used for the slave.
-   * - ``token`` = `` ``
+   * - ``token`` =
      - (StrOpt) Pass in your authentication token if you have one. If you use this option the same token is used for both the master and the slave.

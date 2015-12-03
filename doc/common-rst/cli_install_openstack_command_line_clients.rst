@@ -151,6 +151,8 @@ for each client. The following values are valid:
 
 -  ``cinder`` - Block Storage API and extensions
 
+-  ``cloudkitty`` - Rating service API
+
 -  ``glance`` - Image service API
 
 -  ``gnocchi`` - Telemetry API v3
@@ -162,6 +164,8 @@ for each client. The following values are valid:
 -  ``manila`` - Shared file systems API
 
 -  ``mistral`` - Workflow service API
+
+-  ``monasca`` - Monitoring API
 
 -  ``murano`` - Application catalog API
 

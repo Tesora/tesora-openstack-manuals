@@ -8,6 +8,8 @@
     autogenerate-config-doc tool from the openstack-doc-tools repository, or
     ask for help on the documentation mailing list, IRC channel or meeting.
 
+.. _cinder-xiv:
+
 .. list-table:: Description of IBM XIV and DS8000 volume driver configuration options
    :header-rows: 1
    :class: config-ref-table
@@ -16,13 +18,13 @@
      - Description
    * - **[DEFAULT]**
      -
-   * - ``san_clustername`` = `` ``
+   * - ``san_clustername`` =
      - (StrOpt) Cluster name to use for creating volumes
-   * - ``san_ip`` = `` ``
+   * - ``san_ip`` =
      - (StrOpt) IP address of SAN controller
    * - ``san_login`` = ``admin``
      - (StrOpt) Username for SAN controller
-   * - ``san_password`` = `` ``
+   * - ``san_password`` =
      - (StrOpt) Password for SAN controller
    * - ``xiv_chap`` = ``disabled``
      - (StrOpt) CHAP authentication mode, effective only for iscsi (disabled|enabled)

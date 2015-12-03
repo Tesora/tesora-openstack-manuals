@@ -8,6 +8,8 @@
     autogenerate-config-doc tool from the openstack-doc-tools repository, or
     ask for help on the documentation mailing list, IRC channel or meeting.
 
+.. _cinder-netapp_eseries_iscsi:
+
 .. list-table:: Description of NetApp E-Series driver configuration options
    :header-rows: 1
    :class: config-ref-table
@@ -25,7 +27,7 @@
    * - ``netapp_login`` = ``None``
      - (StrOpt) Administrative user account name used to access the storage system or proxy server.
    * - ``netapp_partner_backend_name`` = ``None``
-     - (StrOpt) The name of the config.conf stanza for a Data ONTAP (7-mode) HA partner.  This option is only used by the driver when connecting to an instance with a storage family of Data ONTAP operating in 7-Mode, and it is required if the storage protocol selected is FC.
+     - (StrOpt) The name of the config.conf stanza for a Data ONTAP (7-mode) HA partner. This option is only used by the driver when connecting to an instance with a storage family of Data ONTAP operating in 7-Mode, and it is required if the storage protocol selected is FC.
    * - ``netapp_password`` = ``None``
      - (StrOpt) Password for the administrative user account specified in the netapp_login option.
    * - ``netapp_pool_name_search_pattern`` = ``(.+)``

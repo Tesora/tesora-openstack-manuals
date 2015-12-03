@@ -119,9 +119,13 @@ Identity user management examples:
 
   .. note::
 
-     Individual services, such as Compute and the Image service,
-     assign meaning to roles. In the Identity service, a role is
-     simply a name.
+     Individual services assign meaning to roles, typically through
+     limiting or granting access to users with the role to the
+     operations that the service supports. Role access is typically
+     configured in the service's ``policy.json`` file. For example,
+     to limit Compute access to the ``compute-user`` role, edit the
+     Compute service's ``policy.json`` file to require this role for
+     Compute operations.
 
 The Identity service assigns a tenant and a role to a user. You might
 assign the ``compute-user`` role to the ``alice`` user in the ``acme``
@@ -129,34 +133,7 @@ tenant:
 
 .. code::
 
-    $ openstack user list
-    +--------+-------+
-    | ID     | Name  |
-    +--------+-------+
-    | 892585 | alice |
-    +--------+-------+
-
-.. code::
-
-    $ openstack role list
-    +--------+---------------+
-    | ID     | Name          |
-    +--------+---------------+
-    | 9a764e | compute-user  |
-    +--------+---------------+
-
-.. code::
-
-    $ openstack project list
-    +--------+--------------------+
-    | ID     | Name               |
-    +--------+--------------------+
-    | 6b8fd2 | acme               |
-    +--------+--------------------+
-
-.. code::
-
-    $ openstack role add --project 6b8fd2 --user 892585 9a764e
+    $ openstack role add --project acme --user alice compute-user
 
 A user can have different roles in different tenants. For example, Alice
 might also have the ``admin`` role in the ``Cyberdyne`` tenant. A user

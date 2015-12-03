@@ -105,6 +105,12 @@
                 <td>Creates and manages keys.</td>
             </tr>
             <tr>
+                <td>Monitoring</td>
+                <td><command>monasca</command></td>
+                <td><package>python-monascaclient</package></td>
+                <td>Monitoring solution.</td>
+            </tr>
+            <tr>
                 <td>Networking</td>
                 <td><command>neutron</command></td>
                 <td><package>python-neutronclient</package></td>
@@ -125,6 +131,12 @@
                 <td><package>python-heatclient</package></td>
                 <td>Launches stacks from templates, views details of running stacks including
                     events and resources, and updates and deletes stacks.</td>
+            </tr>
+            <tr>
+                <td>Rating service</td>
+                <td><command>cloudkitty</command></td>
+                <td><package>python-cloudkittyclient</package></td>
+                <td>Rating service.</td>
             </tr>
             <tr>
                 <td>Shared file systems</td>

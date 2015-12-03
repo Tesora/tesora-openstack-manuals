@@ -159,6 +159,8 @@ redirect 301 /admin-guide-cloud/content/customize-flavors.html /admin-guide-clou
 redirectmatch 301 "^/user-guide/content/.*$" /user-guide/index.html
 redirectmatch 301 "^/user-guide-admin/content/.*" /user-guide-admin/index.html
 redirectmatch 301 "^/admin-guide-cloud/content/.*$" /admin-guide-cloud/index.html
+redirectmatch 301 "^/image-guide/content/.*$" /image-guide/index.html
+redirectmatch 301 "^/arch-design/content/.*$" /arch-design/index.html
 
 # Hot-guide has moved to heat repo
 redirect 301 /user-guide/hot-guide/hot.html /developer/heat/template_guide/hot_guide.html
@@ -172,6 +174,7 @@ redirect 301 /hot-reference/content/ /developer/heat/template_guide/
 
 # Redirect nova/devref/
 redirectmatch 301 ^/developer/nova/devref/(.+)$ /developer/nova/$1
+redirect 301 /developer/nova/nova.concepts.html /developer/nova/
 
 # Redirect API Quick Start after migration to RST
 redirect 301 /api/quick-start/content/ http://developer.openstack.org/api-guide/quick-start/

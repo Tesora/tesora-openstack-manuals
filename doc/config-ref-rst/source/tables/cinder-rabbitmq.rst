@@ -8,6 +8,8 @@
     autogenerate-config-doc tool from the openstack-doc-tools repository, or
     ask for help on the documentation mailing list, IRC channel or meeting.
 
+.. _cinder-rabbitmq:
+
 .. list-table:: Description of RabbitMQ configuration options
    :header-rows: 1
    :class: config-ref-table
@@ -30,13 +32,13 @@
      - (FloatOpt) How long to wait before reconnecting in response to an AMQP consumer cancel notification.
    * - ``kombu_reconnect_timeout`` = ``60``
      - (IntOpt) How long to wait before considering a reconnect attempt to have failed. This value should not be longer than rpc_response_timeout.
-   * - ``kombu_ssl_ca_certs`` = `` ``
+   * - ``kombu_ssl_ca_certs`` =
      - (StrOpt) SSL certification authority file (valid only if SSL enabled).
-   * - ``kombu_ssl_certfile`` = `` ``
+   * - ``kombu_ssl_certfile`` =
      - (StrOpt) SSL cert file (valid only if SSL enabled).
-   * - ``kombu_ssl_keyfile`` = `` ``
+   * - ``kombu_ssl_keyfile`` =
      - (StrOpt) SSL key file (valid only if SSL enabled).
-   * - ``kombu_ssl_version`` = `` ``
+   * - ``kombu_ssl_version`` =
      - (StrOpt) SSL version to use (valid only if SSL enabled). Valid values are TLSv1 and SSLv23. SSLv2, SSLv3, TLSv1_1, and TLSv1_2 may be available on some distributions.
    * - ``rabbit_ha_queues`` = ``False``
      - (BoolOpt) Use HA queues in RabbitMQ (x-ha-policy: all). If you change this option, you must wipe the RabbitMQ database.
