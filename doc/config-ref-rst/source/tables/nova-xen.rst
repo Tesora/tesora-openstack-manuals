@@ -8,6 +8,8 @@
     autogenerate-config-doc tool from the openstack-doc-tools repository, or
     ask for help on the documentation mailing list, IRC channel or meeting.
 
+.. _nova-xen:
+
 .. list-table:: Description of Xen configuration options
    :header-rows: 1
    :class: config-ref-table
@@ -53,7 +55,7 @@
    * - ``connection_password`` = ``None``
      - (StrOpt) Password for connection to XenServer/Xen Cloud Platform. Used only if compute_driver=xenapi.XenAPIDriver
    * - ``connection_url`` = ``None``
-     - (StrOpt) URL for connection to XenServer/Xen Cloud Platform. A special value of unix://local can be used to connect to the local unix socket.  Required if compute_driver=xenapi.XenAPIDriver
+     - (StrOpt) URL for connection to XenServer/Xen Cloud Platform. A special value of unix://local can be used to connect to the local unix socket. Required if compute_driver=xenapi.XenAPIDriver
    * - ``connection_username`` = ``root``
      - (StrOpt) Username for connection to XenServer/Xen Cloud Platform. Used only if compute_driver=xenapi.XenAPIDriver
    * - ``default_os_type`` = ``linux``

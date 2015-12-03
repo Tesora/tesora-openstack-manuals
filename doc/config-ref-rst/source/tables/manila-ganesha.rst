@@ -8,6 +8,8 @@
     autogenerate-config-doc tool from the openstack-doc-tools repository, or
     ask for help on the documentation mailing list, IRC channel or meeting.
 
+.. _manila-ganesha:
+
 .. list-table:: Description of Ganesha configuration options
    :header-rows: 1
    :class: config-ref-table
@@ -27,6 +29,6 @@
    * - ``ganesha_export_template_dir`` = ``/etc/manila/ganesha-export-templ.d``
      - (StrOpt) Path to directory containing Ganesha export block templates. (Ganesha module only.)
    * - ``ganesha_nfs_export_options`` = ``maxread = 65536, prefread = 65536``
-     - (StrOpt) Options to use when exporting a share using ganesha NFS server. Note that these defaults can be overridden when a share is created by passing metadata with key name export_options.  Also note the complete set of default ganesha export options is specified in ganesha_utils. (GPFS only.)
+     - (StrOpt) Options to use when exporting a share using ganesha NFS server. Note that these defaults can be overridden when a share is created by passing metadata with key name export_options. Also note the complete set of default ganesha export options is specified in ganesha_utils. (GPFS only.)
    * - ``ganesha_service_name`` = ``ganesha.nfsd``
      - (StrOpt) Name of the ganesha nfs service.

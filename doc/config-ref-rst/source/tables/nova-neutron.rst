@@ -8,6 +8,8 @@
     autogenerate-config-doc tool from the openstack-doc-tools repository, or
     ask for help on the documentation mailing list, IRC channel or meeting.
 
+.. _nova-neutron:
+
 .. list-table:: Description of neutron configuration options
    :header-rows: 1
    :class: config-ref-table
@@ -48,7 +50,7 @@
      - (BoolOpt) Verify HTTPS connections.
    * - ``keyfile`` = ``None``
      - (StrOpt) PEM encoded client certificate key file
-   * - ``metadata_proxy_shared_secret`` = `` ``
+   * - ``metadata_proxy_shared_secret`` =
      - (StrOpt) Shared secret to validate proxies Neutron metadata requests
    * - ``ovs_bridge`` = ``br-int``
      - (StrOpt) Name of Integration Bridge used by Open vSwitch

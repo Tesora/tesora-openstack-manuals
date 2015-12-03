@@ -8,6 +8,8 @@
     autogenerate-config-doc tool from the openstack-doc-tools repository, or
     ask for help on the documentation mailing list, IRC channel or meeting.
 
+.. _cinder-prophetstor_dpl:
+
 .. list-table:: Description of ProphetStor Fibre Channel and iSCSi drivers configuration options
    :header-rows: 1
    :class: config-ref-table
@@ -16,17 +18,17 @@
      - Description
    * - **[DEFAULT]**
      -
-   * - ``dpl_pool`` = `` ``
+   * - ``dpl_pool`` =
      - (StrOpt) DPL pool uuid in which DPL volumes are stored.
    * - ``dpl_port`` = ``8357``
      - (PortOpt) DPL port number.
    * - ``iscsi_port`` = ``3260``
      - (PortOpt) The port that the iSCSI daemon is listening on
-   * - ``san_ip`` = `` ``
+   * - ``san_ip`` =
      - (StrOpt) IP address of SAN controller
    * - ``san_login`` = ``admin``
      - (StrOpt) Username for SAN controller
-   * - ``san_password`` = `` ``
+   * - ``san_password`` =
      - (StrOpt) Password for SAN controller
    * - ``san_thin_provision`` = ``True``
      - (BoolOpt) Use thin provisioning for SAN volumes?

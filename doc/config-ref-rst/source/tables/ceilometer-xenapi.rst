@@ -8,6 +8,8 @@
     autogenerate-config-doc tool from the openstack-doc-tools repository, or
     ask for help on the documentation mailing list, IRC channel or meeting.
 
+.. _ceilometer-xenapi:
+
 .. list-table:: Description of XenAPI configuration options
    :header-rows: 1
    :class: config-ref-table
@@ -22,5 +24,3 @@
      - (StrOpt) URL for connection to XenServer/Xen Cloud Platform.
    * - ``connection_username`` = ``root``
      - (StrOpt) Username for connection to XenServer/Xen Cloud Platform.
-   * - ``login_timeout`` = ``10``
-     - (IntOpt) Timeout in seconds for XenAPI login.

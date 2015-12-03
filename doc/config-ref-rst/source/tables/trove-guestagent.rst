@@ -8,6 +8,8 @@
     autogenerate-config-doc tool from the openstack-doc-tools repository, or
     ask for help on the documentation mailing list, IRC channel or meeting.
 
+.. _trove-guestagent:
+
 .. list-table:: Description of guest agent configuration options
    :header-rows: 1
    :class: config-ref-table
@@ -31,7 +33,7 @@
    * - ``guest_id`` = ``None``
      - (StrOpt) ID of the Guest Instance.
    * - ``guest_info`` = ``guest_info.conf``
-     - (StrOpt) The guest info filename found in the injected config location.  If a full path is specified then it will be used as the path to the guest info file
+     - (StrOpt) The guest info filename found in the injected config location. If a full path is specified then it will be used as the path to the guest info file
    * - ``mount_options`` = ``defaults,noatime``
      - (StrOpt) Options to use when mounting a volume.
    * - ``storage_namespace`` = ``trove.guestagent.strategies.storage.swift``

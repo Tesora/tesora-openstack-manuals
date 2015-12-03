@@ -8,6 +8,8 @@
     autogenerate-config-doc tool from the openstack-doc-tools repository, or
     ask for help on the documentation mailing list, IRC channel or meeting.
 
+.. _trove-api:
+
 .. list-table:: Description of API configuration options
    :header-rows: 1
    :class: config-ref-table
@@ -23,7 +25,7 @@
    * - ``bind_host`` = ``0.0.0.0``
      - (IPOpt) IP address the API server will listen on.
    * - ``bind_port`` = ``8779``
-     - (IntOpt) Port the API server will listen on.
+     - (PortOpt) Port the API server will listen on.
    * - ``black_list_regex`` = ``None``
      - (StrOpt) Exclude IP addresses that match this regular expression.
    * - ``db_api_implementation`` = ``trove.db.sqlalchemy.api``
@@ -69,6 +71,6 @@
    * - **[oslo_middleware]**
      -
    * - ``max_request_body_size`` = ``114688``
-     - (IntOpt) The maximum body size for each  request, in bytes.
+     - (IntOpt) The maximum body size for each request, in bytes.
    * - ``secure_proxy_ssl_header`` = ``X-Forwarded-Proto``
      - (StrOpt) The HTTP Header that will be used to determine what the original request protocol scheme was, even if it was hidden by an SSL termination proxy.

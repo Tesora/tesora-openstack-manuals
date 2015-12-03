@@ -9,11 +9,12 @@ cors CORS
 database Database
 emc EMC Share Drivers
 ganesha Ganesha
+generic Generic Share Driver
 glusterfs GlusterFS Share Drivers
 gpfs IBM GPFS Share Driver
 hdfs HDFS Share Driver
 hds_hnas HDS NAS Share Driver
-hp3par HP 3PAR Share Driver
+hpe3par HPE 3PAR Share Driver
 huawei Huawei Share Driver
 logging Logging
 netapp NetApp Share Drivers
@@ -26,7 +27,6 @@ rpc RPC
 san SAN
 scheduler Scheduler
 share Share
-storage Storage
 winrm WinRM
 zeromq ZeroMQ
 zfssa ZFSSA Share Driver

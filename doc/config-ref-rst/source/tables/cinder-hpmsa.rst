@@ -8,6 +8,8 @@
     autogenerate-config-doc tool from the openstack-doc-tools repository, or
     ask for help on the documentation mailing list, IRC channel or meeting.
 
+.. _cinder-hpmsa:
+
 .. list-table:: Description of HP MSA volume driver configuration options
    :header-rows: 1
    :class: config-ref-table
@@ -22,7 +24,7 @@
      - (StrOpt) Pool or Vdisk name to use for volume creation.
    * - ``hpmsa_backend_type`` = ``virtual``
      - (StrOpt) linear (for Vdisk) or virtual (for Pool).
-   * - ``hpmsa_iscsi_ips`` = `` ``
+   * - ``hpmsa_iscsi_ips`` =
      - (ListOpt) List of comma-separated target iSCSI IP addresses.
    * - ``hpmsa_verify_certificate`` = ``False``
      - (BoolOpt) Whether to verify HPMSA array SSL certificate.

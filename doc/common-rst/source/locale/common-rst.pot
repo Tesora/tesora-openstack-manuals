@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Common documents 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-11-14 06:13+0000\n"
+"POT-Creation-Date: 2015-11-28 06:08+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -39,7 +39,7 @@ msgid ""
 "docs.openstack.org>`__."
 msgstr ""
 
-#: ../common/app_support.rst:17 ../common/app_support.rst:227
+#: ../common/app_support.rst:17 ../common/app_support.rst:229
 #: ../common/get_started_feedback.rst:5
 msgid ""
 "To provide feedback on documentation, join and use the openstack-docs@lists."
@@ -78,9 +78,7 @@ msgid ""
 msgstr ""
 
 #: ../common/app_support.rst:39
-msgid ""
-"`Architecture Design Guide <http://docs.openstack.org/arch-design/content/"
-">`__"
+msgid "`Architecture Design Guide <http://docs.openstack.org/arch-design/>`__"
 msgstr ""
 
 #: ../common/app_support.rst:42
@@ -112,8 +110,7 @@ msgstr ""
 
 #: ../common/app_support.rst:57
 msgid ""
-"`Virtual Machine Image Guide <http://docs.openstack.org/image-guide/content/"
-">`__"
+"`Virtual Machine Image Guide <http://docs.openstack.org/image-guide/>`__"
 msgstr ""
 
 #: ../common/app_support.rst:60
@@ -326,49 +323,53 @@ msgid ""
 msgstr ""
 
 #: ../common/app_support.rst:184
-msgid "`Bugs: Orchestration (heat) <https://bugs.launchpad.net/heat>`__"
+msgid "`Bugs: Monitoring (monasca) <https://bugs.launchpad.net/monasca>`__"
 msgstr ""
 
 #: ../common/app_support.rst:186
-msgid ""
-"`Bugs: Shared file systems (manila) <https://bugs.launchpad.net/manila>`__"
+msgid "`Bugs: Orchestration (heat) <https://bugs.launchpad.net/heat>`__"
 msgstr ""
 
 #: ../common/app_support.rst:188
 msgid ""
+"`Bugs: Shared file systems (manila) <https://bugs.launchpad.net/manila>`__"
+msgstr ""
+
+#: ../common/app_support.rst:190
+msgid ""
 "`Bugs: Telemetry (ceilometer) <https://bugs.launchpad.net/ceilometer>`__"
 msgstr ""
 
-#: ../common/app_support.rst:191
+#: ../common/app_support.rst:193
 msgid "`Bugs: Telemetry v3 (gnocchi) <https://bugs.launchpad.net/gnocchi>`__"
 msgstr ""
 
-#: ../common/app_support.rst:194
+#: ../common/app_support.rst:196
 msgid ""
 "`Bugs: Workflow service (mistral) <https://bugs.launchpad.net/mistral>`__"
 msgstr ""
 
-#: ../common/app_support.rst:197
+#: ../common/app_support.rst:199
 msgid "`Bugs: Messaging service (zaqar) <https://bugs.launchpad.net/zaqar>`__"
 msgstr ""
 
-#: ../common/app_support.rst:200
+#: ../common/app_support.rst:202
 msgid ""
 "`Bugs: OpenStack API Documentation (developer.openstack.org) <https://bugs."
 "launchpad.net/openstack-api-site>`__"
 msgstr ""
 
-#: ../common/app_support.rst:203
+#: ../common/app_support.rst:205
 msgid ""
 "`Bugs: OpenStack Documentation (docs.openstack.org) <https://bugs.launchpad."
 "net/openstack-manuals>`__"
 msgstr ""
 
-#: ../common/app_support.rst:207
+#: ../common/app_support.rst:209
 msgid "The OpenStack IRC channel"
 msgstr ""
 
-#: ../common/app_support.rst:209
+#: ../common/app_support.rst:211
 msgid ""
 "The OpenStack community lives in the #openstack IRC channel on the Freenode "
 "network. You can hang out, ask questions, or get immediate feedback for "
@@ -384,36 +385,36 @@ msgid ""
 "of all OpenStack IRC channels at https://wiki.openstack.org/wiki/IRC."
 msgstr ""
 
-#: ../common/app_support.rst:225
+#: ../common/app_support.rst:227
 msgid "Documentation feedback"
 msgstr ""
 
-#: ../common/app_support.rst:235
+#: ../common/app_support.rst:237
 msgid "OpenStack distribution packages"
 msgstr ""
 
-#: ../common/app_support.rst:237
+#: ../common/app_support.rst:239
 msgid ""
 "The following Linux distributions provide community-supported packages for "
 "OpenStack:"
 msgstr ""
 
-#: ../common/app_support.rst:240
+#: ../common/app_support.rst:242
 msgid "**Debian:** https://wiki.debian.org/OpenStack"
 msgstr ""
 
-#: ../common/app_support.rst:242
+#: ../common/app_support.rst:244
 msgid ""
 "**CentOS, Fedora, and Red Hat Enterprise Linux:** https://www.rdoproject.org/"
 msgstr ""
 
-#: ../common/app_support.rst:245
+#: ../common/app_support.rst:247
 msgid ""
 "**openSUSE and SUSE Linux Enterprise Server:** https://en.opensuse.org/"
 "Portal:OpenStack"
 msgstr ""
 
-#: ../common/app_support.rst:248
+#: ../common/app_support.rst:250
 msgid "**Ubuntu:** https://wiki.ubuntu.com/ServerTeam/CloudArchive"
 msgstr ""
 
@@ -650,58 +651,62 @@ msgid "``mistral`` - Workflow service API"
 msgstr ""
 
 #: ../common/cli_install_openstack_command_line_clients.rst:166
-msgid "``murano`` - Application catalog API"
+msgid "``monasca`` - Monitoring API"
 msgstr ""
 
 #: ../common/cli_install_openstack_command_line_clients.rst:168
-msgid "``neutron`` - Networking API"
+msgid "``murano`` - Application catalog API"
 msgstr ""
 
 #: ../common/cli_install_openstack_command_line_clients.rst:170
-msgid "``nova`` - Compute API and extensions"
+msgid "``neutron`` - Networking API"
 msgstr ""
 
 #: ../common/cli_install_openstack_command_line_clients.rst:172
-msgid "``sahara`` - Data Processing API"
+msgid "``nova`` - Compute API and extensions"
 msgstr ""
 
 #: ../common/cli_install_openstack_command_line_clients.rst:174
-msgid "``swift`` - Object Storage API"
+msgid "``sahara`` - Data Processing API"
 msgstr ""
 
 #: ../common/cli_install_openstack_command_line_clients.rst:176
-msgid "``trove`` - Database service API"
+msgid "``swift`` - Object Storage API"
 msgstr ""
 
 #: ../common/cli_install_openstack_command_line_clients.rst:178
-msgid "``tuskar`` - Deployment service API"
+msgid "``trove`` - Database service API"
 msgstr ""
 
 #: ../common/cli_install_openstack_command_line_clients.rst:180
-msgid "``openstack`` - Common OpenStack client supporting multiple services"
+msgid "``tuskar`` - Deployment service API"
 msgstr ""
 
 #: ../common/cli_install_openstack_command_line_clients.rst:182
+msgid "``openstack`` - Common OpenStack client supporting multiple services"
+msgstr ""
+
+#: ../common/cli_install_openstack_command_line_clients.rst:184
 msgid ""
 "The following CLIs are deprecated in favor of ``openstack``, the Common "
 "OpenStack client supporting multiple services:"
 msgstr ""
 
-#: ../common/cli_install_openstack_command_line_clients.rst:185
+#: ../common/cli_install_openstack_command_line_clients.rst:187
 msgid "``keystone`` - Identity service API and extensions"
 msgstr ""
 
-#: ../common/cli_install_openstack_command_line_clients.rst:187
+#: ../common/cli_install_openstack_command_line_clients.rst:189
 msgid ""
 "The following example shows the command for installing the nova client with "
 "``pip``."
 msgstr ""
 
-#: ../common/cli_install_openstack_command_line_clients.rst:195
+#: ../common/cli_install_openstack_command_line_clients.rst:197
 msgid "Installing with pip"
 msgstr ""
 
-#: ../common/cli_install_openstack_command_line_clients.rst:197
+#: ../common/cli_install_openstack_command_line_clients.rst:199
 msgid ""
 "Use pip to install the OpenStack clients on a Linux, Mac OS X, or Microsoft "
 "Windows system. It is easy to use and ensures that you get the latest "
@@ -709,77 +714,77 @@ msgid ""
 "org/pypi>`__. Also, pip enables you to update or remove a package."
 msgstr ""
 
-#: ../common/cli_install_openstack_command_line_clients.rst:203
+#: ../common/cli_install_openstack_command_line_clients.rst:205
 msgid "Install each client separately by using the following command:"
 msgstr ""
 
-#: ../common/cli_install_openstack_command_line_clients.rst:205
+#: ../common/cli_install_openstack_command_line_clients.rst:207
 msgid "For Mac OS X or Linux:"
 msgstr ""
 
-#: ../common/cli_install_openstack_command_line_clients.rst:211
+#: ../common/cli_install_openstack_command_line_clients.rst:213
 msgid "For Microsoft Windows:"
 msgstr ""
 
-#: ../common/cli_install_openstack_command_line_clients.rst:220
+#: ../common/cli_install_openstack_command_line_clients.rst:222
 msgid "Installing from packages"
 msgstr ""
 
-#: ../common/cli_install_openstack_command_line_clients.rst:222
+#: ../common/cli_install_openstack_command_line_clients.rst:224
 msgid ""
 "RDO, openSUSE, SUSE Linux Enterprise, Debian, and Ubuntu have client "
 "packages that can be installed without ``pip``."
 msgstr ""
 
-#: ../common/cli_install_openstack_command_line_clients.rst:225
+#: ../common/cli_install_openstack_command_line_clients.rst:227
 msgid ""
 "On Red Hat Enterprise Linux, CentOS, or Fedora, use ``yum`` to install the "
 "clients from the packaged versions available in `RDO <https://www.rdoproject."
 "org/>`__:"
 msgstr ""
 
-#: ../common/cli_install_openstack_command_line_clients.rst:233
+#: ../common/cli_install_openstack_command_line_clients.rst:235
 msgid ""
 "For Ubuntu or Debian, use ``apt-get`` to install the clients from the "
 "packaged versions:"
 msgstr ""
 
-#: ../common/cli_install_openstack_command_line_clients.rst:240
+#: ../common/cli_install_openstack_command_line_clients.rst:242
 msgid ""
 "For openSUSE, use ``zypper`` to install the clients from the distribution "
 "packages service:"
 msgstr ""
 
-#: ../common/cli_install_openstack_command_line_clients.rst:247
+#: ../common/cli_install_openstack_command_line_clients.rst:249
 msgid ""
 "For SUSE Linux Enterprise Server, use ``zypper`` to install the clients from "
 "the distribution packages in the Open Build Service. First, add the Open "
 "Build Service repository:"
 msgstr ""
 
-#: ../common/cli_install_openstack_command_line_clients.rst:255
+#: ../common/cli_install_openstack_command_line_clients.rst:257
 msgid "Then you can install the packages:"
 msgstr ""
 
-#: ../common/cli_install_openstack_command_line_clients.rst:262
+#: ../common/cli_install_openstack_command_line_clients.rst:264
 msgid "Upgrade or remove clients"
 msgstr ""
 
-#: ../common/cli_install_openstack_command_line_clients.rst:264
+#: ../common/cli_install_openstack_command_line_clients.rst:266
 msgid ""
 "To upgrade a client, add the ``--upgrade`` option to the ``pip install`` "
 "command:"
 msgstr ""
 
-#: ../common/cli_install_openstack_command_line_clients.rst:271
+#: ../common/cli_install_openstack_command_line_clients.rst:273
 msgid "To remove the client, run the ``pip uninstall`` command:"
 msgstr ""
 
-#: ../common/cli_install_openstack_command_line_clients.rst:278
+#: ../common/cli_install_openstack_command_line_clients.rst:280
 msgid "What's next"
 msgstr ""
 
-#: ../common/cli_install_openstack_command_line_clients.rst:280
+#: ../common/cli_install_openstack_command_line_clients.rst:282
 msgid ""
 "Before you can run client commands, you must create and source the ``PROJECT-"
 "openrc.sh`` file to set environment variables. See :doc:`../common/"
@@ -813,7 +818,7 @@ msgstr ""
 #: ../common/cli_manage_images.rst:17
 msgid ""
 "For details about image creation, see the `Virtual Machine Image Guide "
-"<http://docs.openstack.org/image-guide/content/>`__."
+"<http://docs.openstack.org/image-guide/>`__."
 msgstr ""
 
 #: ../common/cli_manage_images.rst:21
@@ -1696,132 +1701,148 @@ msgstr ""
 msgid "Creates and manages keys."
 msgstr ""
 
-#: ../common/cli_overview.rst:70 ../common/glossary.rst:2486
+#: ../common/cli_overview.rst:70 ../common/glossary.rst:2382
+msgid "Monitoring"
+msgstr ""
+
+#: ../common/cli_overview.rst:70 ../common/glossary.rst:2347
+msgid "monasca"
+msgstr ""
+
+#: ../common/cli_overview.rst:70
+msgid "python-monascaclient"
+msgstr ""
+
+#: ../common/cli_overview.rst:70
+msgid "Monitoring solution."
+msgstr ""
+
+#: ../common/cli_overview.rst:73 ../common/glossary.rst:2486
 msgid "Networking"
 msgstr ""
 
-#: ../common/cli_overview.rst:70 ../common/glossary.rst:2497
+#: ../common/cli_overview.rst:73 ../common/glossary.rst:2497
 msgid "neutron"
 msgstr ""
 
-#: ../common/cli_overview.rst:70
+#: ../common/cli_overview.rst:73
 msgid "python-neutronclient"
 msgstr ""
 
-#: ../common/cli_overview.rst:70
+#: ../common/cli_overview.rst:73
 msgid "Configures networks for guest servers."
 msgstr ""
 
-#: ../common/cli_overview.rst:73 ../common/glossary.rst:2599
+#: ../common/cli_overview.rst:76 ../common/glossary.rst:2599
 msgid "Object Storage"
 msgstr ""
 
-#: ../common/cli_overview.rst:73 ../common/glossary.rst:3506
+#: ../common/cli_overview.rst:76 ../common/glossary.rst:3506
 msgid "swift"
 msgstr ""
 
-#: ../common/cli_overview.rst:73
+#: ../common/cli_overview.rst:76
 msgid "python-swiftclient"
 msgstr ""
 
-#: ../common/cli_overview.rst:73
+#: ../common/cli_overview.rst:76
 msgid ""
 "Gathers statistics, lists items, updates metadata, and uploads, downloads, "
 "and deletes files stored by the Object Storage service. Gains access to an "
 "Object Storage installation for ad hoc processing."
 msgstr ""
 
-#: ../common/cli_overview.rst:84 ../common/glossary.rst:2685
+#: ../common/cli_overview.rst:87 ../common/glossary.rst:2685
 msgid "Orchestration"
 msgstr ""
 
-#: ../common/cli_overview.rst:84 ../common/glossary.rst:1669
+#: ../common/cli_overview.rst:87 ../common/glossary.rst:1669
 msgid "heat"
 msgstr ""
 
-#: ../common/cli_overview.rst:84
+#: ../common/cli_overview.rst:87
 msgid "python-heatclient"
 msgstr ""
 
-#: ../common/cli_overview.rst:84
+#: ../common/cli_overview.rst:87
 msgid ""
 "Launches stacks from templates, views details of running stacks including "
 "events and resources, and updates and deletes stacks."
 msgstr ""
 
-#: ../common/cli_overview.rst:91
+#: ../common/cli_overview.rst:94
 msgid "Shared file systems"
 msgstr ""
 
-#: ../common/cli_overview.rst:91 ../common/glossary.rst:2255
+#: ../common/cli_overview.rst:94 ../common/glossary.rst:2255
 msgid "manila"
 msgstr ""
 
-#: ../common/cli_overview.rst:91
+#: ../common/cli_overview.rst:94
 msgid "python-manilaclient"
 msgstr ""
 
-#: ../common/cli_overview.rst:91
+#: ../common/cli_overview.rst:94
 msgid "Creates and manages shared file systems."
 msgstr ""
 
-#: ../common/cli_overview.rst:94 ../common/glossary.rst:3548
+#: ../common/cli_overview.rst:97 ../common/glossary.rst:3548
 msgid "Telemetry"
 msgstr ""
 
-#: ../common/cli_overview.rst:94 ../common/glossary.rst:609
+#: ../common/cli_overview.rst:97 ../common/glossary.rst:609
 msgid "ceilometer"
 msgstr ""
 
-#: ../common/cli_overview.rst:94
+#: ../common/cli_overview.rst:97
 msgid "python-ceilometerclient"
 msgstr ""
 
-#: ../common/cli_overview.rst:94 ../common/cli_overview.rst:98
+#: ../common/cli_overview.rst:97 ../common/cli_overview.rst:101
 msgid "Creates and collects measurements across OpenStack."
 msgstr ""
 
-#: ../common/cli_overview.rst:98
+#: ../common/cli_overview.rst:101
 msgid "Telemetry v3"
 msgstr ""
 
-#: ../common/cli_overview.rst:98
+#: ../common/cli_overview.rst:101
 msgid "gnocchi"
 msgstr ""
 
-#: ../common/cli_overview.rst:98
+#: ../common/cli_overview.rst:101
 msgid "python-gnocchiclient"
 msgstr ""
 
-#: ../common/cli_overview.rst:102 ../common/glossary.rst:3885
+#: ../common/cli_overview.rst:105 ../common/glossary.rst:3885
 msgid "Workflow service"
 msgstr ""
 
-#: ../common/cli_overview.rst:102 ../common/glossary.rst:2337
+#: ../common/cli_overview.rst:105 ../common/glossary.rst:2337
 msgid "mistral"
 msgstr ""
 
-#: ../common/cli_overview.rst:102
+#: ../common/cli_overview.rst:105
 msgid "python-mistralclient"
 msgstr ""
 
-#: ../common/cli_overview.rst:102
+#: ../common/cli_overview.rst:105
 msgid "Workflow service for OpenStack cloud."
 msgstr ""
 
-#: ../common/cli_overview.rst:105
+#: ../common/cli_overview.rst:108
 msgid "Common client"
 msgstr ""
 
-#: ../common/cli_overview.rst:105
+#: ../common/cli_overview.rst:108
 msgid "openstack"
 msgstr ""
 
-#: ../common/cli_overview.rst:105
+#: ../common/cli_overview.rst:108
 msgid "python-openstackclient"
 msgstr ""
 
-#: ../common/cli_overview.rst:105
+#: ../common/cli_overview.rst:108
 msgid "Common client for the OpenStack project."
 msgstr ""
 
@@ -7728,10 +7749,6 @@ msgid ""
 "will take place in Tokyo, Japan. Mitaka is a city in Tokyo."
 msgstr ""
 
-#: ../common/glossary.rst:2347
-msgid "monasca"
-msgstr ""
-
 #: ../common/glossary.rst:2350
 msgid "OpenStack project that provides a Monitoring service."
 msgstr ""
@@ -7790,10 +7807,6 @@ msgstr ""
 msgid ""
 "A Ceph component that communicates with external clients, checks data state "
 "and consistency, and performs quorum functions."
-msgstr ""
-
-#: ../common/glossary.rst:2382
-msgid "Monitoring"
 msgstr ""
 
 #: ../common/glossary.rst:2385
@@ -10994,324 +11007,4 @@ msgstr ""
 
 #: ../common/nova_show_usage_statistics_for_hosts_instances.rst:119
 msgid "Get summary statistics for each tenant:"
-msgstr ""
-
-#: ../common/support-compute.rst:7
-msgid "Troubleshoot Compute"
-msgstr ""
-
-#: ../common/support-compute.rst:9
-msgid ""
-"Common problems for Compute typically involve misconfigured networking or "
-"credentials that are not sourced properly in the environment. Also, most "
-"flat networking configurations do not enable :command:`ping` or :command:"
-"`ssh` from a compute node to the instances that run on that node. Another "
-"common problem is trying to run 32-bit images on a 64-bit compute node. This "
-"section shows you how to troubleshoot Compute."
-msgstr ""
-
-#: ../common/support-compute.rst:21
-msgid "Compute service logging"
-msgstr ""
-
-#: ../common/support-compute.rst:23
-msgid ""
-"Compute stores a log file for each service in ``/var/log/nova``. For "
-"example, ``nova-compute.log`` is the log for the ``nova-compute`` service. "
-"You can set the following options to format log strings for the ``nova.log`` "
-"module in the ``nova.conf`` file:"
-msgstr ""
-
-#: ../common/support-compute.rst:29
-msgid "``logging_context_format_string``"
-msgstr ""
-
-#: ../common/support-compute.rst:31
-msgid "``logging_default_format_string``"
-msgstr ""
-
-#: ../common/support-compute.rst:33
-msgid ""
-"If the log level is set to ``debug``, you can also specify "
-"``logging_debug_format_suffix`` to append extra formatting. For information "
-"about what variables are available for the formatter see http://docs.python."
-"org/library/logging.html#formatter-objects."
-msgstr ""
-
-#: ../common/support-compute.rst:38
-msgid ""
-"You have two options for logging for OpenStack Compute based on "
-"configuration settings. In ``nova.conf``, include the ``logfile`` option to "
-"enable logging. Alternatively you can set ``use_syslog = 1`` so that the "
-"nova daemon logs to syslog."
-msgstr ""
-
-#: ../common/support-compute.rst:47
-msgid "Guru Meditation reports"
-msgstr ""
-
-#: ../common/support-compute.rst:49
-msgid ""
-"A Guru Meditation report is sent by the Compute service upon receipt of the "
-"``SIGUSR1`` signal. This report is a general-purpose error report, including "
-"a complete report of the service's current state, and is sent to ``stderr``."
-msgstr ""
-
-#: ../common/support-compute.rst:54
-msgid ""
-"For example, if you redirect error output to ``nova-api-err.log`` using :"
-"command:`nova-api 2>/var/log/nova/nova-api-err.log`, resulting in the "
-"process ID 8675, you can then run:"
-msgstr ""
-
-#: ../common/support-compute.rst:62
-msgid ""
-"This command triggers the Guru Meditation report to be printed to ``/var/log/"
-"nova/nova-api-err.log``."
-msgstr ""
-
-#: ../common/support-compute.rst:65
-msgid "The report has the following sections:"
-msgstr ""
-
-#: ../common/support-compute.rst:67
-msgid ""
-"Package: Displays information about the package to which the process "
-"belongs, including version information."
-msgstr ""
-
-#: ../common/support-compute.rst:70
-msgid ""
-"Threads: Displays stack traces and thread IDs for each of the threads within "
-"the process."
-msgstr ""
-
-#: ../common/support-compute.rst:73
-msgid ""
-"Green Threads: Displays stack traces for each of the green threads within "
-"the process (green threads do not have thread IDs)."
-msgstr ""
-
-#: ../common/support-compute.rst:76
-msgid ""
-"Configuration: Lists all configuration options currently accessible through "
-"the CONF object for the current process."
-msgstr ""
-
-#: ../common/support-compute.rst:79
-msgid ""
-"For more information, see `Guru Meditation Reports <http://docs.openstack."
-"org/developer/nova/devref/gmr.html>`_."
-msgstr ""
-
-#: ../common/support-compute.rst:85
-msgid "Common errors and fixes for Compute"
-msgstr ""
-
-#: ../common/support-compute.rst:87
-msgid ""
-"The `ask.openstack.org <http://ask.openstack.org>`_ site offers a place to "
-"ask and answer questions, and you can also mark questions as frequently "
-"asked questions. This section describes some errors people have posted "
-"previously. Bugs are constantly being fixed, so online resources are a great "
-"way to get the most up-to-date errors and fixes."
-msgstr ""
-
-#: ../common/support-compute.rst:93
-msgid "**Credential errors, 401, and 403 forbidden errors**"
-msgstr ""
-
-#: ../common/support-compute.rst:95
-msgid ""
-"Missing credentials cause a ``403 forbidden`` error. To resolve this issue, "
-"use one of these methods:"
-msgstr ""
-
-#: ../common/support-compute.rst:101
-msgid "Manual method"
-msgstr ""
-
-#: ../common/support-compute.rst:99
-msgid ""
-"Gets the ``novarc`` file from the project ZIP file, saves existing "
-"credentials in case of override, and manually sources the ``novarc`` file."
-msgstr ""
-
-#: ../common/support-compute.rst:104
-msgid "Script method"
-msgstr ""
-
-#: ../common/support-compute.rst:104
-msgid "Generates ``novarc`` from the project ZIP file and sources it for you."
-msgstr ""
-
-#: ../common/support-compute.rst:106
-msgid ""
-"When you run ``nova-api`` the first time, it generates the certificate "
-"authority information, including ``openssl.cnf``. If you start the CA "
-"services before this, you might not be able to create your ZIP file. Restart "
-"the services. When your CA information is available, create your ZIP file."
-msgstr ""
-
-#: ../common/support-compute.rst:112
-msgid ""
-"Also, check your HTTP proxy settings to see whether they cause problems with "
-"``novarc`` creation."
-msgstr ""
-
-#: ../common/support-compute.rst:115
-msgid "**Instance errors**"
-msgstr ""
-
-#: ../common/support-compute.rst:117
-msgid ""
-"Sometimes a particular instance shows ``pending`` or you cannot SSH to it. "
-"Sometimes the image itself is the problem. For example, when you use flat "
-"manager networking, you do not have a DHCP server and certain images do not "
-"support interface injection; you cannot connect to them. The fix for this "
-"problem is to use an image that does support this method, such as Ubuntu, "
-"which obtains an IP address correctly with FlatManager network settings."
-msgstr ""
-
-#: ../common/support-compute.rst:125
-msgid ""
-"To troubleshoot other possible problems with an instance, such as an "
-"instance that stays in a spawning state, check the directory for the "
-"particular instance under ``/var/lib/nova/instances`` on the ``nova-"
-"compute`` host and make sure that these files are present:"
-msgstr ""
-
-#: ../common/support-compute.rst:130
-msgid "``libvirt.xml``"
-msgstr ""
-
-#: ../common/support-compute.rst:131
-msgid "``disk``"
-msgstr ""
-
-#: ../common/support-compute.rst:132
-msgid "``disk-raw``"
-msgstr ""
-
-#: ../common/support-compute.rst:133
-msgid "``kernel``"
-msgstr ""
-
-#: ../common/support-compute.rst:134
-msgid "``ramdisk``"
-msgstr ""
-
-#: ../common/support-compute.rst:135
-msgid "``console.log``, after the instance starts."
-msgstr ""
-
-#: ../common/support-compute.rst:137
-msgid ""
-"If any files are missing, empty, or very small, the ``nova-compute`` service "
-"did not successfully download the images from the Image service."
-msgstr ""
-
-#: ../common/support-compute.rst:140
-msgid ""
-"Also check ``nova-compute.log`` for exceptions. Sometimes they do not appear "
-"in the console output."
-msgstr ""
-
-#: ../common/support-compute.rst:143
-msgid ""
-"Next, check the log file for the instance in the ``/var/log/libvirt/qemu`` "
-"directory to see if it exists and has any useful error messages in it."
-msgstr ""
-
-#: ../common/support-compute.rst:146
-msgid ""
-"Finally, from the ``/var/lib/nova/instances`` directory for the instance, "
-"see if this command returns an error:"
-msgstr ""
-
-#: ../common/support-compute.rst:153
-msgid "**Empty log output for Linux instances**"
-msgstr ""
-
-#: ../common/support-compute.rst:155
-msgid ""
-"You can view the log output of running instances from either the :guilabel:"
-"`Log` tab of the dashboard or the output of :command:`nova console-log`. In "
-"some cases, the log output of a running Linux instance will be empty or only "
-"display a single character (for example, the `?` character)."
-msgstr ""
-
-#: ../common/support-compute.rst:161
-msgid ""
-"This occurs when the Compute service attempts to retrieve the log output of "
-"the instance via a serial console while the instance itself is not "
-"configured to send output to the console. To rectify this, append the "
-"following parameters to kernel arguments specified in the instance's boot "
-"loader:"
-msgstr ""
-
-#: ../common/support-compute.rst:171
-msgid ""
-"Upon rebooting, the instance will be configured to send output to the "
-"Compute service."
-msgstr ""
-
-#: ../common/support-compute.rst:178
-msgid "Reset the state of an instance"
-msgstr ""
-
-#: ../common/support-compute.rst:180
-msgid ""
-"If an instance remains in an intermediate state, such as ``deleting``, you "
-"can use the :command:`nova reset-state` command to manually reset the state "
-"of an instance to an error state. You can then delete the instance. For "
-"example:"
-msgstr ""
-
-#: ../common/support-compute.rst:190
-msgid ""
-"You can also use the :option:`--active` parameter to force the instance back "
-"to an active state instead of an error state. For example:"
-msgstr ""
-
-#: ../common/support-compute.rst:201
-msgid "Injection problems"
-msgstr ""
-
-#: ../common/support-compute.rst:203
-msgid ""
-"If instances do not boot or boot slowly, investigate file injection as a "
-"cause."
-msgstr ""
-
-#: ../common/support-compute.rst:205
-msgid "To disable injection in libvirt, set the following in ``nova.conf``:"
-msgstr ""
-
-#: ../common/support-compute.rst:212
-msgid ""
-"If you have not enabled the configuration drive and you want to make user-"
-"specified files available from the metadata server for to improve "
-"performance and avoid boot failure if injection fails, you must disable "
-"injection."
-msgstr ""
-
-#: ../common/support-compute.rst:222
-msgid "Disable live snapshotting"
-msgstr ""
-
-#: ../common/support-compute.rst:224
-msgid ""
-"If you use libvirt version ``1.2.2``, you may experience problems with live "
-"snapshots creation. Occasionally, libvirt of the specified version fails to "
-"perform the live snapshotting under load that presupposes a concurrent "
-"creation of multiple snapshots."
-msgstr ""
-
-#: ../common/support-compute.rst:229
-msgid ""
-"To effectively disable the libvirt live snapshotting, until the problem is "
-"resolved, configure the ``disable_libvirt_livesnapshot`` option. You can "
-"turn off the live snapshotting mechanism by setting up its value to ``True`` "
-"in the ``[workarounds]`` section of the ``nova.conf`` file:"
 msgstr ""

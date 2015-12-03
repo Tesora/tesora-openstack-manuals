@@ -57,7 +57,7 @@
         <itemizedlist>
             <listitem>
                 <para><link
-                        xlink:href="http://docs.openstack.org/arch-design/content/"
+                        xlink:href="http://docs.openstack.org/arch-design/"
                             ><citetitle>Architecture Design
                             Guide</citetitle></link></para>
             </listitem>
@@ -100,7 +100,7 @@
             </listitem>
             <listitem>
                 <para><link
-                        xlink:href="http://docs.openstack.org/image-guide/content/"
+                        xlink:href="http://docs.openstack.org/image-guide/"
                             ><citetitle>Virtual Machine Image
                             Guide</citetitle></link></para>
             </listitem>
@@ -312,13 +312,23 @@
             </listitem>
             <listitem>
                 <para><link
-                        xlink:href="https://bugs.launchpad.net/trove"
+                        xlink:href="https://bugs.launchpad.net/barbican"
                         >Bugs: Key Manager service (barbican)</link></para>
+            </listitem>
+            <listitem>
+                <para><link
+                        xlink:href="https://bugs.launchpad.net/monasca"
+                        >Bugs: Monitoring (monasca)</link></para>
             </listitem>
             <listitem>
                 <para><link
                         xlink:href="https://bugs.launchpad.net/heat"
                         >Bugs: Orchestration (heat)</link></para>
+            </listitem>
+            <listitem>
+                <para><link
+                        xlink:href="https://bugs.launchpad.net/cloudkitty"
+                        >Bugs: Rating (cloudkitty)</link></para>
             </listitem>
             <listitem>
                 <para><link

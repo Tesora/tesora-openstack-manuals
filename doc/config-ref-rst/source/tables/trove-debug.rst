@@ -8,6 +8,8 @@
     autogenerate-config-doc tool from the openstack-doc-tools repository, or
     ask for help on the documentation mailing list, IRC channel or meeting.
 
+.. _trove-debug:
+
 .. list-table:: Description of logging configuration options
    :header-rows: 1
    :class: config-ref-table
@@ -23,7 +25,7 @@
    * - ``pydev_debug_host`` = ``None``
      - (StrOpt) Pydev debug server host (localhost by default).
    * - ``pydev_debug_port`` = ``5678``
-     - (IntOpt) Pydev debug server port (5678 by default).
+     - (PortOpt) Pydev debug server port (5678 by default).
    * - **[profiler]**
      -
    * - ``enabled`` = ``False``

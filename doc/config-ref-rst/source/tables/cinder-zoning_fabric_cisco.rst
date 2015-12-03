@@ -8,6 +8,8 @@
     autogenerate-config-doc tool from the openstack-doc-tools repository, or
     ask for help on the documentation mailing list, IRC channel or meeting.
 
+.. _cinder-zoning_fabric_cisco:
+
 .. list-table:: Description of cisco zoning fabrics configuration options
    :header-rows: 1
    :class: config-ref-table
@@ -16,13 +18,13 @@
      - Description
    * - **[CISCO_FABRIC_EXAMPLE]**
      -
-   * - ``cisco_fc_fabric_address`` = `` ``
+   * - ``cisco_fc_fabric_address`` =
      - (StrOpt) Management IP of fabric
-   * - ``cisco_fc_fabric_password`` = `` ``
+   * - ``cisco_fc_fabric_password`` =
      - (StrOpt) Password for user
    * - ``cisco_fc_fabric_port`` = ``22``
      - (PortOpt) Connecting port
-   * - ``cisco_fc_fabric_user`` = `` ``
+   * - ``cisco_fc_fabric_user`` =
      - (StrOpt) Fabric user ID
    * - ``cisco_zone_activate`` = ``True``
      - (BoolOpt) overridden zoning activation state

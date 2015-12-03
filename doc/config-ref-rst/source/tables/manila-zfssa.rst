@@ -8,6 +8,8 @@
     autogenerate-config-doc tool from the openstack-doc-tools repository, or
     ask for help on the documentation mailing list, IRC channel or meeting.
 
+.. _manila-zfssa:
+
 .. list-table:: Description of ZFSSA Share Driver configuration options
    :header-rows: 1
    :class: config-ref-table
@@ -30,7 +32,7 @@
      - (StrOpt) Data compression-off, lzjb, gzip-2, gzip, gzip-9.
    * - ``zfssa_nas_logbias`` = ``latency``
      - (StrOpt) Controls behavior when servicing synchronous writes.
-   * - ``zfssa_nas_mountpoint`` = `` ``
+   * - ``zfssa_nas_mountpoint`` =
      - (StrOpt) Location of project in ZFS/SA.
    * - ``zfssa_nas_quota_snap`` = ``true``
      - (StrOpt) Controls whether a share quota includes snapshot.

@@ -8,6 +8,8 @@
     autogenerate-config-doc tool from the openstack-doc-tools repository, or
     ask for help on the documentation mailing list, IRC channel or meeting.
 
+.. _nova-vpn:
+
 .. list-table:: Description of VPN configuration options
    :header-rows: 1
    :class: config-ref-table
@@ -18,7 +20,7 @@
      -
    * - ``boot_script_template`` = ``$pybasedir/nova/cloudpipe/bootscript.template``
      - (StrOpt) Template for cloudpipe instance boot script
-   * - ``dmz_cidr`` = `` ``
+   * - ``dmz_cidr`` =
      - (ListOpt) A list of dmz ranges that should be accepted
    * - ``dmz_mask`` = ``255.255.255.0``
      - (StrOpt) Netmask to push into openvpn config

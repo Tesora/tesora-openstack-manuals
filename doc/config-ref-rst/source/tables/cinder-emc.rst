@@ -8,6 +8,8 @@
     autogenerate-config-doc tool from the openstack-doc-tools repository, or
     ask for help on the documentation mailing list, IRC channel or meeting.
 
+.. _cinder-emc:
+
 .. list-table:: Description of EMC configuration options
    :header-rows: 1
    :class: config-ref-table
@@ -30,11 +32,11 @@
      - (BoolOpt) Automatically register initiators. By default, the value is False.
    * - ``io_port_list`` = ``*``
      - (StrOpt) Comma separated iSCSI or FC ports to be used in Nova or Cinder.
-   * - ``iscsi_initiators`` = `` ``
+   * - ``iscsi_initiators`` =
      - (StrOpt) Mapping between hostname and its iSCSI initiator IP addresses.
    * - ``max_luns_per_storage_group`` = ``255``
      - (IntOpt) Default max number of LUNs in a storage group. By default, the value is 255.
-   * - ``naviseccli_path`` = `` ``
+   * - ``naviseccli_path`` =
      - (StrOpt) Naviseccli Path.
    * - ``storage_vnx_authentication_type`` = ``global``
      - (StrOpt) VNX authentication scope type.
@@ -46,5 +48,5 @@
      - (IntOpt) Number of retries in case array is busy
    * - ``xtremio_array_busy_retry_interval`` = ``5``
      - (IntOpt) Interval between retries in case array is busy
-   * - ``xtremio_cluster_name`` = `` ``
+   * - ``xtremio_cluster_name`` =
      - (StrOpt) XMS cluster id in multi-cluster environment

@@ -8,6 +8,8 @@
     autogenerate-config-doc tool from the openstack-doc-tools repository, or
     ask for help on the documentation mailing list, IRC channel or meeting.
 
+.. _manila-api:
+
 .. list-table:: Description of API configuration options
    :header-rows: 1
    :class: config-ref-table
@@ -30,7 +32,7 @@
      - (IntOpt) The maximum number of items returned in a single response from a collection resource.
    * - ``osapi_share_base_URL`` = ``None``
      - (StrOpt) Base URL to be presented to users in links to the Share API
-   * - ``osapi_share_ext_list`` = `` ``
+   * - ``osapi_share_ext_list`` =
      - (ListOpt) Specify list of extensions to load when using osapi_share_extension option with manila.api.contrib.select_extensions.
    * - ``osapi_share_extension`` = ``['manila.api.contrib.standard_extensions']``
      - (MultiStrOpt) The osapi share extension to load.
@@ -51,7 +53,7 @@
    * - **[oslo_middleware]**
      -
    * - ``max_request_body_size`` = ``114688``
-     - (IntOpt) The maximum body size for each  request, in bytes.
+     - (IntOpt) The maximum body size for each request, in bytes.
    * - ``secure_proxy_ssl_header`` = ``X-Forwarded-Proto``
      - (StrOpt) The HTTP Header that will be used to determine what the original request protocol scheme was, even if it was hidden by an SSL termination proxy.
    * - **[oslo_policy]**
@@ -59,6 +61,6 @@
    * - ``policy_default_rule`` = ``default``
      - (StrOpt) Default rule. Enforced when a requested rule is not found.
    * - ``policy_dirs`` = ``['policy.d']``
-     - (MultiStrOpt) Directories where policy configuration files are stored. They can be relative to any directory in the search path defined by the config_dir option, or absolute paths. The file defined by policy_file must exist for these directories to be searched.  Missing or empty directories are ignored.
+     - (MultiStrOpt) Directories where policy configuration files are stored. They can be relative to any directory in the search path defined by the config_dir option, or absolute paths. The file defined by policy_file must exist for these directories to be searched. Missing or empty directories are ignored.
    * - ``policy_file`` = ``policy.json``
      - (StrOpt) The JSON file that defines policies.

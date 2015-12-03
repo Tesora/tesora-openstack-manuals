@@ -8,6 +8,8 @@
     autogenerate-config-doc tool from the openstack-doc-tools repository, or
     ask for help on the documentation mailing list, IRC channel or meeting.
 
+.. _heat-clients_keystone:
+
 .. list-table:: Description of keystone clients configuration options
    :header-rows: 1
    :class: config-ref-table
@@ -16,7 +18,7 @@
      - Description
    * - **[clients_keystone]**
      -
-   * - ``auth_uri`` = `` ``
+   * - ``auth_uri`` =
      - (StrOpt) Unversioned keystone url in format like http://0.0.0.0:5000.
    * - ``ca_file`` = ``None``
      - (StrOpt) Optional CA cert file to use in SSL connections.

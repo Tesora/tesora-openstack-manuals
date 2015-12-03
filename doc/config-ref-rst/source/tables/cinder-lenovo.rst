@@ -8,6 +8,8 @@
     autogenerate-config-doc tool from the openstack-doc-tools repository, or
     ask for help on the documentation mailing list, IRC channel or meeting.
 
+.. _cinder-lenovo:
+
 .. list-table:: Description of Lenovo volume driver configuration options
    :header-rows: 1
    :class: config-ref-table
@@ -22,7 +24,7 @@
      - (StrOpt) Pool or Vdisk name to use for volume creation.
    * - ``lenovo_backend_type`` = ``virtual``
      - (StrOpt) linear (for VDisk) or virtual (for Pool).
-   * - ``lenovo_iscsi_ips`` = `` ``
+   * - ``lenovo_iscsi_ips`` =
      - (ListOpt) List of comma-separated target iSCSI IP addresses.
    * - ``lenovo_verify_certificate`` = ``False``
      - (BoolOpt) Whether to verify Lenovo array SSL certificate.

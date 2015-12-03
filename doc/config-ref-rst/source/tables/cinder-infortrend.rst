@@ -8,6 +8,8 @@
     autogenerate-config-doc tool from the openstack-doc-tools repository, or
     ask for help on the documentation mailing list, IRC channel or meeting.
 
+.. _cinder-infortrend:
+
 .. list-table:: Description of Infortrend volume driver configuration options
    :header-rows: 1
    :class: config-ref-table
@@ -22,7 +24,7 @@
      - (StrOpt) The Infortrend CLI absolute path. By default, it is at /opt/bin/Infortrend/raidcmd_ESDS10.jar
    * - ``infortrend_cli_timeout`` = ``30``
      - (IntOpt) Default timeout for CLI copy operations in minutes. Support: migrate volume, create cloned volume and create volume from snapshot. By Default, it is 30 minutes.
-   * - ``infortrend_pools_name`` = `` ``
+   * - ``infortrend_pools_name`` =
      - (StrOpt) Infortrend raid pool name list. It is separated with comma.
    * - ``infortrend_provisioning`` = ``full``
      - (StrOpt) Let the volume use specific provisioning. By default, it is the full provisioning. The supported options are full or thin.

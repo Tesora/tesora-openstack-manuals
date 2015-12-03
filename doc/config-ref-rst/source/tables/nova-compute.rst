@@ -8,6 +8,8 @@
     autogenerate-config-doc tool from the openstack-doc-tools repository, or
     ask for help on the documentation mailing list, IRC channel or meeting.
 
+.. _nova-compute:
+
 .. list-table:: Description of Compute configuration options
    :header-rows: 1
    :class: config-ref-table
@@ -22,9 +24,9 @@
      - (StrOpt) Driver to use for controlling virtualization. Options include: libvirt.LibvirtDriver, xenapi.XenAPIDriver, fake.FakeDriver, ironic.IronicDriver, vmwareapi.VMwareVCDriver, hyperv.HyperVDriver
    * - ``compute_manager`` = ``nova.compute.manager.ComputeManager``
      - (StrOpt) Full class name for the Manager for compute
-   * - ``compute_monitors`` = `` ``
+   * - ``compute_monitors`` =
      - (ListOpt) A list of monitors that can be used for getting compute metrics. You can use the alias/name from the setuptools entry points for nova.compute.monitors.* namespaces. If no namespace is supplied, the "cpu." namespace is assumed for backwards-compatibility. An example value that would enable both the CPU and NUMA memory bandwidth monitors that used the virt driver variant: ["cpu.virt_driver", "numa_mem_bw.virt_driver"]
-   * - ``compute_resources`` = `` ``
+   * - ``compute_resources`` =
      - (ListOpt) DEPRECATED: The names of the extra resources to track. The Extensible Resource Tracker is deprecated and will be removed in the 14.0.0 release. If you use this functionality and have custom resources that are managed by the Extensible Resource Tracker, please contact the Nova development team by posting to the openstack-dev mailing list. There is no future planned support for the tracking of custom resources.
    * - ``compute_stats_class`` = ``nova.compute.stats.Stats``
      - (StrOpt) Class that will manage stats for the local compute host
@@ -51,7 +53,7 @@
    * - ``instance_usage_audit`` = ``False``
      - (BoolOpt) Generate periodic compute.instance.exists notifications
    * - ``instance_usage_audit_period`` = ``month``
-     - (StrOpt) Time period to generate instance usages for.  Time period must be hour, day, month or year
+     - (StrOpt) Time period to generate instance usages for. Time period must be hour, day, month or year
    * - ``instances_path`` = ``$state_path/instances``
      - (StrOpt) Where instances are stored on disk
    * - ``max_concurrent_builds`` = ``10``

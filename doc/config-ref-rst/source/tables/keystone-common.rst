@@ -8,6 +8,8 @@
     autogenerate-config-doc tool from the openstack-doc-tools repository, or
     ask for help on the documentation mailing list, IRC channel or meeting.
 
+.. _keystone-common:
+
 .. list-table:: Description of common configuration options
    :header-rows: 1
    :class: config-ref-table
@@ -29,4 +31,4 @@
    * - ``disable_process_locking`` = ``False``
      - (BoolOpt) Enables or disables inter-process locks.
    * - ``lock_path`` = ``None``
-     - (StrOpt) Directory to use for lock files.  For security, the specified directory should only be writable by the user running the processes that need locking. Defaults to environment variable OSLO_LOCK_PATH. If external locks are used, a lock path must be set.
+     - (StrOpt) Directory to use for lock files. For security, the specified directory should only be writable by the user running the processes that need locking. Defaults to environment variable OSLO_LOCK_PATH. If external locks are used, a lock path must be set.

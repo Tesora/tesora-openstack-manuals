@@ -8,6 +8,8 @@
     autogenerate-config-doc tool from the openstack-doc-tools repository, or
     ask for help on the documentation mailing list, IRC channel or meeting.
 
+.. _trove-db_mongodb:
+
 .. list-table:: Description of MongoDB database configuration options
    :header-rows: 1
    :class: config-ref-table
@@ -29,7 +31,7 @@
    * - ``cluster_support`` = ``True``
      - (BoolOpt) Enable clusters to be created and managed.
    * - ``configsvr_port`` = ``27019``
-     - (IntOpt) Port for instances running as config servers.
+     - (PortOpt) Port for instances running as config servers.
    * - ``device_path`` = ``/dev/vdb``
      - (StrOpt) Device path for volume if volume support is enabled.
    * - ``guestagent_strategy`` = ``trove.common.strategies.cluster.experimental.mongodb.guestagent.MongoDbGuestAgentStrategy``
@@ -39,7 +41,7 @@
    * - ``ignore_users`` = ``admin.os_admin, admin.root``
      - (ListOpt) Users to exclude when listing users.
    * - ``mongodb_port`` = ``27017``
-     - (IntOpt) Port for mongod and mongos instances.
+     - (PortOpt) Port for mongod and mongos instances.
    * - ``mount_point`` = ``/var/lib/mongodb``
      - (StrOpt) Filesystem path for mounting volumes if volume support is enabled.
    * - ``num_config_servers_per_cluster`` = ``3``
@@ -56,7 +58,7 @@
      - (StrOpt) Class that implements datastore-specific task manager logic.
    * - ``tcp_ports`` = ``2500, 27017``
      - (ListOpt) List of TCP ports and/or port ranges to open in the security group (only applicable if trove_security_groups_support is True).
-   * - ``udp_ports`` = `` ``
+   * - ``udp_ports`` =
      - (ListOpt) List of UDP ports and/or port ranges to open in the security group (only applicable if trove_security_groups_support is True).
    * - ``volume_support`` = ``True``
      - (BoolOpt) Whether to provision a Cinder volume for datadir.

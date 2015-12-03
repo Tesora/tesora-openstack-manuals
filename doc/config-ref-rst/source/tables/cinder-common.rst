@@ -8,6 +8,8 @@
     autogenerate-config-doc tool from the openstack-doc-tools repository, or
     ask for help on the documentation mailing list, IRC channel or meeting.
 
+.. _cinder-common:
+
 .. list-table:: Description of common configuration options
    :header-rows: 1
    :class: config-ref-table
@@ -18,9 +20,9 @@
      -
    * - ``allow_availability_zone_fallback`` = ``False``
      - (BoolOpt) If the requested Cinder availability zone is unavailable, fall back to the value of default_availability_zone, then storage_availability_zone, instead of failing.
-   * - ``chap_password`` = `` ``
+   * - ``chap_password`` =
      - (StrOpt) Password for specified CHAP account name.
-   * - ``chap_username`` = `` ``
+   * - ``chap_username`` =
      - (StrOpt) CHAP user name.
    * - ``chiscsi_conf`` = ``/etc/chelsio-iscsi/chiscsi.conf``
      - (StrOpt) Chiscsi (CXT) global defaults configuration file
@@ -53,10 +55,10 @@
    * - ``executor_thread_pool_size`` = ``64``
      - (IntOpt) Size of executor thread pool.
    * - ``host`` = ``localhost``
-     - (StrOpt) Name of this node.  This can be an opaque identifier. It is not necessarily a host name, FQDN, or IP address.
+     - (StrOpt) Name of this node. This can be an opaque identifier. It is not necessarily a host name, FQDN, or IP address.
    * - ``iet_conf`` = ``/etc/iet/ietd.conf``
      - (StrOpt) IET configuration file
-   * - ``iscsi_secondary_ip_addresses`` = `` ``
+   * - ``iscsi_secondary_ip_addresses`` =
      - (ListOpt) The list of secondary IP addresses of the iSCSI daemon
    * - ``max_over_subscription_ratio`` = ``20.0``
      - (FloatOpt) Float representation of the over subscription ratio when thin provisioning is involved. Default ratio is 20.0, meaning provisioned capacity can be 20 times of the total physical capacity. If the ratio is 10.5, it means provisioned capacity can be 10.5 times of the total physical capacity. A ratio of 1.0 means provisioned capacity cannot exceed the total physical capacity. A ratio lower than 1.0 will be ignored and the default value will be used instead.
@@ -64,7 +66,7 @@
      - (ListOpt) Memcached servers or None for in process cache.
    * - ``monkey_patch`` = ``False``
      - (BoolOpt) Enable monkey patching
-   * - ``monkey_patch_modules`` = `` ``
+   * - ``monkey_patch_modules`` =
      - (ListOpt) List of modules/decorators to monkey patch
    * - ``my_ip`` = ``10.0.0.1``
      - (StrOpt) IP address of this host
@@ -87,7 +89,7 @@
    * - ``replication_api_class`` = ``cinder.replication.api.API``
      - (StrOpt) The full class name of the volume replication API class
    * - ``replication_device`` = ``None``
-     - (MultiOpt) Multi opt of dictionaries to represent a replication target device.  This option may be specified multiple times in a single config section to specify multiple replication target devices.  Each entry takes the standard dict config form: replication_device = device_target_id:<required>,managed_backend_name:<host@backend_name>,key1:value1,key2:value2...
+     - (MultiOpt) Multi opt of dictionaries to represent a replication target device. This option may be specified multiple times in a single config section to specify multiple replication target devices. Each entry takes the standard dict config form: replication_device = target_device_id:<required>,managed_backend_name:<host@backend_name>,key1:value1,key2:value2...
    * - ``report_interval`` = ``10``
      - (IntOpt) Interval, in seconds, between nodes reporting state to datastore
    * - ``request_timeout`` = ``300``
@@ -103,7 +105,7 @@
    * - ``sqlite_clean_db`` = ``clean.sqlite``
      - (StrOpt) File name of clean sqlite db
    * - ``ssh_hosts_key_file`` = ``$state_path/ssh_known_hosts``
-     - (StrOpt) File containing SSH host keys for the systems with which Cinder needs to communicate.  OPTIONAL: Default=$state_path/ssh_known_hosts
+     - (StrOpt) File containing SSH host keys for the systems with which Cinder needs to communicate. OPTIONAL: Default=$state_path/ssh_known_hosts
    * - ``start_time`` = ``None``
      - (StrOpt) If this option is specified then the start time specified is used instead of the start time of the last completed audit period.
    * - ``state_path`` = ``/var/lib/cinder``
@@ -111,7 +113,7 @@
    * - ``storage_availability_zone`` = ``nova``
      - (StrOpt) Availability zone of this node
    * - ``strict_ssh_host_key_policy`` = ``False``
-     - (BoolOpt) Option to enable strict host key checking.  When set to "True" Cinder will only connect to systems with a host key present in the configured "ssh_hosts_key_file".  When set to "False" the host key will be saved upon first connection and used for subsequent connections.  Default=False
+     - (BoolOpt) Option to enable strict host key checking. When set to "True" Cinder will only connect to systems with a host key present in the configured "ssh_hosts_key_file". When set to "False" the host key will be saved upon first connection and used for subsequent connections. Default=False
    * - ``tcp_keepalive`` = ``True``
      - (BoolOpt) Sets the value of TCP_KEEPALIVE (True/False) for each server socket.
    * - ``tcp_keepalive_count`` = ``None``

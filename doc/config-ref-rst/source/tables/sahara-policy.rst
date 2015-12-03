@@ -8,6 +8,8 @@
     autogenerate-config-doc tool from the openstack-doc-tools repository, or
     ask for help on the documentation mailing list, IRC channel or meeting.
 
+.. _sahara-policy:
+
 .. list-table:: Description of policy configuration options
    :header-rows: 1
    :class: config-ref-table
@@ -19,6 +21,6 @@
    * - ``policy_default_rule`` = ``default``
      - (StrOpt) Default rule. Enforced when a requested rule is not found.
    * - ``policy_dirs`` = ``['policy.d']``
-     - (MultiStrOpt) Directories where policy configuration files are stored. They can be relative to any directory in the search path defined by the config_dir option, or absolute paths. The file defined by policy_file must exist for these directories to be searched.  Missing or empty directories are ignored.
+     - (MultiStrOpt) Directories where policy configuration files are stored. They can be relative to any directory in the search path defined by the config_dir option, or absolute paths. The file defined by policy_file must exist for these directories to be searched. Missing or empty directories are ignored.
    * - ``policy_file`` = ``policy.json``
      - (StrOpt) The JSON file that defines policies.

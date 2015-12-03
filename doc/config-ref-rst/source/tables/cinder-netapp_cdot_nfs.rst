@@ -8,6 +8,8 @@
     autogenerate-config-doc tool from the openstack-doc-tools repository, or
     ask for help on the documentation mailing list, IRC channel or meeting.
 
+.. _cinder-netapp_cdot_nfs:
+
 .. list-table:: Description of NetApp cDOT NFS driver configuration options
    :header-rows: 1
    :class: config-ref-table
@@ -29,7 +31,7 @@
    * - ``netapp_lun_ostype`` = ``None``
      - (StrOpt) This option defines the type of operating system that will access a LUN exported from Data ONTAP; it is assigned to the LUN at the time it is created.
    * - ``netapp_partner_backend_name`` = ``None``
-     - (StrOpt) The name of the config.conf stanza for a Data ONTAP (7-mode) HA partner.  This option is only used by the driver when connecting to an instance with a storage family of Data ONTAP operating in 7-Mode, and it is required if the storage protocol selected is FC.
+     - (StrOpt) The name of the config.conf stanza for a Data ONTAP (7-mode) HA partner. This option is only used by the driver when connecting to an instance with a storage family of Data ONTAP operating in 7-Mode, and it is required if the storage protocol selected is FC.
    * - ``netapp_password`` = ``None``
      - (StrOpt) Password for the administrative user account specified in the netapp_login option.
    * - ``netapp_pool_name_search_pattern`` = ``(.+)``

@@ -8,6 +8,8 @@
     autogenerate-config-doc tool from the openstack-doc-tools repository, or
     ask for help on the documentation mailing list, IRC channel or meeting.
 
+.. _cinder-dothill:
+
 .. list-table:: Description of Dot Hill volume driver configuration options
    :header-rows: 1
    :class: config-ref-table
@@ -22,7 +24,7 @@
      - (StrOpt) Pool or Vdisk name to use for volume creation.
    * - ``dothill_backend_type`` = ``virtual``
      - (StrOpt) linear (for Vdisk) or virtual (for Pool).
-   * - ``dothill_iscsi_ips`` = `` ``
+   * - ``dothill_iscsi_ips`` =
      - (ListOpt) List of comma-separated target iSCSI IP addresses.
    * - ``dothill_verify_certificate`` = ``False``
      - (BoolOpt) Whether to verify DotHill array SSL certificate.

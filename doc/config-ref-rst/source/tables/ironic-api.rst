@@ -8,6 +8,8 @@
     autogenerate-config-doc tool from the openstack-doc-tools repository, or
     ask for help on the documentation mailing list, IRC channel or meeting.
 
+.. _ironic-api:
+
 .. list-table:: Description of API configuration options
    :header-rows: 1
    :class: config-ref-table
@@ -16,6 +18,8 @@
      - Description
    * - **[api]**
      -
+   * - ``api_workers`` = ``None``
+     - (IntOpt) Number of workers for OpenStack Ironic API service. The default is equal to the number of CPUs available if that can be determined, else a default worker count of 1 is returned.
    * - ``host_ip`` = ``0.0.0.0``
      - (StrOpt) The IP address on which ironic-api listens.
    * - ``max_limit`` = ``1000``
@@ -33,7 +37,7 @@
    * - ``allow_methods`` = ``GET, POST, PUT, DELETE, OPTIONS``
      - (ListOpt) Indicate which methods can be used during the actual request.
    * - ``allowed_origin`` = ``None``
-     - (StrOpt) Indicate whether this resource may be shared with the domain received in the requests "origin" header.
+     - (ListOpt) Indicate whether this resource may be shared with the domain received in the requests "origin" header.
    * - ``expose_headers`` = ``Content-Type, Cache-Control, Content-Language, Expires, Last-Modified, Pragma``
      - (ListOpt) Indicate which headers are safe to expose to the API. Defaults to HTTP Simple Headers.
    * - ``max_age`` = ``3600``
@@ -47,7 +51,7 @@
    * - ``allow_methods`` = ``GET, POST, PUT, DELETE, OPTIONS``
      - (ListOpt) Indicate which methods can be used during the actual request.
    * - ``allowed_origin`` = ``None``
-     - (StrOpt) Indicate whether this resource may be shared with the domain received in the requests "origin" header.
+     - (ListOpt) Indicate whether this resource may be shared with the domain received in the requests "origin" header.
    * - ``expose_headers`` = ``Content-Type, Cache-Control, Content-Language, Expires, Last-Modified, Pragma``
      - (ListOpt) Indicate which headers are safe to expose to the API. Defaults to HTTP Simple Headers.
    * - ``max_age`` = ``3600``
@@ -55,7 +59,7 @@
    * - **[oslo_middleware]**
      -
    * - ``max_request_body_size`` = ``114688``
-     - (IntOpt) The maximum body size for each  request, in bytes.
+     - (IntOpt) The maximum body size for each request, in bytes.
    * - ``secure_proxy_ssl_header`` = ``X-Forwarded-Proto``
      - (StrOpt) The HTTP Header that will be used to determine what the original request protocol scheme was, even if it was hidden by an SSL termination proxy.
    * - **[oslo_versionedobjects]**

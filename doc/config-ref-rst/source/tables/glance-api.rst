@@ -8,6 +8,8 @@
     autogenerate-config-doc tool from the openstack-doc-tools repository, or
     ask for help on the documentation mailing list, IRC channel or meeting.
 
+.. _glance-api:
+
 .. list-table:: Description of API configuration options
    :header-rows: 1
    :class: config-ref-table
@@ -20,7 +22,7 @@
      - (StrOpt) Role used to identify an authenticated user as administrator.
    * - ``allow_anonymous_access`` = ``False``
      - (BoolOpt) Allow unauthenticated users to access the API with read-only privileges. This only applies when using ContextMiddleware.
-   * - ``available_plugins`` = `` ``
+   * - ``available_plugins`` =
      - (ListOpt) A list of artifacts that are allowed in the format name or name-version. Empty list means that any artifact can be loaded.
    * - ``client_socket_timeout`` = ``900``
      - (IntOpt) Timeout for client connections' socket operations. If an incoming connection is idle for this number of seconds it will be closed. A value of '0' means wait forever.
@@ -47,7 +49,7 @@
    * - ``max_request_id_length`` = ``64``
      - (IntOpt) Limits request ID length.
    * - ``owner_is_tenant`` = ``True``
-     - (BoolOpt) When true, this option sets the owner of an image to be the tenant. Otherwise, the owner of the  image will be the authenticated user issuing the request.
+     - (BoolOpt) When true, this option sets the owner of an image to be the tenant. Otherwise, the owner of the image will be the authenticated user issuing the request.
    * - ``public_endpoint`` = ``None``
      - (StrOpt) Public url to use for versions endpoint. The default is None, which will use the request's host_url attribute to populate the URL base. If Glance is operating behind a proxy, you will want to change this to represent the proxy's URL.
    * - ``send_identity_headers`` = ``False``
@@ -55,7 +57,7 @@
    * - ``show_multiple_locations`` = ``False``
      - (BoolOpt) Whether to include the backend image locations in image properties. For example, if using the file system store a URL of "file:///path/to/image" will be returned to the user in the 'direct_url' meta-data field. Revealing storage location can be a security risk, so use this setting with caution! Setting this to true overrides the show_image_direct_url option.
    * - ``tcp_keepidle`` = ``600``
-     - (IntOpt) The value for the socket option TCP_KEEPIDLE.  This is the time in seconds that the connection must be idle before TCP starts sending keepalive probes.
+     - (IntOpt) The value for the socket option TCP_KEEPIDLE. This is the time in seconds that the connection must be idle before TCP starts sending keepalive probes.
    * - ``use_user_token`` = ``True``
      - (BoolOpt) Whether to pass through the user token when making requests to the registry. To prevent failures with token expiration during big files upload, it is recommended to set this parameter to False.If "use_user_token" is not in effect, then admin credentials can be specified.
    * - **[glance_store]**
@@ -69,7 +71,7 @@
    * - **[oslo_middleware]**
      -
    * - ``max_request_body_size`` = ``114688``
-     - (IntOpt) The maximum body size for each  request, in bytes.
+     - (IntOpt) The maximum body size for each request, in bytes.
    * - ``secure_proxy_ssl_header`` = ``X-Forwarded-Proto``
      - (StrOpt) The HTTP Header that will be used to determine what the original request protocol scheme was, even if it was hidden by an SSL termination proxy.
    * - **[paste_deploy]**
@@ -80,5 +82,5 @@
      - (StrOpt) Partial name of a pipeline in your paste configuration file with the service name removed. For example, if your paste section name is [pipeline:glance-api-keystone] use the value "keystone"
    * - **[store_type_location_strategy]**
      -
-   * - ``store_type_preference`` = `` ``
+   * - ``store_type_preference`` =
      - (ListOpt) The store names to use to get store preference order. The name must be registered by one of the stores defined by the 'stores' config option. This option will be applied when you using 'store_type' option as image location strategy defined by the 'location_strategy' config option.

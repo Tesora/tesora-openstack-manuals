@@ -8,6 +8,8 @@
     autogenerate-config-doc tool from the openstack-doc-tools repository, or
     ask for help on the documentation mailing list, IRC channel or meeting.
 
+.. _cinder-storage_ceph:
+
 .. list-table:: Description of Ceph storage configuration options
    :header-rows: 1
    :class: config-ref-table
@@ -22,7 +24,7 @@
      - (IntOpt) Interval value (in seconds) between connection retries to ceph cluster.
    * - ``rados_connection_retries`` = ``3``
      - (IntOpt) Number of retries if connection to ceph cluster failed.
-   * - ``rbd_ceph_conf`` = `` ``
+   * - ``rbd_ceph_conf`` =
      - (StrOpt) Path to the ceph configuration file
    * - ``rbd_cluster_name`` = ``ceph``
      - (StrOpt) The name of ceph cluster
@@ -39,4 +41,4 @@
    * - ``rbd_user`` = ``None``
      - (StrOpt) The RADOS client name for accessing rbd volumes - only set when using cephx authentication
    * - ``volume_tmp_dir`` = ``None``
-     - (StrOpt) Directory where temporary image files are stored when the volume driver does not write them directly to the volume.  Warning: this option is now deprecated, please use image_conversion_dir instead.
+     - (StrOpt) Directory where temporary image files are stored when the volume driver does not write them directly to the volume. Warning: this option is now deprecated, please use image_conversion_dir instead.

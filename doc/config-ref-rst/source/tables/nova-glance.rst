@@ -8,6 +8,8 @@
     autogenerate-config-doc tool from the openstack-doc-tools repository, or
     ask for help on the documentation mailing list, IRC channel or meeting.
 
+.. _nova-glance:
+
 .. list-table:: Description of glance configuration options
    :header-rows: 1
    :class: config-ref-table
@@ -20,8 +22,8 @@
      - (StrOpt) Base URL that will be presented to users in links to glance resources
    * - **[glance]**
      -
-   * - ``allowed_direct_url_schemes`` = `` ``
-     - (ListOpt) A list of url scheme that can be downloaded directly via the direct_url.  Currently supported schemes: [file].
+   * - ``allowed_direct_url_schemes`` =
+     - (ListOpt) A list of url scheme that can be downloaded directly via the direct_url. Currently supported schemes: [file].
    * - ``api_insecure`` = ``False``
      - (BoolOpt) Allow to perform insecure SSL (https) requests to glance
    * - ``api_servers`` = ``None``
@@ -36,5 +38,5 @@
      - (StrOpt) Default protocol to use when connecting to glance. Set to https for SSL.
    * - **[image_file_url]**
      -
-   * - ``filesystems`` = `` ``
+   * - ``filesystems`` =
      - (ListOpt) List of file systems that are configured in this file in the image_file_url:<list entry name> sections

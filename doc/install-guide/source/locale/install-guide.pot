@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Installation Guide 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-11-18 06:15+0000\n"
+"POT-Creation-Date: 2015-12-01 06:41+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -37,7 +37,7 @@ msgstr ""
 # #-#-#-#-#  ceilometer-cinder.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  cinder-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  cinder-storage-install.pot (Installation Guide 0.1)  #-#-#-#-#
-#: ../ceilometer-cinder.rst:14 ../cinder-controller-install.rst:248
+#: ../ceilometer-cinder.rst:14 ../cinder-controller-install.rst:258
 #: ../cinder-storage-install.rst:160
 msgid ""
 "Edit the ``/etc/cinder/cinder.conf`` file and complete the following actions:"
@@ -66,12 +66,12 @@ msgstr ""
 # #-#-#-#-#  swift-finalize-installation.pot (Installation Guide 0.1)  #-#-#-#-#
 #: ../ceilometer-cinder.rst:26 ../ceilometer-glance.rst:34
 #: ../ceilometer-install.rst:296 ../ceilometer-nova.rst:120
-#: ../ceilometer-swift.rst:115 ../cinder-controller-install.rst:362
+#: ../ceilometer-swift.rst:115 ../cinder-controller-install.rst:378
 #: ../cinder-storage-install.rst:313 ../environment-nosql-database.rst:145
 #: ../environment-sql-database.rst:114 ../glance-install.rst:373
 #: ../heat-install.rst:488 ../horizon-install.rst:241
 #: ../neutron-compute-install.rst:179 ../neutron-controller-install.rst:256
-#: ../nova-compute-install.rst:207 ../nova-controller-install.rst:395
+#: ../nova-compute-install.rst:237 ../nova-controller-install.rst:395
 #: ../swift-finalize-installation.rst:2
 msgid "Finalize installation"
 msgstr ""
@@ -130,8 +130,8 @@ msgstr ""
 # #-#-#-#-#  nova-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
 #: ../ceilometer-glance.rst:30 ../ceilometer-install.rst:234
 #: ../ceilometer-nova.rst:52 ../ceilometer-swift.rst:111
-#: ../cinder-controller-install.rst:287 ../cinder-storage-install.rst:199
-#: ../heat-install.rst:381 ../nova-compute-install.rst:71
+#: ../cinder-controller-install.rst:299 ../cinder-storage-install.rst:199
+#: ../heat-install.rst:381 ../nova-compute-install.rst:82
 #: ../nova-controller-install.rst:240
 msgid ""
 "Replace ``RABBIT_PASS`` with the password you chose for the ``openstack`` "
@@ -174,9 +174,9 @@ msgstr ""
 # #-#-#-#-#  swift-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  swift-storage-install.pot (Installation Guide 0.1)  #-#-#-#-#
 #: ../ceilometer-install.rst:10 ../ceilometer-swift.rst:12
-#: ../cinder-controller-install.rst:12 ../cinder-storage-install.rst:19
+#: ../cinder-controller-install.rst:14 ../cinder-storage-install.rst:19
 #: ../environment-packages.rst:31 ../glance-install.rst:11
-#: ../heat-install.rst:12 ../keystone-install.rst:12
+#: ../heat-install.rst:12 ../keystone-install.rst:14
 #: ../keystone-services.rst:10 ../neutron-controller-install.rst:7
 #: ../nova-controller-install.rst:10 ../swift-controller-install.rst:16
 #: ../swift-storage-install.rst:20
@@ -212,7 +212,7 @@ msgstr ""
 # #-#-#-#-#  nova-verify.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  swift-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
 #: ../ceilometer-install.rst:62 ../ceilometer-verify.rst:12
-#: ../cinder-controller-install.rst:45 ../cinder-verify.rst:12
+#: ../cinder-controller-install.rst:47 ../cinder-verify.rst:12
 #: ../glance-install.rst:44 ../glance-verify.rst:23 ../heat-install.rst:46
 #: ../neutron-controller-install.rst:39 ../neutron-verify.rst:4
 #: ../nova-controller-install.rst:43 ../nova-verify.rst:10
@@ -227,7 +227,7 @@ msgstr ""
 # #-#-#-#-#  heat-install.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  neutron-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  nova-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
-#: ../ceilometer-install.rst:69 ../cinder-controller-install.rst:52
+#: ../ceilometer-install.rst:69 ../cinder-controller-install.rst:54
 #: ../glance-install.rst:51 ../heat-install.rst:53
 #: ../neutron-controller-install.rst:46 ../nova-controller-install.rst:50
 msgid "To create the service credentials, complete these steps:"
@@ -253,7 +253,7 @@ msgstr ""
 # #-#-#-#-#  swift-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  swift-initial-rings.pot (Installation Guide 0.1)  #-#-#-#-#
 #: ../ceilometer-install.rst:95 ../ceilometer-swift.rst:45
-#: ../cinder-controller-install.rst:78 ../glance-install.rst:78
+#: ../cinder-controller-install.rst:80 ../glance-install.rst:78
 #: ../heat-install.rst:79 ../heat-install.rst:256 ../heat-install.rst:279
 #: ../keystone-users.rst:76 ../keystone-users.rst:170
 #: ../launch-instance-private.rst:224 ../neutron-controller-install.rst:73
@@ -289,12 +289,12 @@ msgstr ""
 # #-#-#-#-#  swift-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  swift-storage-install.pot (Installation Guide 0.1)  #-#-#-#-#
 #: ../ceilometer-install.rst:166 ../ceilometer-nova.rst:8
-#: ../cinder-controller-install.rst:222 ../cinder-storage-install.rst:134
+#: ../cinder-controller-install.rst:224 ../cinder-storage-install.rst:134
 #: ../environment-messaging.rst:16 ../environment-nosql-database.rst:16
 #: ../environment-ntp-controller.rst:9 ../environment-ntp-other.rst:10
 #: ../environment-sql-database.rst:11 ../glance-install.rst:149
 #: ../heat-install.rst:307 ../horizon-install.rst:23
-#: ../keystone-install.rst:55 ../nova-compute-install.rst:25
+#: ../keystone-install.rst:57 ../nova-compute-install.rst:25
 #: ../nova-controller-install.rst:147 ../swift-controller-install.rst:133
 #: ../swift-storage-install.rst:139
 msgid "Install and configure components"
@@ -318,8 +318,8 @@ msgstr ""
 #: ../ceilometer-install.rst:170 ../ceilometer-install.rst:183
 #: ../ceilometer-install.rst:194 ../ceilometer-nova.rst:12
 #: ../ceilometer-nova.rst:20 ../ceilometer-nova.rst:28
-#: ../ceilometer-swift.rst:50 ../cinder-controller-install.rst:226
-#: ../cinder-controller-install.rst:234 ../cinder-controller-install.rst:242
+#: ../ceilometer-swift.rst:50 ../cinder-controller-install.rst:228
+#: ../cinder-controller-install.rst:236 ../cinder-controller-install.rst:244
 #: ../cinder-storage-install.rst:138 ../cinder-storage-install.rst:146
 #: ../cinder-storage-install.rst:154 ../environment-ntp-controller.rst:11
 #: ../environment-ntp-other.rst:12 ../environment-sql-database.rst:13
@@ -352,10 +352,10 @@ msgstr ""
 # #-#-#-#-#  neutron-controller-install-option1.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  neutron-controller-install-option2.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  nova-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
-#: ../ceilometer-install.rst:206 ../cinder-controller-install.rst:251
+#: ../ceilometer-install.rst:206 ../cinder-controller-install.rst:263
 #: ../cinder-storage-install.rst:163 ../glance-install.rst:187
 #: ../glance-install.rst:271 ../heat-install.rst:345
-#: ../keystone-install.rst:131 ../neutron-controller-install-option1.rst:75
+#: ../keystone-install.rst:133 ../neutron-controller-install-option1.rst:111
 #: ../neutron-controller-install-option2.rst:69
 #: ../nova-controller-install.rst:204
 msgid "In the ``[database]`` section, configure database access:"
@@ -375,7 +375,7 @@ msgstr ""
 # #-#-#-#-#  heat-install.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  nova-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
 #: ../ceilometer-install.rst:219 ../ceilometer-nova.rst:37
-#: ../cinder-controller-install.rst:272 ../cinder-storage-install.rst:184
+#: ../cinder-controller-install.rst:284 ../cinder-storage-install.rst:184
 #: ../heat-install.rst:366 ../nova-controller-install.rst:225
 msgid ""
 "In the ``[DEFAULT]`` and ``[oslo_messaging_rabbit]`` sections, configure "
@@ -392,11 +392,11 @@ msgstr ""
 # #-#-#-#-#  nova-compute-install.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  nova-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
 #: ../ceilometer-install.rst:237 ../ceilometer-nova.rst:55
-#: ../cinder-controller-install.rst:290 ../cinder-storage-install.rst:202
+#: ../cinder-controller-install.rst:302 ../cinder-storage-install.rst:202
 #: ../neutron-compute-install.rst:87
-#: ../neutron-controller-install-option1.rst:124
+#: ../neutron-controller-install-option1.rst:160
 #: ../neutron-controller-install-option2.rst:119
-#: ../nova-compute-install.rst:74 ../nova-controller-install.rst:243
+#: ../nova-compute-install.rst:85 ../nova-controller-install.rst:243
 msgid ""
 "In the ``[DEFAULT]`` and ``[keystone_authtoken]`` sections, configure "
 "Identity service access:"
@@ -436,15 +436,15 @@ msgstr ""
 # #-#-#-#-#  nova-compute-install.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  nova-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
 #: ../ceilometer-install.rst:286 ../ceilometer-nova.rst:95
-#: ../cinder-controller-install.rst:335 ../cinder-storage-install.rst:303
+#: ../cinder-controller-install.rst:349 ../cinder-storage-install.rst:303
 #: ../glance-install.rst:259 ../glance-install.rst:333 ../heat-install.rst:447
-#: ../keystone-install.rst:177 ../neutron-compute-install.rst:125
-#: ../neutron-controller-install-option1.rst:187
-#: ../neutron-controller-install-option1.rst:326
+#: ../keystone-install.rst:179 ../neutron-compute-install.rst:125
+#: ../neutron-controller-install-option1.rst:223
+#: ../neutron-controller-install-option1.rst:362
 #: ../neutron-controller-install-option2.rst:182
 #: ../neutron-controller-install-option2.rst:347
 #: ../neutron-controller-install-option2.rst:376
-#: ../neutron-controller-install.rst:215 ../nova-compute-install.rst:186
+#: ../neutron-controller-install.rst:215 ../nova-compute-install.rst:216
 #: ../nova-controller-install.rst:369
 msgid ""
 "(Optional) To assist with troubleshooting, enable verbose logging in the "
@@ -514,7 +514,7 @@ msgstr ""
 # #-#-#-#-#  nova-compute-install.pot (Installation Guide 0.1)  #-#-#-#-#
 #: ../ceilometer-nova.rst:142 ../ceilometer-nova.rst:156
 #: ../neutron-compute-install.rst:192 ../neutron-compute-install.rst:217
-#: ../neutron-compute-install.rst:233 ../nova-compute-install.rst:258
+#: ../neutron-compute-install.rst:233 ../nova-compute-install.rst:298
 msgid "Restart the Compute service:"
 msgstr ""
 
@@ -669,7 +669,7 @@ msgid ""
 "least one additional storage node that provides volumes to instances."
 msgstr ""
 
-#: ../cinder-controller-install.rst:14
+#: ../cinder-controller-install.rst:16
 msgid ""
 "Before you install and configure the Block Storage service, you must create "
 "a database, service credentials, and API endpoints."
@@ -680,7 +680,7 @@ msgstr ""
 # #-#-#-#-#  heat-install.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  neutron-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  nova-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
-#: ../cinder-controller-install.rst:17 ../glance-install.rst:16
+#: ../cinder-controller-install.rst:19 ../glance-install.rst:16
 #: ../heat-install.rst:18 ../neutron-controller-install.rst:12
 #: ../nova-controller-install.rst:15
 msgid "To create the database, complete these steps:"
@@ -692,23 +692,23 @@ msgstr ""
 # #-#-#-#-#  keystone-install.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  neutron-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  nova-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
-#: ../cinder-controller-install.rst:19 ../glance-install.rst:18
-#: ../heat-install.rst:20 ../keystone-install.rst:19
+#: ../cinder-controller-install.rst:21 ../glance-install.rst:18
+#: ../heat-install.rst:20 ../keystone-install.rst:21
 #: ../neutron-controller-install.rst:14 ../nova-controller-install.rst:17
 msgid ""
 "Use the database access client to connect to the database server as the "
 "``root`` user:"
 msgstr ""
 
-#: ../cinder-controller-install.rst:26
+#: ../cinder-controller-install.rst:28
 msgid "Create the ``cinder`` database:"
 msgstr ""
 
-#: ../cinder-controller-install.rst:32
+#: ../cinder-controller-install.rst:34
 msgid "Grant proper access to the ``cinder`` database:"
 msgstr ""
 
-#: ../cinder-controller-install.rst:41
+#: ../cinder-controller-install.rst:43
 msgid "Replace ``CINDER_DBPASS`` with a suitable password."
 msgstr ""
 
@@ -718,39 +718,53 @@ msgstr ""
 # #-#-#-#-#  keystone-install.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  neutron-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  nova-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
-#: ../cinder-controller-install.rst:43 ../glance-install.rst:42
-#: ../heat-install.rst:44 ../keystone-install.rst:43
+#: ../cinder-controller-install.rst:45 ../glance-install.rst:42
+#: ../heat-install.rst:44 ../keystone-install.rst:45
 #: ../neutron-controller-install.rst:37 ../nova-controller-install.rst:41
 msgid "Exit the database access client."
 msgstr ""
 
-#: ../cinder-controller-install.rst:54
+#: ../cinder-controller-install.rst:56
 msgid "Create a ``cinder`` user:"
 msgstr ""
 
-#: ../cinder-controller-install.rst:70
+#: ../cinder-controller-install.rst:72
 msgid "Add the ``admin`` role to the ``cinder`` user:"
 msgstr ""
 
-#: ../cinder-controller-install.rst:80
+#: ../cinder-controller-install.rst:82
 msgid "Create the ``cinder`` and ``cinderv2`` service entities:"
 msgstr ""
 
-#: ../cinder-controller-install.rst:112
-msgid "The Block Storage services requires two service entities."
+#: ../cinder-controller-install.rst:114
+msgid "The Block Storage services require two service entities."
 msgstr ""
 
-#: ../cinder-controller-install.rst:114
+#: ../cinder-controller-install.rst:116
 msgid "Create the Block Storage service API endpoints:"
 msgstr ""
 
-#: ../cinder-controller-install.rst:218
-msgid "The Block Storage services requires endpoints for each service entity."
+#: ../cinder-controller-install.rst:220
+msgid "The Block Storage services require endpoints for each service entity."
+msgstr ""
+
+# #-#-#-#-#  cinder-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
+# #-#-#-#-#  glance-install.pot (Installation Guide 0.1)  #-#-#-#-#
+# #-#-#-#-#  heat-install.pot (Installation Guide 0.1)  #-#-#-#-#
+# #-#-#-#-#  nova-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
+#: ../cinder-controller-install.rst:252 ../glance-install.rst:358
+#: ../heat-install.rst:470 ../nova-controller-install.rst:193
+msgid ""
+"Respond to prompts for :doc:`database management <debconf/debconf-dbconfig-"
+"common>`, :doc:`Identity service credentials <debconf/debconf-keystone-"
+"authtoken>`, :doc:`service endpoint registration <debconf/debconf-api-"
+"endpoints>`, and :doc:`message broker credentials <debconf/debconf-"
+"rabbitmq>`."
 msgstr ""
 
 # #-#-#-#-#  cinder-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  cinder-storage-install.pot (Installation Guide 0.1)  #-#-#-#-#
-#: ../cinder-controller-install.rst:269 ../cinder-storage-install.rst:181
+#: ../cinder-controller-install.rst:281 ../cinder-storage-install.rst:181
 msgid ""
 "Replace ``CINDER_DBPASS`` with the password you chose for the Block Storage "
 "database."
@@ -758,7 +772,7 @@ msgstr ""
 
 # #-#-#-#-#  cinder-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  cinder-storage-install.pot (Installation Guide 0.1)  #-#-#-#-#
-#: ../cinder-controller-install.rst:310 ../cinder-storage-install.rst:222
+#: ../cinder-controller-install.rst:322 ../cinder-storage-install.rst:222
 msgid ""
 "Replace ``CINDER_PASS`` with the password you chose for the ``cinder`` user "
 "in the Identity service."
@@ -772,12 +786,12 @@ msgstr ""
 # #-#-#-#-#  neutron-controller-install-option2.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  nova-compute-install.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  nova-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
-#: ../cinder-controller-install.rst:315 ../cinder-storage-install.rst:227
+#: ../cinder-controller-install.rst:327 ../cinder-storage-install.rst:227
 #: ../glance-install.rst:233 ../glance-install.rst:317
 #: ../neutron-compute-install.rst:112
-#: ../neutron-controller-install-option1.rst:149
+#: ../neutron-controller-install-option1.rst:185
 #: ../neutron-controller-install-option2.rst:144
-#: ../nova-compute-install.rst:99 ../nova-controller-install.rst:268
+#: ../nova-compute-install.rst:110 ../nova-controller-install.rst:268
 msgid ""
 "Comment out or remove any other options in the ``[keystone_authtoken]`` "
 "section."
@@ -785,7 +799,7 @@ msgstr ""
 
 # #-#-#-#-#  cinder-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  nova-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
-#: ../cinder-controller-install.rst:318 ../nova-controller-install.rst:271
+#: ../cinder-controller-install.rst:330 ../nova-controller-install.rst:271
 msgid ""
 "In the ``[DEFAULT]`` section, configure the ``my_ip`` option to use the "
 "management interface IP address of the controller node:"
@@ -798,43 +812,43 @@ msgstr ""
 # #-#-#-#-#  neutron-controller-install-option2.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  nova-compute-install.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  nova-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
-#: ../cinder-controller-install.rst:327 ../cinder-storage-install.rst:295
+#: ../cinder-controller-install.rst:341 ../cinder-storage-install.rst:295
 #: ../neutron-compute-install.rst:117
-#: ../neutron-controller-install-option1.rst:179
+#: ../neutron-controller-install-option1.rst:215
 #: ../neutron-controller-install-option2.rst:174
-#: ../nova-compute-install.rst:168 ../nova-compute-install.rst:178
+#: ../nova-compute-install.rst:198 ../nova-compute-install.rst:208
 #: ../nova-controller-install.rst:333 ../nova-controller-install.rst:343
 #: ../nova-controller-install.rst:353
 msgid "In the ``[oslo_concurrency]`` section, configure the lock path:"
 msgstr ""
 
-#: ../cinder-controller-install.rst:344
+#: ../cinder-controller-install.rst:360
 msgid "Populate the Block Storage database:"
 msgstr ""
 
-#: ../cinder-controller-install.rst:351
+#: ../cinder-controller-install.rst:367
 msgid "Configure Compute to use Block Storage"
 msgstr ""
 
-#: ../cinder-controller-install.rst:353
+#: ../cinder-controller-install.rst:369
 msgid "Edit the ``/etc/nova/nova.conf`` file and add the following to it:"
 msgstr ""
 
 # #-#-#-#-#  cinder-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  neutron-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
-#: ../cinder-controller-install.rst:366 ../cinder-controller-install.rst:382
+#: ../cinder-controller-install.rst:382 ../cinder-controller-install.rst:398
 #: ../neutron-controller-install.rst:281 ../neutron-controller-install.rst:319
 #: ../neutron-controller-install.rst:362
 msgid "Restart the Compute API service:"
 msgstr ""
 
-#: ../cinder-controller-install.rst:372
+#: ../cinder-controller-install.rst:388
 msgid ""
 "Start the Block Storage services and configure them to start when the system "
 "boots:"
 msgstr ""
 
-#: ../cinder-controller-install.rst:388
+#: ../cinder-controller-install.rst:404
 msgid "Restart the Block Storage services:"
 msgstr ""
 
@@ -845,9 +859,9 @@ msgstr ""
 # #-#-#-#-#  neutron-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  nova-compute-install.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  nova-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
-#: ../cinder-controller-install.rst:395 ../glance-install.rst:396
-#: ../heat-install.rst:514 ../keystone-install.rst:515
-#: ../neutron-controller-install.rst:387 ../nova-compute-install.rst:264
+#: ../cinder-controller-install.rst:413 ../glance-install.rst:396
+#: ../heat-install.rst:514 ../keystone-install.rst:569
+#: ../neutron-controller-install.rst:387 ../nova-compute-install.rst:306
 #: ../nova-controller-install.rst:444
 msgid "By default, the Ubuntu packages create an SQLite database."
 msgstr ""
@@ -859,9 +873,9 @@ msgstr ""
 # #-#-#-#-#  neutron-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  nova-compute-install.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  nova-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
-#: ../cinder-controller-install.rst:397 ../glance-install.rst:398
-#: ../heat-install.rst:516 ../keystone-install.rst:517
-#: ../neutron-controller-install.rst:389 ../nova-compute-install.rst:266
+#: ../cinder-controller-install.rst:415 ../glance-install.rst:398
+#: ../heat-install.rst:516 ../keystone-install.rst:571
+#: ../neutron-controller-install.rst:389 ../nova-compute-install.rst:308
 #: ../nova-controller-install.rst:446
 msgid ""
 "Because this configuration uses an SQL database server, you can remove the "
@@ -989,7 +1003,7 @@ msgstr ""
 
 # #-#-#-#-#  cinder-storage-install.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  nova-compute-install.pot (Installation Guide 0.1)  #-#-#-#-#
-#: ../cinder-storage-install.rst:230 ../nova-compute-install.rst:102
+#: ../cinder-storage-install.rst:230 ../nova-compute-install.rst:132
 msgid "In the ``[DEFAULT]`` section, configure the ``my_ip`` option:"
 msgstr ""
 
@@ -1138,7 +1152,7 @@ msgid ""
 "commands for you:"
 msgstr ""
 
-#: ../debconf/debconf-api-endpoints.rst:75
+#: ../debconf/debconf-api-endpoints.rst:97
 msgid ""
 "The values of ``AUTH_TOKEN``, ``KEYSTONE_ENDPOINT_IP``, ``PKG_ENDPOINT_IP``, "
 "and ``REGION_NAME`` depend on the answer you will provide to the debconf "
@@ -1333,7 +1347,7 @@ msgstr ""
 msgid ""
 "The Identity service is installed with MySQL as the database back end, "
 "``keystonedb`` as database name, and the localhost socket file. The "
-"corresponding DNS will then be:"
+"corresponding DSN (Database Source Name) will then be:"
 msgstr ""
 
 #: ../debconf/debconf-dbconfig-common.rst:84
@@ -2220,7 +2234,7 @@ msgstr ""
 
 # #-#-#-#-#  environment-packages.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  keystone-install.pot (Installation Guide 0.1)  #-#-#-#-#
-#: ../environment-packages.rst:142 ../keystone-install.rst:505
+#: ../environment-packages.rst:142 ../keystone-install.rst:559
 msgid "Finalize the installation"
 msgstr ""
 
@@ -2726,19 +2740,6 @@ msgstr ""
 msgid "Populate the Image service database:"
 msgstr ""
 
-# #-#-#-#-#  glance-install.pot (Installation Guide 0.1)  #-#-#-#-#
-# #-#-#-#-#  heat-install.pot (Installation Guide 0.1)  #-#-#-#-#
-# #-#-#-#-#  nova-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
-#: ../glance-install.rst:358 ../heat-install.rst:470
-#: ../nova-controller-install.rst:193
-msgid ""
-"Respond to prompts for :doc:`database management <debconf/debconf-dbconfig-"
-"common>`, :doc:`Identity service credentials <debconf/debconf-keystone-"
-"authtoken>`, :doc:`service endpoint registration <debconf/debconf-api-"
-"endpoints>`, and :doc:`message broker credentials <debconf/debconf-"
-"rabbitmq>`."
-msgstr ""
-
 #: ../glance-install.rst:364
 msgid ""
 "Select the ``keystone`` pipeline to configure the Image service to use the "
@@ -2765,10 +2766,9 @@ msgstr ""
 #: ../glance-verify.rst:8
 msgid ""
 "For more information about how to download and build images, see `OpenStack "
-"Virtual Machine Image Guide <http://docs.openstack.org/image-guide/content/"
-"index.html>`__. For information about how to manage images, see the "
-"`OpenStack User Guide <http://docs.openstack.org/user-guide/common/"
-"cli_manage_images.html>`__."
+"Virtual Machine Image Guide <http://docs.openstack.org/image-guide/>`__. For "
+"information about how to manage images, see the `OpenStack User Guide "
+"<http://docs.openstack.org/user-guide/common/cli_manage_images.html>`__."
 msgstr ""
 
 #: ../glance-verify.rst:15
@@ -2799,8 +2799,8 @@ msgstr ""
 #: ../glance-verify.rst:74
 msgid ""
 "For information about disk and container formats for images, see `Disk and "
-"container formats for images <http://docs.openstack.org/image-guide/content/"
-"image-formats.html>`__ in the ``OpenStack Virtual Machine Image Guide``."
+"container formats for images <http://docs.openstack.org/image-guide/image-"
+"formats.html>`__ in the ``OpenStack Virtual Machine Image Guide``."
 msgstr ""
 
 # #-#-#-#-#  glance-verify.pot (Installation Guide 0.1)  #-#-#-#-#
@@ -3155,16 +3155,14 @@ msgstr ""
 msgid "Reload the web server configuration:"
 msgstr ""
 
-#: ../horizon-install.rst:253 ../horizon-install.rst:268
-msgid ""
-"Start the web server and session storage service and configure them to start "
-"when the system boots:"
+#: ../horizon-install.rst:253 ../horizon-install.rst:266
+msgid "Restart the web server and session storage service:"
 msgstr ""
 
-#: ../horizon-install.rst:263 ../horizon-install.rst:278
+#: ../horizon-install.rst:261 ../horizon-install.rst:274
 msgid ""
-"The ``systemctl restart`` command starts the Apache HTTP service if not "
-"currently running."
+"The ``systemctl restart`` command starts each service if not currently "
+"running."
 msgstr ""
 
 #: ../horizon-next-steps.rst:5
@@ -3357,35 +3355,35 @@ msgid ""
 "Memcached to store tokens instead of an SQL database."
 msgstr ""
 
-#: ../keystone-install.rst:14
+#: ../keystone-install.rst:16
 msgid ""
 "Before you configure the OpenStack Identity service, you must create a "
 "database and an administration token."
 msgstr ""
 
-#: ../keystone-install.rst:17
+#: ../keystone-install.rst:19
 msgid "To create the database, complete the following actions:"
 msgstr ""
 
-#: ../keystone-install.rst:26
+#: ../keystone-install.rst:28
 msgid "Create the ``keystone`` database:"
 msgstr ""
 
-#: ../keystone-install.rst:32
+#: ../keystone-install.rst:34
 msgid "Grant proper access to the ``keystone`` database:"
 msgstr ""
 
-#: ../keystone-install.rst:41
+#: ../keystone-install.rst:43
 msgid "Replace ``KEYSTONE_DBPASS`` with a suitable password."
 msgstr ""
 
-#: ../keystone-install.rst:45 ../keystone-install.rst:227
+#: ../keystone-install.rst:47 ../keystone-install.rst:224
 msgid ""
 "Generate a random value to use as the administration token during initial "
 "configuration:"
 msgstr ""
 
-#: ../keystone-install.rst:60
+#: ../keystone-install.rst:62
 msgid ""
 "In Kilo and Liberty releases, the keystone project deprecates eventlet in "
 "favor of a separate web server with WSGI extensions. This guide uses the "
@@ -3395,179 +3393,173 @@ msgid ""
 "keystone project plans to remove eventlet support in Mitaka."
 msgstr ""
 
-#: ../keystone-install.rst:70
+#: ../keystone-install.rst:72
 msgid ""
 "Disable the keystone service from starting automatically after installation:"
 msgstr ""
 
-#: ../keystone-install.rst:77 ../keystone-install.rst:88
-#: ../keystone-install.rst:199
+#: ../keystone-install.rst:79 ../keystone-install.rst:90
+#: ../keystone-install.rst:201
 msgid "Run the following command to install the packages:"
 msgstr ""
 
-#: ../keystone-install.rst:106
+#: ../keystone-install.rst:108
 msgid ""
 "Start the Memcached service and configure it to start when the system boots:"
 msgstr ""
 
-#: ../keystone-install.rst:116
+#: ../keystone-install.rst:118
 msgid ""
 "Edit the ``/etc/keystone/keystone.conf`` file and complete the following "
 "actions:"
 msgstr ""
 
-#: ../keystone-install.rst:119
+#: ../keystone-install.rst:121
 msgid ""
 "In the ``[DEFAULT]`` section, define the value of the initial administration "
 "token:"
 msgstr ""
 
-#: ../keystone-install.rst:128
+#: ../keystone-install.rst:130
 msgid ""
 "Replace ``ADMIN_TOKEN`` with the random value that you generated in a "
 "previous step."
 msgstr ""
 
-#: ../keystone-install.rst:149
+#: ../keystone-install.rst:151
 msgid ""
 "Replace ``KEYSTONE_DBPASS`` with the password you chose for the database."
 msgstr ""
 
-#: ../keystone-install.rst:151
+#: ../keystone-install.rst:153
 msgid "In the ``[memcache]`` section, configure the Memcache service:"
 msgstr ""
 
-#: ../keystone-install.rst:159
+#: ../keystone-install.rst:161
 msgid ""
 "In the ``[token]`` section, configure the UUID token provider and Memcached "
 "driver:"
 msgstr ""
 
-#: ../keystone-install.rst:169
+#: ../keystone-install.rst:171
 msgid "In the ``[revoke]`` section, configure the SQL revocation driver:"
 msgstr ""
 
-#: ../keystone-install.rst:188
+#: ../keystone-install.rst:190
 msgid "Populate the Identity service database:"
 msgstr ""
 
-#: ../keystone-install.rst:197
+#: ../keystone-install.rst:199
 msgid "Install and configure the components"
 msgstr ""
 
 #: ../keystone-install.rst:207
 msgid ""
-"python-keystoneclient will automatically be installed as it is a dependency "
-"of the keystone package."
-msgstr ""
-
-#: ../keystone-install.rst:210
-msgid ""
 "Respond to prompts for :doc:`debconf/debconf-dbconfig-common`, which will "
 "fill the below database access directive."
 msgstr ""
 
-#: ../keystone-install.rst:219
+#: ../keystone-install.rst:216
 msgid ""
-"If you decide to not use ``dbconfig-common``, then you will have to create "
-"the database and manage its access rights yourself, and run the following by "
+"If you decide to not use ``dbconfig-common``, then you have to create the "
+"database and manage its access rights yourself, and run the following by "
 "hand."
 msgstr ""
 
-#: ../keystone-install.rst:234
+#: ../keystone-install.rst:231
 msgid "Configure the initial administration token:"
 msgstr ""
 
-#: ../keystone-install.rst:239
+#: ../keystone-install.rst:236
 msgid ""
 "Use the random value that you generated in a previous step. If you install "
 "using non-interactive mode or you do not specify this token, the "
 "configuration tool generates a random value."
 msgstr ""
 
-#: ../keystone-install.rst:243
+#: ../keystone-install.rst:240
 msgid ""
 "Later on, the package will configure the below directive with the value you "
 "entered:"
 msgstr ""
 
-#: ../keystone-install.rst:252
-msgid "Create the ``admin`` tenant and user:"
+#: ../keystone-install.rst:249
+msgid "Create the ``admin`` project and user:"
 msgstr ""
 
-#: ../keystone-install.rst:254
+#: ../keystone-install.rst:251
 msgid ""
 "During the final stage of the package installation, it is possible to "
-"automatically create an admin tenant and an admin user. This can later be "
-"used for other OpenStack services to contact the Identity service. This is "
-"the equivalent of running the below commands:"
+"automatically create an ``admin`` and ``service`` project, and an ``admin`` "
+"user. This can later be used for other OpenStack services to contact the "
+"Identity service. This is the equivalent of running the below commands:"
 msgstr ""
 
-#: ../keystone-install.rst:281
+#: ../keystone-install.rst:314
 msgid ""
 "In Debian, the Keystone package offers automatic registration of Keystone in "
 "the service catalogue. This is equivalent of running the below commands:"
 msgstr ""
 
-#: ../keystone-install.rst:301
+#: ../keystone-install.rst:353
 msgid "Configure the Apache HTTP server"
 msgstr ""
 
-#: ../keystone-install.rst:305
+#: ../keystone-install.rst:357
 msgid ""
 "Edit the ``/etc/httpd/conf/httpd.conf`` file and configure the "
 "``ServerName`` option to reference the controller node:"
 msgstr ""
 
-#: ../keystone-install.rst:312
+#: ../keystone-install.rst:364
 msgid ""
 "Create the ``/etc/httpd/conf.d/wsgi-keystone.conf`` file with the following "
 "content:"
 msgstr ""
 
-#: ../keystone-install.rst:368
+#: ../keystone-install.rst:420
 msgid ""
 "Edit the ``/etc/apache2/apache2.conf`` file and configure the ``ServerName`` "
 "option to reference the controller node:"
 msgstr ""
 
-#: ../keystone-install.rst:375
+#: ../keystone-install.rst:427
 msgid ""
 "Create the ``/etc/apache2/sites-available/wsgi-keystone.conf`` file with the "
 "following content:"
 msgstr ""
 
-#: ../keystone-install.rst:429
+#: ../keystone-install.rst:481
 msgid "Enable the Identity service virtual hosts:"
 msgstr ""
 
-#: ../keystone-install.rst:437
+#: ../keystone-install.rst:489
 msgid ""
 "Edit the ``/etc/sysconfig/apache2`` file and configure the "
 "``APACHE_SERVERNAME`` option to reference the controller node:"
 msgstr ""
 
-#: ../keystone-install.rst:444
+#: ../keystone-install.rst:496
 msgid ""
 "Create the ``/etc/apache2/conf.d/wsgi-keystone.conf`` file with the "
 "following content:"
 msgstr ""
 
-#: ../keystone-install.rst:498
+#: ../keystone-install.rst:550
 msgid "Recursively change the ownership of the ``/etc/keystone`` directory:"
 msgstr ""
 
-#: ../keystone-install.rst:509
+#: ../keystone-install.rst:563
 msgid "Restart the Apache HTTP server:"
 msgstr ""
 
-#: ../keystone-install.rst:526 ../keystone-install.rst:541
+#: ../keystone-install.rst:580 ../keystone-install.rst:595
 msgid ""
 "Start the Apache HTTP service and configure it to start when the system "
 "boots:"
 msgstr ""
 
-#: ../keystone-install.rst:535
+#: ../keystone-install.rst:589
 msgid "Activate the Apache module ``mod_version``:"
 msgstr ""
 
@@ -4679,7 +4671,7 @@ msgstr ""
 # #-#-#-#-#  neutron-controller-install-option2.pot (Installation Guide 0.1)  #-#-#-#-#
 #: ../neutron-compute-install-option1.rst:7
 #: ../neutron-compute-install-option2.rst:7
-#: ../neutron-controller-install-option1.rst:261
+#: ../neutron-controller-install-option1.rst:297
 #: ../neutron-controller-install-option2.rst:270
 msgid "Configure the Linux bridge agent"
 msgstr ""
@@ -4690,7 +4682,7 @@ msgstr ""
 # #-#-#-#-#  neutron-controller-install-option2.pot (Installation Guide 0.1)  #-#-#-#-#
 #: ../neutron-compute-install-option1.rst:9
 #: ../neutron-compute-install-option2.rst:9
-#: ../neutron-controller-install-option1.rst:263
+#: ../neutron-controller-install-option1.rst:299
 #: ../neutron-controller-install-option2.rst:272
 msgid ""
 "The Linux bridge agent builds layer-2 (bridging and switching) virtual "
@@ -4704,7 +4696,7 @@ msgstr ""
 # #-#-#-#-#  neutron-controller-install-option2.pot (Installation Guide 0.1)  #-#-#-#-#
 #: ../neutron-compute-install-option1.rst:13
 #: ../neutron-compute-install-option2.rst:13
-#: ../neutron-controller-install-option1.rst:267
+#: ../neutron-controller-install-option1.rst:303
 #: ../neutron-controller-install-option2.rst:276
 msgid ""
 "Edit the ``/etc/neutron/plugins/ml2/linuxbridge_agent.ini`` file and "
@@ -4717,7 +4709,7 @@ msgstr ""
 # #-#-#-#-#  neutron-controller-install-option2.pot (Installation Guide 0.1)  #-#-#-#-#
 #: ../neutron-compute-install-option1.rst:16
 #: ../neutron-compute-install-option2.rst:16
-#: ../neutron-controller-install-option1.rst:270
+#: ../neutron-controller-install-option1.rst:306
 #: ../neutron-controller-install-option2.rst:279
 msgid ""
 "In the ``[linux_bridge]`` section, map the public virtual network to the "
@@ -4730,7 +4722,7 @@ msgstr ""
 # #-#-#-#-#  neutron-controller-install-option2.pot (Installation Guide 0.1)  #-#-#-#-#
 #: ../neutron-compute-install-option1.rst:24
 #: ../neutron-compute-install-option2.rst:24
-#: ../neutron-controller-install-option1.rst:278
+#: ../neutron-controller-install-option1.rst:314
 #: ../neutron-controller-install-option2.rst:287
 msgid ""
 "Replace ``PUBLIC_INTERFACE_NAME`` with the name of the underlying physical "
@@ -4740,7 +4732,7 @@ msgstr ""
 # #-#-#-#-#  neutron-compute-install-option1.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  neutron-controller-install-option1.pot (Installation Guide 0.1)  #-#-#-#-#
 #: ../neutron-compute-install-option1.rst:27
-#: ../neutron-controller-install-option1.rst:281
+#: ../neutron-controller-install-option1.rst:317
 msgid "In the ``[vxlan]`` section, disable VXLAN overlay networks:"
 msgstr ""
 
@@ -4750,7 +4742,7 @@ msgstr ""
 # #-#-#-#-#  neutron-controller-install-option2.pot (Installation Guide 0.1)  #-#-#-#-#
 #: ../neutron-compute-install-option1.rst:34
 #: ../neutron-compute-install-option2.rst:42
-#: ../neutron-controller-install-option1.rst:288
+#: ../neutron-controller-install-option1.rst:324
 #: ../neutron-controller-install-option2.rst:305
 msgid "In the ``[agent]`` section, enable ARP spoofing protection:"
 msgstr ""
@@ -4761,7 +4753,7 @@ msgstr ""
 # #-#-#-#-#  neutron-controller-install-option2.pot (Installation Guide 0.1)  #-#-#-#-#
 #: ../neutron-compute-install-option1.rst:42
 #: ../neutron-compute-install-option2.rst:50
-#: ../neutron-controller-install-option1.rst:296
+#: ../neutron-controller-install-option1.rst:332
 #: ../neutron-controller-install-option2.rst:313
 msgid ""
 "In the ``[securitygroup]`` section, enable security groups and configure the "
@@ -4843,16 +4835,14 @@ msgstr ""
 # #-#-#-#-#  neutron-controller-install-option1.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  neutron-controller-install-option2.pot (Installation Guide 0.1)  #-#-#-#-#
 #: ../neutron-compute-install.rst:42
-#: ../neutron-controller-install-option1.rst:51
+#: ../neutron-controller-install-option1.rst:30
 #: ../neutron-controller-install-option2.rst:51
 msgid "Select the ML2 plug-in:"
 msgstr ""
 
 # #-#-#-#-#  neutron-compute-install.pot (Installation Guide 0.1)  #-#-#-#-#
-# #-#-#-#-#  neutron-controller-install-option1.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  neutron-controller-install-option2.pot (Installation Guide 0.1)  #-#-#-#-#
 #: ../neutron-compute-install.rst:49
-#: ../neutron-controller-install-option1.rst:57
 #: ../neutron-controller-install-option2.rst:57
 msgid ""
 "Selecting the ML2 plug-in also populates the ``service_plugins`` and "
@@ -4874,7 +4864,8 @@ msgstr ""
 # #-#-#-#-#  neutron-controller-install-option1.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  neutron-controller-install-option2.pot (Installation Guide 0.1)  #-#-#-#-#
 #: ../neutron-compute-install.rst:63
-#: ../neutron-controller-install-option1.rst:72
+#: ../neutron-controller-install-option1.rst:61
+#: ../neutron-controller-install-option1.rst:108
 #: ../neutron-controller-install-option2.rst:66
 msgid ""
 "Edit the ``/etc/neutron/neutron.conf`` file and complete the following "
@@ -4891,7 +4882,7 @@ msgstr ""
 # #-#-#-#-#  neutron-controller-install-option1.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  neutron-controller-install-option2.pot (Installation Guide 0.1)  #-#-#-#-#
 #: ../neutron-compute-install.rst:69
-#: ../neutron-controller-install-option1.rst:106
+#: ../neutron-controller-install-option1.rst:142
 #: ../neutron-controller-install-option2.rst:101
 msgid ""
 "In the ``[DEFAULT]`` and ``[oslo_messaging_rabbit]`` sections, configure "
@@ -4902,7 +4893,7 @@ msgstr ""
 # #-#-#-#-#  neutron-controller-install-option1.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  neutron-controller-install-option2.pot (Installation Guide 0.1)  #-#-#-#-#
 #: ../neutron-compute-install.rst:84
-#: ../neutron-controller-install-option1.rst:121
+#: ../neutron-controller-install-option1.rst:157
 #: ../neutron-controller-install-option2.rst:116
 msgid ""
 "Replace ``RABBIT_PASS`` with the password you chose for the ``openstack`` "
@@ -4914,7 +4905,7 @@ msgstr ""
 # #-#-#-#-#  neutron-controller-install-option2.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  neutron-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
 #: ../neutron-compute-install.rst:107 ../neutron-compute-install.rst:175
-#: ../neutron-controller-install-option1.rst:144
+#: ../neutron-controller-install-option1.rst:180
 #: ../neutron-controller-install-option2.rst:139
 #: ../neutron-controller-install.rst:193 ../neutron-controller-install.rst:249
 msgid ""
@@ -4952,7 +4943,7 @@ msgstr ""
 # #-#-#-#-#  neutron-compute-install.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  nova-compute-install.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  nova-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
-#: ../neutron-compute-install.rst:157 ../nova-compute-install.rst:53
+#: ../neutron-compute-install.rst:157 ../nova-compute-install.rst:62
 #: ../nova-controller-install.rst:199
 msgid ""
 "Edit the ``/etc/nova/nova.conf`` file and complete the following actions:"
@@ -5020,23 +5011,15 @@ msgstr ""
 
 #: ../neutron-concepts.rst:17
 msgid ""
-"Each router has one gateway that connects to a network, and many interfaces "
-"connected to subnets. Subnets can access machines on other subnets connected "
-"to the same router."
-msgstr ""
-
-#: ../neutron-concepts.rst:21
-msgid ""
 "Any given Networking set up has at least one external network. Unlike the "
 "other networks, the external network is not merely a virtually defined "
 "network. Instead, it represents a view into a slice of the physical, "
 "external network accessible outside the OpenStack installation. IP addresses "
 "on the external network are accessible by anybody physically on the outside "
-"network. Because the external network merely represents a view into the "
-"outside network, DHCP is disabled on this network."
+"network."
 msgstr ""
 
-#: ../neutron-concepts.rst:30
+#: ../neutron-concepts.rst:24
 msgid ""
 "In addition to external networks, any Networking set up has one or more "
 "internal networks. These software-defined networks connect directly to the "
@@ -5045,17 +5028,17 @@ msgid ""
 "to that network directly."
 msgstr ""
 
-#: ../neutron-concepts.rst:36
+#: ../neutron-concepts.rst:30
 msgid ""
 "For the outside network to access VMs, and vice versa, routers between the "
-"networks are needed. Each router has one gateway that is connected to a "
-"network and many interfaces that are connected to subnets. Like a physical "
-"router, subnets can access machines on other subnets that are connected to "
-"the same router, and machines can access the outside network through the "
-"gateway for the router."
+"networks are needed. Each router has one gateway that is connected to an "
+"external network and one or more interfaces connected to internal networks. "
+"Like a physical router, subnets can access machines on other subnets that "
+"are connected to the same router, and machines can access the outside "
+"network through the gateway for the router."
 msgstr ""
 
-#: ../neutron-concepts.rst:43
+#: ../neutron-concepts.rst:37
 msgid ""
 "Additionally, you can allocate IP addresses on external networks to ports on "
 "the internal network. Whenever something is connected to a subnet, that "
@@ -5063,7 +5046,7 @@ msgid ""
 "with ports to VMs. This way, entities on the outside network can access VMs."
 msgstr ""
 
-#: ../neutron-concepts.rst:49
+#: ../neutron-concepts.rst:43
 msgid ""
 "Networking also supports *security groups*. Security groups enable "
 "administrators to define firewall rules in groups. A VM can belong to one or "
@@ -5071,7 +5054,7 @@ msgid ""
 "groups to block or unblock ports, port ranges, or traffic types for that VM."
 msgstr ""
 
-#: ../neutron-concepts.rst:55
+#: ../neutron-concepts.rst:49
 msgid ""
 "Each plug-in that Networking uses has its own concepts. While not vital to "
 "operating the VNI and OpenStack environment, understanding these concepts "
@@ -5089,20 +5072,9 @@ msgid ""
 "Install and configure the Networking components on the *controller* node."
 msgstr ""
 
-#: ../neutron-controller-install-option1.rst:36
-msgid "Install and configure the networking components"
-msgstr ""
-
 # #-#-#-#-#  neutron-controller-install-option1.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  neutron-controller-install-option2.pot (Installation Guide 0.1)  #-#-#-#-#
-#: ../neutron-controller-install-option1.rst:43
-#: ../neutron-controller-install-option2.rst:43
-msgid "For networking option 2, also install the ``neutron-l3-agent`` package."
-msgstr ""
-
-# #-#-#-#-#  neutron-controller-install-option1.pot (Installation Guide 0.1)  #-#-#-#-#
-# #-#-#-#-#  neutron-controller-install-option2.pot (Installation Guide 0.1)  #-#-#-#-#
-#: ../neutron-controller-install-option1.rst:45
+#: ../neutron-controller-install-option1.rst:24
 #: ../neutron-controller-install-option2.rst:45
 msgid ""
 "Respond to prompts for `database management <#debconf-dbconfig-common>`__, "
@@ -5111,37 +5083,29 @@ msgid ""
 "credentials <#debconf-rabbitmq>`__."
 msgstr ""
 
+#: ../neutron-controller-install-option1.rst:36
+msgid ""
+"Selecting the ML2 plug-in also populates the ``core_plugin`` option in the "
+"``/etc/neutron/neutron.conf`` file with the appropriate values (in this "
+"case, it is set to the value ``ml2``)."
+msgstr ""
+
 # #-#-#-#-#  neutron-controller-install-option1.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  neutron-controller-install-option2.pot (Installation Guide 0.1)  #-#-#-#-#
-#: ../neutron-controller-install-option1.rst:64
+#: ../neutron-controller-install-option1.rst:59
+#: ../neutron-controller-install-option1.rst:100
 #: ../neutron-controller-install-option2.rst:64
 msgid "Configure the server component"
 msgstr ""
 
-#: ../neutron-controller-install-option1.rst:66
-msgid ""
-"The Networking server component configuration includes the database, "
-"authentication mechanism, message queue, topology change notifications, and "
-"plug-in."
+#: ../neutron-controller-install-option1.rst:64
+msgid "In the ``[DEFAULT]`` section, disable additional plug-ins:"
 msgstr ""
 
 # #-#-#-#-#  neutron-controller-install-option1.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  neutron-controller-install-option2.pot (Installation Guide 0.1)  #-#-#-#-#
-#: ../neutron-controller-install-option1.rst:93
-#: ../neutron-controller-install-option2.rst:87
-msgid ""
-"Replace ``NEUTRON_DBPASS`` with the password you chose for the database."
-msgstr ""
-
-#: ../neutron-controller-install-option1.rst:96
-msgid ""
-"In the ``[DEFAULT]`` section, enable the Modular Layer 2 (ML2) plug-in and "
-"disable additional plug-ins:"
-msgstr ""
-
-# #-#-#-#-#  neutron-controller-install-option1.pot (Installation Guide 0.1)  #-#-#-#-#
-# #-#-#-#-#  neutron-controller-install-option2.pot (Installation Guide 0.1)  #-#-#-#-#
-#: ../neutron-controller-install-option1.rst:152
+#: ../neutron-controller-install-option1.rst:72
+#: ../neutron-controller-install-option1.rst:188
 #: ../neutron-controller-install-option2.rst:147
 msgid ""
 "In the ``[DEFAULT]`` and ``[nova]`` sections, configure Networking to notify "
@@ -5152,24 +5116,46 @@ msgstr ""
 # #-#-#-#-#  neutron-controller-install-option2.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  nova-compute-install.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  nova-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
-#: ../neutron-controller-install-option1.rst:174
+#: ../neutron-controller-install-option1.rst:94
+#: ../neutron-controller-install-option1.rst:210
 #: ../neutron-controller-install-option2.rst:169
-#: ../nova-compute-install.rst:94 ../nova-controller-install.rst:263
+#: ../nova-compute-install.rst:105 ../nova-controller-install.rst:263
 msgid ""
 "Replace ``NOVA_PASS`` with the password you chose for the ``nova`` user in "
 "the Identity service."
 msgstr ""
 
+#: ../neutron-controller-install-option1.rst:102
+msgid ""
+"The Networking server component configuration includes the database, "
+"authentication mechanism, message queue, topology change notifications, and "
+"plug-in."
+msgstr ""
+
 # #-#-#-#-#  neutron-controller-install-option1.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  neutron-controller-install-option2.pot (Installation Guide 0.1)  #-#-#-#-#
-#: ../neutron-controller-install-option1.rst:197
+#: ../neutron-controller-install-option1.rst:129
+#: ../neutron-controller-install-option2.rst:87
+msgid ""
+"Replace ``NEUTRON_DBPASS`` with the password you chose for the database."
+msgstr ""
+
+#: ../neutron-controller-install-option1.rst:132
+msgid ""
+"In the ``[DEFAULT]`` section, enable the Modular Layer 2 (ML2) plug-in and "
+"disable additional plug-ins:"
+msgstr ""
+
+# #-#-#-#-#  neutron-controller-install-option1.pot (Installation Guide 0.1)  #-#-#-#-#
+# #-#-#-#-#  neutron-controller-install-option2.pot (Installation Guide 0.1)  #-#-#-#-#
+#: ../neutron-controller-install-option1.rst:233
 #: ../neutron-controller-install-option2.rst:192
 msgid "Configure the Modular Layer 2 (ML2) plug-in"
 msgstr ""
 
 # #-#-#-#-#  neutron-controller-install-option1.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  neutron-controller-install-option2.pot (Installation Guide 0.1)  #-#-#-#-#
-#: ../neutron-controller-install-option1.rst:199
+#: ../neutron-controller-install-option1.rst:235
 #: ../neutron-controller-install-option2.rst:194
 msgid ""
 "The ML2 plug-in uses the Linux bridge mechanism to build layer-2 (bridging "
@@ -5178,28 +5164,28 @@ msgstr ""
 
 # #-#-#-#-#  neutron-controller-install-option1.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  neutron-controller-install-option2.pot (Installation Guide 0.1)  #-#-#-#-#
-#: ../neutron-controller-install-option1.rst:202
+#: ../neutron-controller-install-option1.rst:238
 #: ../neutron-controller-install-option2.rst:197
 msgid ""
 "Edit the ``/etc/neutron/plugins/ml2/ml2_conf.ini`` file and complete the "
 "following actions:"
 msgstr ""
 
-#: ../neutron-controller-install-option1.rst:205
+#: ../neutron-controller-install-option1.rst:241
 msgid "In the ``[ml2]`` section, enable flat and VLAN networks:"
 msgstr ""
 
-#: ../neutron-controller-install-option1.rst:213
+#: ../neutron-controller-install-option1.rst:249
 msgid "In the ``[ml2]`` section, disable project (private) networks:"
 msgstr ""
 
-#: ../neutron-controller-install-option1.rst:221
+#: ../neutron-controller-install-option1.rst:257
 msgid "In the ``[ml2]`` section, enable the Linux bridge mechanism:"
 msgstr ""
 
 # #-#-#-#-#  neutron-controller-install-option1.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  neutron-controller-install-option2.pot (Installation Guide 0.1)  #-#-#-#-#
-#: ../neutron-controller-install-option1.rst:231
+#: ../neutron-controller-install-option1.rst:267
 #: ../neutron-controller-install-option2.rst:227
 msgid ""
 "After you configure the ML2 plug-in, removing values in the ``type_drivers`` "
@@ -5208,14 +5194,14 @@ msgstr ""
 
 # #-#-#-#-#  neutron-controller-install-option1.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  neutron-controller-install-option2.pot (Installation Guide 0.1)  #-#-#-#-#
-#: ../neutron-controller-install-option1.rst:234
+#: ../neutron-controller-install-option1.rst:270
 #: ../neutron-controller-install-option2.rst:234
 msgid "In the ``[ml2]`` section, enable the port security extension driver:"
 msgstr ""
 
 # #-#-#-#-#  neutron-controller-install-option1.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  neutron-controller-install-option2.pot (Installation Guide 0.1)  #-#-#-#-#
-#: ../neutron-controller-install-option1.rst:242
+#: ../neutron-controller-install-option1.rst:278
 #: ../neutron-controller-install-option2.rst:242
 msgid ""
 "In the ``[ml2_type_flat]`` section, configure the public flat provider "
@@ -5224,7 +5210,7 @@ msgstr ""
 
 # #-#-#-#-#  neutron-controller-install-option1.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  neutron-controller-install-option2.pot (Installation Guide 0.1)  #-#-#-#-#
-#: ../neutron-controller-install-option1.rst:251
+#: ../neutron-controller-install-option1.rst:287
 #: ../neutron-controller-install-option2.rst:260
 msgid ""
 "In the ``[securitygroup]`` section, enable :term:`ipset` to increase "
@@ -5233,21 +5219,21 @@ msgstr ""
 
 # #-#-#-#-#  neutron-controller-install-option1.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  neutron-controller-install-option2.pot (Installation Guide 0.1)  #-#-#-#-#
-#: ../neutron-controller-install-option1.rst:307
+#: ../neutron-controller-install-option1.rst:343
 #: ../neutron-controller-install-option2.rst:357
 msgid "Configure the DHCP agent"
 msgstr ""
 
 # #-#-#-#-#  neutron-controller-install-option1.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  neutron-controller-install-option2.pot (Installation Guide 0.1)  #-#-#-#-#
-#: ../neutron-controller-install-option1.rst:309
+#: ../neutron-controller-install-option1.rst:345
 #: ../neutron-controller-install-option2.rst:359
 msgid "The :term:`DHCP agent` provides DHCP services for virtual networks."
 msgstr ""
 
 # #-#-#-#-#  neutron-controller-install-option1.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  neutron-controller-install-option2.pot (Installation Guide 0.1)  #-#-#-#-#
-#: ../neutron-controller-install-option1.rst:311
+#: ../neutron-controller-install-option1.rst:347
 #: ../neutron-controller-install-option2.rst:361
 msgid ""
 "Edit the ``/etc/neutron/dhcp_agent.ini`` file and complete the following "
@@ -5256,7 +5242,7 @@ msgstr ""
 
 # #-#-#-#-#  neutron-controller-install-option1.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  neutron-controller-install-option2.pot (Installation Guide 0.1)  #-#-#-#-#
-#: ../neutron-controller-install-option1.rst:314
+#: ../neutron-controller-install-option1.rst:350
 #: ../neutron-controller-install-option2.rst:364
 msgid ""
 "In the ``[DEFAULT]`` section, configure the Linux bridge interface driver, "
@@ -5266,11 +5252,15 @@ msgstr ""
 
 # #-#-#-#-#  neutron-controller-install-option1.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  neutron-controller-install-option2.pot (Installation Guide 0.1)  #-#-#-#-#
-#: ../neutron-controller-install-option1.rst:335
+#: ../neutron-controller-install-option1.rst:371
 #: ../neutron-controller-install-option2.rst:429
 msgid ""
 "Return to :ref:`Networking controller node configuration <neutron-controller-"
 "metadata-agent>`."
+msgstr ""
+
+#: ../neutron-controller-install-option2.rst:43
+msgid "For networking option 2, also install the ``neutron-l3-agent`` package."
 msgstr ""
 
 #: ../neutron-controller-install-option2.rst:90
@@ -5582,13 +5572,29 @@ msgid ""
 "address."
 msgstr ""
 
-#: ../nova-compute-install.rst:56
+#: ../nova-compute-install.rst:55
+msgid ""
+"Respond to prompts for :doc:`database management <debconf/debconf-dbconfig-"
+"common>`, :doc:`Identity service credentials <debconf/debconf-keystone-"
+"authtoken>`, and :doc:`message broker credentials <debconf/debconf-"
+"rabbitmq>`. Make sure that you do not activate database management handling "
+"by debconf, as a compute node should not access the central database."
+msgstr ""
+
+#: ../nova-compute-install.rst:67
 msgid ""
 "In the ``[DEFAULT]`` and [oslo_messaging_rabbit] sections, configure "
 "``RabbitMQ`` message queue access:"
 msgstr ""
 
-#: ../nova-compute-install.rst:110
+#: ../nova-compute-install.rst:115
+msgid ""
+"In the ``[DEFAULT]`` section, check that the ``my_ip`` option is correctly "
+"set (this value is handled by the config and postinst scripts of the ``nova-"
+"common`` package using debconf):"
+msgstr ""
+
+#: ../nova-compute-install.rst:125 ../nova-compute-install.rst:140
 msgid ""
 "Replace ``MANAGEMENT_INTERFACE_IP_ADDRESS`` with the IP address of the "
 "management network interface on your compute node, typically 10.0.0.31 for "
@@ -5598,25 +5604,25 @@ msgstr ""
 
 # #-#-#-#-#  nova-compute-install.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  nova-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
-#: ../nova-compute-install.rst:115 ../nova-controller-install.rst:294
+#: ../nova-compute-install.rst:145 ../nova-controller-install.rst:294
 msgid ""
 "In the ``[DEFAULT]`` section, enable support for the Networking service:"
 msgstr ""
 
 # #-#-#-#-#  nova-compute-install.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  nova-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
-#: ../nova-compute-install.rst:128 ../nova-controller-install.rst:307
+#: ../nova-compute-install.rst:158 ../nova-controller-install.rst:307
 msgid ""
 "By default, Compute uses an internal firewall service. Since Networking "
 "includes a firewall service, you must disable the Compute firewall service "
 "by using the ``nova.virt.firewall.NoopFirewallDriver`` firewall driver."
 msgstr ""
 
-#: ../nova-compute-install.rst:133
+#: ../nova-compute-install.rst:163
 msgid "In the ``[vnc]`` section, enable and configure remote console access:"
 msgstr ""
 
-#: ../nova-compute-install.rst:144
+#: ../nova-compute-install.rst:174
 msgid ""
 "The server component listens on all IP addresses and the proxy component "
 "only listens on the management interface IP address of the compute node. The "
@@ -5624,7 +5630,7 @@ msgid ""
 "remote consoles of instances on this compute node."
 msgstr ""
 
-#: ../nova-compute-install.rst:152
+#: ../nova-compute-install.rst:182
 msgid ""
 "If the web browser to access remote consoles resides on a host that cannot "
 "resolve the ``controller`` hostname, you must replace ``controller`` with "
@@ -5633,54 +5639,61 @@ msgstr ""
 
 # #-#-#-#-#  nova-compute-install.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  nova-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
-#: ../nova-compute-install.rst:157 ../nova-controller-install.rst:322
+#: ../nova-compute-install.rst:187 ../nova-controller-install.rst:322
 msgid ""
 "In the ``[glance]`` section, configure the location of the Image service:"
 msgstr ""
 
-#: ../nova-compute-install.rst:197
+#: ../nova-compute-install.rst:227
 msgid "Ensure the kernel module ``nbd`` is loaded."
 msgstr ""
 
-#: ../nova-compute-install.rst:203
+#: ../nova-compute-install.rst:233
 msgid ""
-"Ensure the module will be loaded on every boot by adding ``nbd`` in the ``/"
-"etc/modules-load.d/nbd.conf`` file."
+"Ensure the module loads on every boot by adding ``nbd`` to the ``/etc/"
+"modules-load.d/nbd.conf`` file."
 msgstr ""
 
-#: ../nova-compute-install.rst:209
+#: ../nova-compute-install.rst:239
 msgid ""
 "Determine whether your compute node supports hardware acceleration for "
 "virtual machines:"
 msgstr ""
 
-#: ../nova-compute-install.rst:216
+#: ../nova-compute-install.rst:246
 msgid ""
 "If this command returns a value of ``one or greater``, your compute node "
 "supports hardware acceleration which typically requires no additional "
 "configuration."
 msgstr ""
 
-#: ../nova-compute-install.rst:220
+#: ../nova-compute-install.rst:250
 msgid ""
 "If this command returns a value of ``zero``, your compute node does not "
 "support hardware acceleration and you must configure ``libvirt`` to use QEMU "
 "instead of KVM."
 msgstr ""
 
-#: ../nova-compute-install.rst:226
+#: ../nova-compute-install.rst:256
 msgid ""
 "Edit the ``[libvirt]`` section in the ``/etc/nova/nova.conf`` file as "
 "follows:"
 msgstr ""
 
-#: ../nova-compute-install.rst:237
+#: ../nova-compute-install.rst:267
 msgid ""
 "Edit the ``[libvirt]`` section in the ``/etc/nova/nova-compute.conf`` file "
 "as follows:"
 msgstr ""
 
-#: ../nova-compute-install.rst:248
+#: ../nova-compute-install.rst:278
+msgid ""
+"Replace the ``nova-compute-kvm`` package with ``nova-compute-qemu`` which "
+"automatically changes the ``/etc/nova/nova-compute.conf`` file and installs "
+"the necessary dependencies:"
+msgstr ""
+
+#: ../nova-compute-install.rst:288
 msgid ""
 "Start the Compute service including its dependencies and configure them to "
 "start automatically when the system boots:"
@@ -6056,9 +6069,9 @@ msgstr ""
 #: ../overview.rst:124
 msgid ""
 "For more information on production architectures, see the `Architecture "
-"Design Guide <http://docs.openstack.org/arch-design/content/>`__, "
-"`Operations Guide <http://docs.openstack.org/ops/>`__, and `Networking Guide "
-"<http://docs.openstack.org/networking-guide/>`__."
+"Design Guide <http://docs.openstack.org/arch-design/>`__, `Operations Guide "
+"<http://docs.openstack.org/ops/>`__, and `Networking Guide <http://docs."
+"openstack.org/networking-guide/>`__."
 msgstr ""
 
 #: ../overview.rst:134

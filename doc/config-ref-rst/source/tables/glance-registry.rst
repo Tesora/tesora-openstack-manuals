@@ -8,6 +8,8 @@
     autogenerate-config-doc tool from the openstack-doc-tools repository, or
     ask for help on the documentation mailing list, IRC channel or meeting.
 
+.. _glance-registry:
+
 .. list-table:: Description of registry configuration options
    :header-rows: 1
    :class: config-ref-table
@@ -37,7 +39,7 @@
    * - ``registry_client_key_file`` = ``None``
      - (StrOpt) The path to the key file to use in SSL connections to the registry server, if any. Alternately, you may set the GLANCE_CLIENT_KEY_FILE environment variable to a filepath of the key file
    * - ``registry_client_protocol`` = ``http``
-     - (StrOpt) The protocol to use for communication with the registry server.  Either http or https.
+     - (StrOpt) The protocol to use for communication with the registry server. Either http or https.
    * - ``registry_client_timeout`` = ``600``
      - (IntOpt) The period of time, in seconds, that the API server will wait for a registry request to complete. A value of 0 implies no timeout.
    * - ``registry_host`` = ``0.0.0.0``

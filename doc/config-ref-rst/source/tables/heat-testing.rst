@@ -8,6 +8,8 @@
     autogenerate-config-doc tool from the openstack-doc-tools repository, or
     ask for help on the documentation mailing list, IRC channel or meeting.
 
+.. _heat-testing:
+
 .. list-table:: Description of testing configuration options
    :header-rows: 1
    :class: config-ref-table
@@ -16,6 +18,8 @@
      - Description
    * - **[profiler]**
      -
+   * - ``hmac_keys`` = ``SECRET_KEY``
+     - (StrOpt) Secret key to use to sign tracing messages.
    * - ``profiler_enabled`` = ``False``
      - (BoolOpt) If False fully disable profiling feature.
    * - ``trace_sqlalchemy`` = ``False``

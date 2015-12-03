@@ -28,7 +28,7 @@
     <xi:include href="../../common/tables/cinder-emc.xml"/>
     <xi:include href="../../common/tables/cinder-flashsystem.xml"/>
     <xi:include href="../../common/tables/cinder-hgst.xml"/>
-    <xi:include href="../../common/tables/cinder-hplefthand.xml"/>
+    <xi:include href="../../common/tables/cinder-hpelefthand.xml"/>
     <xi:include href="../../common/tables/cinder-hpxp.xml"/>
     <xi:include href="../../common/tables/cinder-huawei.xml"/>
     <xi:include href="../../common/tables/cinder-images.xml"/>
@@ -39,7 +39,6 @@
     <xi:include href="../../common/tables/cinder-profiler.xml"/>
     <xi:include href="../../common/tables/cinder-pure.xml"/>
     <xi:include href="../../common/tables/cinder-qpid.xml"/>
-    <xi:include href="../../common/tables/cinder-quobyte.xml"/>
     <xi:include href="../../common/tables/cinder-quota.xml"/>
     <xi:include href="../../common/tables/cinder-rabbitmq.xml"/>
     <xi:include href="../../common/tables/cinder-redis.xml"/>

@@ -8,6 +8,8 @@
     autogenerate-config-doc tool from the openstack-doc-tools repository, or
     ask for help on the documentation mailing list, IRC channel or meeting.
 
+.. _glance-rpc:
+
 .. list-table:: Description of RPC configuration options
    :header-rows: 1
    :class: config-ref-table
@@ -33,7 +35,7 @@
    * - ``disable_process_locking`` = ``False``
      - (BoolOpt) Enables or disables inter-process locks.
    * - ``lock_path`` = ``None``
-     - (StrOpt) Directory to use for lock files.  For security, the specified directory should only be writable by the user running the processes that need locking. Defaults to environment variable OSLO_LOCK_PATH. If external locks are used, a lock path must be set.
+     - (StrOpt) Directory to use for lock files. For security, the specified directory should only be writable by the user running the processes that need locking. Defaults to environment variable OSLO_LOCK_PATH. If external locks are used, a lock path must be set.
    * - **[oslo_messaging_amqp]**
      -
    * - ``allow_insecure_clients`` = ``False``
@@ -46,25 +48,25 @@
      - (StrOpt) address prefix when sending to any server in group
    * - ``idle_timeout`` = ``0``
      - (IntOpt) Timeout for inactive connections (in seconds)
-   * - ``password`` = `` ``
+   * - ``password`` =
      - (StrOpt) Password for message broker authentication
-   * - ``sasl_config_dir`` = `` ``
+   * - ``sasl_config_dir`` =
      - (StrOpt) Path to directory that contains the SASL configuration
-   * - ``sasl_config_name`` = `` ``
+   * - ``sasl_config_name`` =
      - (StrOpt) Name of configuration file (without .conf suffix)
-   * - ``sasl_mechanisms`` = `` ``
+   * - ``sasl_mechanisms`` =
      - (StrOpt) Space separated list of acceptable SASL mechanisms
    * - ``server_request_prefix`` = ``exclusive``
      - (StrOpt) address prefix used when sending to a specific server
-   * - ``ssl_ca_file`` = `` ``
+   * - ``ssl_ca_file`` =
      - (StrOpt) CA certificate PEM file to verify server certificate
-   * - ``ssl_cert_file`` = `` ``
+   * - ``ssl_cert_file`` =
      - (StrOpt) Identifying certificate PEM file to present to clients
-   * - ``ssl_key_file`` = `` ``
+   * - ``ssl_key_file`` =
      - (StrOpt) Private key PEM file used to sign cert_file certificate
    * - ``ssl_key_password`` = ``None``
      - (StrOpt) Password for decrypting ssl_key_file (if encrypted)
    * - ``trace`` = ``False``
      - (BoolOpt) Debug: dump AMQP frames to stdout
-   * - ``username`` = `` ``
+   * - ``username`` =
      - (StrOpt) User name for message broker authentication
