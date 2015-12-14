@@ -300,7 +300,8 @@ Orchestration service, code-named heat, on the controller node.
            The Orchestration service automatically assigns the
            ``heat_stack_user`` role to users that it creates
            during stack deployment. By default, this role restricts
-           :term:`API` operations. To avoid conflicts, do not add
+           :term:`API <Application Programming Interface (API)>` operations.
+           To avoid conflicts, do not add
            this role to users with the ``heat_stack_owner`` role.
 
 Install and configure components
@@ -400,14 +401,11 @@ Install and configure components
 
            [trustee]
            ...
-           auth_uri = http://controller:5000
-           auth_url = http://controller:35357
            auth_plugin = password
-           project_domain_id = default
-           user_domain_id = default
-           project_name = service
+           auth_url = http://controller:35357
            username = heat
            password = HEAT_PASS
+           user_domain_id = default
 
            [clients_keystone]
            ...
