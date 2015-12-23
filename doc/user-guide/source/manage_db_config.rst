@@ -141,6 +141,7 @@ Bulk-configure a database or databases
        Welcome to the MySQL monitor. Commands end with ; or \g.
        ...
        mysql> show variables like 'sync_binlog';
+
        +---------------+-------+
        | Variable_name | Value |
        +---------------+-------+
@@ -235,5 +236,5 @@ features for working with configuration groups. You can:
 
 -  Delete a configuration group, using the
    :command:`trove configuration-delete` command. You might want to
-   to do this if no instances use a group.
+   do this if no instances use a group.
 
