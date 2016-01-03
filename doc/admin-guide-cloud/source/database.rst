@@ -17,9 +17,14 @@ users and database administrators can provision and manage multiple
 database instances as needed.
 
 The Database service provides resource isolation at high performance
-levels, and automates complex administrative tasks such as
-deployment, configuration, patching, backups, restores, and
-monitoring.
+levels, and automates complex administrative tasks such as deployment,
+configuration, patching, backups, restores, and monitoring.
+
+You can modify various cluster characteristics by editing the
+``/etc/trove/trove.conf`` file. A comprehensive list of the Database
+service configuration options is described in the `Database service
+<http://docs.openstack.org/liberty/config-reference/content/ch_configuring-trove.html>`_
+chapter in the *Configuration Reference*.
 
 Create a data store
 ~~~~~~~~~~~~~~~~~~~
@@ -162,12 +167,18 @@ data store version.
           the data store manager is identified by one of the following
           strings, depending on the database:
 
-          * mysql
-          * redis
-          * mongodb
           * cassandra
           * couchbase
+          * couchdb
+          * db2
+          * mariadb
+          * mongodb
+          * mysql
           * percona
+          * postgresql
+          * pxc
+          * redis
+          * vertica
         - ``mysql``
 
       * - glance ID
