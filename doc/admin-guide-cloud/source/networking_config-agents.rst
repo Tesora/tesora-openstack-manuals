@@ -266,6 +266,11 @@ capabilities:
       run this command or write your own system script that runs on boot
       before the neutron-l3-agent service starts.
 
+**How routers are assigned to L3 agents**
+By default, a router is assigned to the L3 agent with the least number
+of routers (LeastRoutersScheduler). This can be changed by altering the
+router_scheduler_driver setting in the configuration file.
+
 Configure metering agent
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -347,7 +352,7 @@ For the back end, use either Octavia or Haproxy. This example uses Octavia.
 
    .. code-block:: ini
 
-      device_driver = neutron_lbaas.services.loadbalancer.plugin.
+      service_plugins = neutron_lbaas.services.loadbalancer.plugin.
       LoadBalancerPluginv2
 
    If this option is already defined, add the load-balancing plug-in to
@@ -493,5 +498,5 @@ complete basic operations on agents:
 **Basic operations on Networking agents**
 
 See the `OpenStack Command-Line Interface
-Reference <http://docs.openstack.org/cli-reference/content/neutronclient_commands.html>`__
+Reference <http://docs.openstack.org/cli-reference/neutron.html>`__
 for more information on Networking commands.

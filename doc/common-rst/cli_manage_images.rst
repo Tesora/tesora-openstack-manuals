@@ -39,7 +39,6 @@ commands.
 .. code-block:: console
 
    $ glance image-show myCirrosImage
-
    +---------------------------------------+--------------------------------------+
    | Property                              | Value                                |
    +---------------------------------------+--------------------------------------+
@@ -93,9 +92,9 @@ list, as follows:
 
    To store location metadata for images, which enables direct file access for a client, update the ``/etc/glance/glance-api.conf`` file with the following statements:
 
-   -  ``show_multiple_locations = True``
+   *  ``show_multiple_locations = True``
 
-   -  ``filesystem_store_metadata_file = filePath``, where filePath points to a JSON file that defines the mount point for OpenStack images on your system and a unique ID. For example:
+   *  ``filesystem_store_metadata_file = filePath``, where filePath points to a JSON file that defines the mount point for OpenStack images on your system and a unique ID. For example:
 
    .. code-block:: json
 
@@ -135,7 +134,7 @@ The following list explains the optional arguments that you can use with
 the ``create`` and ``update`` commands to modify image properties. For
 more information, refer to Image service chapter in the `OpenStack
 Command-Line Interface
-Reference <http://docs.openstack.org/cli-reference/content/index.html>`__.
+Reference <http://docs.openstack.org/cli-reference/index.html>`__.
 
 ``--name NAME``
   The name of the image.
@@ -209,6 +208,16 @@ The following example shows how to update an existing image with a
 properties that describe the disk bus, the CD-ROM bus, and the VIF
 model:
 
+.. note::
+
+   When you use OpenStack with VMware vCenter Server, you need to specify
+   the ``vmware_disktype`` and ``vmware_adaptertype`` properties with
+   :command:`glance image-create`.
+   Also, we recommend that you set the ``hypervisor_type="vmware"`` property.
+   For more information, see `Images with VMware vSphere
+   <http://docs.openstack.org/liberty/config-reference/content/vmware.html#VMware_images>`_
+   in the *OpenStack Configuration Reference*.
+
 .. code-block:: console
 
    $ glance image-update \
@@ -240,15 +249,15 @@ in the following tables.
 +-------------------------+--------------------------+
 | libvirt\_type setting   | Supported model values   |
 +=========================+==========================+
-| qemu or kvm             | -  ide                   |
+| qemu or kvm             | *  ide                   |
 |                         |                          |
-|                         | -  scsi                  |
+|                         | *  scsi                  |
 |                         |                          |
-|                         | -  virtio                |
+|                         | *  virtio                |
 +-------------------------+--------------------------+
-| xen                     | -  ide                   |
+| xen                     | *  ide                   |
 |                         |                          |
-|                         | -  xen                   |
+|                         | *  xen                   |
 +-------------------------+--------------------------+
 
 
@@ -259,31 +268,31 @@ in the following tables.
 +-------------------------+--------------------------+
 | libvirt\_type setting   | Supported model values   |
 +=========================+==========================+
-| qemu or kvm             | -  e1000                 |
+| qemu or kvm             | *  e1000                 |
 |                         |                          |
-|                         | -  ne2k\_pci             |
+|                         | *  ne2k\_pci             |
 |                         |                          |
-|                         | -  pcnet                 |
+|                         | *  pcnet                 |
 |                         |                          |
-|                         | -  rtl8139               |
+|                         | *  rtl8139               |
 |                         |                          |
-|                         | -  virtio                |
+|                         | *  virtio                |
 +-------------------------+--------------------------+
-| xen                     | -  e1000                 |
+| xen                     | *  e1000                 |
 |                         |                          |
-|                         | -  netfront              |
+|                         | *  netfront              |
 |                         |                          |
-|                         | -  ne2k\_pci             |
+|                         | *  ne2k\_pci             |
 |                         |                          |
-|                         | -  pcnet                 |
+|                         | *  pcnet                 |
 |                         |                          |
-|                         | -  rtl8139               |
+|                         | *  rtl8139               |
 +-------------------------+--------------------------+
-| vmware                  | -  VirtualE1000          |
+| vmware                  | *  VirtualE1000          |
 |                         |                          |
-|                         | -  VirtualPCNet32        |
+|                         | *  VirtualPCNet32        |
 |                         |                          |
-|                         | -  VirtualVmxnet         |
+|                         | *  VirtualVmxnet         |
 +-------------------------+--------------------------+
 
 Troubleshoot image creation
@@ -293,9 +302,9 @@ If you encounter problems in creating an image in Image service or
 Compute, the following information may help you troubleshoot the
 creation process.
 
--  Ensure that the version of qemu you are using is version 0.14 or
+*  Ensure that the version of qemu you are using is version 0.14 or
    later. Earlier versions of qemu result in an ``unknown option -s``
    error message in the ``nova-compute.log`` file.
 
--  Examine the ``/var/log/nova-api.log`` and
+*  Examine the ``/var/log/nova-api.log`` and
    ``/var/log/nova-compute.log`` log files for error messages.

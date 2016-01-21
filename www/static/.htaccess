@@ -41,7 +41,7 @@ redirect 301 /trunk/openstack-compute/admin/content/ /admin-guide-cloud/
 redirect 301 /trunk/openstack-object-storage/admin/content/ /admin-guide-cloud/
 
 # Redirecting Image Guide to new location
-redirect 301 /trunk/openstack-image/content/ /image-guide/content
+redirect 301 /trunk/openstack-image/content/ /image-guide/
 
 # Redirecting HA Guide to new location
 redirect 301 /trunk/openstack-ha/content/ /ha-guide
@@ -161,6 +161,7 @@ redirectmatch 301 "^/user-guide-admin/content/.*" /user-guide-admin/index.html
 redirectmatch 301 "^/admin-guide-cloud/content/.*$" /admin-guide-cloud/index.html
 redirectmatch 301 "^/image-guide/content/.*$" /image-guide/index.html
 redirectmatch 301 "^/arch-design/content/.*$" /arch-design/index.html
+redirectmatch 301 "^/cli-reference/content/.*$" /cli-reference/index.html
 
 # Hot-guide has moved to heat repo
 redirect 301 /user-guide/hot-guide/hot.html /developer/heat/template_guide/hot_guide.html
@@ -171,6 +172,9 @@ redirect 301 /hot-guide/content/ /developer/heat/template_guide/
 
 # Redirect HOT reference guide to heat template guide
 redirect 301 /hot-reference/content/ /developer/heat/template_guide/
+
+# Redirect networking-guide since it is now versioned
+redirect 301 /networking-guide/ /liberty/networking-guide/
 
 # Redirect nova/devref/
 redirectmatch 301 ^/developer/nova/devref/(.+)$ /developer/nova/$1

@@ -38,8 +38,8 @@ function copy_rst {
     mkdir -p $PROJECT_DIR/$target
     tools/glossary2rst.py $PROJECT_DIR/$target/glossary.rst
 
-    for filename in doc/common-rst/app_support.rst; do
-        cp $filename $PROJECT_DIR/$target
+    for filename in app_support.rst conventions.rst; do
+        cp doc/common-rst/$filename $PROJECT_DIR/$target
     done
     (cd $PROJECT_DIR; git add $target)
 }
@@ -64,8 +64,6 @@ function copy_glossary_xml {
 
     # Sync entitites file
     cp doc/common/entities/openstack.ent $GLOSSARY_DIR/../$ENT_DIR/
-    sed -i -e "s|imagedata fileref=\"../common/figures|imagedata fileref=\"$CHECK_MARK_DIR|" \
-        $GLOSSARY_DIR/../$ENT_DIR/openstack.ent
 
     # Add files
     (cd $PROJECT_DIR; git add $GLOSSARY_SUB_DIR \
