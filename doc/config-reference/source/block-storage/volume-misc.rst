@@ -22,12 +22,13 @@ These options can also be set in the ``cinder.conf`` file.
 .. include:: ../tables/cinder-flashsystem.rst
 .. include:: ../tables/cinder-hgst.rst
 .. include:: ../tables/cinder-hpelefthand.rst
-.. include:: ../tables/cinder-hpxp.rst
+.. include:: ../tables/cinder-hpexp.rst
 .. include:: ../tables/cinder-huawei.rst
 .. include:: ../tables/cinder-images.rst
 .. include:: ../tables/cinder-infortrend.rst
 .. include:: ../tables/cinder-keymgr.rst
 .. include:: ../tables/cinder-logging.rst
+.. include:: ../tables/cinder-nas.rst
 .. include:: ../tables/cinder-profiler.rst
 .. include:: ../tables/cinder-pure.rst
 .. include:: ../tables/cinder-qpid.rst

@@ -7,7 +7,7 @@ Documentation builds
 Documentation source and target locations
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Most documents are continously published, they are published only from the
+Most documents are continuously published, they are published only from the
 master branch and there is no specific version for a stable release,
 instead they document the releases that the OpenStack community
 currently maintains. There are also version dependent documents.
@@ -17,7 +17,7 @@ openstack-manuals and other repositories indicate where docs are
 published. For example, from the stable/liberty release branch, doc
 source files are published to docs.openstack.org/liberty, and from the
 master branch, doc source files are published for versioned documents to
-docs.openstack.org/draft and for continously published documents to
+docs.openstack.org/draft and for continuously published documents to
 docs.openstack.org/ by our lovely Jenkins butlers always at the ready.
 
 Some content is completely generated using openstack-doc-tools, such as the
@@ -102,7 +102,7 @@ Guides for deployers and administrators
 
 .. note::
    The Configuration Reference and the Networking Guide are versioned,
-   all other guides are continously published.
+   all other guides are continuously published.
 
 Guides for end users
 --------------------
@@ -128,7 +128,7 @@ Guides for end users
 
    * - Command Line Interface Reference
      - http://git.openstack.org/cgit/openstack/openstack-manuals/tree/doc/cli-reference
-     - http://docs.openstack.org/cli-reference/content
+     - http://docs.openstack.org/cli-reference
 
 Developer guides
 ----------------
@@ -181,6 +181,10 @@ for the built documentation.
    * - Document
      - Source location
      - Target location
+
+   * - Documentation Contributor Guide
+     - http://git.openstack.org/cgit/openstack/openstack-manuals/tree/doc/contributor-guide
+     - http://docs.openstack.org/contributor-guide/
 
    * - Python Developer Documentation
      - http://git.openstack.org/cgit/openstack/<project>/tree/master/doc/source/,
@@ -235,9 +239,9 @@ tell the build where to place the built files.
 
 ::
 
-  <targetDirectory>${basedir}/target/docbkx/webhelp/admin-guide-cloud<targetDirectory>
+  <targetDirectory>${basedir}/target/docbkx/webhelp/glossary<targetDirectory>
   <webhelpDirname>/</webhelpDirname>
-  <pdfFilenameBase>bk-admin-guide-cloud-latest</pdfFilenameBase>
+  <pdfFilenameBase>bk-glossary</pdfFilenameBase>
 
 The clouddocs-maven-plugin automatically detects which images you use in your
 document and copies them to the output directory. When you use .svg graphics,

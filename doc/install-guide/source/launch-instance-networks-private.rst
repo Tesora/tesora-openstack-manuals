@@ -12,7 +12,7 @@ to an instance on this network from external networks such as the Internet
 requires a :term:`floating IP address`.
 
 The ``demo`` or other unprivileged user can create this network because it
-only provides connectivity to instances within the ``demo`` project.
+provides connectivity to instances within the ``demo`` project only.
 
 .. warning::
 
@@ -66,7 +66,7 @@ Create the private project network
       +-----------------------+--------------------------------------+
 
    Non-privileged users typically cannot supply additional parameters to
-   this command. The service automatically chooses paramters using
+   this command. The service automatically chooses parameters using
    information from the following files:
 
    ``ml2_conf.ini``:
@@ -195,7 +195,7 @@ to the existing ``public`` provider network.
 Verify operation
 ----------------
 
-We recommend that you verify operation and fix any issues before proceeding
+We recommend that you verify operation and fix any issues before proceeding.
 The following steps use the IP address ranges from the network and subnet
 creation examples.
 

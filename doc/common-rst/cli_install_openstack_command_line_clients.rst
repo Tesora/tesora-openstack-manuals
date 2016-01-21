@@ -98,20 +98,22 @@ command-line clients, and provides installation instructions as needed.
 |                       | that enable yum to install the clients as described |
 |                       | in Installing_from_packages_.                       |
 |                       |                                                     |
-|                       | **SUSE Linux Enterprise Linux 11**                  |
+|                       | **SUSE Linux Enterprise Server**                    |
 |                       |                                                     |
 |                       | A packaged version available in the Open Build      |
 |                       | Service (`https://build.opensuse.org/package/show?  |
 |                       | package=python-pip&project=Cloud:OpenStack:Master   |
 |                       | <https://build.opensuse.org/package/show?package=pyt|
 |                       | hon-pip&project=Cloud:OpenStack:Master>`__)         |
-|                       | enables you to use or zypper to install the package.|
+|                       | enables you to use YaST or zypper to install the    |
+|                       | package.                                            |
+|                       |                                                     |
 |                       | First, add the Open Build Service repository:       |
 |                       |                                                     |
 |                       | .. code-block:: console                             |
 |                       |                                                     |
 |                       |    # zypper addrepo -f obs://Cloud:OpenStack: \     |
-|                       |    Kilo/SLE_12 Kilo                                 |
+|                       |    Liberty/SLE_12 Liberty                           |
 |                       |                                                     |
 |                       | Then install pip and use it to manage client        |
 |                       | installation:                                       |
@@ -138,64 +140,78 @@ command-line clients, and provides installation instructions as needed.
 |                       | as described in Installing_from_packages_.          |
 +-----------------------+-----------------------------------------------------+
 
-Install the clients
-~~~~~~~~~~~~~~~~~~~
+Install the OpenStack client
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-When following the instructions in this section, replace PROJECT with
-the lowercase name of the client to install, such as ``nova``. Repeat
-for each client. The following values are valid:
+The following example shows the command for installing the OpenStack client
+with ``pip``, which supports multiple services.
 
--  ``barbican`` - Key Manager Service API
+.. code-block:: console
 
--  ``ceilometer`` - Telemetry API
+   # pip install python-openstackclient
 
--  ``cinder`` - Block Storage API and extensions
+The following clients, while valid, are de-emphasized in favor of a common
+client. Instead of installing and learning all these clients, we recommend
+installing and using the OpenStack client. You may need to install an
+individual project's client because coverage is not yet sufficient in the
+OpenStack client. If you need to install an individual client's project,
+replace the ``<project>`` name in this ``pip install`` command using the
+list below.
 
--  ``cloudkitty`` - Rating service API
+.. code-block:: console
 
--  ``glance`` - Image service API
+    # pip install python-<project>client
 
--  ``gnocchi`` - Telemetry API v3
+*  ``barbican`` - Key Manager Service API
 
--  ``heat`` - Orchestration API
+*  ``ceilometer`` - Telemetry API
 
--  ``magnum`` - Containers service API
+*  ``cinder`` - Block Storage API and extensions
 
--  ``manila`` - Shared file systems API
+*  ``cloudkitty`` - Rating service API
 
--  ``mistral`` - Workflow service API
+*  ``designate`` - DNS service API
 
--  ``monasca`` - Monitoring API
+*  ``glance`` - Image service API
 
--  ``murano`` - Application catalog API
+*  ``gnocchi`` - Telemetry API v3
 
--  ``neutron`` - Networking API
+*  ``heat`` - Orchestration API
 
--  ``nova`` - Compute API and extensions
+*  ``magnum`` - Containers service API
 
--  ``sahara`` - Data Processing API
+*  ``manila`` - Shared file systems API
 
--  ``senlin`` - Clustering service API
+*  ``mistral`` - Workflow service API
 
--  ``swift`` - Object Storage API
+*  ``monasca`` - Monitoring API
 
--  ``trove`` - Database service API
+*  ``murano`` - Application catalog API
 
--  ``tuskar`` - Deployment service API
+*  ``neutron`` - Networking API
 
--  ``openstack`` - Common OpenStack client supporting multiple services
+*  ``nova`` - Compute API and extensions
+
+*  ``sahara`` - Data Processing API
+
+*  ``senlin`` - Clustering service API
+
+*  ``swift`` - Object Storage API
+
+*  ``trove`` - Database service API
+
+*  ``tuskar`` - Deployment service API
+
+*  ``openstack`` - Common OpenStack client supporting multiple services
 
 The following CLIs are deprecated in favor of ``openstack``, the
 Common OpenStack client supporting multiple services:
 
--  ``keystone`` - Identity service API and extensions
+*  ``keystone`` - Identity service API and extensions
 
-The following example shows the command for installing the nova client
-with ``pip``.
-
-.. code-block:: console
-
-   # pip install python-novaclient
+While you can install the ``keystone`` client for interacting with version 2.0
+of the service's API, you should use the ``openstack`` client for all Identity
+interactions.
 
 Installing with pip
 -------------------
@@ -208,13 +224,13 @@ or remove a package.
 
 Install each client separately by using the following command:
 
--  For Mac OS X or Linux:
+*  For Mac OS X or Linux:
 
    .. code-block:: console
 
       # pip install python-PROJECTclient
 
--  For Microsoft Windows:
+*  For Microsoft Windows:
 
    .. code-block:: console
 
@@ -228,7 +244,7 @@ Installing from packages
 RDO, openSUSE, SUSE Linux Enterprise, Debian, and Ubuntu have client packages
 that can be installed without ``pip``.
 
--  On Red Hat Enterprise Linux, CentOS, or Fedora, use ``yum`` to install
+*  On Red Hat Enterprise Linux, CentOS, or Fedora, use ``yum`` to install
    the clients from the packaged versions available in
    `RDO <https://www.rdoproject.org/>`__:
 
@@ -236,27 +252,27 @@ that can be installed without ``pip``.
 
       # yum install python-PROJECTclient
 
-- For Ubuntu or Debian, use ``apt-get`` to install the clients from the
+* For Ubuntu or Debian, use ``apt-get`` to install the clients from the
   packaged versions:
 
   .. code-block:: console
 
      # apt-get install python-PROJECTclient
 
--  For openSUSE, use ``zypper`` to install the clients from the distribution
+*  For openSUSE, use ``zypper`` to install the clients from the distribution
    packages service:
 
    .. code-block:: console
 
       # zypper install python-PROJECTclient
 
--  For SUSE Linux Enterprise Server, use ``zypper`` to install the clients from
+*  For SUSE Linux Enterprise Server, use ``zypper`` to install the clients from
    the distribution packages in the Open Build Service. First, add the Open
    Build Service repository:
 
    .. code-block:: console
 
-      # zypper addrepo -f obs://Cloud:OpenStack:Kilo/SLE_12 Kilo
+      # zypper addrepo -f obs://Cloud:OpenStack:Liberty/SLE_12 Liberty
 
    Then you can install the packages:
 

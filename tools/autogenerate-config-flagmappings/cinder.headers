@@ -23,13 +23,14 @@ hitachi-hbsd Hitachi storage volume driver
 hpe3par HPE 3PAR Fibre Channel and iSCSI drivers
 hpelefthand HPE LeftHand/StoreVirtual driver
 hpmsa HP MSA volume driver
-hpxp HP XP volume driver
+hpexp HPE XP volume driver
 huawei Huawei storage driver
 ibmnas IBM SONAS and Storwise V7000 volume driver
 images images
 infortrend Infortrend volume driver
 lenovo Lenovo volume driver
 lvm LVM
+nas NAS
 netapp_7mode_iscsi NetApp 7-Mode iSCSI driver
 netapp_7mode_nfs NetApp 7-Mode NFS driver
 netapp_cdot_iscsi NetApp cDOT iSCSI driver

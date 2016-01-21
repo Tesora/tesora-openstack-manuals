@@ -51,7 +51,7 @@ Create a stack from an example template file
 
       When you run the :command:`heat stack-create` command with the
       :option:`--poll` option, it prints the :command:`heat stack-show`
-      output first, and then continously prints the events in log format
+      output first, and then continuously prints the events in log format
       until the stack completes its action with success or failure.
 
 -  You can also use the :command:`template-validate` command to validate a
@@ -83,7 +83,6 @@ number of commands.
    .. code-block:: console
 
       $ heat stack-list
-
       +------------------+---------------+-----------------+----------------------+
       | id               | stack_name    | stack_status    | creation_time        |
       +------------------+---------------+-----------------+----------------------+
@@ -103,7 +102,6 @@ number of commands.
    .. code-block:: console
 
       $ heat resource-list mystack
-
       +---------------------+--------------------+-----------------+----------------------+
       | logical_resource_id | resource_type      | resource_status | updated_time         |
       +---------------------+--------------------+-----------------+----------------------+
@@ -131,7 +129,6 @@ number of commands.
    .. code-block:: console
 
       $ heat event-list mystack
-
       +---------------------+----+------------------------+-----------------+----------------------+
       | logical_resource_id | id | resource_status_reason | resource_status | event_time           |
       +---------------------+----+------------------------+-----------------+----------------------+
@@ -157,7 +154,6 @@ like the following command:
    $ heat stack-update mystack --template-file \
      /path/to/heat/templates/WordPress_Single_Instance_v2.template \
      --parameters "InstanceType=m1.large;DBUsername=wp;DBPassword=verybadpassword;KeyName=heat_key;LinuxDistribution=F17"
-
    +--------------------------------------+---------------+-----------------+----------------------+
    | id                                   | stack_name    | stack_status    | creation_time        |
    +--------------------------------------+---------------+-----------------+----------------------+

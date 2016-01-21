@@ -54,11 +54,15 @@ The following table lists the preferred word or phrase choice.
 +----------------+----------------------+
 | host name      | hostname, Hostname   |
 +----------------+----------------------+
+| lifecycle      | life cycle           |
++----------------+----------------------+
 | login (noun)   | logon, log-in        |
 +----------------+----------------------+
 | log in (verb)  | login                |
 +----------------+----------------------+
 | OpenStack      | openstack, Openstack |
++----------------+----------------------+
+| plug-in        | plugin               |
 +----------------+----------------------+
 | run, issue,    | Avoid using "execute"|
 | start, enter   | unless it is the most|

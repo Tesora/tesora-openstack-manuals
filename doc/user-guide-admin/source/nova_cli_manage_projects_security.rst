@@ -40,7 +40,7 @@ From the command-line you can get a list of security groups for the
 project, using the :command:`nova` command:
 
 #. Ensure your system variables are set for the user and tenant for
-   which you are checking security group rules for. For example:
+   which you are checking security group rules. For example:
 
    .. code-block:: console
 
@@ -52,7 +52,6 @@ project, using the :command:`nova` command:
    .. code-block:: console
 
       $ nova secgroup-list
-
       +---------+-------------+
       | Name    | Description |
       +---------+-------------+
@@ -71,7 +70,6 @@ project, using the :command:`nova` command:
    .. code-block:: console
 
       $ nova secgroup-list-rules open
-
       +-------------+-----------+---------+-----------+--------------+
       | IP Protocol | From Port | To Port | IP Range  | Source Group |
       +-------------+-----------+---------+-----------+--------------+
@@ -95,7 +93,7 @@ example, seeing that an instance is using security group "http" is much
 easier to understand than "bobs\_group" or "secgrp1".
 
 #. Ensure your system variables are set for the user and tenant for
-   which you are checking security group rules for.
+   which you are creating security group rules.
 
 #. Add the new security group, as follows:
 
@@ -108,7 +106,6 @@ easier to understand than "bobs\_group" or "secgrp1".
    .. code-block:: console
 
       $ nova secgroup-create global_http "Allows Web traffic anywhere on the Internet."
-
       +--------------------------------------+-------------+----------------------------------------------+
       | Id                                   | Name        | Description                                  |
       +--------------------------------------+-------------+----------------------------------------------+
@@ -129,7 +126,6 @@ easier to understand than "bobs\_group" or "secgrp1".
    .. code-block:: console
 
       $ nova secgroup-add-rule global_http tcp 80 80 0.0.0.0/0
-
       +-------------+-----------+---------+-----------+--------------+
       | IP Protocol | From Port | To Port | IP Range  | Source Group |
       +-------------+-----------+---------+-----------+--------------+
@@ -142,7 +138,6 @@ easier to understand than "bobs\_group" or "secgrp1".
    .. code-block:: console
 
       $ nova secgroup-add-rule global_http tcp 443 443 0.0.0.0/0
-
       +-------------+-----------+---------+-----------+--------------+
       | IP Protocol | From Port | To Port | IP Range  | Source Group |
       +-------------+-----------+---------+-----------+--------------+
@@ -157,7 +152,6 @@ easier to understand than "bobs\_group" or "secgrp1".
    .. code-block:: console
 
       $ nova secgroup-list-rules global_http
-
       +-------------+-----------+---------+-----------+--------------+
       | IP Protocol | From Port | To Port | IP Range  | Source Group |
       +-------------+-----------+---------+-----------+--------------+
@@ -169,7 +163,7 @@ Delete a security group
 ~~~~~~~~~~~~~~~~~~~~~~~
 
 #. Ensure your system variables are set for the user and tenant for
-   which you are deleting a security group for.
+   which you are deleting a security group.
 
 #. Delete the new security group, as follows:
 
@@ -193,7 +187,7 @@ selected dynamically. This alleviates the need for individual rules to
 allow each new member of the cluster.
 
 #. Make sure to set the system variables for the user and tenant for
-   which you are deleting a security group for.
+   which you are creating a security group rule.
 
 #. Add a source group, as follows:
 

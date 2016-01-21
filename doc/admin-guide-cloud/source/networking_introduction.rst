@@ -233,11 +233,18 @@ Then, create a firewall that applies the policy.
    .. code-block:: console
 
       $ neutron firewall-rule-create --protocol {tcp,udp,icmp,any} \
+        --source-ip-address SOURCE_IP_ADDRESS \
+        --destination-ip-address DESTINATION_IP_ADDRESS \
         --source-port SOURCE_PORT_RANGE --destination-port DEST_PORT_RANGE \
         --action {allow,deny,reject}
 
    The Networking client requires a protocol value; if the rule is protocol
    agnostic, you can use the ``any`` value.
+
+   .. note::
+
+      When the source or destination IP address are not of the same IP
+      version (for example, IPv6), the command returns an error.
 
 #. Create a firewall policy:
 
@@ -257,7 +264,7 @@ Then, create a firewall that applies the policy.
    * To add a single rule, use the insert-rule operation.
 
    For more details, see `Networking command-line client
-   <http://docs.openstack.org/cli-reference/content/neutronclient_commands.html#neutronclient_subcommand_firewall-policy-create>`_
+   <http://docs.openstack.org/cli-reference/neutron.html>`_
    in the OpenStack Command-Line Interface Reference.
 
    .. note::

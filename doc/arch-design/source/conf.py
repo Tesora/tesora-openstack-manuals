@@ -54,8 +54,8 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'Architecture Design Guide'
-bug_tag = u'arch-design-rst'
-copyright = u'2015, OpenStack contributors'
+bug_tag = u'arch-design'
+copyright = u'2015-2016, OpenStack contributors'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -89,8 +89,9 @@ html_context = {"gitsha": gitsha, "bug_tag": bug_tag,
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
-exclude_patterns = ['common/cli*', 'common/nova*',
-                    'common/log_in_dashboard.rst']
+exclude_patterns = ['common/cli*', 'common/nova*', 'common/get_started_*',
+                    'common/log_in_dashboard.rst',
+                    'common/dashboard_customizing.rst']
 
 # The reST default role (used for this markup: `text`) to use for all
 # documents.

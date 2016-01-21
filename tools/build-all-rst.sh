@@ -12,7 +12,7 @@ if [[ $# > 0 ]] ; then
 fi
 
 for guide in user-guide user-guide-admin admin-guide-cloud \
-    contributor-guide image-guide arch-design; do
+    contributor-guide image-guide arch-design cli-reference; do
     tools/build-rst.sh doc/$guide $GLOSSARY --build build \
         --target $guide $LINKCHECK
     # Build it only the first time

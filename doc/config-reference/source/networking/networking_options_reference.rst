@@ -99,6 +99,11 @@ configuration options.
      option, see `Configure OVS plug-in
      <http://docs.openstack.org/admin-guide-cloud/networking_config-agents.html>`__.
 
+.. note::
+   OpenFlow Agent (ofagent) Mechanism driver is deprecated in favor
+   of OpenvSwitch mechanism driver with "native" of_interface in the
+   Mitaka release and will be removed in the next release.
+
 Modular Layer 2 (ml2) Flat Type configuration options
 -----------------------------------------------------
 
@@ -131,6 +136,8 @@ Modular Layer 2 (ml2) Geneve Mechanism configuration options
 
 Modular Layer 2 (ml2) OpenFlow Agent (ofagent) Mechanism configuration options
 ------------------------------------------------------------------------------
+
+ofagent is deprecated in the Mitaka release.
 
 .. include:: ../tables/neutron-ml2_ofa.rst
 
@@ -346,6 +353,28 @@ VPNaaS agent.
 .. include:: ../tables/neutron-vpnaas_ipsec.rst
 .. include:: ../tables/neutron-vpnaas_openswan.rst
 .. include:: ../tables/neutron-vpnaas_strongswan.rst
+
+.. note::
+
+   ``strongSwan`` and ``Openswan`` cannot both be installed and enabled at the
+   same time. The ``vpn_device_driver`` configuration option in the
+   ``vpnaas_agent.ini`` file is an option that lists the VPN device
+   drivers that the Networking service will use. You must choose either
+   ``strongSwan`` or ``Openswan`` as part of the list.
+
+.. important::
+
+   Ensure that your ``strongSwan`` version is 5 or newer.
+
+To declare either one in the ``vpn_device_driver``:
+
+.. code-block:: ini
+
+   #Openswan
+   vpn_device_driver = ['neutron_vpnaas.services.vpn.device_drivers.ipsec.OpenSwanDriver']
+
+   #strongSwan
+   vpn_device_driver = ['neutron.services.vpn.device_drivers.strongswan_ipsec.StrongSwanDriver']
 
 IPv6 router advertisement
 ~~~~~~~~~~~~~~~~~~~~~~~~~
