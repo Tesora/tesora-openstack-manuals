@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: End User Guide 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-01-15 06:09+0000\n"
+"POT-Creation-Date: 2016-02-09 06:08+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -403,7 +403,7 @@ msgid ""
 "Measures a specific aspect of resource usage, such as the existence of a "
 "running instance, or ongoing performance, such as the CPU utilization for an "
 "instance. Meters exist for each type of resource. For example, a separate "
-"``cpu_util`` meter exists for each instance. The life cycle of a meter is "
+"``cpu_util`` meter exists for each instance. The lifecycle of a meter is "
 "decoupled from the existence of its related resource. The meter persists "
 "after the resource goes away."
 msgstr ""
@@ -917,7 +917,7 @@ msgid ""
 msgstr ""
 
 #: ../cli_config_drive.rst:31
-msgid "Also, the Bare Matal service supports the configuration drive."
+msgid "Also, the Bare Metal service supports the configuration drive."
 msgstr ""
 
 #: ../cli_config_drive.rst:33
@@ -1439,14 +1439,14 @@ msgstr ""
 
 #: ../cli_create_and_manage_stacks.rst:118
 msgid ""
-"Some resources have associated metadata which can change throughout the life "
-"cycle of a resource. Show the metadata by running the following command:"
+"Some resources have associated metadata which can change throughout the "
+"lifecycle of a resource. Show the metadata by running the following command:"
 msgstr ""
 
 #: ../cli_create_and_manage_stacks.rst:126
 msgid ""
-"A series of events is generated during the life cycle of a stack. To display "
-"life cycle events, run the following command:"
+"A series of events is generated during the lifecycle of a stack. To display "
+"lifecycle events, run the following command:"
 msgstr ""
 
 #: ../cli_create_and_manage_stacks.rst:139
@@ -1505,25 +1505,25 @@ msgstr ""
 msgid "Launch instances"
 msgstr ""
 
-#: ../cli_launch_instances.rst:11
+#: ../cli_launch_instances.rst:5
 msgid "Instances are virtual machines that run inside the cloud."
 msgstr ""
 
-#: ../cli_launch_instances.rst:13
+#: ../cli_launch_instances.rst:7
 msgid "Before you can launch an instance, gather the following parameters:"
 msgstr ""
 
-#: ../cli_launch_instances.rst:15
+#: ../cli_launch_instances.rst:9
 msgid ""
 "The **instance source** can be an image, snapshot, or block storage volume "
 "that contains an image or snapshot."
 msgstr ""
 
-#: ../cli_launch_instances.rst:18
+#: ../cli_launch_instances.rst:12
 msgid "A **name** for your instance."
 msgstr ""
 
-#: ../cli_launch_instances.rst:20
+#: ../cli_launch_instances.rst:14
 msgid ""
 "The **flavor** for your instance, which defines the compute, memory, and "
 "storage capacity of nova computing instances. A flavor is an available "
@@ -1531,7 +1531,7 @@ msgid ""
 "that can be launched."
 msgstr ""
 
-#: ../cli_launch_instances.rst:25
+#: ../cli_launch_instances.rst:19
 msgid ""
 "Any **user data** files. A user data file is a special key in the metadata "
 "service that holds a file that cloud-aware applications in the guest "
@@ -1541,13 +1541,13 @@ msgid ""
 "distributions and that handles early initialization of a cloud instance."
 msgstr ""
 
-#: ../cli_launch_instances.rst:34
+#: ../cli_launch_instances.rst:28
 msgid ""
 "Access and security credentials, which include one or both of the following "
 "credentials:"
 msgstr ""
 
-#: ../cli_launch_instances.rst:37
+#: ../cli_launch_instances.rst:31
 msgid ""
 "A **key pair** for your instance, which are SSH credentials that are "
 "injected into images when they are launched. For the key pair to be "
@@ -1557,20 +1557,20 @@ msgid ""
 "use the key pair for multiple instances that belong to that project."
 msgstr ""
 
-#: ../cli_launch_instances.rst:45
+#: ../cli_launch_instances.rst:39
 msgid ""
 "A **security group** that defines which incoming network traffic is "
 "forwarded to instances. Security groups hold a set of firewall policies, "
 "known as *security group rules*."
 msgstr ""
 
-#: ../cli_launch_instances.rst:49
+#: ../cli_launch_instances.rst:43
 msgid ""
 "If needed, you can assign a **floating (public) IP address** to a running "
 "instance."
 msgstr ""
 
-#: ../cli_launch_instances.rst:52
+#: ../cli_launch_instances.rst:46
 msgid ""
 "You can also attach a block storage device, or **volume**, for persistent "
 "storage."
@@ -1578,7 +1578,7 @@ msgstr ""
 
 # #-#-#-#-#  cli_launch_instances.pot (End User Guide 1.0.0)  #-#-#-#-#
 # #-#-#-#-#  cli_nova_configure_access_security_for_instances.pot (End User Guide 1.0.0)  #-#-#-#-#
-#: ../cli_launch_instances.rst:57
+#: ../cli_launch_instances.rst:51
 #: ../cli_nova_configure_access_security_for_instances.rst:57
 msgid ""
 "Instances that use the default security group cannot, by default, be "
@@ -1589,14 +1589,14 @@ msgstr ""
 
 # #-#-#-#-#  cli_launch_instances.pot (End User Guide 1.0.0)  #-#-#-#-#
 # #-#-#-#-#  cli_nova_configure_access_security_for_instances.pot (End User Guide 1.0.0)  #-#-#-#-#
-#: ../cli_launch_instances.rst:62
+#: ../cli_launch_instances.rst:56
 #: ../cli_nova_configure_access_security_for_instances.rst:62
 msgid ""
 "You can also assign a floating IP address to a running instance to make it "
 "accessible from outside the cloud. See :doc:`cli_manage_ip_addresses`."
 msgstr ""
 
-#: ../cli_launch_instances.rst:66
+#: ../cli_launch_instances.rst:60
 msgid ""
 "After you gather the parameters that you need to launch an instance, you can "
 "launch it from an image_ or a :ref:`volume`. You can launch an instance "
@@ -1605,176 +1605,81 @@ msgid ""
 "a pool of images that are accessible to members of different projects."
 msgstr ""
 
-#: ../cli_launch_instances.rst:74
+#: ../cli_launch_instances.rst:68
 msgid "Gather parameters to launch an instance"
 msgstr ""
 
-#: ../cli_launch_instances.rst:76
+#: ../cli_launch_instances.rst:70
 msgid "Before you begin, source the OpenStack RC file."
 msgstr ""
 
 # #-#-#-#-#  cli_launch_instances.pot (End User Guide 1.0.0)  #-#-#-#-#
 # #-#-#-#-#  cli_nova_launch_instance_from_volume.pot (End User Guide 1.0.0)  #-#-#-#-#
-#: ../cli_launch_instances.rst:78
+#: ../cli_launch_instances.rst:72
 #: ../cli_nova_launch_instance_from_volume.rst:162
 msgid "List the available flavors."
 msgstr ""
 
-#: ../cli_launch_instances.rst:84
+#: ../cli_launch_instances.rst:78
 msgid "Note the ID of the flavor that you want to use for your instance::"
 msgstr ""
 
 # #-#-#-#-#  cli_launch_instances.pot (End User Guide 1.0.0)  #-#-#-#-#
 # #-#-#-#-#  cli_nova_launch_instance_from_volume.pot (End User Guide 1.0.0)  #-#-#-#-#
-#: ../cli_launch_instances.rst:96
+#: ../cli_launch_instances.rst:90
 #: ../cli_nova_launch_instance_from_volume.rst:146
 msgid "List the available images."
 msgstr ""
 
-#: ../cli_launch_instances.rst:102
+#: ../cli_launch_instances.rst:96
 msgid "Note the ID of the image from which you want to boot your instance::"
 msgstr ""
 
-#: ../cli_launch_instances.rst:112
+#: ../cli_launch_instances.rst:106
 msgid ""
 "You can also filter the image list by using :command:`grep` to find a "
 "specific image, as follows:"
 msgstr ""
 
-#: ../cli_launch_instances.rst:121
+#: ../cli_launch_instances.rst:115
 msgid "List the available security groups."
 msgstr ""
 
-#: ../cli_launch_instances.rst:129
+#: ../cli_launch_instances.rst:123
 msgid ""
 "If you are an admin user, specify the :option:`--all-tenants` parameter to "
 "list groups for all tenants."
 msgstr ""
 
-#: ../cli_launch_instances.rst:134
+#: ../cli_launch_instances.rst:128
 msgid ""
 "Note the ID of the security group that you want to use for your instance::"
 msgstr ""
 
-#: ../cli_launch_instances.rst:144
+#: ../cli_launch_instances.rst:138
 msgid ""
 "If you have not created any security groups, you can assign the instance to "
 "only the default security group."
 msgstr ""
 
-#: ../cli_launch_instances.rst:147
+#: ../cli_launch_instances.rst:141
 msgid "You can view rules for a specified security group:"
 msgstr ""
 
-#: ../cli_launch_instances.rst:153
+#: ../cli_launch_instances.rst:147
 msgid ""
 "List the available key pairs, and note the key pair name that you use for "
 "SSH access."
 msgstr ""
 
-#: ../cli_launch_instances.rst:163
-msgid "Launch an instance from an image"
+# #-#-#-#-#  cli_launch_instances.pot (End User Guide 1.0.0)  #-#-#-#-#
+# #-#-#-#-#  dashboard_launch_instances.pot (End User Guide 1.0.0)  #-#-#-#-#
+#: ../cli_launch_instances.rst:157 ../dashboard_launch_instances.rst:17
+msgid "Launch an instance"
 msgstr ""
 
-#: ../cli_launch_instances.rst:165
-msgid ""
-"After you gather required parameters, run the following command to launch an "
-"instance. Specify the server name, flavor ID, and image ID."
-msgstr ""
-
-#: ../cli_launch_instances.rst:174
-msgid ""
-"Optionally, you can provide a key name for access control and a security "
-"group for security. You can also include metadata key and value pairs. For "
-"example, you can add a description for your server by providing the ``--meta "
-"description=\"My Server\"`` parameter."
-msgstr ""
-
-#: ../cli_launch_instances.rst:179
-msgid ""
-"You can pass user data in a local file at instance launch by using the ``--"
-"user-data USER-DATA-FILE`` parameter."
-msgstr ""
-
-#: ../cli_launch_instances.rst:184
-msgid ""
-"If you boot an instance with an INSTANCE_NAME greater than 63 characters, "
-"Compute truncates it automatically when turning it into a host name to "
-"ensure the correct work of dnsmasq. The corresponding warning is written "
-"into the ``nova-network.log`` file."
-msgstr ""
-
-#: ../cli_launch_instances.rst:189
-msgid ""
-"The following command launches the ``MyCirrosServer`` instance with the ``m1."
-"small`` flavor (ID of ``1``), ``cirros-0.3.2-x86_64-uec`` image (ID of "
-"``397e713c-b95b-4186-ad46-6126863ea0a9``), ``default`` security group, "
-"``KeyPair01`` key, and a user data file called ``cloudinit.file``:"
-msgstr ""
-
-#: ../cli_launch_instances.rst:201
-msgid ""
-"Depending on the parameters that you provide, the command returns a list of "
-"server properties."
-msgstr ""
-
-#: ../cli_launch_instances.rst:237
-msgid ""
-"A status of ``BUILD`` indicates that the instance has started, but is not "
-"yet online."
-msgstr ""
-
-#: ../cli_launch_instances.rst:240
-msgid "A status of ``ACTIVE`` indicates that the instance is active."
-msgstr ""
-
-#: ../cli_launch_instances.rst:242
-msgid ""
-"Copy the server ID value from the ``id`` field in the output. Use the ID to "
-"get server details or to delete your server."
-msgstr ""
-
-#: ../cli_launch_instances.rst:245
-msgid ""
-"Copy the administrative password value from the ``adminPass`` field. Use the "
-"password to log in to your server."
-msgstr ""
-
-#: ../cli_launch_instances.rst:250
-msgid ""
-"You can also place arbitrary local files into the instance file system at "
-"creation time by using the ``--file <dst-path=src-path>`` option. You can "
-"store up to five files. For example, if you have a special authorized keys "
-"file named ``special_authorized_keysfile`` that you want to put on the "
-"instance rather than using the regular SSH key injection, you can use the :"
-"option:`--file` option as shown in the following example."
-msgstr ""
-
-#: ../cli_launch_instances.rst:263
-msgid "Check if the instance is online."
-msgstr ""
-
-#: ../cli_launch_instances.rst:269
-msgid ""
-"The list shows the ID, name, status, and private (and if assigned, public) "
-"IP addresses for all instances in the project to which you belong:"
-msgstr ""
-
-#: ../cli_launch_instances.rst:282
-msgid "If the status for the instance is ACTIVE, the instance is online."
-msgstr ""
-
-#: ../cli_launch_instances.rst:284
-msgid ""
-"To view the available options for the :command:`nova list` command, run the "
-"following command:"
-msgstr ""
-
-#: ../cli_launch_instances.rst:293
-msgid ""
-"If you did not provide a key pair, security groups, or rules, you can access "
-"the instance only from inside the cloud through VNC. Even pinging the "
-"instance is not possible."
+#: ../cli_launch_instances.rst:159
+msgid "You can launch an instance from various sources."
 msgstr ""
 
 #: ../cli_manage_bare_metal_nodes.rst:3
@@ -2533,6 +2438,115 @@ msgid ""
 "all IP addresses, run the following command."
 msgstr ""
 
+#: ../cli_nova_launch_instance_from_image.rst:3
+msgid "Launch an instance from an image"
+msgstr ""
+
+#: ../cli_nova_launch_instance_from_image.rst:5
+msgid "Follow the steps below to launch an instance from an image."
+msgstr ""
+
+#: ../cli_nova_launch_instance_from_image.rst:7
+msgid ""
+"After you gather required parameters, run the following command to launch an "
+"instance. Specify the server name, flavor ID, and image ID."
+msgstr ""
+
+#: ../cli_nova_launch_instance_from_image.rst:16
+msgid ""
+"Optionally, you can provide a key name for access control and a security "
+"group for security. You can also include metadata key and value pairs. For "
+"example, you can add a description for your server by providing the ``--meta "
+"description=\"My Server\"`` parameter."
+msgstr ""
+
+#: ../cli_nova_launch_instance_from_image.rst:21
+msgid ""
+"You can pass user data in a local file at instance launch by using the ``--"
+"user-data USER-DATA-FILE`` parameter."
+msgstr ""
+
+#: ../cli_nova_launch_instance_from_image.rst:26
+msgid ""
+"If you boot an instance with an INSTANCE_NAME greater than 63 characters, "
+"Compute truncates it automatically when turning it into a host name to "
+"ensure the correct work of dnsmasq. The corresponding warning is written "
+"into the ``nova-network.log`` file."
+msgstr ""
+
+#: ../cli_nova_launch_instance_from_image.rst:31
+msgid ""
+"The following command launches the ``MyCirrosServer`` instance with the ``m1."
+"small`` flavor (ID of ``1``), ``cirros-0.3.2-x86_64-uec`` image (ID of "
+"``397e713c-b95b-4186-ad46-6126863ea0a9``), ``default`` security group, "
+"``KeyPair01`` key, and a user data file called ``cloudinit.file``:"
+msgstr ""
+
+#: ../cli_nova_launch_instance_from_image.rst:43
+msgid ""
+"Depending on the parameters that you provide, the command returns a list of "
+"server properties."
+msgstr ""
+
+#: ../cli_nova_launch_instance_from_image.rst:79
+msgid ""
+"A status of ``BUILD`` indicates that the instance has started, but is not "
+"yet online."
+msgstr ""
+
+#: ../cli_nova_launch_instance_from_image.rst:82
+msgid "A status of ``ACTIVE`` indicates that the instance is active."
+msgstr ""
+
+#: ../cli_nova_launch_instance_from_image.rst:84
+msgid ""
+"Copy the server ID value from the ``id`` field in the output. Use the ID to "
+"get server details or to delete your server."
+msgstr ""
+
+#: ../cli_nova_launch_instance_from_image.rst:87
+msgid ""
+"Copy the administrative password value from the ``adminPass`` field. Use the "
+"password to log in to your server."
+msgstr ""
+
+#: ../cli_nova_launch_instance_from_image.rst:92
+msgid ""
+"You can also place arbitrary local files into the instance file system at "
+"creation time by using the ``--file <dst-path=src-path>`` option. You can "
+"store up to five files. For example, if you have a special authorized keys "
+"file named ``special_authorized_keysfile`` that you want to put on the "
+"instance rather than using the regular SSH key injection, you can use the :"
+"option:`--file` option as shown in the following example."
+msgstr ""
+
+#: ../cli_nova_launch_instance_from_image.rst:105
+msgid "Check if the instance is online."
+msgstr ""
+
+#: ../cli_nova_launch_instance_from_image.rst:111
+msgid ""
+"The list shows the ID, name, status, and private (and if assigned, public) "
+"IP addresses for all instances in the project to which you belong:"
+msgstr ""
+
+#: ../cli_nova_launch_instance_from_image.rst:124
+msgid "If the status for the instance is ACTIVE, the instance is online."
+msgstr ""
+
+#: ../cli_nova_launch_instance_from_image.rst:126
+msgid ""
+"To view the available options for the :command:`nova list` command, run the "
+"following command:"
+msgstr ""
+
+#: ../cli_nova_launch_instance_from_image.rst:135
+msgid ""
+"If you did not provide a key pair, security groups, or rules, you can access "
+"the instance only from inside the cloud through VNC. Even pinging the "
+"instance is not possible."
+msgstr ""
+
 #: ../cli_nova_launch_instance_from_volume.rst:3
 msgid "Launch an instance from a volume"
 msgstr ""
@@ -2812,55 +2826,55 @@ msgid ""
 "system is rebooted, the instance asks you again to install the operating "
 "system, which means your instance is not usable. If you have problems with "
 "image creation, please check the `Virtual Machine Image Guide <http://docs."
-"openstack.org/image-guide/create_images_manually.html>`_ for reference."
+"openstack.org/image-guide/create-images-manually.html>`_ for reference."
 msgstr ""
 
-#: ../cli_nova_launch_instance_using_ISO_image.rst:77
+#: ../cli_nova_launch_instance_using_ISO_image.rst:78
 msgid "Make the instances booted from ISO image functional"
 msgstr ""
 
-#: ../cli_nova_launch_instance_using_ISO_image.rst:79
+#: ../cli_nova_launch_instance_using_ISO_image.rst:80
 msgid ""
 "Now complete the following steps to make your instances created using ISO "
 "image actually functional."
 msgstr ""
 
-#: ../cli_nova_launch_instance_using_ISO_image.rst:82
+#: ../cli_nova_launch_instance_using_ISO_image.rst:83
 msgid "Delete the instance using the following command."
 msgstr ""
 
-#: ../cli_nova_launch_instance_using_ISO_image.rst:88
+#: ../cli_nova_launch_instance_using_ISO_image.rst:89
 msgid ""
 "After you delete the instance, the system you have just installed using your "
 "ISO image remains, because the parameter ``shutdown=preserve`` was set, so "
 "run the following command."
 msgstr ""
 
-#: ../cli_nova_launch_instance_using_ISO_image.rst:101
+#: ../cli_nova_launch_instance_using_ISO_image.rst:102
 msgid ""
 "You get a list with all the volumes in your system. In this list, you can "
 "find the volume that is attached to your ISO created instance, with the "
 "false bootable property."
 msgstr ""
 
-#: ../cli_nova_launch_instance_using_ISO_image.rst:105
+#: ../cli_nova_launch_instance_using_ISO_image.rst:106
 msgid "Upload the volume to glance."
 msgstr ""
 
-#: ../cli_nova_launch_instance_using_ISO_image.rst:117
+#: ../cli_nova_launch_instance_using_ISO_image.rst:118
 msgid ""
 "The ``VOLUME_UUID`` is the uuid of the volume that is attached to your ISO "
 "created instance, and the ``IMAGE_NAME`` is the name that you give to your "
 "new image."
 msgstr ""
 
-#: ../cli_nova_launch_instance_using_ISO_image.rst:121
+#: ../cli_nova_launch_instance_using_ISO_image.rst:122
 msgid ""
 "After the image is successfully uploaded, you can use the new image to boot "
 "instances."
 msgstr ""
 
-#: ../cli_nova_launch_instance_using_ISO_image.rst:124
+#: ../cli_nova_launch_instance_using_ISO_image.rst:125
 msgid ""
 "The instances launched using this image contain the system that you have "
 "just installed using the ISO image."
@@ -4183,24 +4197,25 @@ msgid ""
 "The system returns status code 2xx (between 200 and 299, inclusive) and the "
 "requested matching objects. Because you use the slash, only the pseudo-"
 "directory ``photos/`` displays. The returned values from a slash "
-"``delimiter`` query are not real objects. They have a content-type of "
-"``application/directory`` and are in the ``subdir`` section of JSON and XML "
-"results."
+"``delimiter`` query are not real objects. The value will refer to a real "
+"object if it does not end with a slash. The pseudo-directories have no "
+"content-type, rather, each pseudo-directory has its own ``subdir`` entry in "
+"the response of JSON and XML results. For example:"
 msgstr ""
 
-#: ../cli_swift_pseudo_hierarchical_folders_directories.rst:66
+#: ../cli_swift_pseudo_hierarchical_folders_directories.rst:114
 msgid ""
 "Use the ``prefix`` and ``delimiter`` parameters to view the objects inside a "
 "pseudo-directory, including further nested pseudo-directories."
 msgstr ""
 
-#: ../cli_swift_pseudo_hierarchical_folders_directories.rst:74
+#: ../cli_swift_pseudo_hierarchical_folders_directories.rst:122
 msgid ""
 "The system returns status code 2xx (between 200 and 299, inclusive) and the "
 "objects and pseudo-directories within the top level pseudo-directory."
 msgstr ""
 
-#: ../cli_swift_pseudo_hierarchical_folders_directories.rst:84
+#: ../cli_swift_pseudo_hierarchical_folders_directories.rst:132
 msgid ""
 "You can create an unlimited number of nested pseudo-directories. To navigate "
 "through them, use a longer ``prefix`` parameter coupled with the "
@@ -4209,7 +4224,7 @@ msgid ""
 "directly to the files contained within ``dogs``, enter the following command:"
 msgstr ""
 
-#: ../cli_swift_pseudo_hierarchical_folders_directories.rst:96
+#: ../cli_swift_pseudo_hierarchical_folders_directories.rst:144
 msgid ""
 "The system returns status code 2xx (between 200 and 299, inclusive) and the "
 "objects and pseudo-directories within the nested pseudo-directory."
@@ -4676,32 +4691,32 @@ msgid ""
 "previous step:"
 msgstr ""
 
-#: ../cli_use_snapshots_to_migrate_instances.rst:104
+#: ../cli_use_snapshots_to_migrate_instances.rst:103
 msgid ""
 "The :command:`glance image-download` command requires the image ID and "
 "cannot use the image name. Check there is sufficient space on the "
 "destination file system for the image file."
 msgstr ""
 
-#: ../cli_use_snapshots_to_migrate_instances.rst:109
+#: ../cli_use_snapshots_to_migrate_instances.rst:108
 msgid ""
 "Make the image available to the new environment, either through HTTP or "
 "direct upload to a machine (``scp``)."
 msgstr ""
 
-#: ../cli_use_snapshots_to_migrate_instances.rst:115
+#: ../cli_use_snapshots_to_migrate_instances.rst:114
 msgid "Import the snapshot to the new environment"
 msgstr ""
 
-#: ../cli_use_snapshots_to_migrate_instances.rst:117
+#: ../cli_use_snapshots_to_migrate_instances.rst:116
 msgid "In the new project or cloud environment, import the snapshot:"
 msgstr ""
 
-#: ../cli_use_snapshots_to_migrate_instances.rst:126
+#: ../cli_use_snapshots_to_migrate_instances.rst:125
 msgid "Boot a new instance from the snapshot"
 msgstr ""
 
-#: ../cli_use_snapshots_to_migrate_instances.rst:128
+#: ../cli_use_snapshots_to_migrate_instances.rst:127
 msgid ""
 "In the new project or cloud environment, use the snapshot to create the new "
 "instance:"
@@ -4791,9 +4806,9 @@ msgstr ""
 #: ../dashboard_manage_containers.rst:129
 #: ../dashboard_manage_containers.rst:156 ../dashboard_manage_images.rst:29
 #: ../dashboard_manage_images.rst:98 ../dashboard_manage_images.rst:122
-#: ../dashboard_manage_volumes.rst:14 ../dashboard_manage_volumes.rst:62
-#: ../dashboard_manage_volumes.rst:95 ../dashboard_manage_volumes.rst:111
-#: ../dashboard_manage_volumes.rst:132 ../dashboard_manage_volumes.rst:160
+#: ../dashboard_manage_volumes.rst:14 ../dashboard_manage_volumes.rst:64
+#: ../dashboard_manage_volumes.rst:97 ../dashboard_manage_volumes.rst:113
+#: ../dashboard_manage_volumes.rst:134 ../dashboard_manage_volumes.rst:162
 #: ../dashboard_stacks.rst:28 ../dashboard_stacks.rst:122
 #: ../dashboard_stacks.rst:141
 msgid "Log in to the dashboard."
@@ -4819,9 +4834,9 @@ msgstr ""
 #: ../dashboard_manage_containers.rst:131
 #: ../dashboard_manage_containers.rst:158 ../dashboard_manage_images.rst:31
 #: ../dashboard_manage_images.rst:100 ../dashboard_manage_images.rst:124
-#: ../dashboard_manage_volumes.rst:16 ../dashboard_manage_volumes.rst:64
-#: ../dashboard_manage_volumes.rst:97 ../dashboard_manage_volumes.rst:113
-#: ../dashboard_manage_volumes.rst:134 ../dashboard_manage_volumes.rst:162
+#: ../dashboard_manage_volumes.rst:16 ../dashboard_manage_volumes.rst:66
+#: ../dashboard_manage_volumes.rst:99 ../dashboard_manage_volumes.rst:115
+#: ../dashboard_manage_volumes.rst:136 ../dashboard_manage_volumes.rst:164
 #: ../dashboard_stacks.rst:29 ../dashboard_stacks.rst:123
 #: ../dashboard_stacks.rst:142
 msgid "Select the appropriate project from the drop down menu at the top left."
@@ -5787,10 +5802,6 @@ msgstr ""
 msgid "Instance snapshot that you took."
 msgstr ""
 
-#: ../dashboard_launch_instances.rst:17
-msgid "Launch an instance"
-msgstr ""
-
 #: ../dashboard_launch_instances.rst:23 ../dashboard_launch_instances.rst:261
 msgid ""
 "On the :guilabel:`Project` tab, open the :guilabel:`Compute` tab and click :"
@@ -6183,7 +6194,7 @@ msgstr ""
 
 # #-#-#-#-#  dashboard_launch_instances.pot (End User Guide 1.0.0)  #-#-#-#-#
 # #-#-#-#-#  dashboard_manage_volumes.pot (End User Guide 1.0.0)  #-#-#-#-#
-#: ../dashboard_launch_instances.rst:244 ../dashboard_manage_volumes.rst:120
+#: ../dashboard_launch_instances.rst:244 ../dashboard_manage_volumes.rst:122
 msgid "In the :guilabel:`Actions` column, click :guilabel:`Create Snapshot`."
 msgstr ""
 
@@ -6747,7 +6758,7 @@ msgstr ""
 #: ../dashboard_manage_shares.rst:113 ../dashboard_manage_shares.rst:127
 #: ../dashboard_manage_shares.rst:162 ../dashboard_manage_shares.rst:179
 #: ../dashboard_manage_shares.rst:225 ../dashboard_manage_shares.rst:242
-#: ../dashboard_manage_volumes.rst:106 ../dashboard_manage_volumes.rst:171
+#: ../dashboard_manage_volumes.rst:108 ../dashboard_manage_volumes.rst:173
 msgid "A message indicates whether the action was successful."
 msgstr ""
 
@@ -7024,9 +7035,9 @@ msgstr ""
 msgid "Create a volume"
 msgstr ""
 
-#: ../dashboard_manage_volumes.rst:18 ../dashboard_manage_volumes.rst:66
-#: ../dashboard_manage_volumes.rst:115 ../dashboard_manage_volumes.rst:136
-#: ../dashboard_manage_volumes.rst:164
+#: ../dashboard_manage_volumes.rst:18 ../dashboard_manage_volumes.rst:68
+#: ../dashboard_manage_volumes.rst:117 ../dashboard_manage_volumes.rst:138
+#: ../dashboard_manage_volumes.rst:166
 msgid ""
 "On the :guilabel:`Project` tab, open the :guilabel:`Compute` tab and click :"
 "guilabel:`Volumes` category."
@@ -7090,141 +7101,141 @@ msgstr ""
 msgid "The dashboard shows the volume on the :guilabel:`Volumes` tab."
 msgstr ""
 
-#: ../dashboard_manage_volumes.rst:57
+#: ../dashboard_manage_volumes.rst:59
 msgid "Attach a volume to an instance"
 msgstr ""
 
-#: ../dashboard_manage_volumes.rst:59
+#: ../dashboard_manage_volumes.rst:61
 msgid ""
 "After you create one or more volumes, you can attach them to instances. You "
 "can attach a volume to one instance at a time."
 msgstr ""
 
-#: ../dashboard_manage_volumes.rst:69
+#: ../dashboard_manage_volumes.rst:71
 msgid ""
 "Select the volume to add to an instance and click :guilabel:`Edit "
 "Attachments`."
 msgstr ""
 
-#: ../dashboard_manage_volumes.rst:72
+#: ../dashboard_manage_volumes.rst:74
 msgid ""
 "In the :guilabel:`Manage Volume Attachments` dialog box, select an instance."
 msgstr ""
 
-#: ../dashboard_manage_volumes.rst:74
+#: ../dashboard_manage_volumes.rst:76
 msgid ""
 "Enter the name of the device from which the volume is accessible by the "
 "instance."
 msgstr ""
 
-#: ../dashboard_manage_volumes.rst:79
+#: ../dashboard_manage_volumes.rst:81
 msgid ""
 "The actual device name might differ from the volume name because of "
 "hypervisor settings."
 msgstr ""
 
-#: ../dashboard_manage_volumes.rst:82
+#: ../dashboard_manage_volumes.rst:84
 msgid "Click :guilabel:`Attach Volume`."
 msgstr ""
 
-#: ../dashboard_manage_volumes.rst:84
+#: ../dashboard_manage_volumes.rst:86
 msgid ""
 "The dashboard shows the instance to which the volume is now attached and the "
 "device name."
 msgstr ""
 
-#: ../dashboard_manage_volumes.rst:87
+#: ../dashboard_manage_volumes.rst:89
 msgid ""
 "You can view the status of a volume in the Volumes tab of the dashboard. The "
 "volume is either Available or In-Use."
 msgstr ""
 
-#: ../dashboard_manage_volumes.rst:90
+#: ../dashboard_manage_volumes.rst:92
 msgid "Now you can log in to the instance and mount, format, and use the disk."
 msgstr ""
 
-#: ../dashboard_manage_volumes.rst:93
+#: ../dashboard_manage_volumes.rst:95
 msgid "Detach a volume from an instance"
 msgstr ""
 
-#: ../dashboard_manage_volumes.rst:99
+#: ../dashboard_manage_volumes.rst:101
 msgid ""
 "On the :guilabel:`Project` tab, open the :guilabel:`Compute` tab and click "
 "the :guilabel:`Volumes` category."
 msgstr ""
 
-#: ../dashboard_manage_volumes.rst:102
+#: ../dashboard_manage_volumes.rst:104
 msgid "Select the volume and click :guilabel:`Edit Attachments`."
 msgstr ""
 
-#: ../dashboard_manage_volumes.rst:104
+#: ../dashboard_manage_volumes.rst:106
 msgid "Click :guilabel:`Detach Volume` and confirm your changes."
 msgstr ""
 
-#: ../dashboard_manage_volumes.rst:109
+#: ../dashboard_manage_volumes.rst:111
 msgid "Create a snapshot from a volume"
 msgstr ""
 
-#: ../dashboard_manage_volumes.rst:118
+#: ../dashboard_manage_volumes.rst:120
 msgid "Select a volume from which to create a snapshot."
 msgstr ""
 
-#: ../dashboard_manage_volumes.rst:122
+#: ../dashboard_manage_volumes.rst:124
 msgid ""
 "In the dialog box that opens, enter a snapshot name and a brief description."
 msgstr ""
 
-#: ../dashboard_manage_volumes.rst:125
+#: ../dashboard_manage_volumes.rst:127
 msgid "Confirm your changes."
 msgstr ""
 
-#: ../dashboard_manage_volumes.rst:127
+#: ../dashboard_manage_volumes.rst:129
 msgid "The dashboard shows the new volume snapshot in Volume Snapshots tab."
 msgstr ""
 
-#: ../dashboard_manage_volumes.rst:130
+#: ../dashboard_manage_volumes.rst:132
 msgid "Edit a volume"
 msgstr ""
 
-#: ../dashboard_manage_volumes.rst:139
+#: ../dashboard_manage_volumes.rst:141
 msgid "Select the volume that you want to edit."
 msgstr ""
 
-#: ../dashboard_manage_volumes.rst:141
+#: ../dashboard_manage_volumes.rst:143
 msgid "In the :guilabel:`Actions` column, click :guilabel:`Edit Volume`."
 msgstr ""
 
-#: ../dashboard_manage_volumes.rst:143
+#: ../dashboard_manage_volumes.rst:145
 msgid ""
 "In the :guilabel:`Edit Volume` dialog box, update the name and description "
 "of the volume."
 msgstr ""
 
-#: ../dashboard_manage_volumes.rst:146
+#: ../dashboard_manage_volumes.rst:148
 msgid "Click :guilabel:`Edit Volume`."
 msgstr ""
 
-#: ../dashboard_manage_volumes.rst:150
+#: ../dashboard_manage_volumes.rst:152
 msgid ""
 "You can extend a volume by using the :guilabel:`Extend Volume` option "
 "available in the :guilabel:`More` dropdown list and entering the new value "
 "for volume size."
 msgstr ""
 
-#: ../dashboard_manage_volumes.rst:155
+#: ../dashboard_manage_volumes.rst:157
 msgid "Delete a volume"
 msgstr ""
 
-#: ../dashboard_manage_volumes.rst:157
+#: ../dashboard_manage_volumes.rst:159
 msgid ""
 "When you delete an instance, the data in its attached volumes is not deleted."
 msgstr ""
 
-#: ../dashboard_manage_volumes.rst:167
+#: ../dashboard_manage_volumes.rst:169
 msgid "Select the check boxes for the volumes that you want to delete."
 msgstr ""
 
-#: ../dashboard_manage_volumes.rst:169
+#: ../dashboard_manage_volumes.rst:171
 msgid "Click :guilabel:`Delete Volumes` and confirm your choice."
 msgstr ""
 
