@@ -7,6 +7,7 @@ Volume drivers
 
    drivers/blockbridge-eps-driver.rst
    drivers/ceph-rbd-volume-driver.rst
+   drivers/coho-data-driver.rst
    drivers/dell-equallogic-driver.rst
    drivers/dell-storagecenter-driver.rst
    drivers/dothill-driver.rst
@@ -14,6 +15,7 @@ Volume drivers
    drivers/emc-vmax-driver.rst
    drivers/emc-vnx-driver.rst
    drivers/emc-xtremio-driver.rst
+   drivers/fujitsu-eternus-dx-driver.rst
    drivers/glusterfs-driver.rst
    drivers/hds-hnas-driver.rst
    drivers/hitachi-storage-volume-driver.rst
@@ -38,7 +40,6 @@ Volume drivers
    drivers/smbfs-volume-driver.rst
    drivers/solidfire-volume-driver.rst
    drivers/tintri-volume-driver.rst
-   drivers/violin-v6000-driver.rst
    drivers/violin-v7000-driver.rst
    drivers/vmware-vmdk-driver.rst
    drivers/windows-iscsi-volume-driver.rst

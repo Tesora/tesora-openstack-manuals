@@ -1,5 +1,5 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) 2015, OpenStack contributors
+# Copyright (C) 2015-2016, OpenStack contributors
 # This file is distributed under the same license as the Architecture Design Guide package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Architecture Design Guide 0.9\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-12-30 06:12+0000\n"
+"POT-Creation-Date: 2016-01-27 06:33+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2389,7 +2389,7 @@ msgid ""
 "packing also requires a common hardware design, with all hardware nodes "
 "within a compute resource pool sharing a common processor, memory, and "
 "storage layout. This makes it easier to deploy, support, and maintain nodes "
-"throughout their life cycle."
+"throughout their lifecycle."
 msgstr ""
 
 #: ../generalpurpose-technical-considerations.rst:49
@@ -7145,7 +7145,7 @@ msgid ""
 "Consider the ability to upgrade the infrastructure. As demand for network "
 "resources increase, operators add additional IP address blocks and add "
 "additional bandwidth capacity. In addition, consider managing hardware and "
-"software life cycle events, for example upgrades, decommissioning, and "
+"software lifecycle events, for example upgrades, decommissioning, and "
 "outages, while avoiding service interruptions for tenants."
 msgstr ""
 
@@ -8311,8 +8311,8 @@ msgstr ""
 #: ../references.rst:22
 msgid ""
 "`Image Service property keys <http://docs.openstack.org/ cli-reference/"
-"content/chapter_cli-glance-property.html>`_ : Glance API property keys "
-"allows the administrator to attach custom characteristics to images."
+"glance.html#image-service-property-keys>`_ : Glance API property keys allows "
+"the administrator to attach custom characteristics to images."
 msgstr ""
 
 #: ../references.rst:27
@@ -8532,9 +8532,9 @@ msgid ""
 "To provide cryptography offloading to a set of instances, you can use Image "
 "service configuration options. For example, assign the cryptography chip to "
 "a device node in the guest. The OpenStack Command Line Reference contains "
-"further information on configuring this solution in the chapter `Image "
-"service property keys <http://docs.openstack.org/cli-reference/content/"
-"chapter_cli-glance-property.html>`_. A challenge, however, is this option "
+"further information on configuring this solution in the section `Image "
+"service property keys <http://docs.openstack.org/cli-reference/glance."
+"html#image-service-property-keys>`_. A challenge, however, is this option "
 "allows all guests using the configured images to access the hypervisor "
 "cryptography device."
 msgstr ""
@@ -10024,7 +10024,7 @@ msgid ""
 "Output performance provides a baseline for expected performance levels. If "
 "these tests include details, then the resulting data can help model behavior "
 "and results during different workloads. Running scripted smaller benchmarks "
-"during the life cycle of the architecture helps record the system health at "
+"during the lifecycle of the architecture helps record the system health at "
 "different points in time. The data from these scripted benchmarks assist in "
 "future scoping and gaining a deeper understanding of an organization's needs."
 msgstr ""
