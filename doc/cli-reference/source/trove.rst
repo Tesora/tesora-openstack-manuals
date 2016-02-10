@@ -9,7 +9,7 @@ Database service command-line client
 The trove client is the command-line interface (CLI) for
 the Database service API and its extensions.
 
-This chapter documents :command:`trove` version ``2.0.0``.
+This chapter documents :command:`trove` version ``1.3.1``.
 
 For help on a specific :command:`trove` command, enter:
 
@@ -176,6 +176,31 @@ Subcommands
 ``list``
   Lists all the instances.
 
+``log-disable``
+  Instructs Trove guest to stop collecting log
+  details.
+
+``log-discard``
+  Instructs Trove guest to discard the
+  container of the published log.
+
+``log-enable``
+  Instructs Trove guest to start collecting
+  log details.
+
+``log-list``
+  Lists the log files available for instance.
+
+``log-publish``
+  Instructs Trove guest to publish latest log
+  entries on instance.
+
+``log-save``
+  Save log file for instance.
+
+``log-tail``
+  Display log entries for instance.
+
 ``metadata-create``
   Creates metadata in the database for
   instance <id>.
@@ -243,6 +268,10 @@ Subcommands
   Updates an instance: Edits name,
   configuration, or replica source.
 
+``upgrade``
+  Upgrades an instance to a new datastore
+  version.
+
 ``user-create``
   Creates a user on an instance.
 
@@ -281,7 +310,7 @@ trove optional arguments
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
 ``--version``
-  Show program's version number and exit.
+  show program's version number and exit
 
 ``--debug``
   Print debugging output.
@@ -468,7 +497,7 @@ Positional arguments
 --------------------
 
 ``<backup>``
-  ID or name of the backup.
+  ID of the backup.
 
 .. _trove_backup-list:
 
@@ -549,7 +578,7 @@ trove cluster-create
 .. code-block:: console
 
    usage: trove cluster-create <name> <datastore> <datastore_version>
-                               [--instance "<opt=value,opt=value,...>"]
+                               [--instance <opt=value,opt=value,...>]
 
 Creates a new cluster.
 
@@ -568,14 +597,13 @@ Positional arguments
 Optional arguments
 ------------------
 
-``--instance "<opt=value,opt=value,...>"``
+``--instance <opt=value,opt=value,...>``
   Create an instance for the cluster. Specify
   multiple times to create multiple instances.
   Valid options are: flavor=flavor_name_or_id,
-  volume=disk_size_in_GB, volume_type=type,
-  nic='net-id=net-uuid,v4-fixed-ip=ip-addr
-  ,port-id=port-uuid' (where net-
-  id=network_id, v4-fixed-
+  volume=disk_size_in_GB, nic='net-id=net-
+  uuid,v4-fixed-ip=ip-addr,port-id=port-uuid'
+  (where net-id=network_id, v4-fixed-
   ip=IPv4r_fixed_address, port-id=port_id),
   availability_zone=AZ_hint_for_Nova.
 
@@ -816,6 +844,7 @@ trove configuration-instances
 .. code-block:: console
 
    usage: trove configuration-instances <configuration_group>
+                                        [--limit <limit>] [--marker <ID>]
 
 Lists all instances associated with a configuration group.
 
@@ -825,6 +854,17 @@ Positional arguments
 ``<configuration_group>``
   ID of the configuration group.
 
+Optional arguments
+------------------
+
+``--limit <limit>``
+  Limit the number of results displayed.
+
+``--marker <ID>``
+  Begin displaying the results for IDs greater than the
+  specified marker. When used with :option:`--limit,` set this to
+  the last ID displayed in the previous run.
+
 .. _trove_configuration-list:
 
 trove configuration-list
@@ -832,9 +872,20 @@ trove configuration-list
 
 .. code-block:: console
 
-   usage: trove configuration-list
+   usage: trove configuration-list [--limit <limit>] [--marker <ID>]
 
 Lists all configuration groups.
+
+Optional arguments
+------------------
+
+``--limit <limit>``
+  Limit the number of results displayed.
+
+``--marker <ID>``
+  Begin displaying the results for IDs greater than the
+  specified marker. When used with :option:`--limit,` set this to the
+  last ID displayed in the previous run.
 
 .. _trove_configuration-parameter-list:
 
@@ -979,6 +1030,7 @@ trove create
                        [--nic <net-id=net-uuid,v4-fixed-ip=ip-addr,port-id=port-uuid>]
                        [--configuration <configuration>]
                        [--replica_of <source_instance>] [--replica_count <count>]
+                       [--locality <policy>]
 
 Creates a new instance.
 
@@ -1042,8 +1094,13 @@ Optional arguments
   replicate from.
 
 ``--replica_count <count>``
-  Number of replicas to create (defaults to
-  1).
+  Number of replicas to create (defaults to 1
+  if replica_of specified).
+
+``--locality <policy>``
+  Locality policy to use when creating
+  replicas. Must be one of ['affinity', 'anti-
+  affinity']
 
 .. _trove_database-create:
 
@@ -1309,6 +1366,170 @@ Optional arguments
   Include instances that are part of a cluster (default
   false).
 
+.. _trove_log-disable:
+
+trove log-disable
+~~~~~~~~~~~~~~~~~
+
+.. code-block:: console
+
+   usage: trove log-disable <instance> <log_type>
+
+Instructs Trove guest to stop collecting log details.
+
+Positional arguments
+--------------------
+
+``<instance>``
+  Id or Name of the instance
+
+``<log_type>``
+  Type of log to publish
+
+.. _trove_log-discard:
+
+trove log-discard
+~~~~~~~~~~~~~~~~~
+
+.. code-block:: console
+
+   usage: trove log-discard <instance> <log_type>
+
+Instructs Trove guest to discard the container of the published log.
+
+Positional arguments
+--------------------
+
+``<instance>``
+  Id or Name of the instance
+
+``<log_type>``
+  Type of log to publish
+
+.. _trove_log-enable:
+
+trove log-enable
+~~~~~~~~~~~~~~~~
+
+.. code-block:: console
+
+   usage: trove log-enable <instance> <log_type>
+
+Instructs Trove guest to start collecting log details.
+
+Positional arguments
+--------------------
+
+``<instance>``
+  Id or Name of the instance
+
+``<log_type>``
+  Type of log to publish
+
+.. _trove_log-list:
+
+trove log-list
+~~~~~~~~~~~~~~
+
+.. code-block:: console
+
+   usage: trove log-list <instance>
+
+Lists the log files available for instance.
+
+Positional arguments
+--------------------
+
+``<instance>``
+  Id or Name of the instance
+
+.. _trove_log-publish:
+
+trove log-publish
+~~~~~~~~~~~~~~~~~
+
+.. code-block:: console
+
+   usage: trove log-publish [--disable] [--discard] <instance> <log_type>
+
+Instructs Trove guest to publish latest log entries on instance.
+
+Positional arguments
+--------------------
+
+``<instance>``
+  Id or Name of the instance
+
+``<log_type>``
+  Type of log to publish
+
+Optional arguments
+------------------
+
+``--disable``
+  Stop collection of specified log.
+
+``--discard``
+  Discard published contents of specified log.
+
+.. _trove_log-save:
+
+trove log-save
+~~~~~~~~~~~~~~
+
+.. code-block:: console
+
+   usage: trove log-save [--publish] [--file <file>] <instance> <log_type>
+
+Save log file for instance.
+
+Positional arguments
+--------------------
+
+``<instance>``
+  Id or Name of the instance
+
+``<log_type>``
+  Type of log to publish
+
+Optional arguments
+------------------
+
+``--publish``
+  Publish latest entries from guest before display.
+
+``--file <file>``
+  Path of file to save log to for instance.
+
+.. _trove_log-tail:
+
+trove log-tail
+~~~~~~~~~~~~~~
+
+.. code-block:: console
+
+   usage: trove log-tail [--publish] [--lines <lines>] <instance> <log_type>
+
+Display log entries for instance.
+
+Positional arguments
+--------------------
+
+``<instance>``
+  Id or Name of the instance
+
+``<log_type>``
+  Type of log to publish
+
+Optional arguments
+------------------
+
+``--publish``
+  Publish latest entries from guest before display.
+
+``--lines <lines>``
+  Publish latest entries from guest before display.
+
 .. _trove_metadata-create:
 
 trove metadata-create
@@ -1519,15 +1740,15 @@ trove root-disable
 
 .. code-block:: console
 
-   usage: trove root-disable <instance>
+   usage: trove root-disable <instance_or_cluster>
 
 Disables root for an instance.
 
 Positional arguments
 --------------------
 
-``<instance>``
-  ID or name of the instance.
+``<instance_or_cluster>``
+  ID or name of the instance or cluster.
 
 .. _trove_root-enable:
 
@@ -1703,6 +1924,26 @@ Optional arguments
 
 ``--remove_configuration``
   Drops the current configuration reference.
+
+.. _trove_upgrade:
+
+trove upgrade
+~~~~~~~~~~~~~
+
+.. code-block:: console
+
+   usage: trove upgrade <instance> <datastore_version>
+
+Upgrades an instance to a new datastore version.
+
+Positional arguments
+--------------------
+
+``<instance>``
+  ID or name of the instance.
+
+``<datastore_version>``
+  A datastore version name or ID.
 
 .. _trove_user-create:
 
