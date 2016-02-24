@@ -4,20 +4,19 @@
 Flavors
 =======
 
-Admin users can use the :command:`nova flavor-` commands to customize and
-manage flavors. To see the available flavor-related commands, run:
+Admin users can use the :command:`openstack flavor` command to customize and
+manage flavors. To see information for this command, run:
 
 .. code-block:: console
 
-   $ nova help | grep flavor-
-     flavor-access-add     Add flavor access for the given tenant.
-     flavor-access-list    Print access information about the given flavor.
-     flavor-access-remove  Remove flavor access for the given tenant.
-     flavor-create         Create a new flavor
-     flavor-delete         Delete a specific flavor
-     flavor-key            Set or unset extra_spec for a flavor.
-     flavor-list           Print a list of available 'flavors' (sizes of
-     flavor-show           Show details about the given flavor.
+    $ openstack flavor --help
+    Command "flavor" matches:
+      flavor create
+      flavor delete
+      flavor list
+      flavor set
+      flavor show
+      flavor unset
 
 .. note::
 
@@ -37,7 +36,7 @@ Flavors define these elements:
 | Name        | A descriptive name. XX.SIZE_NAME is typically not required,   |
 |             | though some third party tools may rely on it.                 |
 +-------------+---------------------------------------------------------------+
-| Memory_MB   | Virtual machine memory in megabytes.                          |
+| Memory MB   | Instance memory in megabytes.                                 |
 +-------------+---------------------------------------------------------------+
 | Disk        | Virtual root disk size in gigabytes. This is an ephemeral di\ |
 |             | sk that the base image is copied into. When booting from a p\ |
@@ -53,28 +52,43 @@ Flavors define these elements:
 +-------------+---------------------------------------------------------------+
 | VCPUs       | Number of virtual CPUs presented to the instance.             |
 +-------------+---------------------------------------------------------------+
-| RXTX_Factor | Optional property allows created servers to have a different  |
+| RXTX Factor | Optional property allows created servers to have a different  |
 |             | bandwidth cap than that defined in the network they are att\  |
 |             | ached to. This factor is multiplied by the rxtx_base propert\ |
 |             | y of the network. Default value is 1.0. That is, the same as  |
 |             | attached network. This parameter is only available for Xen    |
 |             | or NSX based systems.                                         |
 +-------------+---------------------------------------------------------------+
-| Is_Public   | Boolean value, whether flavor is available to all users or p\ |
+| Is Public   | Boolean value, whether flavor is available to all users or p\ |
 |             | rivate to the tenant it was created in. Defaults to ``True``. |
 +-------------+---------------------------------------------------------------+
-| extra_specs | Key and value pairs that define on which compute nodes a fla\ |
+| Extra Specs | Key and value pairs that define on which compute nodes a fla\ |
 |             | vor can run. These pairs must match corresponding pairs on t\ |
 |             | he compute nodes. Use to implement special resources, such a\ |
 |             | s flavors that run on only compute nodes with GPU hardware.   |
 +-------------+---------------------------------------------------------------+
 
-|
+.. note::
 
-Flavor customization can be limited by the hypervisor in use. For
-example the libvirt driver enables quotas on CPUs available to a VM,
-disk tuning, bandwidth I/O, watchdog behavior, random number generator
-device control, and instance VIF traffic control.
+    Flavor customization can be limited by the hypervisor in use. For
+    example the libvirt driver enables quotas on CPUs available to a VM,
+    disk tuning, bandwidth I/O, watchdog behavior, random number generator
+    device control, and instance VIF traffic control.
+
+Is Public
+~~~~~~~~~
+
+Flavors can be assigned to particular projects. By default, a flavor is public
+and available to all projects. Private flavors are only accessible to those on
+the access list and are invisible to other projects. To create and assign a
+private flavor to a project, run this command:
+
+.. code-block:: console
+
+   $ openstack flavor create --private p1.medium auto 512 40 4
+
+Extra Specs
+~~~~~~~~~~~
 
 CPU limits
     You can configure the CPU limits with control parameters with the
@@ -82,8 +96,9 @@ CPU limits
 
     .. code-block:: console
 
-       $ nova flavor-key m1.small set quota:read_bytes_sec=10240000
-       $ nova flavor-key m1.small set quota:write_bytes_sec=10240000
+       $ openstack flavor set FLAVOR-NAME \
+           --property quota:read_bytes_sec=10240000 \
+           --property quota:write_bytes_sec=10240000
 
     Use these optional parameters to control weight shares, enforcement
     intervals for runtime quotas, and a quota for maximum allowed
@@ -126,8 +141,9 @@ CPU limits
 
        .. code-block:: console
 
-          $ nova flavor-key m1.low_cpu set quota:cpu_quota=10000
-          $ nova flavor-key m1.low_cpu set quota:cpu_period=20000
+          $ openstack flavor set FLAVOR-NAME \
+              --property quota:cpu_quota=10000 \
+              --property quota:cpu_period=20000
 
        In this example, the instance of ``m1.low_cpu`` can only consume
        a maximum of 50% CPU of a physical CPU computing capability.
@@ -160,8 +176,9 @@ Memory limits
 
        .. code-block:: console
 
-          $ nova flavor-key m1.medium set quota:memory_shares_level=custom
-          $ nova flavor-key m1.medium set quota:memory_shares_share=15
+          $ openstack flavor set FLAVOR-NAME \
+              --property quota:memory_shares_level=custom \
+              --property quota:memory_shares_share=15
 
 Disk I/O limits
     For VMware, you can configure the resource limits for disk
@@ -195,7 +212,8 @@ Disk I/O limits
 
        .. code-block:: console
 
-          $ nova flavor-key m1.medium set quota:disk_io_reservation=2000
+          $ openstack flavor set FLAVOR-NAME \
+              --property quota:disk_io_reservation=2000
 
 Disk tuning
     Using disk I/O quotas, you can set maximum disk write to 10 MB per
@@ -203,36 +221,27 @@ Disk tuning
 
     .. code-block:: console
 
-       $ nova flavor-key m1.medium set quota:disk_write_bytes_sec=10485760
+       $ openstack flavor set FLAVOR-NAME \
+           --property quota:disk_write_bytes_sec=10485760
 
     The disk I/O options are:
 
-    -  disk\_read\_bytes\_sec
-
-    -  disk\_read\_iops\_sec
-
-    -  disk\_write\_bytes\_sec
-
-    -  disk\_write\_iops\_sec
-
-    -  disk\_total\_bytes\_sec
-
-    -  disk\_total\_iops\_sec
+    -  ``disk_read_bytes_sec``
+    -  ``disk_read_iops_sec``
+    -  ``disk_write_bytes_sec``
+    -  ``disk_write_iops_sec``
+    -  ``disk_total_bytes_sec``
+    -  ``disk_total_iops_sec``
 
 Bandwidth I/O
     The vif I/O options are:
 
-    -  vif\_inbound\_ average
-
-    -  vif\_inbound\_burst
-
-    -  vif\_inbound\_peak
-
-    -  vif\_outbound\_ average
-
-    -  vif\_outbound\_burst
-
-    -  vif\_outbound\_peak
+    -  ``vif_inbound_average``
+    -  ``vif_inbound_burst``
+    -  ``vif_inbound_peak``
+    -  ``vif_outbound_average``
+    -  ``vif_outbound_burst``
+    -  ``vif_outbound_peak``
 
     Incoming and outgoing traffic can be shaped independently. The
     bandwidth element can have at most, one inbound and at most, one
@@ -270,13 +279,13 @@ Bandwidth I/O
 
     .. code-block:: console
 
-       $ nova flavor-key nlimit set quota:vif_outbound_average=32768
-       $ nova flavor-key nlimit set quota:vif_outbound_peak=65536
-       $ nova flavor-key nlimit set quota:vif_outbound_burst=65536
-       $ nova flavor-key nlimit set quota:vif_inbound_average=32768
-       $ nova flavor-key nlimit set quota:vif_inbound_peak=65536
-       $ nova flavor-key nlimit set quota:vif_inbound_burst=65536
-
+       $ openstack flavor set FLAVOR-NAME \
+           --property quota:vif_outbound_average=32768 \
+           --property quota:vif_outbound_peak=65536 \
+           --property quota:vif_outbound_burst=65536 \
+           --property quota:vif_inbound_average=32768 \
+           --property quota:vif_inbound_peak=65536 \
+           --property quota:vif_inbound_burst=65536
 
     .. note::
 
@@ -295,20 +304,15 @@ Watchdog behavior
 
     .. code-block:: console
 
-       $ nova flavor-key FLAVOR-NAME set hw:watchdog_action=ACTION
+       $ openstack flavor set FLAVOR-NAME --property hw:watchdog_action=ACTION
 
     Valid ACTION values are:
 
-    -  ``disabled``—(default) The device is not attached.
-
-    -  ``reset``—Forcefully reset the guest.
-
-    -  ``poweroff``—Forcefully power off the guest.
-
-    -  ``pause``—Pause the guest.
-
-    -  ``none``—Only enable the watchdog; do nothing if the server
-       hangs.
+    -  ``disabled``: (default) The device is not attached.
+    -  ``reset``: Forcefully reset the guest.
+    -  ``poweroff``: Forcefully power off the guest.
+    -  ``pause``: Pause the guest.
+    -  ``none``: Only enable the watchdog; do nothing if the server hangs.
 
     .. note::
 
@@ -322,16 +326,16 @@ Random-number generator
 
     .. code-block:: console
 
-       $ nova flavor-key FLAVOR-NAME set hw_rng:allowed=True
-       $ nova flavor-key FLAVOR-NAME set hw_rng:rate_bytes=RATE-BYTES
-       $ nova flavor-key FLAVOR-NAME set hw_rng:rate_period=RATE-PERIOD
+       $ openstack flavor set FLAVOR-NAME \
+           --property hw_rng:allowed=True \
+           --property hw_rng:rate_bytes=RATE-BYTES \
+           --property hw_rng:rate_period=RATE-PERIOD
 
     Where:
 
-    -  RATE-BYTES—(Integer) Allowed amount of bytes that the guest can
+    -  RATE-BYTES: (Integer) Allowed amount of bytes that the guest can
        read from the host's entropy per period.
-
-    -  RATE-PERIOD—(Integer) Duration of the read period in seconds.
+    -  RATE-PERIOD: (Integer) Duration of the read period in seconds.
 
 CPU topology
     For the libvirt driver, you can define the topology of the processors
@@ -340,55 +344,44 @@ CPU topology
 
     .. code-block:: console
 
-       $ nova flavor-key FLAVOR-NAME set hw:cpu_sockets=FLAVOR-SOCKETS
-       $ nova flavor-key FLAVOR-NAME set hw:cpu_cores=FLAVOR-CORES
-       $ nova flavor-key FLAVOR-NAME set hw:cpu_threads=FLAVOR-THREADS
-       $ nova flavor-key FLAVOR-NAME set hw:cpu_max_sockets=FLAVOR-SOCKETS
-       $ nova flavor-key FLAVOR-NAME set hw:cpu_max_cores=FLAVOR-CORES
-       $ nova flavor-key FLAVOR-NAME set hw:cpu_max_threads=FLAVOR-THREADS
+       $ openstack flavor set FLAVOR-NAME \
+           --property hw:cpu_sockets=FLAVOR-SOCKETS \
+           --property hw:cpu_cores=FLAVOR-CORES \
+           --property hw:cpu_threads=FLAVOR-THREADS \
+           --property hw:cpu_max_sockets=FLAVOR-SOCKETS \
+           --property hw:cpu_max_cores=FLAVOR-CORES \
+           --property hw:cpu_max_threads=FLAVOR-THREADS
 
     Where:
 
-    -  FLAVOR-SOCKETS—(Integer) The number of sockets for the guest VM. By
+    -  FLAVOR-SOCKETS: (integer) The number of sockets for the guest VM. By
        this is set to the number of vCPUs requested.
+    -  FLAVOR-CORES: (integer) The number of cores per socket for the guest
+       VM. By this is set to 1.
+    -  FLAVOR-THREADS: (integer) The number of threads per core for the guest
+       VM. By this is set to 1.
 
-    -  FLAVOR-CORES—(Integer) The number of cores per socket for the guest VM. By
-       this is set to 1.
-
-    -  FLAVOR-THREADS—(Integer) The number of threads per core for the guest VM. By
-       this is set to 1.
-
-Core pinning
-    VMs can be pinned to specific physical cores in the hypervisor to improve
-    performance. This should only be done where there is no CPU overcommit
-    (``cpu_allocation_ratio`` is 1.0).
+CPU pinning policy
+    For the libvirt driver, you can pin the virtual CPUs (vCPUs) of instances
+    to the host's physical CPU cores (pCPUs) using properties. This will
+    result in improved instance determinism and performance. Host aggregates
+    should be used to separate these "pinned" instances from unpinned
+    instances as the latter will not respect the resourcing requirements of
+    the former.
 
     .. code:: console
 
-        $ nova flavor-key FLAVOR-NAME set hw:dedicated=PIN-POLICY
+       $ openstack flavor set FLAVOR-NAME --property hw:cpu_policy=CPU-POLICY
 
-    Valid PIN-POLICY values are:
+    Valid CPU-POLICY values are:
 
-    -  ``shared``—(default) The guest vCPUs will be allowed to freely float
+    -  ``shared``: (default) The guest vCPUs will be allowed to freely float
        across host pCPUs, albeit potentially constrained by NUMA policy.
-
-    -  ``dedicated``—the guest vCPUs will be strictly pinned to a set of host
+    -  ``dedicated``: The guest vCPUs will be strictly pinned to a set of host
        pCPUs. In the absence of an explicit vCPU topology request, the drivers
-       typically expose all vCPUs as sockets with 1 core and 1 thread. When strict
-       CPU pinning is in effect the guest CPU topology will be setup to match the
-       topology of the CPUs to which it is pinned. This option assumes the overcommit
-       ratio is 1.0. For example, if a 2 vCPU guest is pinned to a single host core
-       with 2 threads, then the guest will get a topology of 1 socket, 1 core, 2
-       threads.
-
-Project private flavors
-    Flavors can also be assigned to particular projects. By default, a
-    flavor is public and available to all projects. Private flavors are
-    only accessible to those on the access list and are invisible to
-    other projects. To create and assign a private flavor to a project,
-    run these commands:
-
-    .. code-block:: console
-
-       $ nova flavor-create --is-public false p1.medium auto 512 40 4
-       $ nova flavor-access-add 259d06a0-ba6d-4e60-b42d-ab3144411d58 86f94150ed744e08be565c2ff608eef9
+       typically expose all vCPUs as sockets with one core and one thread.
+       When strict CPU pinning is in effect the guest CPU topology will be
+       setup to match the topology of the CPUs to which it is pinned. This
+       option implies an overcommit ratio of 1.0. For example, if a two vCPU
+       guest is pinned to a single host core with two threads, then the guest
+       will get a topology of one socket, one core, threads threads.

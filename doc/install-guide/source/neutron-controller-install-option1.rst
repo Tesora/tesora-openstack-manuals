@@ -83,7 +83,7 @@ Install the components
            [nova]
            ...
            auth_url = http://controller:35357
-           auth_plugin = password
+           auth_type = password
            project_domain_id = default
            user_domain_id = default
            region_name = RegionOne
@@ -110,21 +110,11 @@ Install the components
 
      * In the ``[database]`` section, configure database access:
 
-       .. only:: ubuntu or obs
+       .. code-block:: ini
 
-          .. code-block:: ini
-
-             [database]
-             ...
-             connection = mysql+pymysql://neutron:NEUTRON_DBPASS@controller/neutron
-
-       .. only:: rdo
-
-          .. code-block:: ini
-
-             [database]
-             ...
-             connection = mysql://neutron:NEUTRON_DBPASS@controller/neutron
+          [database]
+          ...
+          connection = mysql+pymysql://neutron:NEUTRON_DBPASS@controller/neutron
 
        Replace ``NEUTRON_DBPASS`` with the password you chose for the
        database.
@@ -170,7 +160,8 @@ Install the components
           ...
           auth_uri = http://controller:5000
           auth_url = http://controller:35357
-          auth_plugin = password
+          memcached_servers = controller:11211
+          auth_type = password
           project_domain_id = default
           user_domain_id = default
           project_name = service
@@ -199,7 +190,7 @@ Install the components
           [nova]
           ...
           auth_url = http://controller:35357
-          auth_plugin = password
+          auth_type = password
           project_domain_id = default
           user_domain_id = default
           region_name = RegionOne

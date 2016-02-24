@@ -262,21 +262,11 @@ Install and configure components
 
       * In the ``[database]`` section, configure database access:
 
-        .. only:: ubuntu or obs
+        .. code-block:: ini
 
-           .. code-block:: ini
-
-              [database]
-              ...
-              connection = mysql+pymysql://cinder:CINDER_DBPASS@controller/cinder
-
-        .. only:: rdo
-
-           .. code-block:: ini
-
-              [database]
-              ...
-              connection = mysql://cinder:CINDER_DBPASS@controller/cinder
+           [database]
+           ...
+           connection = mysql+pymysql://cinder:CINDER_DBPASS@controller/cinder
 
         Replace ``CINDER_DBPASS`` with the password you chose for the
         Block Storage database.
@@ -312,7 +302,8 @@ Install and configure components
            ...
            auth_uri = http://controller:5000
            auth_url = http://controller:35357
-           auth_plugin = password
+           memcached_servers = controller:11211
+           auth_type = password
            project_domain_id = default
            user_domain_id = default
            project_name = service

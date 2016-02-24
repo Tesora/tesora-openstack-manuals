@@ -12,8 +12,12 @@ For information about how to manage images, see the
 `OpenStack User Guide
 <http://docs.openstack.org/user-guide/common/cli_manage_images.html>`__.
 
+.. note::
+
+   Perform these commands on the controller node.
+
 #. In each client environment script, configure the Image service
-   client to use API version 2.0:
+   client to use API version 2:
 
    .. code-block:: console
 
@@ -31,7 +35,8 @@ For information about how to manage images, see the
 
    .. code-block:: console
 
-      $ wget http://download.cirros-cloud.net/0.3.4/cirros-0.3.4-x86_64-disk.img
+      $ curl -O \
+        http://download.cirros-cloud.net/0.3.4/cirros-0.3.4-x86_64-disk.img
 
 #. Upload the image to the Image service using the
    :term:`QCOW2 <QEMU Copy On Write 2 (QCOW2)>` disk format, :term:`bare`

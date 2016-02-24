@@ -12,7 +12,6 @@ Compute
    compute/database-connections.rst
    compute/rpc.rst
    compute/api.rst
-   compute/ec2-api.rst
    compute/fibre-channel.rst
    compute/iscsi-offload.rst
    compute/hypervisors.rst
@@ -20,7 +19,7 @@ Compute
    compute/cells.rst
    compute/conductor.rst
    compute/nova-conf-samples.rst
-   compute/nova-logs.rst
+   compute/logs.rst
    compute/config-samples.rst
    tables/conf-changes/nova.rst
 
