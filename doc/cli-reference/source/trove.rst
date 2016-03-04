@@ -9,7 +9,7 @@ Database service command-line client
 The trove client is the command-line interface (CLI) for
 the Database service API and its extensions.
 
-This chapter documents :command:`trove` version ``1.3.1``.
+This chapter documents :command:`trove` version ``2.1.0``.
 
 For help on a specific :command:`trove` command, enter:
 
@@ -47,8 +47,7 @@ trove usage
                 [--os-region-name <region-name>]
                 <subcommand> ...
 
-Subcommands
------------
+**Subcommands:**
 
 ``backup-copy``
   Creates a backup from another backup.
@@ -198,6 +197,10 @@ Subcommands
 ``log-save``
   Save log file for instance.
 
+``log-show``
+  Instructs Trove guest to show details of
+  log.
+
 ``log-tail``
   Display log entries for instance.
 
@@ -221,6 +224,21 @@ Subcommands
 
 ``metadata-update``
   Updates metadata, this is destructive.
+
+``module-create``
+  Create a module.
+
+``module-delete``
+  Delete a module.
+
+``module-list``
+  Lists the modules available.
+
+``module-show``
+  Shows details of a module.
+
+``module-update``
+  Create a module.
 
 ``promote-to-replica-source``
   Promotes a replica to be the new replica
@@ -333,7 +351,7 @@ trove optional arguments
 
 ``--endpoint-type <endpoint-type>``
   Defaults to ``env[TROVE_ENDPOINT_TYPE]`` or
-  publicURL.
+  ``env[OS_ENDPOINT_TYPE]`` or publicURL.
 
 ``--os-database-api-version <database-api-ver>``
   Accepts 1, defaults to
@@ -433,8 +451,7 @@ trove backup-copy
 
 Creates a backup from another backup.
 
-Positional arguments
---------------------
+**Positional arguments:**
 
 ``<name>``
   Name of the backup.
@@ -442,8 +459,7 @@ Positional arguments
 ``<backup>``
   Backup ID of the source backup.
 
-Optional arguments
-------------------
+**Optional arguments:**
 
 ``--region <region>``
   Region where the source backup resides.
@@ -463,8 +479,7 @@ trove backup-create
 
 Creates a backup of an instance.
 
-Positional arguments
---------------------
+**Positional arguments:**
 
 ``<instance>``
   ID or name of the instance.
@@ -472,8 +487,7 @@ Positional arguments
 ``<name>``
   Name of the backup.
 
-Optional arguments
-------------------
+**Optional arguments:**
 
 ``--description <description>``
   An optional description for the backup.
@@ -493,8 +507,7 @@ trove backup-delete
 
 Deletes a backup.
 
-Positional arguments
---------------------
+**Positional arguments:**
 
 ``<backup>``
   ID of the backup.
@@ -511,8 +524,7 @@ trove backup-list
 
 Lists available backups.
 
-Optional arguments
-------------------
+**Optional arguments:**
 
 ``--limit <limit>``
   Return up to N number of the most recent backups.
@@ -536,14 +548,12 @@ trove backup-list-instance
 
 Lists available backups for an instance.
 
-Positional arguments
---------------------
+**Positional arguments:**
 
 ``<instance>``
   ID or name of the instance.
 
-Optional arguments
-------------------
+**Optional arguments:**
 
 ``--limit <limit>``
   Return up to N number of the most recent backups.
@@ -564,8 +574,7 @@ trove backup-show
 
 Shows details of a backup.
 
-Positional arguments
---------------------
+**Positional arguments:**
 
 ``<backup>``
   ID of the backup.
@@ -582,8 +591,7 @@ trove cluster-create
 
 Creates a new cluster.
 
-Positional arguments
---------------------
+**Positional arguments:**
 
 ``<name>``
   Name of the cluster.
@@ -594,8 +602,7 @@ Positional arguments
 ``<datastore_version>``
   A datastore version name or ID.
 
-Optional arguments
-------------------
+**Optional arguments:**
 
 ``--instance <opt=value,opt=value,...>``
   Create an instance for the cluster. Specify
@@ -618,8 +625,7 @@ trove cluster-delete
 
 Deletes a cluster.
 
-Positional arguments
---------------------
+**Positional arguments:**
 
 ``<cluster>``
   ID or name of the cluster.
@@ -636,14 +642,12 @@ trove cluster-grow
 
 Adds more instances to a cluster.
 
-Positional arguments
---------------------
+**Positional arguments:**
 
 ``<cluster>``
   ID or name of the cluster.
 
-Optional arguments
-------------------
+**Optional arguments:**
 
 ``--instance <name=name,flavor=flavor_name_or_id,volume=volume>``
   Add an instance to the cluster. Specify
@@ -660,8 +664,7 @@ trove cluster-instances
 
 Lists all instances of a cluster.
 
-Positional arguments
---------------------
+**Positional arguments:**
 
 ``<cluster>``
   ID or name of the cluster.
@@ -677,8 +680,7 @@ trove cluster-list
 
 Lists all the clusters.
 
-Optional arguments
-------------------
+**Optional arguments:**
 
 ``--limit <limit>``
   Limit the number of results displayed.
@@ -699,8 +701,7 @@ trove cluster-show
 
 Shows details of a cluster.
 
-Positional arguments
---------------------
+**Positional arguments:**
 
 ``<cluster>``
   ID or name of the cluster.
@@ -716,8 +717,7 @@ trove cluster-shrink
 
 Drops instances from a cluster.
 
-Positional arguments
---------------------
+**Positional arguments:**
 
 ``<cluster>``
   ID or name of the cluster.
@@ -737,8 +737,7 @@ trove configuration-attach
 
 Attaches a configuration group to an instance.
 
-Positional arguments
---------------------
+**Positional arguments:**
 
 ``<instance>``
   ID or name of the instance.
@@ -760,8 +759,7 @@ trove configuration-create
 
 Creates a configuration group.
 
-Positional arguments
---------------------
+**Positional arguments:**
 
 ``<name>``
   Name of the configuration group.
@@ -769,8 +767,7 @@ Positional arguments
 ``<values>``
   Dictionary of the values to set.
 
-Optional arguments
-------------------
+**Optional arguments:**
 
 ``--datastore <datastore>``
   Datastore assigned to the configuration
@@ -796,8 +793,7 @@ trove configuration-default
 
 Shows the default configuration of an instance.
 
-Positional arguments
---------------------
+**Positional arguments:**
 
 ``<instance>``
   ID or name of the instance.
@@ -813,8 +809,7 @@ trove configuration-delete
 
 Deletes a configuration group.
 
-Positional arguments
---------------------
+**Positional arguments:**
 
 ``<configuration_group>``
   ID of the configuration group.
@@ -830,8 +825,7 @@ trove configuration-detach
 
 Detaches a configuration group from an instance.
 
-Positional arguments
---------------------
+**Positional arguments:**
 
 ``<instance>``
   ID or name of the instance.
@@ -848,8 +842,7 @@ trove configuration-instances
 
 Lists all instances associated with a configuration group.
 
-Positional arguments
---------------------
+**Positional arguments:**
 
 ``<configuration_group>``
   ID of the configuration group.
@@ -899,15 +892,13 @@ trove configuration-parameter-list
 
 Lists available parameters for a configuration group.
 
-Positional arguments
---------------------
+**Positional arguments:**
 
 ``<datastore_version>``
   Datastore version name or ID assigned to the
   configuration group.
 
-Optional arguments
-------------------
+**Optional arguments:**
 
 ``--datastore <datastore>``
   ID or name of the datastore to list configuration
@@ -926,8 +917,7 @@ trove configuration-parameter-show
 
 Shows details of a configuration parameter.
 
-Positional arguments
---------------------
+**Positional arguments:**
 
 ``<datastore_version>``
   Datastore version name or ID assigned to the
@@ -936,8 +926,7 @@ Positional arguments
 ``<parameter>``
   Name of the configuration parameter.
 
-Optional arguments
-------------------
+**Optional arguments:**
 
 ``--datastore <datastore>``
   ID or name of the datastore to list configuration
@@ -955,8 +944,7 @@ trove configuration-patch
 
 Patches a configuration group.
 
-Positional arguments
---------------------
+**Positional arguments:**
 
 ``<configuration_group>``
   ID of the configuration group.
@@ -975,8 +963,7 @@ trove configuration-show
 
 Shows details of a configuration group.
 
-Positional arguments
---------------------
+**Positional arguments:**
 
 ``<configuration_group>``
   ID of the configuration group.
@@ -994,8 +981,7 @@ trove configuration-update
 
 Updates a configuration group.
 
-Positional arguments
---------------------
+**Positional arguments:**
 
 ``<configuration_group>``
   ID of the configuration group.
@@ -1003,8 +989,7 @@ Positional arguments
 ``<values>``
   Dictionary of the values to set.
 
-Optional arguments
-------------------
+**Optional arguments:**
 
 ``--name <name>``
   Name of the configuration group.
@@ -1034,8 +1019,7 @@ trove create
 
 Creates a new instance.
 
-Positional arguments
---------------------
+**Positional arguments:**
 
 ``<name>``
   Name of the instance.
@@ -1043,8 +1027,7 @@ Positional arguments
 ``<flavor>``
   Flavor ID or name of the instance.
 
-Optional arguments
-------------------
+**Optional arguments:**
 
 ``--size <size>``
   Size of the instance disk volume in GB.
@@ -1115,8 +1098,7 @@ trove database-create
 
 Creates a database on an instance.
 
-Positional arguments
---------------------
+**Positional arguments:**
 
 ``<instance>``
   ID or name of the instance.
@@ -1124,8 +1106,7 @@ Positional arguments
 ``<name>``
   Name of the database.
 
-Optional arguments
-------------------
+**Optional arguments:**
 
 ``--character_set <character_set>``
   Optional character set for database.
@@ -1144,8 +1125,7 @@ trove database-delete
 
 Deletes a database from an instance.
 
-Positional arguments
---------------------
+**Positional arguments:**
 
 ``<instance>``
   ID or name of the instance.
@@ -1164,8 +1144,7 @@ trove database-list
 
 Lists available databases on an instance.
 
-Positional arguments
---------------------
+**Positional arguments:**
 
 ``<instance>``
   ID or name of the instance.
@@ -1192,8 +1171,7 @@ trove datastore-show
 
 Shows details of a datastore.
 
-Positional arguments
---------------------
+**Positional arguments:**
 
 ``<datastore>``
   ID of the datastore.
@@ -1209,8 +1187,7 @@ trove datastore-version-list
 
 Lists available versions for a datastore.
 
-Positional arguments
---------------------
+**Positional arguments:**
 
 ``<datastore>``
   ID or name of the datastore.
@@ -1227,14 +1204,12 @@ trove datastore-version-show
 
 Shows details of a datastore version.
 
-Positional arguments
---------------------
+**Positional arguments:**
 
 ``<datastore_version>``
   ID or name of the datastore version.
 
-Optional arguments
-------------------
+**Optional arguments:**
 
 ``--datastore <datastore>``
   ID or name of the datastore. Optional if the ID of
@@ -1251,8 +1226,7 @@ trove delete
 
 Deletes an instance.
 
-Positional arguments
---------------------
+**Positional arguments:**
 
 ``<instance>``
   ID or name of the instance.
@@ -1268,8 +1242,7 @@ trove detach-replica
 
 Detaches a replica instance from its replication source.
 
-Positional arguments
---------------------
+**Positional arguments:**
 
 ``<instance>``
   ID or name of the instance.
@@ -1285,8 +1258,7 @@ trove eject-replica-source
 
 Ejects a replica source from its set.
 
-Positional arguments
---------------------
+**Positional arguments:**
 
 ``<instance>``
   ID or name of the instance.
@@ -1303,8 +1275,7 @@ trove flavor-list
 
 Lists available flavors.
 
-Optional arguments
-------------------
+**Optional arguments:**
 
 ``--datastore_type <datastore_type>``
   Type of the datastore. For eg: mysql.
@@ -1323,8 +1294,7 @@ trove flavor-show
 
 Shows details of a flavor.
 
-Positional arguments
---------------------
+**Positional arguments:**
 
 ``<flavor>``
   ID or name of the flavor.
@@ -1351,8 +1321,7 @@ trove list
 
 Lists all the instances.
 
-Optional arguments
-------------------
+**Optional arguments:**
 
 ``--limit <limit>``
   Limit the number of results displayed.
@@ -1373,18 +1342,22 @@ trove log-disable
 
 .. code-block:: console
 
-   usage: trove log-disable <instance> <log_type>
+   usage: trove log-disable [--discard] <instance> <log_name>
 
 Instructs Trove guest to stop collecting log details.
 
-Positional arguments
---------------------
+**Positional arguments:**
 
 ``<instance>``
-  Id or Name of the instance
+  Id or Name of the instance.
 
-``<log_type>``
-  Type of log to publish
+``<log_name>``
+  Name of log to publish.
+
+**Optional arguments:**
+
+``--discard``
+  Discard published contents of specified log.
 
 .. _trove_log-discard:
 
@@ -1393,18 +1366,17 @@ trove log-discard
 
 .. code-block:: console
 
-   usage: trove log-discard <instance> <log_type>
+   usage: trove log-discard <instance> <log_name>
 
 Instructs Trove guest to discard the container of the published log.
 
-Positional arguments
---------------------
+**Positional arguments:**
 
 ``<instance>``
-  Id or Name of the instance
+  Id or Name of the instance.
 
-``<log_type>``
-  Type of log to publish
+``<log_name>``
+  Name of log to publish.
 
 .. _trove_log-enable:
 
@@ -1413,18 +1385,17 @@ trove log-enable
 
 .. code-block:: console
 
-   usage: trove log-enable <instance> <log_type>
+   usage: trove log-enable <instance> <log_name>
 
 Instructs Trove guest to start collecting log details.
 
-Positional arguments
---------------------
+**Positional arguments:**
 
 ``<instance>``
-  Id or Name of the instance
+  Id or Name of the instance.
 
-``<log_type>``
-  Type of log to publish
+``<log_name>``
+  Name of log to publish.
 
 .. _trove_log-list:
 
@@ -1437,11 +1408,10 @@ trove log-list
 
 Lists the log files available for instance.
 
-Positional arguments
---------------------
+**Positional arguments:**
 
 ``<instance>``
-  Id or Name of the instance
+  Id or Name of the instance.
 
 .. _trove_log-publish:
 
@@ -1450,21 +1420,19 @@ trove log-publish
 
 .. code-block:: console
 
-   usage: trove log-publish [--disable] [--discard] <instance> <log_type>
+   usage: trove log-publish [--disable] [--discard] <instance> <log_name>
 
 Instructs Trove guest to publish latest log entries on instance.
 
-Positional arguments
---------------------
+**Positional arguments:**
 
 ``<instance>``
-  Id or Name of the instance
+  Id or Name of the instance.
 
-``<log_type>``
-  Type of log to publish
+``<log_name>``
+  Name of log to publish.
 
-Optional arguments
-------------------
+**Optional arguments:**
 
 ``--disable``
   Stop collection of specified log.
@@ -1479,27 +1447,44 @@ trove log-save
 
 .. code-block:: console
 
-   usage: trove log-save [--publish] [--file <file>] <instance> <log_type>
+   usage: trove log-save [--publish] [--file <file>] <instance> <log_name>
 
 Save log file for instance.
 
-Positional arguments
---------------------
+**Positional arguments:**
 
 ``<instance>``
-  Id or Name of the instance
+  Id or Name of the instance.
 
-``<log_type>``
-  Type of log to publish
+``<log_name>``
+  Name of log to publish.
 
-Optional arguments
-------------------
+**Optional arguments:**
 
 ``--publish``
   Publish latest entries from guest before display.
 
 ``--file <file>``
   Path of file to save log to for instance.
+
+.. _trove_log-show:
+
+trove log-show
+~~~~~~~~~~~~~~
+
+.. code-block:: console
+
+   usage: trove log-show <instance> <log_name>
+
+Instructs Trove guest to show details of log.
+
+**Positional arguments:**
+
+``<instance>``
+  Id or Name of the instance.
+
+``<log_name>``
+  Name of log to show.
 
 .. _trove_log-tail:
 
@@ -1508,21 +1493,19 @@ trove log-tail
 
 .. code-block:: console
 
-   usage: trove log-tail [--publish] [--lines <lines>] <instance> <log_type>
+   usage: trove log-tail [--publish] [--lines <lines>] <instance> <log_name>
 
 Display log entries for instance.
 
-Positional arguments
---------------------
+**Positional arguments:**
 
 ``<instance>``
-  Id or Name of the instance
+  Id or Name of the instance.
 
-``<log_type>``
-  Type of log to publish
+``<log_name>``
+  Name of log to publish.
 
-Optional arguments
-------------------
+**Optional arguments:**
 
 ``--publish``
   Publish latest entries from guest before display.
@@ -1541,8 +1524,7 @@ trove metadata-create
 
 Creates metadata in the database for instance <id>.
 
-Positional arguments
---------------------
+**Positional arguments:**
 
 ``<instance_id>``
   UUID for instance.
@@ -1564,8 +1546,7 @@ trove metadata-delete
 
 Deletes metadata for instance <id>.
 
-Positional arguments
---------------------
+**Positional arguments:**
 
 ``<instance_id>``
   UUID for instance.
@@ -1584,8 +1565,7 @@ trove metadata-edit
 
 Replaces metadata value with a new one, this is non-destructive.
 
-Positional arguments
---------------------
+**Positional arguments:**
 
 ``<instance_id>``
   UUID for instance.
@@ -1607,8 +1587,7 @@ trove metadata-list
 
 Shows all metadata for instance <id>.
 
-Positional arguments
---------------------
+**Positional arguments:**
 
 ``<instance_id>``
   UUID for instance.
@@ -1624,8 +1603,7 @@ trove metadata-show
 
 Shows metadata entry for key <key> and instance <id>.
 
-Positional arguments
---------------------
+**Positional arguments:**
 
 ``<instance_id>``
   UUID for instance.
@@ -1644,8 +1622,7 @@ trove metadata-update
 
 Updates metadata, this is destructive.
 
-Positional arguments
---------------------
+**Positional arguments:**
 
 ``<instance_id>``
   UUID for instance.
@@ -1659,6 +1636,192 @@ Positional arguments
 ``<value>``
   Value to assign to <newkey>.
 
+.. _trove_module-create:
+
+trove module-create
+~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: console
+
+   usage: trove module-create <name> <type> <filename>
+                              [--description <description>]
+                              [--datastore <datastore>]
+                              [--datastore_version <version>] [--auto_apply]
+                              [--all_tenants] [--live_update]
+
+Create a module.
+
+**Positional arguments:**
+
+``<name>``
+  Name of the module.
+
+``<type>``
+  Type of the module. The type must be
+  supported by a corresponding module plugin on
+  the datastore it is applied to.
+
+``<filename>``
+  File containing data contents for the module.
+
+**Optional arguments:**
+
+``--description <description>``
+  Description of the module.
+
+``--datastore <datastore>``
+  Name or ID of datastore this module can be
+  applied to. If not specified, module can be
+  applied to all datastores.
+
+``--datastore_version <version>``
+  Name or ID of datastore version this module
+  can be applied to. If not specified, module
+  can be applied to all versions.
+
+``--auto_apply``
+  Automatically apply this module when creating
+  an instance or cluster.
+
+``--all_tenants``
+  Module is valid for all tenants (Admin only).
+
+``--live_update``
+  Allow module to be updated even if it is
+  already applied to a current instance or
+  cluster. Automatically attempt to reapply
+  this module if the contents change.
+
+.. _trove_module-delete:
+
+trove module-delete
+~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: console
+
+   usage: trove module-delete <module>
+
+Delete a module.
+
+**Positional arguments:**
+
+``<module>``
+  ID or name of the module.
+
+.. _trove_module-list:
+
+trove module-list
+~~~~~~~~~~~~~~~~~
+
+.. code-block:: console
+
+   usage: trove module-list [--datastore <datastore>]
+
+Lists the modules available.
+
+**Optional arguments:**
+
+``--datastore <datastore>``
+  Name or ID of datastore to list modules for.
+
+.. _trove_module-show:
+
+trove module-show
+~~~~~~~~~~~~~~~~~
+
+.. code-block:: console
+
+   usage: trove module-show <module>
+
+Shows details of a module.
+
+**Positional arguments:**
+
+``<module>``
+  ID or name of the module.
+
+.. _trove_module-update:
+
+trove module-update
+~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: console
+
+   usage: trove module-update <module>
+                              [--name <name>] [--type <type>] [--file <filename>]
+                              [--description <description>]
+                              [--datastore <datastore>] [--all_datastores]
+                              [--datastore_version <version>]
+                              [--all_datastore_versions] [--auto_apply]
+                              [--no_auto_apply] [--all_tenants]
+                              [--no_all_tenants] [--live_update]
+                              [--no_live_update]
+
+Create a module.
+
+**Positional arguments:**
+
+``<module>``
+  Name or ID of the module.
+
+**Optional arguments:**
+
+``--name <name>``
+  Name of the module.
+
+``--type <type>``
+  Type of the module. The type must be
+  supported by a corresponding module plugin on
+  the datastore it is applied to.
+
+``--file <filename>``
+  File containing data contents for the module.
+
+``--description <description>``
+  Description of the module.
+
+``--datastore <datastore>``
+  Name or ID of datastore this module can be
+  applied to. If not specified, module can be
+  applied to all datastores.
+
+``--all_datastores``
+  Module is valid for all datastores.
+
+``--datastore_version <version>``
+  Name or ID of datastore version this module
+  can be applied to. If not specified, module
+  can be applied to all versions.
+
+``--all_datastore_versions``
+  Module is valid for all datastore version.
+
+``--auto_apply``
+  Automatically apply this module when creating
+  an instance or cluster.
+
+``--no_auto_apply``
+  Do not automatically apply this module when
+  creating an instance or cluster.
+
+``--all_tenants``
+  Module is valid for all tenants (Admin only).
+
+``--no_all_tenants``
+  Module is valid for current tenant only
+  (Admin only).
+
+``--live_update``
+  Allow module to be updated or deleted even if
+  it is already applied to a current instance
+  or cluster. Automatically attempt to reapply
+  this module if the contents change.
+
+``--no_live_update``
+  Restricts a module from being updated or
+  deleted if it is already applied to a current
+  instance or cluster.
+
 .. _trove_promote-to-replica-source:
 
 trove promote-to-replica-source
@@ -1670,8 +1833,7 @@ trove promote-to-replica-source
 
 Promotes a replica to be the new replica source of its set.
 
-Positional arguments
---------------------
+**Positional arguments:**
 
 ``<instance>``
   ID or name of the instance.
@@ -1687,8 +1849,7 @@ trove resize-instance
 
 Resizes an instance with a new flavor.
 
-Positional arguments
---------------------
+**Positional arguments:**
 
 ``<instance>``
   ID or name of the instance.
@@ -1707,8 +1868,7 @@ trove resize-volume
 
 Resizes the volume size of an instance.
 
-Positional arguments
---------------------
+**Positional arguments:**
 
 ``<instance>``
   ID or name of the instance.
@@ -1727,8 +1887,7 @@ trove restart
 
 Restarts an instance.
 
-Positional arguments
---------------------
+**Positional arguments:**
 
 ``<instance>``
   ID or name of the instance.
@@ -1744,8 +1903,7 @@ trove root-disable
 
 Disables root for an instance.
 
-Positional arguments
---------------------
+**Positional arguments:**
 
 ``<instance_or_cluster>``
   ID or name of the instance or cluster.
@@ -1762,14 +1920,12 @@ trove root-enable
 
 Enables root for an instance and resets if already exists.
 
-Positional arguments
---------------------
+**Positional arguments:**
 
 ``<instance_or_cluster>``
   ID or name of the instance or cluster.
 
-Optional arguments
-------------------
+**Optional arguments:**
 
 ``--root_password <root_password>``
   Root password to set.
@@ -1785,8 +1941,7 @@ trove root-show
 
 Gets status if root was ever enabled for an instance or cluster.
 
-Positional arguments
---------------------
+**Positional arguments:**
 
 ``<instance_or_cluster>``
   ID or name of the instance or cluster.
@@ -1802,8 +1957,7 @@ trove secgroup-add-rule
 
 Creates a security group rule.
 
-Positional arguments
---------------------
+**Positional arguments:**
 
 ``<security_group>``
   Security group ID.
@@ -1822,8 +1976,7 @@ trove secgroup-delete-rule
 
 Deletes a security group rule.
 
-Positional arguments
---------------------
+**Positional arguments:**
 
 ``<security_group_rule>``
   Name of security group rule.
@@ -1850,8 +2003,7 @@ trove secgroup-list-rules
 
 Lists all rules for a security group.
 
-Positional arguments
---------------------
+**Positional arguments:**
 
 ``<security_group>``
   Security group ID.
@@ -1867,8 +2019,7 @@ trove secgroup-show
 
 Shows details of a security group.
 
-Positional arguments
---------------------
+**Positional arguments:**
 
 ``<security_group>``
   Security group ID.
@@ -1884,8 +2035,7 @@ trove show
 
 Shows details of an instance.
 
-Positional arguments
---------------------
+**Positional arguments:**
 
 ``<instance>``
   ID or name of the instance.
@@ -1903,14 +2053,12 @@ trove update
 
 Updates an instance: Edits name, configuration, or replica source.
 
-Positional arguments
---------------------
+**Positional arguments:**
 
 ``<instance>``
   ID or name of the instance.
 
-Optional arguments
-------------------
+**Optional arguments:**
 
 ``--name <name>``
   Name of the instance.
@@ -1958,8 +2106,7 @@ trove user-create
 
 Creates a user on an instance.
 
-Positional arguments
---------------------
+**Positional arguments:**
 
 ``<instance>``
   ID or name of the instance.
@@ -1970,8 +2117,7 @@ Positional arguments
 ``<password>``
   Password of user.
 
-Optional arguments
-------------------
+**Optional arguments:**
 
 ``--host <host>``
   Optional host of user.
@@ -1990,8 +2136,7 @@ trove user-delete
 
 Deletes a user from an instance.
 
-Positional arguments
---------------------
+**Positional arguments:**
 
 ``<instance>``
   ID or name of the instance.
@@ -1999,8 +2144,7 @@ Positional arguments
 ``<name>``
   Name of user.
 
-Optional arguments
-------------------
+**Optional arguments:**
 
 ``--host <host>``
   Optional host of user.
@@ -2017,8 +2161,7 @@ trove user-grant-access
 
 Grants access to a database(s) for a user.
 
-Positional arguments
---------------------
+**Positional arguments:**
 
 ``<instance>``
   ID or name of the instance.
@@ -2029,8 +2172,7 @@ Positional arguments
 ``<databases>``
   List of databases.
 
-Optional arguments
-------------------
+**Optional arguments:**
 
 ``--host <host>``
   Optional host of user.
@@ -2046,8 +2188,7 @@ trove user-list
 
 Lists the users for an instance.
 
-Positional arguments
---------------------
+**Positional arguments:**
 
 ``<instance>``
   ID or name of the instance.
@@ -2063,8 +2204,7 @@ trove user-revoke-access
 
 Revokes access to a database for a user.
 
-Positional arguments
---------------------
+**Positional arguments:**
 
 ``<instance>``
   ID or name of the instance.
@@ -2075,8 +2215,7 @@ Positional arguments
 ``<database>``
   A single database.
 
-Optional arguments
-------------------
+**Optional arguments:**
 
 ``--host <host>``
   Optional host of user.
@@ -2092,8 +2231,7 @@ trove user-show
 
 Shows details of a user of an instance.
 
-Positional arguments
---------------------
+**Positional arguments:**
 
 ``<instance>``
   ID or name of the instance.
@@ -2101,8 +2239,7 @@ Positional arguments
 ``<name>``
   Name of user.
 
-Optional arguments
-------------------
+**Optional arguments:**
 
 ``--host <host>``
   Optional host of user.
@@ -2118,8 +2255,7 @@ trove user-show-access
 
 Shows access details of a user of an instance.
 
-Positional arguments
---------------------
+**Positional arguments:**
 
 ``<instance>``
   ID or name of the instance.
@@ -2127,8 +2263,7 @@ Positional arguments
 ``<name>``
   Name of user.
 
-Optional arguments
-------------------
+**Optional arguments:**
 
 ``--host <host>``
   Optional host of user.
@@ -2148,8 +2283,7 @@ trove user-update-attributes
 Updates a user's attributes on an instance. At least one optional argument
 must be provided.
 
-Positional arguments
---------------------
+**Positional arguments:**
 
 ``<instance>``
   ID or name of the instance.
@@ -2157,8 +2291,7 @@ Positional arguments
 ``<name>``
   Name of user.
 
-Optional arguments
-------------------
+**Optional arguments:**
 
 ``--host <host>``
   Optional host of user.
