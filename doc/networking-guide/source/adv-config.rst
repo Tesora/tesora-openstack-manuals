@@ -6,7 +6,7 @@ Advanced configuration
    :maxdepth: 2
 
    adv-config-operational.rst
-   adv-config-network-rbac.rst
+   adv-config-rbac.rst
    adv-config-lbaas.rst
    adv-config-fwaas.rst
    adv-config-vpnaas.rst
@@ -18,3 +18,4 @@ Advanced configuration
    adv-config-sriov.rst
    adv-config-ipam.rst
    adv-config-availability-zone.rst
+   adv-config-dns.rst
