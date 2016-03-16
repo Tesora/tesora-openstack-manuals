@@ -3,12 +3,10 @@
 Install and configure
 ~~~~~~~~~~~~~~~~~~~~~
 
-This section describes how to install the Database
-module on the controller node.
+This section describes how to install and configure the
+Database service, code-named trove, on the controller node.
 
-**Prerequisites**
-
-This chapter assumes that you already have a working OpenStack
+This section assumes that you already have a working OpenStack
 environment with at least the following components installed:
 Compute, Image Service, Identity.
 
@@ -17,53 +15,182 @@ Compute, Image Service, Identity.
 * If you want to provision datastores on block-storage volumes, you also
   need Block Storage.
 
-**To install the Database module on the controller:**
+
+.. only:: obs or rdo or ubuntu
+
+   Prerequisites
+   -------------
+
+   Before you install and configure Database, you must create a
+   database, service credentials, and API endpoints.
+
+   #. To create the database, complete these steps:
+
+      * Use the database access client to connect to the database
+        server as the ``root`` user:
+
+        .. code-block:: console
+
+           $ mysql -u root -p
+
+      * Create the ``trove`` database:
+
+        .. code-block:: console
+
+           CREATE DATABASE trove;
+
+      * Grant proper access to the ``trove`` database:
+
+        .. code-block:: console
+
+           GRANT ALL PRIVILEGES ON trove.* TO 'trove'@'localhost' \
+             IDENTIFIED BY 'TROVE_DBPASS';
+           GRANT ALL PRIVILEGES ON trove.* TO 'trove'@'%' \
+             IDENTIFIED BY 'TROVE_DBPASS';
+
+        Replace ``TROVE_DBPASS`` with a suitable password.
+
+      * Exit the database access client.
+
+   #. Source the ``admin`` credentials to gain access to
+      admin-only CLI commands:
+
+      .. code-block:: console
+
+         $ source admin-openrc.sh
+
+   #. To create the service credentials, complete these steps:
+
+      * Create the ``trove`` user:
+
+        .. code-block:: console
+
+           $ openstack user create --domain default --password-prompt trove
+           User Password:
+           Repeat User Password:
+           +-----------+-----------------------------------+
+           | Field     | Value                             |
+           +-----------+-----------------------------------+
+           | domain_id | default                           |
+           | enabled   | True                              |
+           | id        | ca2e175b851943349be29a328cc5e360  |
+           | name      | trove                             |
+           +-----------+-----------------------------------+
+
+      * Add the ``admin`` role to the ``trove`` user:
+
+        .. code-block:: console
+
+           $ openstack role add --project service --user trove admin
+
+        .. note::
+
+           This command provides no output.
+
+      * Create the ``trove`` service entity:
+
+        .. code-block:: console
+
+           $ openstack service create --name trove \
+             --description "Database" database
+           +-------------+-----------------------------------+
+           | Field       | Value                             |
+           +-------------+-----------------------------------+
+           | description | Database                          |
+           | enabled     | True                              |
+           | id          | 727841c6f5df4773baa4e8a5ae7d72eb  |
+           | name        | trove                             |
+           | type        | database                          |
+           +-------------+-----------------------------------+
+
+
+   #. Create the Database service API endpoints:
+
+      .. code-block:: console
+
+         $ openstack endpoint create --region RegionOne \
+           database public http://controller:8779/v1/%\(tenant_id\)s
+         +--------------+------------------------------------------+
+         | Field        | Value                                    |
+         +--------------+------------------------------------------+
+         | enabled      | True                                     |
+         | id           | 3f4dab34624e4be7b000265f25049609         |
+         | interface    | public                                   |
+         | region       | RegionOne                                |
+         | region_id    | RegionOne                                |
+         | service_id   | 727841c6f5df4773baa4e8a5ae7d72eb         |
+         | service_name | trove                                    |
+         | service_type | database                                 |
+         | url          | http://controller:8779/v1/%(tenant_id)s  |
+         +--------------+------------------------------------------+
+
+         $ openstack endpoint create --region RegionOne \
+           database internal http://controller:8779/v1/%\(tenant_id\)s
+         +--------------+------------------------------------------+
+         | Field        | Value                                    |
+         +--------------+------------------------------------------+
+         | enabled      | True                                     |
+         | id           | 9489f78e958e45cc85570fec7e836d98         |
+         | interface    | internal                                 |
+         | region       | RegionOne                                |
+         | region_id    | RegionOne                                |
+         | service_id   | 727841c6f5df4773baa4e8a5ae7d72eb         |
+         | service_name | trove                                    |
+         | service_type | database                                 |
+         | url          | http://controller:8779/v1/%(tenant_id)s  |
+         +--------------+------------------------------------------+
+
+         $ openstack endpoint create --region RegionOne \
+           database admin http://controller:8779/v1/%\(tenant_id\)s
+         +--------------+------------------------------------------+
+         | Field        | Value                                    |
+         +--------------+------------------------------------------+
+         | enabled      | True                                     |
+         | id           | 76091559514b40c6b7b38dde790efe99         |
+         | interface    | admin                                    |
+         | region       | RegionOne                                |
+         | region_id    | RegionOne                                |
+         | service_id   | 727841c6f5df4773baa4e8a5ae7d72eb         |
+         | service_name | trove                                    |
+         | service_type | database                                 |
+         | url          | http://controller:8779/v1/%(tenant_id)s  |
+         +--------------+------------------------------------------+
+
+Install and configure components
+--------------------------------
+
+.. only:: obs or rdo or ubuntu
+
+   .. include:: shared/note_configuration_vary_by_distribution.rst
+
+.. only:: obs
+
+   #. Install the packages:
+
+      .. code-block:: console
+
+         # zypper install openstack-trove python-troveclient
+
+.. only:: rdo
+
+   #. Install the packages:
+
+      .. code-block:: console
+
+         # yum install openstack-trove python-troveclient
 
 .. only:: ubuntu
 
-   1. Install required packages:
+   #. Install the packages:
 
       .. code-block:: console
 
          # apt-get install python-trove python-troveclient \
            python-glanceclient trove-common trove-api trove-taskmanager
 
-.. only:: rdo
+.. only:: obs or rdo or ubuntu
 
-   1. Install required packages:
-
-      .. code-block:: console
-
-         # yum install openstack-trove python-troveclient
-
-.. only:: obs
-
-   1. Install required packages:
-
-      .. code-block:: console
-
-         # zypper install openstack-trove python-troveclient
-
-2. Prepare OpenStack:
-
-   * Source the ``admin-openrc.sh`` file:
-
-     .. code-block:: console
-
-        $ source ~/admin-openrc.sh
-
-   * Create a trove user that Compute uses to authenticate with the Identity
-     service. Use the service tenant and give the user the admin role:
-
-     .. code-block:: console
-
-        $ keystone user-create --name trove --pass TROVE_PASS
-
-        $ keystone user-role-add --user trove --tenant service --role admin
-
-     Replace ``TROVE_PASS`` with a suitable password.
-
-3. Edit the following configuration files, taking the below actions for
+2. Edit the following configuration files, taking the below actions for
    each file:
 
    ``trove.conf``
@@ -94,13 +221,18 @@ Compute, Image Service, Identity.
      .. code-block:: ini
 
         [DEFAULT]
+        ...
         rpc_backend = rabbit
+
+        [oslo_messaging_rabbit]
+        ...
         rabbit_host = controller
+        rabbit_userid = openstack
         rabbit_password = RABBIT_PASS
 
 .. only:: rdo
 
-   4. Get the ``api-paste.ini`` file and save it to ``/etc/trove``.
+   3. Get the ``api-paste.ini`` file and save it to ``/etc/trove``.
       You can get the file from this location_.
 
       .. _location: http://git.openstack.org/cgit/openstack/trove/plain/etc/trove/api-paste.ini?h=stable/juno
@@ -120,7 +252,7 @@ Compute, Image Service, Identity.
 
 .. only:: ubuntu or obs
 
-   4. Edit the ``[filter:authtoken]`` section of the ``api-paste.ini``
+   3. Edit the ``[filter:authtoken]`` section of the ``api-paste.ini``
       file so it matches the listing shown below:
 
       .. code-block:: ini
@@ -133,7 +265,7 @@ Compute, Image Service, Identity.
          admin_tenant_name = service
          signing_dir = /var/cache/trove
 
-5. Edit the ``trove.conf`` file so it includes appropriate values for the
+4. Edit the ``trove.conf`` file so it includes appropriate values for the
    default datastore, network label regex, and API information as shown
    below:
 
@@ -148,7 +280,7 @@ Compute, Image Service, Identity.
       ...
       api_paste_config = /etc/trove/api-paste.ini
 
-6. Edit the ``trove-taskmanager.conf`` file so it includes the required
+5. Edit the ``trove-taskmanager.conf`` file so it includes the required
    settings to connect to the OpenStack Compute service as shown below:
 
    .. code-block:: ini
@@ -165,23 +297,10 @@ Compute, Image Service, Identity.
       nova_proxy_admin_tenant_name = service
       taskmanager_manager = trove.taskmanager.manager.Manager
 
-7. Prepare the trove admin database:
 
-   .. code-block:: console
+6. Prepare the Database service:
 
-      $ mysql -u root -p
-
-      mysql> CREATE DATABASE trove;
-
-      mysql> GRANT ALL PRIVILEGES ON trove.* TO trove@'localhost' \
-      IDENTIFIED BY 'TROVE_DBPASS';
-
-      mysql> GRANT ALL PRIVILEGES ON trove.* TO trove@'%' \
-      IDENTIFIED BY 'TROVE_DBPASS';
-
-8. Prepare the Database service:
-
-   * Initialize the database:
+   * Populate the database:
 
      .. code-block:: console
 
@@ -196,7 +315,7 @@ Compute, Image Service, Identity.
 
         # su -s /bin/sh -c "trove-manage datastore_update mysql ''" trove
 
-9. Create a trove image.
+7. Create a trove image.
 
    Create an image for the type of database you want to use, for example,
    MySQL, MongoDB, Cassandra.
@@ -218,61 +337,48 @@ Compute, Image Service, Identity.
       nova_proxy_admin_tenant_name = service
       trove_auth_url = http://controller:35357/v2.0
 
-10. Update the datastore to use the new image, using
-    the ``trove-manage`` command.
+8. Update the datastore to use the new image, using
+   the ``trove-manage`` command.
 
-    This example shows you how to create a MySQL 5.5 datastore:
+   This example shows you how to create a MySQL 5.5 datastore:
 
-    .. code-block:: console
+   .. code-block:: console
 
-       # trove-manage --config-file /etc/trove/trove.conf \
-         datastore_version_update \
-         mysql mysql-5.5 mysql glance_image_ID mysql-server-5.5 1
+      # trove-manage --config-file /etc/trove/trove.conf \
+        datastore_version_update \
+        mysql mysql-5.5 mysql glance_image_ID mysql-server-5.5 1
 
-11. You must register the Database module with the Identity service so
-    that other OpenStack services can locate it. Register the service and
-    specify the endpoint:
 
-    .. code-block:: console
-
-       $ keystone service-create --name trove --type database \
-         --description "OpenStack Database Service"
-
-       $ keystone endpoint-create \
-         --service-id $(keystone service-list | awk '/ trove / {print $2}') \
-         --publicurl http://controller:8779/v1.0/%\(tenant_id\)s \
-         --internalurl http://controller:8779/v1.0/%\(tenant_id\)s \
-         --adminurl http://controller:8779/v1.0/%\(tenant_id\)s \
-         --region regionOne
+Finalize installation
+---------------------
 
 .. only:: ubuntu
 
-   12. Due to a bug in the Ubuntu packages, you need to change the service
-       startup scripts to use the correct configuration files.
+   1. Due to a bug in the Ubuntu packages, you need to change the service
+      startup scripts to use the correct configuration files.
 
        **Need info on how to do this**
 
-   13. Restart the Database services:
+   2. Restart the Database services:
 
-       .. code-block:: console
+      .. code-block:: console
 
-          # service trove-api restart
-          # service trove-taskmanager restart
-          # service trove-conductor restart
+         # service trove-api restart
+         # service trove-taskmanager restart
+         # service trove-conductor restart
 
 .. only:: rdo or obs
 
-   12. Start the Database services and configure them to start when
-       the system boots:
+   1. Start the Database services and configure them to start when
+      the system boots:
 
-       .. code-block:: console
+      .. code-block:: console
 
-          # systemctl enable openstack-trove-api.service \
-            openstack-trove-taskmanager.service \
-            openstack-trove-conductor.service
+         # systemctl enable openstack-trove-api.service \
+           openstack-trove-taskmanager.service \
+           openstack-trove-conductor.service
 
-          # systemctl start openstack-trove-api.service \
-            openstack-trove-taskmanager.service \
-            openstack-trove-conductor.service
-
+         # systemctl start openstack-trove-api.service \
+           openstack-trove-taskmanager.service \
+           openstack-trove-conductor.service
 
