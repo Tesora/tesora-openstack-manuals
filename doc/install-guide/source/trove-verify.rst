@@ -25,4 +25,6 @@ Verify operation of the Database service.
         +----+------+-----------+-------------------+--------+-----------+------+
         +----+------+-----------+-------------------+--------+-----------+------+
 
+#. Create a database instance_.
 
+   .. _instance: http://docs.openstack.org/user-guide/create_db.html
