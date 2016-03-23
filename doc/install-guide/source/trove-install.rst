@@ -108,53 +108,53 @@ Compute, Image Service, Identity.
 
       .. code-block:: console
 
-         $ openstack endpoint create --region RegionOne \
-           database public http://controller:8779/v1/%\(tenant_id\)s
-         +--------------+------------------------------------------+
-         | Field        | Value                                    |
-         +--------------+------------------------------------------+
-         | enabled      | True                                     |
-         | id           | 3f4dab34624e4be7b000265f25049609         |
-         | interface    | public                                   |
-         | region       | RegionOne                                |
-         | region_id    | RegionOne                                |
-         | service_id   | 727841c6f5df4773baa4e8a5ae7d72eb         |
-         | service_name | trove                                    |
-         | service_type | database                                 |
-         | url          | http://controller:8779/v1/%(tenant_id)s  |
-         +--------------+------------------------------------------+
+         $ openstack endpoint create --region regionOne \
+           database public http://controller:8779/v1.0/%\(tenant_id\)s
+         +--------------+----------------------------------------------+
+         | Field        | Value                                        |
+         +--------------+----------------------------------------------+
+         | enabled      | True                                         |
+         | id           | 3f4dab34624e4be7b000265f25049609             |
+         | interface    | public                                       |
+         | region       | regionOne                                    |
+         | region_id    | regionOne                                    |
+         | service_id   | 727841c6f5df4773baa4e8a5ae7d72eb             |
+         | service_name | trove                                        |
+         | service_type | database                                     |
+         | url          | http://controller:8779/v1.0/%\(tenant_id\)s  |
+         +--------------+----------------------------------------------+
 
-         $ openstack endpoint create --region RegionOne \
-           database internal http://controller:8779/v1/%\(tenant_id\)s
-         +--------------+------------------------------------------+
-         | Field        | Value                                    |
-         +--------------+------------------------------------------+
-         | enabled      | True                                     |
-         | id           | 9489f78e958e45cc85570fec7e836d98         |
-         | interface    | internal                                 |
-         | region       | RegionOne                                |
-         | region_id    | RegionOne                                |
-         | service_id   | 727841c6f5df4773baa4e8a5ae7d72eb         |
-         | service_name | trove                                    |
-         | service_type | database                                 |
-         | url          | http://controller:8779/v1/%(tenant_id)s  |
-         +--------------+------------------------------------------+
+         $ openstack endpoint create --region regionOne \
+           database internal http://controller:8779/v1.0/%\(tenant_id\)s
+         +--------------+----------------------------------------------+
+         | Field        | Value                                        |
+         +--------------+----------------------------------------------+
+         | enabled      | True                                         |
+         | id           | 9489f78e958e45cc85570fec7e836d98             |
+         | interface    | internal                                     |
+         | region       | regionOne                                    |
+         | region_id    | regionOne                                    |
+         | service_id   | 727841c6f5df4773baa4e8a5ae7d72eb             |
+         | service_name | trove                                        |
+         | service_type | database                                     |
+         | url          | http://controller:8779/v1.0/%\(tenant_id\)s  |
+         +--------------+----------------------------------------------+
 
-         $ openstack endpoint create --region RegionOne \
-           database admin http://controller:8779/v1/%\(tenant_id\)s
-         +--------------+------------------------------------------+
-         | Field        | Value                                    |
-         +--------------+------------------------------------------+
-         | enabled      | True                                     |
-         | id           | 76091559514b40c6b7b38dde790efe99         |
-         | interface    | admin                                    |
-         | region       | RegionOne                                |
-         | region_id    | RegionOne                                |
-         | service_id   | 727841c6f5df4773baa4e8a5ae7d72eb         |
-         | service_name | trove                                    |
-         | service_type | database                                 |
-         | url          | http://controller:8779/v1/%(tenant_id)s  |
-         +--------------+------------------------------------------+
+         $ openstack endpoint create --region regionOne \
+           database admin http://controller:8779/v1.0/%\(tenant_id\)s
+         +--------------+----------------------------------------------+
+         | Field        | Value                                        |
+         +--------------+----------------------------------------------+
+         | enabled      | True                                         |
+         | id           | 76091559514b40c6b7b38dde790efe99             |
+         | interface    | admin                                        |
+         | region       | regionOne                                    |
+         | region_id    | regionOne                                    |
+         | service_id   | 727841c6f5df4773baa4e8a5ae7d72eb             |
+         | service_name | trove                                        |
+         | service_type | database                                     |
+         | url          | http://controller:8779/v1.0/%\(tenant_id\)s  |
+         +--------------+----------------------------------------------+
 
 Install and configure components
 --------------------------------
@@ -185,6 +185,8 @@ Install and configure components
 
       .. code-block:: console
 
+         # apt-get update
+
          # apt-get install python-trove python-troveclient \
            python-glanceclient trove-common trove-api trove-taskmanager
 
@@ -199,9 +201,8 @@ Install and configure components
 
    ``trove-conductor.conf``
 
-   * Edit the ``[DEFAULT]`` section of each file and set appropriate
-     values for the OpenStack service URLs, logging and messaging
-     configuration, and SQL connections:
+   * Provide appropriate
+     values for the following settings:
 
      .. code-block:: ini
 
@@ -211,8 +212,10 @@ Install and configure components
         nova_compute_url = http://controller:8774/v2
         cinder_url = http://controller:8776/v1
         swift_url = http://controller:8080/v1/AUTH_
-        sql_connection = mysql://trove:TROVE_DBPASS@controller/trove
         notifier_queue_hostname = controller
+        ...
+        [database]
+        connection = mysql://trove:TROVE_DBPASS@controller/trove
 
    * Configure the Database module to use the ``RabbitMQ`` message broker
      by setting the following options in the ``[DEFAULT]`` configuration
@@ -230,55 +233,46 @@ Install and configure components
         rabbit_userid = openstack
         rabbit_password = RABBIT_PASS
 
-.. only:: rdo
+3. Verify that the ``api-paste.ini``
+   file is present in ``/etc/trove``.
 
-   3. Get the ``api-paste.ini`` file and save it to ``/etc/trove``.
-      You can get the file from this location_.
+   If the file is not present, you can get it from this location_.
 
-      .. _location: http://git.openstack.org/cgit/openstack/trove/plain/etc/trove/api-paste.ini?h=stable/juno
-
-      Edit the ``[filter:authtoken]`` section of the ``api-paste.ini``
-      file so it matches the listing shown below:
-
-      .. code-block:: ini
-
-         [filter:authtoken]
-         auth_uri = http://controller:5000/v2.0
-         identity_uri = http://controller:35357
-         admin_user = trove
-         admin_password = ADMIN_PASS
-         admin_tenant_name = service
-         signing_dir = /var/cache/trove
-
-.. only:: ubuntu or obs
-
-   3. Edit the ``[filter:authtoken]`` section of the ``api-paste.ini``
-      file so it matches the listing shown below:
-
-      .. code-block:: ini
-
-         [filter:authtoken]
-         auth_uri = http://controller:5000/v2.0
-         identity_uri = http://controller:35357
-         admin_user = trove
-         admin_password = ADMIN_PASS
-         admin_tenant_name = service
-         signing_dir = /var/cache/trove
+      .. _location: http://git.openstack.org/cgit/openstack/trove/plain/etc/trove/api-paste.ini?h=stable/mitaka
 
 4. Edit the ``trove.conf`` file so it includes appropriate values for the
-   default datastore, network label regex, and API information as shown
-   below:
+   settings shown below:
 
    .. code-block:: ini
 
       [DEFAULT]
       default_datastore = mysql
+      auth_strategy = keystone
       ...
       # Config option for showing the IP address that nova doles out
       add_addresses = True
       network_label_regex = ^NETWORK_LABEL$
       ...
       api_paste_config = /etc/trove/api-paste.ini
+      ...
+      [keystone_authtoken]
+      ...
+      auth_uri = http://controller:5000
+      auth_url = http://controller:35357
+      memcached_servers = controller:11211
+      auth_type = password
+      project_domain_name = default
+      user_domain_name = default
+      project_name = service
+      username = trove
+      password = TROVE_PASS
+   .. note::
+
+           These authentication setings will generate a warning
+           telling you that this syntax will be deprecated, and
+           suggesting that you use ``[auth_plugin]``
+           settings instead. However ``[auth_plugin]`` settings do
+           not work with trove at this time.
 
 5. Edit the ``trove-taskmanager.conf`` file so it includes the required
    settings to connect to the OpenStack Compute service as shown below:
