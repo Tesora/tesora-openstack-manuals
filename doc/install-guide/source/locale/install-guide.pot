@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Installation Guide 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-16 06:09+0000\n"
+"POT-Creation-Date: 2016-03-28 06:15+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -128,7 +128,7 @@ msgstr ""
 # #-#-#-#-#  nova-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  nova-verify.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  swift-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
-#: ../ceilometer-aodh.rst:44 ../ceilometer-install.rst:62
+#: ../ceilometer-aodh.rst:44 ../ceilometer-install.rst:69
 #: ../ceilometer-verify.rst:12 ../cinder-controller-install.rst:47
 #: ../cinder-verify.rst:12 ../glance-install.rst:44 ../glance-verify.rst:27
 #: ../heat-install.rst:46 ../manila-controller-install.rst:44
@@ -147,7 +147,7 @@ msgstr ""
 # #-#-#-#-#  manila-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  neutron-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  nova-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
-#: ../ceilometer-aodh.rst:51 ../ceilometer-install.rst:69
+#: ../ceilometer-aodh.rst:51 ../ceilometer-install.rst:76
 #: ../cinder-controller-install.rst:54 ../glance-install.rst:51
 #: ../heat-install.rst:53 ../manila-controller-install.rst:50
 #: ../neutron-controller-install.rst:46 ../nova-controller-install.rst:55
@@ -176,11 +176,11 @@ msgstr ""
 # #-#-#-#-#  nova-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  swift-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  swift-initial-rings.pot (Installation Guide 0.1)  #-#-#-#-#
-#: ../ceilometer-aodh.rst:77 ../ceilometer-install.rst:95
+#: ../ceilometer-aodh.rst:77 ../ceilometer-install.rst:102
 #: ../ceilometer-swift.rst:45 ../cinder-controller-install.rst:80
 #: ../glance-install.rst:78 ../heat-install.rst:79 ../heat-install.rst:256
-#: ../heat-install.rst:279 ../keystone-users.rst:76 ../keystone-users.rst:170
-#: ../launch-instance-cinder.rst:79 ../launch-instance-selfservice.rst:224
+#: ../heat-install.rst:279 ../keystone-users.rst:86 ../keystone-users.rst:180
+#: ../launch-instance-cinder.rst:79 ../launch-instance-selfservice.rst:225
 #: ../manila-controller-install.rst:76 ../neutron-controller-install.rst:73
 #: ../nova-controller-install.rst:82 ../swift-controller-install.rst:62
 #: ../swift-initial-rings.rst:32 ../swift-initial-rings.rst:109
@@ -217,7 +217,7 @@ msgstr ""
 # #-#-#-#-#  nova-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  swift-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  swift-storage-install.pot (Installation Guide 0.1)  #-#-#-#-#
-#: ../ceilometer-aodh.rst:148 ../ceilometer-install.rst:166
+#: ../ceilometer-aodh.rst:148 ../ceilometer-install.rst:173
 #: ../ceilometer-nova.rst:8 ../cinder-controller-install.rst:224
 #: ../cinder-storage-install.rst:134 ../environment-memcached.rst:9
 #: ../environment-messaging.rst:16 ../environment-nosql-database.rst:16
@@ -259,8 +259,8 @@ msgstr ""
 # #-#-#-#-#  swift-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  swift-storage-install.pot (Installation Guide 0.1)  #-#-#-#-#
 #: ../ceilometer-aodh.rst:159 ../ceilometer-aodh.rst:170
-#: ../ceilometer-aodh.rst:181 ../ceilometer-install.rst:170
-#: ../ceilometer-install.rst:181 ../ceilometer-install.rst:191
+#: ../ceilometer-aodh.rst:181 ../ceilometer-install.rst:177
+#: ../ceilometer-install.rst:188 ../ceilometer-install.rst:198
 #: ../ceilometer-nova.rst:12 ../ceilometer-nova.rst:20
 #: ../ceilometer-nova.rst:28 ../ceilometer-swift.rst:50
 #: ../cinder-controller-install.rst:228 ../cinder-controller-install.rst:236
@@ -269,7 +269,7 @@ msgstr ""
 #: ../environment-memcached.rst:11 ../environment-ntp-controller.rst:11
 #: ../environment-ntp-other.rst:12 ../environment-sql-database.rst:13
 #: ../glance-install.rst:157 ../glance-install.rst:165
-#: ../glance-install.rst:173 ../glance-install.rst:272 ../heat-install.rst:316
+#: ../glance-install.rst:173 ../glance-install.rst:288 ../heat-install.rst:316
 #: ../heat-install.rst:325 ../heat-install.rst:334 ../horizon-install.rst:31
 #: ../horizon-install.rst:39 ../horizon-install.rst:47
 #: ../horizon-install.rst:55 ../manila-controller-install.rst:224
@@ -298,10 +298,10 @@ msgstr ""
 # #-#-#-#-#  manila-share-install.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  neutron-controller-install-option1.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  neutron-controller-install-option2.pot (Installation Guide 0.1)  #-#-#-#-#
-#: ../ceilometer-aodh.rst:190 ../ceilometer-install.rst:209
+#: ../ceilometer-aodh.rst:190 ../ceilometer-install.rst:216
 #: ../cinder-controller-install.rst:263 ../cinder-storage-install.rst:163
-#: ../glance-install.rst:185 ../heat-install.rst:345
-#: ../keystone-install.rst:120 ../manila-controller-install.rst:259
+#: ../glance-install.rst:184 ../glance-install.rst:238 ../heat-install.rst:345
+#: ../keystone-install.rst:118 ../manila-controller-install.rst:259
 #: ../manila-share-install.rst:62
 #: ../neutron-controller-install-option1.rst:109
 #: ../neutron-controller-install-option2.rst:69
@@ -325,11 +325,11 @@ msgstr ""
 # #-#-#-#-#  manila-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  manila-share-install.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  nova-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
-#: ../ceilometer-aodh.rst:203 ../ceilometer-install.rst:224
+#: ../ceilometer-aodh.rst:203 ../ceilometer-install.rst:231
 #: ../ceilometer-nova.rst:37 ../cinder-controller-install.rst:274
 #: ../cinder-storage-install.rst:174 ../heat-install.rst:356
 #: ../manila-controller-install.rst:280 ../manila-share-install.rst:83
-#: ../nova-controller-install.rst:238
+#: ../nova-controller-install.rst:247
 msgid ""
 "In the ``[DEFAULT]`` and ``[oslo_messaging_rabbit]`` sections, configure "
 "``RabbitMQ`` message queue access:"
@@ -347,12 +347,12 @@ msgstr ""
 # #-#-#-#-#  manila-share-install.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  nova-compute-install.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  nova-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
-#: ../ceilometer-aodh.rst:218 ../ceilometer-glance.rst:30
-#: ../ceilometer-install.rst:239 ../ceilometer-nova.rst:52
-#: ../ceilometer-swift.rst:111 ../cinder-controller-install.rst:289
+#: ../ceilometer-aodh.rst:218 ../ceilometer-glance.rst:34
+#: ../ceilometer-install.rst:246 ../ceilometer-nova.rst:52
+#: ../ceilometer-swift.rst:108 ../cinder-controller-install.rst:289
 #: ../cinder-storage-install.rst:189 ../heat-install.rst:371
 #: ../manila-controller-install.rst:295 ../manila-share-install.rst:98
-#: ../nova-compute-install.rst:82 ../nova-controller-install.rst:253
+#: ../nova-compute-install.rst:82 ../nova-controller-install.rst:262
 msgid ""
 "Replace ``RABBIT_PASS`` with the password you chose for the ``openstack`` "
 "account in ``RabbitMQ``."
@@ -370,13 +370,13 @@ msgstr ""
 # #-#-#-#-#  neutron-controller-install-option2.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  nova-compute-install.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  nova-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
-#: ../ceilometer-aodh.rst:221 ../ceilometer-install.rst:242
+#: ../ceilometer-aodh.rst:221 ../ceilometer-install.rst:249
 #: ../ceilometer-nova.rst:55 ../cinder-controller-install.rst:292
 #: ../cinder-storage-install.rst:192 ../manila-controller-install.rst:309
 #: ../manila-share-install.rst:112 ../neutron-compute-install.rst:87
 #: ../neutron-controller-install-option1.rst:148
 #: ../neutron-controller-install-option2.rst:109
-#: ../nova-compute-install.rst:85 ../nova-controller-install.rst:256
+#: ../nova-compute-install.rst:85 ../nova-controller-install.rst:265
 msgid ""
 "In the ``[DEFAULT]`` and ``[keystone_authtoken]`` sections, configure "
 "Identity service access:"
@@ -391,7 +391,7 @@ msgstr ""
 # #-#-#-#-#  ceilometer-aodh.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  ceilometer-install.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  ceilometer-nova.pot (Installation Guide 0.1)  #-#-#-#-#
-#: ../ceilometer-aodh.rst:245 ../ceilometer-install.rst:266
+#: ../ceilometer-aodh.rst:245 ../ceilometer-install.rst:273
 #: ../ceilometer-nova.rst:79
 msgid ""
 "In the ``[service_credentials]`` section, configure service credentials:"
@@ -400,14 +400,8 @@ msgstr ""
 # #-#-#-#-#  ceilometer-aodh.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  ceilometer-install.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  ceilometer-nova.pot (Installation Guide 0.1)  #-#-#-#-#
-# #-#-#-#-#  glance-install.pot (Installation Guide 0.1)  #-#-#-#-#
-# #-#-#-#-#  keystone-install.pot (Installation Guide 0.1)  #-#-#-#-#
-# #-#-#-#-#  nova-compute-install.pot (Installation Guide 0.1)  #-#-#-#-#
-# #-#-#-#-#  nova-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
-#: ../ceilometer-aodh.rst:261 ../ceilometer-install.rst:292
-#: ../ceilometer-nova.rst:96 ../glance-install.rst:249
-#: ../keystone-install.rst:146 ../nova-compute-install.rst:215
-#: ../nova-controller-install.rst:381
+#: ../ceilometer-aodh.rst:261 ../ceilometer-install.rst:299
+#: ../ceilometer-nova.rst:96
 msgid ""
 "(Optional) To assist with troubleshooting, enable verbose logging in the "
 "``[DEFAULT]`` section:"
@@ -441,15 +435,15 @@ msgstr ""
 # #-#-#-#-#  nova-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  swift-finalize-installation.pot (Installation Guide 0.1)  #-#-#-#-#
 #: ../ceilometer-aodh.rst:286 ../ceilometer-cinder.rst:26
-#: ../ceilometer-glance.rst:34 ../ceilometer-install.rst:302
-#: ../ceilometer-nova.rst:121 ../ceilometer-swift.rst:115
+#: ../ceilometer-glance.rst:38 ../ceilometer-install.rst:309
+#: ../ceilometer-nova.rst:121 ../ceilometer-swift.rst:112
 #: ../cinder-controller-install.rst:360 ../cinder-storage-install.rst:295
 #: ../environment-memcached.rst:46 ../environment-nosql-database.rst:145
-#: ../environment-sql-database.rst:98 ../glance-install.rst:293
-#: ../heat-install.rst:467 ../horizon-install.rst:385
+#: ../environment-sql-database.rst:98 ../glance-install.rst:309
+#: ../heat-install.rst:469 ../horizon-install.rst:385
 #: ../manila-controller-install.rst:360 ../manila-share-install.rst:222
 #: ../neutron-compute-install.rst:166 ../neutron-controller-install.rst:239
-#: ../nova-compute-install.rst:236 ../nova-controller-install.rst:400
+#: ../nova-compute-install.rst:245 ../nova-controller-install.rst:410
 #: ../swift-finalize-installation.rst:2
 msgid "Finalize installation"
 msgstr ""
@@ -498,7 +492,8 @@ msgid ""
 msgstr ""
 
 #: ../ceilometer-cinder.rst:17
-msgid "In the ``[DEFAULT]`` section, configure notifications:"
+msgid ""
+"In the ``[oslo_messaging_notifications]`` section, configure notifications:"
 msgstr ""
 
 #: ../ceilometer-cinder.rst:30 ../ceilometer-cinder.rst:44
@@ -532,9 +527,7 @@ msgstr ""
 msgid "Configure the Image service to use Telemetry"
 msgstr ""
 
-# #-#-#-#-#  ceilometer-glance.pot (Installation Guide 0.1)  #-#-#-#-#
-# #-#-#-#-#  glance-install.pot (Installation Guide 0.1)  #-#-#-#-#
-#: ../ceilometer-glance.rst:10 ../glance-install.rst:181
+#: ../ceilometer-glance.rst:10
 msgid ""
 "Edit the ``/etc/glance/glance-api.conf`` and ``/etc/glance/glance-registry."
 "conf`` files and complete the following actions:"
@@ -542,11 +535,12 @@ msgstr ""
 
 #: ../ceilometer-glance.rst:14
 msgid ""
-"In the ``[DEFAULT]`` and ``[oslo_messaging_rabbit]`` sections, configure "
-"notifications and RabbitMQ message broker access:"
+"In the ``[DEFAULT]``, ``[oslo_messaging_notifications]``, and "
+"``[oslo_messaging_rabbit]`` sections, configure notifications and RabbitMQ "
+"message broker access:"
 msgstr ""
 
-#: ../ceilometer-glance.rst:38 ../ceilometer-glance.rst:46
+#: ../ceilometer-glance.rst:42 ../ceilometer-glance.rst:50
 msgid "Restart the Image service:"
 msgstr ""
 
@@ -576,31 +570,39 @@ msgid ""
 "nosql-database` to install and configure MongoDB before proceeding further."
 msgstr ""
 
-#: ../ceilometer-install.rst:20 ../ceilometer-install.rst:46
+#: ../ceilometer-install.rst:20 ../ceilometer-install.rst:53
 msgid "Create the ``ceilometer`` database:"
 msgstr ""
 
-#: ../ceilometer-install.rst:42 ../ceilometer-install.rst:60
+#: ../ceilometer-install.rst:42 ../ceilometer-install.rst:67
 msgid "Replace ``CEILOMETER_DBPASS`` with a suitable password."
 msgstr ""
 
-#: ../ceilometer-install.rst:71
+#: ../ceilometer-install.rst:46
+msgid ""
+"If the command fails saying you are not authorized to insert a user, you may "
+"need to temporarily comment out the ``auth`` option in the ``/etc/mongodb."
+"conf`` file, restart the MongoDB service using ``systemctl restart "
+"mongodb``, and try calling the command again."
+msgstr ""
+
+#: ../ceilometer-install.rst:78
 msgid "Create the ``ceilometer`` user:"
 msgstr ""
 
-#: ../ceilometer-install.rst:87
+#: ../ceilometer-install.rst:94
 msgid "Add the ``admin`` role to the ``ceilometer`` user."
 msgstr ""
 
-#: ../ceilometer-install.rst:97
+#: ../ceilometer-install.rst:104
 msgid "Create the ``ceilometer`` service entity:"
 msgstr ""
 
-#: ../ceilometer-install.rst:113
+#: ../ceilometer-install.rst:120
 msgid "Create the Telemetry service API endpoints:"
 msgstr ""
 
-#: ../ceilometer-install.rst:201
+#: ../ceilometer-install.rst:208
 msgid ""
 "Respond to prompts for :doc:`Identity service credentials <debconf/debconf-"
 "keystone-authtoken>`, :doc:`service endpoint registration <debconf/debconf-"
@@ -610,13 +612,13 @@ msgstr ""
 
 # #-#-#-#-#  ceilometer-install.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  ceilometer-nova.pot (Installation Guide 0.1)  #-#-#-#-#
-#: ../ceilometer-install.rst:206 ../ceilometer-nova.rst:34
+#: ../ceilometer-install.rst:213 ../ceilometer-nova.rst:34
 msgid ""
 "Edit the ``/etc/ceilometer/ceilometer.conf`` file and complete the following "
 "actions:"
 msgstr ""
 
-#: ../ceilometer-install.rst:217
+#: ../ceilometer-install.rst:224
 msgid ""
 "Replace ``CEILOMETER_DBPASS`` with the password you chose for the Telemetry "
 "service database. You must escape special characters such as ':', '/', '+', "
@@ -626,24 +628,24 @@ msgstr ""
 
 # #-#-#-#-#  ceilometer-install.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  ceilometer-nova.pot (Installation Guide 0.1)  #-#-#-#-#
-#: ../ceilometer-install.rst:263 ../ceilometer-install.rst:279
+#: ../ceilometer-install.rst:270 ../ceilometer-install.rst:286
 #: ../ceilometer-nova.rst:93
 msgid ""
 "Replace ``CEILOMETER_PASS`` with the password you chose for the "
 "``ceilometer`` user in the Identity service."
 msgstr ""
 
-#: ../ceilometer-install.rst:284
+#: ../ceilometer-install.rst:291
 msgid "In the ``[collector]`` section, configure the dispatcher:"
 msgstr ""
 
-#: ../ceilometer-install.rst:306 ../ceilometer-install.rst:322
+#: ../ceilometer-install.rst:313 ../ceilometer-install.rst:329
 msgid ""
 "Start the Telemetry services and configure them to start when the system "
 "boots:"
 msgstr ""
 
-#: ../ceilometer-install.rst:338
+#: ../ceilometer-install.rst:345
 msgid "Restart the Telemetry services:"
 msgstr ""
 
@@ -702,7 +704,7 @@ msgstr ""
 # #-#-#-#-#  nova-compute-install.pot (Installation Guide 0.1)  #-#-#-#-#
 #: ../ceilometer-nova.rst:143 ../ceilometer-nova.rst:157
 #: ../neutron-compute-install.rst:170 ../neutron-compute-install.rst:195
-#: ../neutron-compute-install.rst:211 ../nova-compute-install.rst:297
+#: ../neutron-compute-install.rst:211 ../nova-compute-install.rst:306
 msgid "Restart the Compute service:"
 msgstr ""
 
@@ -774,11 +776,11 @@ msgstr ""
 msgid "In the ``[pipeline:main]`` section, add ``ceilometer``:"
 msgstr ""
 
-#: ../ceilometer-swift.rst:98
+#: ../ceilometer-swift.rst:95
 msgid "In the ``[filter:ceilometer]`` section, configure notifications:"
 msgstr ""
 
-#: ../ceilometer-swift.rst:119 ../ceilometer-swift.rst:127
+#: ../ceilometer-swift.rst:116 ../ceilometer-swift.rst:124
 msgid "Restart the Object Storage proxy service:"
 msgstr ""
 
@@ -906,8 +908,8 @@ msgstr ""
 # #-#-#-#-#  heat-install.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  manila-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  nova-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
-#: ../cinder-controller-install.rst:252 ../glance-install.rst:278
-#: ../heat-install.rst:449 ../manila-controller-install.rst:248
+#: ../cinder-controller-install.rst:252 ../glance-install.rst:294
+#: ../heat-install.rst:451 ../manila-controller-install.rst:248
 #: ../nova-controller-install.rst:197
 msgid ""
 "Respond to prompts for :doc:`database management <debconf/debconf-dbconfig-"
@@ -942,10 +944,11 @@ msgstr ""
 # #-#-#-#-#  nova-compute-install.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  nova-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
 #: ../cinder-controller-install.rst:318 ../cinder-storage-install.rst:218
-#: ../glance-install.rst:222 ../neutron-compute-install.rst:113
+#: ../glance-install.rst:221 ../glance-install.rst:275
+#: ../neutron-compute-install.rst:113
 #: ../neutron-controller-install-option1.rst:174
 #: ../neutron-controller-install-option2.rst:135
-#: ../nova-compute-install.rst:111 ../nova-controller-install.rst:282
+#: ../nova-compute-install.rst:111 ../nova-controller-install.rst:291
 msgid ""
 "Comment out or remove any other options in the ``[keystone_authtoken]`` "
 "section."
@@ -955,7 +958,7 @@ msgstr ""
 # #-#-#-#-#  manila-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  nova-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
 #: ../cinder-controller-install.rst:321 ../manila-controller-install.rst:332
-#: ../nova-controller-install.rst:285
+#: ../nova-controller-install.rst:294
 msgid ""
 "In the ``[DEFAULT]`` section, configure the ``my_ip`` option to use the "
 "management interface IP address of the controller node:"
@@ -976,8 +979,8 @@ msgstr ""
 #: ../neutron-controller-install-option1.rst:203
 #: ../neutron-controller-install-option2.rst:164
 #: ../nova-compute-install.rst:197 ../nova-compute-install.rst:207
-#: ../nova-controller-install.rst:345 ../nova-controller-install.rst:355
-#: ../nova-controller-install.rst:365
+#: ../nova-controller-install.rst:354 ../nova-controller-install.rst:364
+#: ../nova-controller-install.rst:374
 msgid "In the ``[oslo_concurrency]`` section, configure the lock path:"
 msgstr ""
 
@@ -996,8 +999,8 @@ msgstr ""
 # #-#-#-#-#  cinder-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  neutron-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
 #: ../cinder-controller-install.rst:364 ../cinder-controller-install.rst:380
-#: ../neutron-controller-install.rst:264 ../neutron-controller-install.rst:302
-#: ../neutron-controller-install.rst:345
+#: ../neutron-controller-install.rst:264 ../neutron-controller-install.rst:293
+#: ../neutron-controller-install.rst:336
 msgid "Restart the Compute API service:"
 msgstr ""
 
@@ -1019,10 +1022,10 @@ msgstr ""
 # #-#-#-#-#  neutron-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  nova-compute-install.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  nova-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
-#: ../cinder-controller-install.rst:395 ../glance-install.rst:316
-#: ../heat-install.rst:493 ../keystone-install.rst:541
-#: ../manila-controller-install.rst:383 ../neutron-controller-install.rst:370
-#: ../nova-compute-install.rst:305 ../nova-controller-install.rst:449
+#: ../cinder-controller-install.rst:395 ../glance-install.rst:332
+#: ../heat-install.rst:495 ../keystone-install.rst:522
+#: ../manila-controller-install.rst:383 ../neutron-controller-install.rst:361
+#: ../nova-compute-install.rst:314 ../nova-controller-install.rst:459
 msgid "By default, the Ubuntu packages create an SQLite database."
 msgstr ""
 
@@ -1034,10 +1037,10 @@ msgstr ""
 # #-#-#-#-#  neutron-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  nova-compute-install.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  nova-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
-#: ../cinder-controller-install.rst:397 ../glance-install.rst:318
-#: ../heat-install.rst:495 ../keystone-install.rst:543
-#: ../manila-controller-install.rst:385 ../neutron-controller-install.rst:372
-#: ../nova-compute-install.rst:307 ../nova-controller-install.rst:451
+#: ../cinder-controller-install.rst:397 ../glance-install.rst:334
+#: ../heat-install.rst:497 ../keystone-install.rst:524
+#: ../manila-controller-install.rst:385 ../neutron-controller-install.rst:363
+#: ../nova-compute-install.rst:316 ../nova-controller-install.rst:461
 msgid ""
 "Because this configuration uses an SQL database server, you can remove the "
 "SQLite database file:"
@@ -1696,42 +1699,15 @@ msgid ""
 "boots:"
 msgstr ""
 
-#: ../environment-messaging.rst:50
-msgid ""
-"In case the message queue service does not start and returns a ``nodedown`` "
-"error, perform the following actions:"
-msgstr ""
-
-#: ../environment-messaging.rst:53
-msgid ""
-"Copy the ``/usr/lib/systemd/system/epmd.socket`` file to the ``/etc/systemd/"
-"system`` directory."
-msgstr ""
-
-#: ../environment-messaging.rst:56
-msgid ""
-"Edit the ``/etc/systemd/system/epmd.socket`` file to contain the following:"
-msgstr ""
-
-#: ../environment-messaging.rst:65
-msgid ""
-"Replace ``MANAGEMENT_INTERFACE_IP_ADDRESS`` with the IP address of the "
-"management network interface on your controller node."
-msgstr ""
-
-#: ../environment-messaging.rst:68
-msgid "Start the message queue service again."
-msgstr ""
-
-#: ../environment-messaging.rst:70 ../environment-messaging.rst:89
+#: ../environment-messaging.rst:48 ../environment-messaging.rst:67
 msgid "Add the ``openstack`` user:"
 msgstr ""
 
-#: ../environment-messaging.rst:77 ../environment-messaging.rst:96
+#: ../environment-messaging.rst:55 ../environment-messaging.rst:74
 msgid "Replace ``RABBIT_PASS`` with a suitable password."
 msgstr ""
 
-#: ../environment-messaging.rst:79 ../environment-messaging.rst:98
+#: ../environment-messaging.rst:57 ../environment-messaging.rst:76
 msgid ""
 "Permit configuration, write, and read access for the ``openstack`` user:"
 msgstr ""
@@ -2459,7 +2435,7 @@ msgstr ""
 
 # #-#-#-#-#  environment-packages.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  keystone-install.pot (Installation Guide 0.1)  #-#-#-#-#
-#: ../environment-packages.rst:160 ../keystone-install.rst:531
+#: ../environment-packages.rst:160 ../keystone-install.rst:512
 msgid "Finalize the installation"
 msgstr ""
 
@@ -2930,63 +2906,58 @@ msgstr ""
 msgid "Create the Image service API endpoints:"
 msgstr ""
 
-#: ../glance-install.rst:193
+#: ../glance-install.rst:181
+msgid ""
+"Edit the ``/etc/glance/glance-api.conf`` file and complete the following "
+"actions:"
+msgstr ""
+
+#: ../glance-install.rst:192 ../glance-install.rst:246
 msgid ""
 "Replace ``GLANCE_DBPASS`` with the password you chose for the Image service "
 "database."
 msgstr ""
 
-#: ../glance-install.rst:196
+#: ../glance-install.rst:195 ../glance-install.rst:249
 msgid ""
 "In the ``[keystone_authtoken]`` and ``[paste_deploy]`` sections, configure "
 "Identity service access:"
 msgstr ""
 
-#: ../glance-install.rst:217
+#: ../glance-install.rst:216 ../glance-install.rst:270
 msgid ""
 "Replace ``GLANCE_PASS`` with the password you chose for the ``glance`` user "
 "in the Identity service."
 msgstr ""
 
-#: ../glance-install.rst:225
+#: ../glance-install.rst:224
 msgid ""
 "In the ``[glance_store]`` section, configure the local file system store and "
 "location of image files:"
 msgstr ""
 
-#: ../glance-install.rst:236
+#: ../glance-install.rst:235
 msgid ""
-"In the ``[DEFAULT]`` section, configure the ``noop`` notification driver to "
-"disable notifications because they only pertain to the optional Telemetry "
-"service:"
+"Edit the ``/etc/glance/glance-registry.conf`` file and complete the "
+"following actions:"
 msgstr ""
 
-#: ../glance-install.rst:246
-msgid ""
-"The Telemetry chapter provides an Image service configuration that enables "
-"notifications."
-msgstr ""
-
-#: ../glance-install.rst:260
-msgid "Both files contain the same configuration options."
-msgstr ""
-
-#: ../glance-install.rst:264
+#: ../glance-install.rst:280
 msgid "Populate the Image service database:"
 msgstr ""
 
-#: ../glance-install.rst:284
+#: ../glance-install.rst:300
 msgid ""
 "Select the ``keystone`` pipeline to configure the Image service to use the "
 "Identity service:"
 msgstr ""
 
-#: ../glance-install.rst:297
+#: ../glance-install.rst:313
 msgid ""
 "Start the Image services and configure them to start when the system boots:"
 msgstr ""
 
-#: ../glance-install.rst:309
+#: ../glance-install.rst:325
 msgid "Restart the Image services:"
 msgstr ""
 
@@ -3045,7 +3016,7 @@ msgstr ""
 # #-#-#-#-#  keystone-services.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  keystone-users.pot (Installation Guide 0.1)  #-#-#-#-#
 #: ../glance-verify.rst:89 ../keystone-services.rst:99
-#: ../keystone-users.rst:36
+#: ../keystone-users.rst:46
 msgid ""
 "OpenStack generates IDs dynamically, so you will see different values in the "
 "example command output."
@@ -3182,7 +3153,7 @@ msgid ""
 "``heat_stack_owner`` role."
 msgstr ""
 
-#: ../heat-install.rst:342 ../heat-install.rst:455
+#: ../heat-install.rst:342 ../heat-install.rst:457
 msgid ""
 "Edit the ``/etc/heat/heat.conf`` file and complete the following actions:"
 msgstr ""
@@ -3202,7 +3173,7 @@ msgstr ""
 #: ../heat-install.rst:408
 msgid ""
 "Replace ``HEAT_PASS`` with the password you chose for the ``heat`` user in "
-"the Identity service."
+"the Identity service.."
 msgstr ""
 
 #: ../heat-install.rst:411
@@ -3222,25 +3193,25 @@ msgid ""
 "``heat_domain_admin`` user in the Identity service."
 msgstr ""
 
-#: ../heat-install.rst:435
+#: ../heat-install.rst:437
 msgid "Populate the Orchestration database:"
 msgstr ""
 
-#: ../heat-install.rst:443
+#: ../heat-install.rst:445
 msgid "Run the following commands to install the packages:"
 msgstr ""
 
-#: ../heat-install.rst:458
+#: ../heat-install.rst:460
 msgid "In the ``[ec2authtoken]`` section, configure Identity service access:"
 msgstr ""
 
-#: ../heat-install.rst:471
+#: ../heat-install.rst:473
 msgid ""
 "Start the Orchestration services and configure them to start when the system "
 "boots:"
 msgstr ""
 
-#: ../heat-install.rst:483
+#: ../heat-install.rst:485
 msgid "Restart the Orchestration services:"
 msgstr ""
 
@@ -3649,110 +3620,104 @@ msgstr ""
 msgid "Replace ``KEYSTONE_DBPASS`` with a suitable password."
 msgstr ""
 
-#: ../keystone-install.rst:47 ../keystone-install.rst:197
+#: ../keystone-install.rst:47 ../keystone-install.rst:178
 msgid ""
 "Generate a random value to use as the administration token during initial "
 "configuration:"
 msgstr ""
 
-#: ../keystone-install.rst:62
+#: ../keystone-install.rst:63
 msgid ""
-"In Kilo and newer releases, the keystone project deprecates eventlet in "
-"favor of a separate web server with WSGI extensions. This guide uses the "
-"Apache HTTP server with ``mod_wsgi`` to serve Identity service requests on "
-"port 5000 and 35357. By default, the keystone service still listens on ports "
-"5000 and 35357. Therefore, this guide disables the keystone service. The "
-"keystone project plans to remove eventlet support in Mitaka."
+"This guide uses the Apache HTTP server with ``mod_wsgi`` to serve Identity "
+"service requests on ports 5000 and 35357. By default, the keystone service "
+"still listens on these ports. Therefore, this guide manually disables the "
+"keystone service."
 msgstr ""
 
-#: ../keystone-install.rst:72
+#: ../keystone-install.rst:70
 msgid ""
 "Disable the keystone service from starting automatically after installation:"
 msgstr ""
 
-#: ../keystone-install.rst:79 ../keystone-install.rst:89
-#: ../keystone-install.rst:174
+#: ../keystone-install.rst:77 ../keystone-install.rst:87
+#: ../keystone-install.rst:155
 msgid "Run the following command to install the packages:"
 msgstr ""
 
-#: ../keystone-install.rst:105
+#: ../keystone-install.rst:103
 msgid ""
 "Edit the ``/etc/keystone/keystone.conf`` file and complete the following "
 "actions:"
 msgstr ""
 
-#: ../keystone-install.rst:108
+#: ../keystone-install.rst:106
 msgid ""
 "In the ``[DEFAULT]`` section, define the value of the initial administration "
 "token:"
 msgstr ""
 
-#: ../keystone-install.rst:117
+#: ../keystone-install.rst:115
 msgid ""
 "Replace ``ADMIN_TOKEN`` with the random value that you generated in a "
 "previous step."
 msgstr ""
 
-#: ../keystone-install.rst:128
+#: ../keystone-install.rst:126
 msgid ""
 "Replace ``KEYSTONE_DBPASS`` with the password you chose for the database."
 msgstr ""
 
-#: ../keystone-install.rst:130
+#: ../keystone-install.rst:128
 msgid "In the ``[token]`` section, configure the Fernet token provider:"
 msgstr ""
 
 #: ../keystone-install.rst:138
-msgid "In the ``[revoke]`` section, configure the SQL revocation driver:"
-msgstr ""
-
-#: ../keystone-install.rst:157
 msgid "Populate the Identity service database:"
 msgstr ""
 
-#: ../keystone-install.rst:163
+#: ../keystone-install.rst:144
 msgid "Initialize Fernet keys:"
 msgstr ""
 
-#: ../keystone-install.rst:172
+#: ../keystone-install.rst:153
 msgid "Install and configure the components"
 msgstr ""
 
-#: ../keystone-install.rst:180
+#: ../keystone-install.rst:161
 msgid ""
 "Respond to prompts for :doc:`debconf/debconf-dbconfig-common`, which will "
 "fill the below database access directive."
 msgstr ""
 
-#: ../keystone-install.rst:189
+#: ../keystone-install.rst:170
 msgid ""
 "If you decide to not use ``dbconfig-common``, then you have to create the "
 "database and manage its access rights yourself, and run the following by "
 "hand."
 msgstr ""
 
-#: ../keystone-install.rst:204
+#: ../keystone-install.rst:185
 msgid "Configure the initial administration token:"
 msgstr ""
 
-#: ../keystone-install.rst:209
+#: ../keystone-install.rst:190
 msgid ""
 "Use the random value that you generated in a previous step. If you install "
 "using non-interactive mode or you do not specify this token, the "
 "configuration tool generates a random value."
 msgstr ""
 
-#: ../keystone-install.rst:213
+#: ../keystone-install.rst:194
 msgid ""
 "Later on, the package will configure the below directive with the value you "
 "entered:"
 msgstr ""
 
-#: ../keystone-install.rst:222
+#: ../keystone-install.rst:203
 msgid "Create the ``admin`` project and user:"
 msgstr ""
 
-#: ../keystone-install.rst:224
+#: ../keystone-install.rst:205
 msgid ""
 "During the final stage of the package installation, it is possible to "
 "automatically create an ``admin`` and ``service`` project, and an ``admin`` "
@@ -3760,71 +3725,71 @@ msgid ""
 "Identity service. This is the equivalent of running the below commands:"
 msgstr ""
 
-#: ../keystone-install.rst:287
+#: ../keystone-install.rst:268
 msgid ""
 "In Debian, the Keystone package offers automatic registration of Keystone in "
 "the service catalogue. This is equivalent of running the below commands:"
 msgstr ""
 
-#: ../keystone-install.rst:325
+#: ../keystone-install.rst:306
 msgid "Configure the Apache HTTP server"
 msgstr ""
 
-#: ../keystone-install.rst:329
+#: ../keystone-install.rst:310
 msgid ""
 "Edit the ``/etc/httpd/conf/httpd.conf`` file and configure the "
 "``ServerName`` option to reference the controller node:"
 msgstr ""
 
-#: ../keystone-install.rst:336
+#: ../keystone-install.rst:317
 msgid ""
 "Create the ``/etc/httpd/conf.d/wsgi-keystone.conf`` file with the following "
 "content:"
 msgstr ""
 
-#: ../keystone-install.rst:392
+#: ../keystone-install.rst:373
 msgid ""
 "Edit the ``/etc/apache2/apache2.conf`` file and configure the ``ServerName`` "
 "option to reference the controller node:"
 msgstr ""
 
-#: ../keystone-install.rst:399
+#: ../keystone-install.rst:380
 msgid ""
 "Create the ``/etc/apache2/sites-available/wsgi-keystone.conf`` file with the "
 "following content:"
 msgstr ""
 
-#: ../keystone-install.rst:453
+#: ../keystone-install.rst:434
 msgid "Enable the Identity service virtual hosts:"
 msgstr ""
 
-#: ../keystone-install.rst:461
+#: ../keystone-install.rst:442
 msgid ""
 "Edit the ``/etc/sysconfig/apache2`` file and configure the "
 "``APACHE_SERVERNAME`` option to reference the controller node:"
 msgstr ""
 
-#: ../keystone-install.rst:468
+#: ../keystone-install.rst:449
 msgid ""
 "Create the ``/etc/apache2/conf.d/wsgi-keystone.conf`` file with the "
 "following content:"
 msgstr ""
 
-#: ../keystone-install.rst:522
+#: ../keystone-install.rst:503
 msgid "Recursively change the ownership of the ``/etc/keystone`` directory:"
 msgstr ""
 
-#: ../keystone-install.rst:535
+#: ../keystone-install.rst:516
 msgid "Restart the Apache HTTP server:"
 msgstr ""
 
-#: ../keystone-install.rst:552 ../keystone-install.rst:567
+#: ../keystone-install.rst:533 ../keystone-install.rst:548
 msgid ""
 "Start the Apache HTTP service and configure it to start when the system "
 "boots:"
 msgstr ""
 
-#: ../keystone-install.rst:561
+#: ../keystone-install.rst:542
 msgid "Activate the Apache module ``mod_version``:"
 msgstr ""
 
@@ -3856,7 +3821,7 @@ msgid ""
 msgstr ""
 
 #: ../keystone-openrc.rst:20
-msgid "Edit the ``admin-openrc.sh`` file and add the following content:"
+msgid "Edit the ``admin-openrc`` file and add the following content:"
 msgstr ""
 
 #: ../keystone-openrc.rst:32
@@ -3866,7 +3831,7 @@ msgid ""
 msgstr ""
 
 #: ../keystone-openrc.rst:35
-msgid "Edit the ``demo-openrc.sh`` file and add the following content:"
+msgid "Edit the ``demo-openrc`` file and add the following content:"
 msgstr ""
 
 #: ../keystone-openrc.rst:47
@@ -3887,7 +3852,7 @@ msgstr ""
 
 #: ../keystone-openrc.rst:57
 msgid ""
-"Load the ``admin-openrc.sh`` file to populate environment variables with the "
+"Load the ``admin-openrc`` file to populate environment variables with the "
 "location of the Identity service and the ``admin`` project and user "
 "credentials:"
 msgstr ""
@@ -4006,7 +3971,7 @@ msgid ""
 msgstr ""
 
 #: ../keystone-users.rst:2
-msgid "Create projects, users, and roles"
+msgid "Create a domain, projects, users, and roles"
 msgstr ""
 
 #: ../keystone-users.rst:4
@@ -4017,33 +3982,33 @@ msgid ""
 "term:`roles<role>`."
 msgstr ""
 
-#: ../keystone-users.rst:11
-msgid "For simplicity, this guide uses the ``default`` domain."
+#: ../keystone-users.rst:9
+msgid "Create the ``default`` domain:"
 msgstr ""
 
-#: ../keystone-users.rst:13
+#: ../keystone-users.rst:23
 msgid ""
 "Create an administrative project, user, and role for administrative "
 "operations in your environment:"
 msgstr ""
 
-#: ../keystone-users.rst:16
+#: ../keystone-users.rst:26
 msgid "Create the ``admin`` project:"
 msgstr ""
 
-#: ../keystone-users.rst:39
+#: ../keystone-users.rst:49
 msgid "Create the ``admin`` user:"
 msgstr ""
 
-#: ../keystone-users.rst:56
+#: ../keystone-users.rst:66
 msgid "Create the ``admin`` role:"
 msgstr ""
 
-#: ../keystone-users.rst:68
+#: ../keystone-users.rst:78
 msgid "Add the ``admin`` role to the ``admin`` project and user:"
 msgstr ""
 
-#: ../keystone-users.rst:80
+#: ../keystone-users.rst:90
 msgid ""
 "Any roles that you create must map to roles specified in the ``policy.json`` "
 "file in the configuration file directory of each OpenStack service. The "
@@ -4053,40 +4018,40 @@ msgid ""
 "projects_users.html>`__."
 msgstr ""
 
-#: ../keystone-users.rst:87
+#: ../keystone-users.rst:97
 msgid ""
 "This guide uses a service project that contains a unique user for each "
 "service that you add to your environment. Create the ``service`` project:"
 msgstr ""
 
-#: ../keystone-users.rst:107
+#: ../keystone-users.rst:117
 msgid ""
 "Regular (non-admin) tasks should use an unprivileged project and user. As an "
 "example, this guide creates the ``demo`` project and user."
 msgstr ""
 
-#: ../keystone-users.rst:110
+#: ../keystone-users.rst:120
 msgid "Create the ``demo`` project:"
 msgstr ""
 
-#: ../keystone-users.rst:130
+#: ../keystone-users.rst:140
 msgid ""
 "Do not repeat this step when creating additional users for this project."
 msgstr ""
 
-#: ../keystone-users.rst:133
+#: ../keystone-users.rst:143
 msgid "Create the ``demo`` user:"
 msgstr ""
 
-#: ../keystone-users.rst:150
+#: ../keystone-users.rst:160
 msgid "Create the ``user`` role:"
 msgstr ""
 
-#: ../keystone-users.rst:162
+#: ../keystone-users.rst:172
 msgid "Add the ``user`` role to the ``demo`` project and user:"
 msgstr ""
 
-#: ../keystone-users.rst:174
+#: ../keystone-users.rst:184
 msgid "You can repeat this procedure to create additional projects and users."
 msgstr ""
 
@@ -4143,7 +4108,7 @@ msgstr ""
 # #-#-#-#-#  launch-instance-cinder.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  launch-instance.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  overview.pot (Installation Guide 0.1)  #-#-#-#-#
-#: ../launch-instance-cinder.rst:4 ../launch-instance.rst:140
+#: ../launch-instance-cinder.rst:4 ../launch-instance.rst:167
 #: ../overview.rst:163
 msgid "Block Storage"
 msgstr ""
@@ -4228,7 +4193,7 @@ msgstr ""
 
 # #-#-#-#-#  launch-instance-heat.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  launch-instance.pot (Installation Guide 0.1)  #-#-#-#-#
-#: ../launch-instance-heat.rst:4 ../launch-instance.rst:151
+#: ../launch-instance-heat.rst:4 ../launch-instance.rst:178
 msgid "Orchestration"
 msgstr ""
 
@@ -4290,7 +4255,7 @@ msgstr ""
 
 # #-#-#-#-#  launch-instance-manila.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  launch-instance.pot (Installation Guide 0.1)  #-#-#-#-#
-#: ../launch-instance-manila.rst:4 ../launch-instance.rst:162
+#: ../launch-instance-manila.rst:4 ../launch-instance.rst:189
 msgid "Shared File Systems"
 msgstr ""
 
@@ -4692,40 +4657,42 @@ msgstr ""
 # #-#-#-#-#  launch-instance-provider.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  launch-instance-selfservice.pot (Installation Guide 0.1)  #-#-#-#-#
 #: ../launch-instance-provider.rst:37 ../launch-instance-selfservice.rst:37
-msgid "This instance uses the ``m1.tiny`` flavor."
+msgid ""
+"This instance uses the ``m1.tiny`` flavor. If you created the optional ``m1."
+"nano`` flavor, use it instead of the ``m1.tiny`` flavor."
 msgstr ""
 
 # #-#-#-#-#  launch-instance-provider.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  launch-instance-selfservice.pot (Installation Guide 0.1)  #-#-#-#-#
-#: ../launch-instance-provider.rst:41 ../launch-instance-selfservice.rst:41
+#: ../launch-instance-provider.rst:42 ../launch-instance-selfservice.rst:42
 msgid "You can also reference a flavor by ID."
 msgstr ""
 
 # #-#-#-#-#  launch-instance-provider.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  launch-instance-selfservice.pot (Installation Guide 0.1)  #-#-#-#-#
-#: ../launch-instance-provider.rst:43 ../launch-instance-selfservice.rst:43
+#: ../launch-instance-provider.rst:44 ../launch-instance-selfservice.rst:44
 msgid "List available images:"
 msgstr ""
 
 # #-#-#-#-#  launch-instance-provider.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  launch-instance-selfservice.pot (Installation Guide 0.1)  #-#-#-#-#
-#: ../launch-instance-provider.rst:54 ../launch-instance-selfservice.rst:54
+#: ../launch-instance-provider.rst:55 ../launch-instance-selfservice.rst:55
 msgid "This instance uses the ``cirros`` image."
 msgstr ""
 
 # #-#-#-#-#  launch-instance-provider.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  launch-instance-selfservice.pot (Installation Guide 0.1)  #-#-#-#-#
-#: ../launch-instance-provider.rst:56 ../launch-instance-selfservice.rst:56
+#: ../launch-instance-provider.rst:57 ../launch-instance-selfservice.rst:57
 msgid "List available networks:"
 msgstr ""
 
-#: ../launch-instance-provider.rst:68
+#: ../launch-instance-provider.rst:69
 msgid ""
 "This instance uses the ``provider`` provider network. However, you must "
 "reference this network using the ID instead of the name."
 msgstr ""
 
-#: ../launch-instance-provider.rst:73
+#: ../launch-instance-provider.rst:74
 msgid ""
 "If you chose option 2, the output should also contain the ``selfservice`` "
 "self-service network."
@@ -4733,32 +4700,32 @@ msgstr ""
 
 # #-#-#-#-#  launch-instance-provider.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  launch-instance-selfservice.pot (Installation Guide 0.1)  #-#-#-#-#
-#: ../launch-instance-provider.rst:76 ../launch-instance-selfservice.rst:71
+#: ../launch-instance-provider.rst:77 ../launch-instance-selfservice.rst:72
 msgid "List available security groups:"
 msgstr ""
 
 # #-#-#-#-#  launch-instance-provider.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  launch-instance-selfservice.pot (Installation Guide 0.1)  #-#-#-#-#
-#: ../launch-instance-provider.rst:87 ../launch-instance-selfservice.rst:82
+#: ../launch-instance-provider.rst:88 ../launch-instance-selfservice.rst:83
 msgid "This instance uses the ``default`` security group."
 msgstr ""
 
-#: ../launch-instance-provider.rst:90
+#: ../launch-instance-provider.rst:91
 msgid "Launch the instance"
 msgstr ""
 
 # #-#-#-#-#  launch-instance-provider.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  launch-instance-selfservice.pot (Installation Guide 0.1)  #-#-#-#-#
-#: ../launch-instance-provider.rst:92 ../launch-instance-selfservice.rst:84
+#: ../launch-instance-provider.rst:93 ../launch-instance-selfservice.rst:85
 msgid "Launch the instance:"
 msgstr ""
 
-#: ../launch-instance-provider.rst:94
+#: ../launch-instance-provider.rst:95
 msgid ""
 "Replace ``PROVIDER_NET_ID`` with the ID of the ``provider`` provider network."
 msgstr ""
 
-#: ../launch-instance-provider.rst:99
+#: ../launch-instance-provider.rst:100
 msgid ""
 "If you chose option 1 and your environment contains only one network, you "
 "can omit the ``--nic`` option because OpenStack automatically chooses the "
@@ -4767,25 +4734,25 @@ msgstr ""
 
 # #-#-#-#-#  launch-instance-provider.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  launch-instance-selfservice.pot (Installation Guide 0.1)  #-#-#-#-#
-#: ../launch-instance-provider.rst:140 ../launch-instance-selfservice.rst:126
+#: ../launch-instance-provider.rst:141 ../launch-instance-selfservice.rst:127
 msgid "Check the status of your instance:"
 msgstr ""
 
 # #-#-#-#-#  launch-instance-provider.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  launch-instance-selfservice.pot (Installation Guide 0.1)  #-#-#-#-#
-#: ../launch-instance-provider.rst:151 ../launch-instance-selfservice.rst:138
+#: ../launch-instance-provider.rst:152 ../launch-instance-selfservice.rst:139
 msgid ""
 "The status changes from ``BUILD`` to ``ACTIVE`` when the build process "
 "successfully completes."
 msgstr ""
 
-#: ../launch-instance-provider.rst:155
+#: ../launch-instance-provider.rst:156
 msgid "Access the instance using the virtual console"
 msgstr ""
 
 # #-#-#-#-#  launch-instance-provider.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  launch-instance-selfservice.pot (Installation Guide 0.1)  #-#-#-#-#
-#: ../launch-instance-provider.rst:157 ../launch-instance-selfservice.rst:144
+#: ../launch-instance-provider.rst:158 ../launch-instance-selfservice.rst:145
 msgid ""
 "Obtain a :term:`Virtual Network Computing (VNC)` session URL for your "
 "instance and access it from a web browser:"
@@ -4793,7 +4760,7 @@ msgstr ""
 
 # #-#-#-#-#  launch-instance-provider.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  launch-instance-selfservice.pot (Installation Guide 0.1)  #-#-#-#-#
-#: ../launch-instance-provider.rst:172 ../launch-instance-selfservice.rst:159
+#: ../launch-instance-provider.rst:173 ../launch-instance-selfservice.rst:160
 msgid ""
 "If your web browser runs on a host that cannot resolve the ``controller`` "
 "host name, you can replace ``controller`` with the IP address of the "
@@ -4802,30 +4769,30 @@ msgstr ""
 
 # #-#-#-#-#  launch-instance-provider.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  launch-instance-selfservice.pot (Installation Guide 0.1)  #-#-#-#-#
-#: ../launch-instance-provider.rst:176 ../launch-instance-selfservice.rst:163
+#: ../launch-instance-provider.rst:177 ../launch-instance-selfservice.rst:164
 msgid ""
 "The CirrOS image includes conventional user name/password authentication and "
 "provides these credentials at the login prompt. After logging into CirrOS, "
 "we recommend that you verify network connectivity using ``ping``."
 msgstr ""
 
-#: ../launch-instance-provider.rst:181
+#: ../launch-instance-provider.rst:182
 msgid "Verify access to the provider physical network gateway:"
 msgstr ""
 
 # #-#-#-#-#  launch-instance-provider.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  launch-instance-selfservice.pot (Installation Guide 0.1)  #-#-#-#-#
-#: ../launch-instance-provider.rst:196 ../launch-instance-selfservice.rst:183
+#: ../launch-instance-provider.rst:197 ../launch-instance-selfservice.rst:184
 msgid "Verify access to the internet:"
 msgstr ""
 
 # #-#-#-#-#  launch-instance-provider.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  launch-instance-selfservice.pot (Installation Guide 0.1)  #-#-#-#-#
-#: ../launch-instance-provider.rst:212 ../launch-instance-selfservice.rst:199
+#: ../launch-instance-provider.rst:213 ../launch-instance-selfservice.rst:200
 msgid "Access the instance remotely"
 msgstr ""
 
-#: ../launch-instance-provider.rst:214
+#: ../launch-instance-provider.rst:215
 msgid ""
 "Verify connectivity to the instance from the controller node or any host on "
 "the provider physical network:"
@@ -4833,7 +4800,7 @@ msgstr ""
 
 # #-#-#-#-#  launch-instance-provider.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  launch-instance-selfservice.pot (Installation Guide 0.1)  #-#-#-#-#
-#: ../launch-instance-provider.rst:230 ../launch-instance-selfservice.rst:254
+#: ../launch-instance-provider.rst:231 ../launch-instance-selfservice.rst:255
 msgid ""
 "Access your instance using SSH from the controller node or any host on the "
 "provider physical network:"
@@ -4841,7 +4808,7 @@ msgstr ""
 
 # #-#-#-#-#  launch-instance-provider.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  launch-instance-selfservice.pot (Installation Guide 0.1)  #-#-#-#-#
-#: ../launch-instance-provider.rst:242 ../launch-instance-selfservice.rst:266
+#: ../launch-instance-provider.rst:243 ../launch-instance-selfservice.rst:267
 msgid ""
 "If your instance does not launch or seem to work as you expect, see the "
 "`OpenStack Operations Guide <http://docs.openstack.org/ops>`__ for more "
@@ -4851,7 +4818,7 @@ msgstr ""
 
 # #-#-#-#-#  launch-instance-provider.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  launch-instance-selfservice.pot (Installation Guide 0.1)  #-#-#-#-#
-#: ../launch-instance-provider.rst:247 ../launch-instance-selfservice.rst:271
+#: ../launch-instance-provider.rst:248 ../launch-instance-selfservice.rst:272
 msgid "Return to :ref:`Launch an instance <launch-instance-complete>`."
 msgstr ""
 
@@ -4859,44 +4826,44 @@ msgstr ""
 msgid "Launch an instance on the self-service network"
 msgstr ""
 
-#: ../launch-instance-selfservice.rst:68
+#: ../launch-instance-selfservice.rst:69
 msgid ""
 "This instance uses the ``selfservice`` self-service network. However, you "
 "must reference this network using the ID instead of the name."
 msgstr ""
 
-#: ../launch-instance-selfservice.rst:86
+#: ../launch-instance-selfservice.rst:87
 msgid ""
 "Replace ``SELFSERVICE_NET_ID`` with the ID of the ``selfservice`` network."
 msgstr ""
 
-#: ../launch-instance-selfservice.rst:142
+#: ../launch-instance-selfservice.rst:143
 msgid "Access the instance using a virtual console"
 msgstr ""
 
-#: ../launch-instance-selfservice.rst:168
+#: ../launch-instance-selfservice.rst:169
 msgid "Verify access to the self-service network gateway:"
 msgstr ""
 
-#: ../launch-instance-selfservice.rst:201
+#: ../launch-instance-selfservice.rst:202
 msgid "Create a :term:`floating IP address` on the provider virtual network:"
 msgstr ""
 
-#: ../launch-instance-selfservice.rst:216
+#: ../launch-instance-selfservice.rst:217
 msgid "Associate the floating IP address with the instance:"
 msgstr ""
 
-#: ../launch-instance-selfservice.rst:226
+#: ../launch-instance-selfservice.rst:227
 msgid "Check the status of your floating IP address:"
 msgstr ""
 
-#: ../launch-instance-selfservice.rst:238
+#: ../launch-instance-selfservice.rst:239
 msgid ""
 "Verify connectivity to the instance via floating IP address from the "
 "controller node or any host on the provider physical network:"
 msgstr ""
 
-#: ../launch-instance.rst:5 ../launch-instance.rst:125
+#: ../launch-instance.rst:5 ../launch-instance.rst:152
 msgid "Launch an instance"
 msgstr ""
 
@@ -4932,39 +4899,51 @@ msgid ""
 msgstr ""
 
 #: ../launch-instance.rst:40
-msgid "Generate a key pair"
+msgid "Create m1.nano flavor"
 msgstr ""
 
 #: ../launch-instance.rst:42
+msgid ""
+"The smallest default flavor consumes 512 MB memory per instance. For "
+"environments with compute nodes containing less than 4 GB memory, we "
+"recommend creating the ``m1.nano`` flavor that only requires 64 MB per "
+"instance. Only use this flavor with the CirrOS image for testing purposes."
+msgstr ""
+
+#: ../launch-instance.rst:67
+msgid "Generate a key pair"
+msgstr ""
+
+#: ../launch-instance.rst:69
 msgid ""
 "Most cloud images support :term:`public key authentication` rather than "
 "conventional password authentication. Before launching an instance, you must "
 "add a public key to the Compute service."
 msgstr ""
 
-#: ../launch-instance.rst:46
+#: ../launch-instance.rst:73
 msgid "Source the ``demo`` tenant credentials:"
 msgstr ""
 
-#: ../launch-instance.rst:52
+#: ../launch-instance.rst:79
 msgid "Generate and add a key pair:"
 msgstr ""
 
-#: ../launch-instance.rst:68
+#: ../launch-instance.rst:95
 msgid ""
 "Alternatively, you can skip the ``ssh-keygen`` command and use an existing "
 "public key."
 msgstr ""
 
-#: ../launch-instance.rst:71
+#: ../launch-instance.rst:98
 msgid "Verify addition of the key pair:"
 msgstr ""
 
-#: ../launch-instance.rst:83
+#: ../launch-instance.rst:110
 msgid "Add security group rules"
 msgstr ""
 
-#: ../launch-instance.rst:85
+#: ../launch-instance.rst:112
 msgid ""
 "By default, the ``default`` security group applies to all instances and "
 "includes firewall rules that deny remote access to instances. For Linux "
@@ -4972,38 +4951,38 @@ msgid ""
 "shell (SSH)."
 msgstr ""
 
-#: ../launch-instance.rst:90
+#: ../launch-instance.rst:117
 msgid "Add rules to the ``default`` security group:"
 msgstr ""
 
-#: ../launch-instance.rst:92
+#: ../launch-instance.rst:119
 msgid "Permit :term:`ICMP` (ping):"
 msgstr ""
 
-#: ../launch-instance.rst:108
+#: ../launch-instance.rst:135
 msgid "Permit secure shell (SSH) access:"
 msgstr ""
 
-#: ../launch-instance.rst:127
+#: ../launch-instance.rst:154
 msgid ""
 "If you chose networking option 1, you can only launch an instance on the "
 "provider network. If you chose networking option 2, you can launch an "
 "instance on the provider network and the self-service network."
 msgstr ""
 
-#: ../launch-instance.rst:142
+#: ../launch-instance.rst:169
 msgid ""
 "If your environment includes the Block Storage service, you can create a "
 "volume and attach it to an instance."
 msgstr ""
 
-#: ../launch-instance.rst:153
+#: ../launch-instance.rst:180
 msgid ""
 "If your environment includes the Orchestration service, you can create a "
 "stack that launches an instance."
 msgstr ""
 
-#: ../launch-instance.rst:164
+#: ../launch-instance.rst:191
 msgid ""
 "If your environment includes the Shared File Systems service, you can create "
 "a share."
@@ -5513,14 +5492,12 @@ msgid ""
 "Start the Linux bridge agent and configure it to start when the system boots:"
 msgstr ""
 
-# #-#-#-#-#  neutron-compute-install.pot (Installation Guide 0.1)  #-#-#-#-#
-# #-#-#-#-#  neutron-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
-#: ../neutron-compute-install.rst:186 ../neutron-controller-install.rst:293
+#: ../neutron-compute-install.rst:186
 msgid ""
 "The Networking service initialization scripts expect the variable "
 "``NEUTRON_PLUGIN_CONF`` in the ``/etc/sysconfig/neutron`` file to reference "
-"the ML2 plug-in configuration file. Edit the ``/etc/sysconfig/neutron`` file "
-"and add the following:"
+"the ML2 plug-in configuration file. Ensure that the ``/etc/sysconfig/"
+"neutron`` file contains the following:"
 msgstr ""
 
 #: ../neutron-compute-install.rst:201
@@ -5664,7 +5641,7 @@ msgstr ""
 #: ../neutron-controller-install-option1.rst:92
 #: ../neutron-controller-install-option1.rst:198
 #: ../neutron-controller-install-option2.rst:159
-#: ../nova-compute-install.rst:106 ../nova-controller-install.rst:277
+#: ../nova-compute-install.rst:106 ../nova-controller-install.rst:286
 msgid ""
 "Replace ``NOVA_PASS`` with the password you chose for the ``nova`` user in "
 "the Identity service."
@@ -6005,36 +5982,36 @@ msgid ""
 "create it using the following command:"
 msgstr ""
 
-#: ../neutron-controller-install.rst:252 ../neutron-controller-install.rst:333
+#: ../neutron-controller-install.rst:252 ../neutron-controller-install.rst:324
 msgid "Populate the database:"
 msgstr ""
 
-#: ../neutron-controller-install.rst:261 ../neutron-controller-install.rst:342
+#: ../neutron-controller-install.rst:261 ../neutron-controller-install.rst:333
 msgid ""
 "Database population occurs later for Networking because the script requires "
 "complete server and plug-in configuration files."
 msgstr ""
 
-#: ../neutron-controller-install.rst:270 ../neutron-controller-install.rst:308
+#: ../neutron-controller-install.rst:270 ../neutron-controller-install.rst:299
 msgid ""
 "Start the Networking services and configure them to start when the system "
 "boots."
 msgstr ""
 
-#: ../neutron-controller-install.rst:273 ../neutron-controller-install.rst:311
-#: ../neutron-controller-install.rst:353
+#: ../neutron-controller-install.rst:273 ../neutron-controller-install.rst:302
+#: ../neutron-controller-install.rst:344
 msgid "For both networking options:"
 msgstr ""
 
-#: ../neutron-controller-install.rst:284 ../neutron-controller-install.rst:324
+#: ../neutron-controller-install.rst:284 ../neutron-controller-install.rst:315
 msgid "For networking option 2, also enable and start the layer-3 service:"
 msgstr ""
 
-#: ../neutron-controller-install.rst:351
+#: ../neutron-controller-install.rst:342
 msgid "Restart the Networking services."
 msgstr ""
 
-#: ../neutron-controller-install.rst:362
+#: ../neutron-controller-install.rst:353
 msgid "For networking option 2, also restart the layer-3 service:"
 msgstr ""
 
@@ -6152,7 +6129,7 @@ msgstr ""
 
 # #-#-#-#-#  nova-compute-install.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  nova-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
-#: ../nova-compute-install.rst:146 ../nova-controller-install.rst:308
+#: ../nova-compute-install.rst:146 ../nova-controller-install.rst:317
 msgid ""
 "In the ``[DEFAULT]`` section, enable support for the Networking service:"
 msgstr ""
@@ -6185,61 +6162,77 @@ msgstr ""
 
 # #-#-#-#-#  nova-compute-install.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  nova-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
-#: ../nova-compute-install.rst:186 ../nova-controller-install.rst:334
+#: ../nova-compute-install.rst:186 ../nova-controller-install.rst:343
 msgid ""
 "In the ``[glance]`` section, configure the location of the Image service API:"
 msgstr ""
 
-#: ../nova-compute-install.rst:226
+# #-#-#-#-#  nova-compute-install.pot (Installation Guide 0.1)  #-#-#-#-#
+# #-#-#-#-#  nova-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
+#: ../nova-compute-install.rst:221 ../nova-controller-install.rst:388
+msgid ""
+"Due to a packaging bug, remove the ``logdir`` option from the ``[DEFAULT]`` "
+"section."
+msgstr ""
+
+# #-#-#-#-#  nova-compute-install.pot (Installation Guide 0.1)  #-#-#-#-#
+# #-#-#-#-#  nova-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
+#: ../nova-compute-install.rst:224 ../nova-controller-install.rst:391
+msgid ""
+"In the ``[DEFAULT]`` section, enable verbose mode to assist with potential "
+"troubleshooting:"
+msgstr ""
+
+#: ../nova-compute-install.rst:235
 msgid "Ensure the kernel module ``nbd`` is loaded."
 msgstr ""
 
-#: ../nova-compute-install.rst:232
+#: ../nova-compute-install.rst:241
 msgid ""
 "Ensure the module loads on every boot by adding ``nbd`` to the ``/etc/"
 "modules-load.d/nbd.conf`` file."
 msgstr ""
 
-#: ../nova-compute-install.rst:238
+#: ../nova-compute-install.rst:247
 msgid ""
 "Determine whether your compute node supports hardware acceleration for "
 "virtual machines:"
 msgstr ""
 
-#: ../nova-compute-install.rst:245
+#: ../nova-compute-install.rst:254
 msgid ""
 "If this command returns a value of ``one or greater``, your compute node "
 "supports hardware acceleration which typically requires no additional "
 "configuration."
 msgstr ""
 
-#: ../nova-compute-install.rst:249
+#: ../nova-compute-install.rst:258
 msgid ""
 "If this command returns a value of ``zero``, your compute node does not "
 "support hardware acceleration and you must configure ``libvirt`` to use QEMU "
 "instead of KVM."
 msgstr ""
 
-#: ../nova-compute-install.rst:255
+#: ../nova-compute-install.rst:264
 msgid ""
 "Edit the ``[libvirt]`` section in the ``/etc/nova/nova.conf`` file as "
 "follows:"
 msgstr ""
 
-#: ../nova-compute-install.rst:266
+#: ../nova-compute-install.rst:275
 msgid ""
 "Edit the ``[libvirt]`` section in the ``/etc/nova/nova-compute.conf`` file "
 "as follows:"
 msgstr ""
 
-#: ../nova-compute-install.rst:277
+#: ../nova-compute-install.rst:286
 msgid ""
 "Replace the ``nova-compute-kvm`` package with ``nova-compute-qemu`` which "
 "automatically changes the ``/etc/nova/nova-compute.conf`` file and installs "
 "the necessary dependencies:"
 msgstr ""
 
-#: ../nova-compute-install.rst:287
+#: ../nova-compute-install.rst:296
 msgid ""
 "Start the Compute service including its dependencies and configure them to "
 "start automatically when the system boots:"
@@ -6304,19 +6297,24 @@ msgid ""
 "consoleproxy`` file, and stop and start the console daemons."
 msgstr ""
 
-#: ../nova-controller-install.rst:222
+#: ../nova-controller-install.rst:220
+msgid ""
+"In the ``[DEFAULT]`` section, enable only the compute and metadata APIs:"
+msgstr ""
+
+#: ../nova-controller-install.rst:231
 msgid ""
 "In the ``[api_database]`` and ``[database]`` sections, configure database "
 "access:"
 msgstr ""
 
-#: ../nova-controller-install.rst:235
+#: ../nova-controller-install.rst:244
 msgid ""
 "Replace ``NOVA_DBPASS`` with the password you chose for the Compute "
 "databases."
 msgstr ""
 
-#: ../nova-controller-install.rst:296
+#: ../nova-controller-install.rst:305
 msgid ""
 "The ``.config`` and ``.postinst`` maintainer scripts of the ``nova-common`` "
 "package detect automatically the IP address which goes in the ``my_ip`` "
@@ -6325,7 +6323,7 @@ msgid ""
 "common`` is installed:"
 msgstr ""
 
-#: ../nova-controller-install.rst:319
+#: ../nova-controller-install.rst:328
 msgid ""
 "By default, Compute uses an internal firewall driver. Since the Networking "
 "service includes a firewall driver, you must disable the Compute firewall "
@@ -6333,26 +6331,22 @@ msgid ""
 "driver."
 msgstr ""
 
-#: ../nova-controller-install.rst:324
+#: ../nova-controller-install.rst:333
 msgid ""
 "In the ``[vnc]`` section, configure the VNC proxy to use the management "
 "interface IP address of the controller node:"
 msgstr ""
 
-#: ../nova-controller-install.rst:373
-msgid "In the ``[DEFAULT]`` section, disable the EC2 API:"
-msgstr ""
-
-#: ../nova-controller-install.rst:392
+#: ../nova-controller-install.rst:402
 msgid "Populate the Compute databases:"
 msgstr ""
 
-#: ../nova-controller-install.rst:404 ../nova-controller-install.rst:420
+#: ../nova-controller-install.rst:414 ../nova-controller-install.rst:430
 msgid ""
 "Start the Compute services and configure them to start when the system boots:"
 msgstr ""
 
-#: ../nova-controller-install.rst:436
+#: ../nova-controller-install.rst:446
 msgid "Restart the Compute services:"
 msgstr ""
 
@@ -6814,13 +6808,13 @@ msgid ""
 "modules and add the ``authtoken`` and ``keystoneauth`` modules:"
 msgstr ""
 
-#: ../swift-controller-include.txt:28
+#: ../swift-controller-include.txt:26
 msgid "Do not change the order of the modules."
 msgstr ""
 
 # #-#-#-#-#  swift-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  swift-storage-install.pot (Installation Guide 0.1)  #-#-#-#-#
-#: ../swift-controller-include.txt:32 ../swift-storage-include1.txt:30
+#: ../swift-controller-include.txt:30 ../swift-storage-include1.txt:30
 #: ../swift-storage-include2.txt:30 ../swift-storage-include3.txt:30
 msgid ""
 "For more information on other modules that enable additional features, see "
@@ -6828,33 +6822,33 @@ msgid ""
 "deployment_guide.html>`__."
 msgstr ""
 
-#: ../swift-controller-include.txt:35
+#: ../swift-controller-include.txt:33
 msgid ""
 "In the ``[app:proxy-server]`` section, enable automatic account creation:"
 msgstr ""
 
-#: ../swift-controller-include.txt:44
+#: ../swift-controller-include.txt:42
 msgid "In the ``[filter:keystoneauth]`` section, configure the operator roles:"
 msgstr ""
 
-#: ../swift-controller-include.txt:53
+#: ../swift-controller-include.txt:51
 msgid ""
 "In the ``[filter:authtoken]`` section, configure Identity service access:"
 msgstr ""
 
-#: ../swift-controller-include.txt:70
+#: ../swift-controller-include.txt:68
 msgid ""
 "Replace ``SWIFT_PASS`` with the password you chose for the ``swift`` user in "
 "the Identity service."
 msgstr ""
 
-#: ../swift-controller-include.txt:75
+#: ../swift-controller-include.txt:73
 msgid ""
 "Comment out or remove any other options in the ``[filter:authtoken]`` "
 "section."
 msgstr ""
 
-#: ../swift-controller-include.txt:78
+#: ../swift-controller-include.txt:76
 msgid ""
 "In the ``[filter:cache]`` section, configure the ``memcached`` location:"
 msgstr ""
@@ -7009,12 +7003,12 @@ msgid ""
 "Before starting the Object Storage services, you must create the initial "
 "account, container, and object rings. The ring builder creates configuration "
 "files that each node uses to determine and deploy the storage architecture. "
-"For simplicity, this guide uses one region and zone with 2^10 (1024) maximum "
-"partitions, 3 replicas of each object, and 1 hour minimum time between "
-"moving a partition more than once. For Object Storage, a partition indicates "
-"a directory on a storage device rather than a conventional partition table. "
-"For more information, see the `Deployment Guide <http://docs.openstack.org/"
-"developer/swift/deployment_guide.html>`__."
+"For simplicity, this guide uses one region and two zones with 2^10 (1024) "
+"maximum partitions, 3 replicas of each object, and 1 hour minimum time "
+"between moving a partition more than once. For Object Storage, a partition "
+"indicates a directory on a storage device rather than a conventional "
+"partition table. For more information, see the `Deployment Guide <http://"
+"docs.openstack.org/developer/swift/deployment_guide.html>`__."
 msgstr ""
 
 #: ../swift-initial-rings.rst:18
@@ -7242,7 +7236,7 @@ msgstr ""
 msgid "Ensure proper ownership of the mount point directory structure:"
 msgstr ""
 
-#: ../swift-storage-install.rst:189 ../swift-storage-install.rst:207
+#: ../swift-storage-install.rst:189
 msgid "Create the ``recon`` directory and ensure proper ownership of it:"
 msgstr ""
 
@@ -7275,30 +7269,34 @@ msgid "Show the service status:"
 msgstr ""
 
 #: ../swift-verify.rst:58
-msgid "Upload a test file to the ``container1`` container:"
+msgid "Create ``container1`` container:"
 msgstr ""
 
 #: ../swift-verify.rst:69
+msgid "Upload a test file to the ``container1`` container:"
+msgstr ""
+
+#: ../swift-verify.rst:80
 msgid ""
 "Replace ``FILE`` with the name of a local file to upload to the "
 "``container1`` container."
 msgstr ""
 
-#: ../swift-verify.rst:72
+#: ../swift-verify.rst:83
 msgid "List files in the ``container1`` container:"
 msgstr ""
 
-#: ../swift-verify.rst:83
+#: ../swift-verify.rst:94
 msgid "Download a test file from the ``container1`` container:"
 msgstr ""
 
-#: ../swift-verify.rst:90
+#: ../swift-verify.rst:101
 msgid ""
 "Replace ``FILE`` with the name of the file uploaded to the ``container1`` "
 "container."
 msgstr ""
 
-#: ../swift-verify.rst:95
+#: ../swift-verify.rst:106
 msgid ""
 "Due to a bug with the OpenStack client, you must use the conventional "
 "``swift`` client or other compatible client to download files."

@@ -24,11 +24,6 @@ L2-in-L3 tunneling or OpenFlow. These sections
 detail the configuration options for the various
 plug-ins.
 
-Brocade configuration options
------------------------------
-
-.. include:: ../tables/neutron-brocade.rst
-
 CISCO configuration options
 ---------------------------
 
@@ -128,11 +123,6 @@ Modular Layer 2 (ml2) VXLAN Type configuration options
 
 .. include:: ../tables/neutron-ml2_vxlan.rst
 
-Modular Layer 2 (ml2) Brocade Mechanism configuration options
--------------------------------------------------------------
-
-.. include:: ../tables/neutron-ml2_brocade.rst
-
 Modular Layer 2 (ml2) Geneve Mechanism configuration options
 -------------------------------------------------------------
 
@@ -161,7 +151,7 @@ Configure the Oslo RPC messaging system
 OpenStack projects use an open standard for messaging middleware known
 as AMQP. This messaging middleware enables the OpenStack services that
 run on multiple servers to talk to each other. OpenStack Oslo RPC
-supports three implementations of AMQP: RabbitMQ, Qpid, and ZeroMQ.
+supports two implementations of AMQP: RabbitMQ and ZeroMQ.
 
 Configure RabbitMQ
 ------------------
@@ -200,7 +190,7 @@ the ``neutron.conf`` file.
 Configure messaging
 -------------------
 
-Use these common options to configure the RabbitMQ, Qpid, and ZeroMq
+Use these common options to configure the RabbitMQ and ZeroMq
 messaging drivers in the ``neutron.conf`` file.
 
 .. include:: ../tables/neutron-rpc.rst
@@ -455,3 +445,9 @@ change security group settings.
    security group. The migration that introduces this table has a
    sanity check that verifies if a default security group is not
    duplicated in any tenant.
+
+Misc
+~~~~
+
+.. include:: ../tables/neutron-bgp.rst
+.. include:: ../tables/neutron-qos.rst

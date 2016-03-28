@@ -41,6 +41,13 @@ MongoDB before proceeding further.
 
       Replace ``CEILOMETER_DBPASS`` with a suitable password.
 
+      .. note::
+
+         If the command fails saying you are not authorized to insert a user,
+         you may need to temporarily comment out the ``auth`` option in
+         the ``/etc/mongodb.conf`` file, restart the MongoDB service using
+         ``systemctl restart mongodb``, and try calling the command again.
+
 .. only:: rdo
 
    1. Create the ``ceilometer`` database:
@@ -64,7 +71,7 @@ MongoDB before proceeding further.
 
    .. code-block:: console
 
-      $ source admin-openrc.sh
+      $ . admin-openrc
 
 3. To create the service credentials, complete these steps:
 
@@ -78,7 +85,7 @@ MongoDB before proceeding further.
         +-----------+----------------------------------+
         | Field     | Value                            |
         +-----------+----------------------------------+
-        | domain_id | default                          |
+        | domain_id | e0353a670a9e496da891347c589539e9 |
         | enabled   | True                             |
         | id        | c859c96f57bd4989a8ea1a0b1d8ff7cd |
         | name      | ceilometer                       |
@@ -254,8 +261,8 @@ Install and configure components
            auth_url = http://controller:35357
            memcached_servers = controller:11211
            auth_type = password
-           project_domain_id = default
-           user_domain_id = default
+           project_domain_name = default
+           user_domain_name = default
            project_name = service
            username = ceilometer
            password = CEILOMETER_PASS
@@ -273,8 +280,8 @@ Install and configure components
         os_username = ceilometer
         os_tenant_name = service
         os_password = CEILOMETER_PASS
-        os_endpoint_type = internalURL
-        os_region_name = RegionOne
+        interface = internalURL
+        region_name = RegionOne
 
      Replace ``CEILOMETER_PASS`` with the password you chose for
      the ``ceilometer`` user in the Identity service.

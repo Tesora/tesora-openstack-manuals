@@ -16,7 +16,7 @@ Contents
 .. toctree::
    :maxdepth: 2
 
-   first-timers-quickstart.rst
+   quickstart.rst
    additional-git-workflow.rst
    writing-style.rst
    topic-structure.rst
@@ -34,6 +34,7 @@ Contents
    blueprints-and-specs.rst
    json-conventions.rst
    ui-text-guidelines.rst
+   doc-tools.rst
    common/glossary.rst
 
 Search in this guide

@@ -48,7 +48,7 @@ Orchestration service, code-named heat, on the controller node.
 
       .. code-block:: console
 
-         $ source admin-openrc.sh
+         $ . admin-openrc
 
    #. To create the service credentials, complete these steps:
 
@@ -62,7 +62,7 @@ Orchestration service, code-named heat, on the controller node.
            +-----------+----------------------------------+
            | Field     | Value                            |
            +-----------+----------------------------------+
-           | domain_id | default                          |
+           | domain_id | e0353a670a9e496da891347c589539e9 |
            | enabled   | True                             |
            | id        | ca2e175b851943349be29a328cc5e360 |
            | name      | heat                             |
@@ -383,8 +383,8 @@ Install and configure components
            auth_url = http://controller:35357
            memcached_servers = controller:11211
            auth_type = password
-           project_domain_id = default
-           user_domain_id = default
+           project_domain_name = default
+           user_domain_name = default
            project_name = service
            username = heat
            password = HEAT_PASS
@@ -395,7 +395,7 @@ Install and configure components
            auth_url = http://controller:35357
            username = heat
            password = HEAT_PASS
-           user_domain_id = default
+           user_domain_name = default
 
            [clients_keystone]
            ...
@@ -406,7 +406,7 @@ Install and configure components
            auth_uri = http://controller:5000
 
         Replace ``HEAT_PASS`` with the password you chose for the
-        ``heat`` user in the Identity service.
+        ``heat`` user in the Identity service..
 
       * In the ``[DEFAULT]`` section, configure the metadata and
         wait condition URLs:
@@ -431,6 +431,8 @@ Install and configure components
 
         Replace ``HEAT_DOMAIN_PASS`` with the password you chose for the
         ``heat_domain_admin`` user in the Identity service.
+
+.. only:: rdo or ubuntu
 
    3. Populate the Orchestration database:
 

@@ -49,7 +49,7 @@ volumes to instances.
 
       .. code-block:: console
 
-         $ source admin-openrc.sh
+         $ . admin-openrc
 
    #. To create the service credentials, complete these steps:
 
@@ -63,7 +63,7 @@ volumes to instances.
            +-----------+----------------------------------+
            | Field     | Value                            |
            +-----------+----------------------------------+
-           | domain_id | default                          |
+           | domain_id | e0353a670a9e496da891347c589539e9 |
            | enabled   | True                             |
            | id        | bb279f8ffc444637af38811a5e1f0562 |
            | name      | cinder                           |
@@ -304,8 +304,8 @@ Install and configure components
            auth_url = http://controller:35357
            memcached_servers = controller:11211
            auth_type = password
-           project_domain_id = default
-           user_domain_id = default
+           project_domain_name = default
+           user_domain_name = default
            project_name = service
            username = cinder
            password = CINDER_PASS
@@ -337,7 +337,7 @@ Install and configure components
            ...
            lock_path = /var/lib/cinder/tmp
 
-.. only:: obs or rdo or ubuntu
+.. only:: rdo or ubuntu
 
    3. Populate the Block Storage database:
 

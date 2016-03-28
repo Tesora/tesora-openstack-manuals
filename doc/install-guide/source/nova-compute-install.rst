@@ -97,8 +97,8 @@ Install and configure components
            auth_url = http://controller:35357
            memcached_servers = controller:11211
            auth_type = password
-           project_domain_id = default
-           user_domain_id = default
+           project_domain_name = default
+           user_domain_name = default
            project_name = service
            username = nova
            password = NOVA_PASS
@@ -212,8 +212,17 @@ Install and configure components
            ...
            lock_path = /var/lib/nova/tmp
 
-   * (Optional) To assist with troubleshooting,
-     enable verbose logging in the ``[DEFAULT]`` section:
+   .. only:: ubuntu
+
+      .. todo:
+
+         https://bugs.launchpad.net/ubuntu/+source/nova/+bug/1506667
+
+      * Due to a packaging bug, remove the ``logdir`` option from the
+        ``[DEFAULT]`` section.
+
+   * In the ``[DEFAULT]`` section, enable verbose mode to assist with
+     potential troubleshooting:
 
      .. code-block:: ini
 
