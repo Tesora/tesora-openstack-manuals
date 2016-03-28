@@ -41,7 +41,7 @@ Install and configure controller node
 
       .. code-block:: console
 
-         $ source admin-openrc.sh
+         $ . admin-openrc
 
    #. To create the service credentials, complete these steps:
 
@@ -55,7 +55,7 @@ Install and configure controller node
            +-----------+----------------------------------+
            | Field     | Value                            |
            +-----------+----------------------------------+
-           | domain_id | default                          |
+           | domain_id | e0353a670a9e496da891347c589539e9 |
            | enabled   | True                             |
            | id        | b20a6692f77b4258926881bf831eb683 |
            | name      | neutron                          |
@@ -219,8 +219,8 @@ Configure Compute to use Networking
        url = http://controller:9696
        auth_url = http://controller:35357
        auth_type = password
-       project_domain_id = default
-       user_domain_id = default
+       project_domain_name = default
+       user_domain_name = default
        region_name = RegionOne
        project_name = service
        username = neutron
@@ -290,15 +290,6 @@ Finalize installation
 
 .. only:: obs
 
-   #. The Networking service initialization scripts expect the variable
-      ``NEUTRON_PLUGIN_CONF`` in the ``/etc/sysconfig/neutron`` file to
-      reference the ML2 plug-in configuration file. Edit the
-      ``/etc/sysconfig/neutron`` file and add the following:
-
-      .. code-block:: console
-
-         NEUTRON_PLUGIN_CONF="/etc/neutron/plugins/ml2/ml2_conf.ini"
-
    #. Restart the Compute API service:
 
       .. code-block:: console
@@ -355,7 +346,7 @@ Finalize installation
       .. code-block:: console
 
          # service neutron-server restart
-         # service neutron-plugin-linuxbridge-agent restart
+         # service neutron-linuxbridge-agent restart
          # service neutron-dhcp-agent restart
          # service neutron-metadata-agent restart
 

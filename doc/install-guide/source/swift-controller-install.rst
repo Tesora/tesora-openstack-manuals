@@ -31,7 +31,7 @@ create service credentials and an API endpoint.
 
    .. code-block:: console
 
-      $ source admin-openrc.sh
+      $ . admin-openrc
 
 #. To create the Identity service credentials, complete these steps:
 
@@ -45,7 +45,7 @@ create service credentials and an API endpoint.
         +-----------+----------------------------------+
         | Field     | Value                            |
         +-----------+----------------------------------+
-        | domain_id | default                          |
+        | domain_id | e0353a670a9e496da891347c589539e9 |
         | enabled   | True                             |
         | id        | d535e5cbd2b74ac7bfb97db9cced3ed6 |
         | name      | swift                            |

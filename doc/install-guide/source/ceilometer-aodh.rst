@@ -46,7 +46,7 @@ database, service credentials, and API endpoints.
 
    .. code-block:: console
 
-      $ source admin-openrc.sh
+      $ . admin-openrc
 
 #. To create the service credentials, complete these steps:
 
@@ -54,13 +54,14 @@ database, service credentials, and API endpoints.
 
      .. code-block:: console
 
-        $ openstack user create --password-prompt aodh
+        $ openstack user create --domain default \
+          --password-prompt aodh
         User Password:
         Repeat User Password:
         +-----------+----------------------------------+
         | Field     | Value                            |
         +-----------+----------------------------------+
-        | domain_id | default                          |
+        | domain_id | e0353a670a9e496da891347c589539e9 |
         | enabled   | True                             |
         | id        | b7657c9ea07a4556aef5d34cf70713a3 |
         | name      | aodh                             |
@@ -233,8 +234,8 @@ Install and configure components
         auth_url = http://controller:35357
         memcached_servers = controller:11211
         auth_type = password
-        project_domain_id = default
-        user_domain_id = default
+        project_domain_name = default
+        user_domain_name = default
         project_name = service
         username = aodh
         password = AODH_PASS
@@ -252,8 +253,8 @@ Install and configure components
         os_username = aodh
         os_tenant_name = service
         os_password = AODH_PASS
-        os_endpoint_type = internalURL
-        os_region_name = RegionOne
+        interface = internalURL
+        region_name = RegionOne
 
      Replace ``AODH_PASS`` with the password you chose for
      the ``aodh`` user in the Identity service.

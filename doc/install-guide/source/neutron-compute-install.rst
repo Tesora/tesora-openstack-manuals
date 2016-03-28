@@ -13,7 +13,7 @@ Install the components
 
    .. code-block:: console
 
-      # apt-get install neutron-plugin-linuxbridge-agent conntrack
+      # apt-get install neutron-linuxbridge-agent
 
 .. only:: rdo
 
@@ -99,8 +99,8 @@ authentication mechanism, message queue, and plug-in.
        auth_url = http://controller:35357
        memcached_servers = controller:11211
        auth_type = password
-       project_domain_id = default
-       user_domain_id = default
+       project_domain_name = default
+       user_domain_name = default
        project_name = service
        username = neutron
        password = NEUTRON_PASS
@@ -152,8 +152,8 @@ Configure Compute to use Networking
        url = http://controller:9696
        auth_url = http://controller:35357
        auth_type = password
-       project_domain_id = default
-       user_domain_id = default
+       project_domain_name = default
+       user_domain_name = default
        region_name = RegionOne
        project_name = service
        username = neutron
@@ -185,8 +185,8 @@ Finalize installation
 
    #. The Networking service initialization scripts expect the variable
       ``NEUTRON_PLUGIN_CONF`` in the ``/etc/sysconfig/neutron`` file to
-      reference the ML2 plug-in configuration file. Edit the
-      ``/etc/sysconfig/neutron`` file and add the following:
+      reference the ML2 plug-in configuration file. Ensure that the
+      ``/etc/sysconfig/neutron`` file contains the following:
 
       .. code-block:: ini
 
@@ -218,4 +218,4 @@ Finalize installation
 
       .. code-block:: console
 
-         # service neutron-plugin-linuxbridge-agent restart
+         # service neutron-linuxbridge-agent restart

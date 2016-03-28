@@ -11,8 +11,8 @@ Install the components
    .. code-block:: console
 
       # apt-get install neutron-server neutron-plugin-ml2 \
-        neutron-plugin-linuxbridge-agent neutron-dhcp-agent \
-        neutron-metadata-agent conntrack
+        neutron-linuxbridge-agent neutron-dhcp-agent \
+        neutron-metadata-agent
 
 .. only:: debian
 
@@ -82,8 +82,8 @@ Install the components
            ...
            auth_url = http://controller:35357
            auth_type = password
-           project_domain_id = default
-           user_domain_id = default
+           project_domain_name = default
+           user_domain_name = default
            region_name = RegionOne
            project_name = service
            username = nova
@@ -160,8 +160,8 @@ Install the components
           auth_url = http://controller:35357
           memcached_servers = controller:11211
           auth_type = password
-          project_domain_id = default
-          user_domain_id = default
+          project_domain_name = default
+          user_domain_name = default
           project_name = service
           username = neutron
           password = NEUTRON_PASS
@@ -188,8 +188,8 @@ Install the components
           ...
           auth_url = http://controller:35357
           auth_type = password
-          project_domain_id = default
-          user_domain_id = default
+          project_domain_name = default
+          user_domain_name = default
           region_name = RegionOne
           project_name = service
           username = nova

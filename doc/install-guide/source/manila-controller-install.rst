@@ -45,7 +45,7 @@ must create a database, service credentials, and API endpoints.
 
    .. code-block:: console
 
-      $ source admin-openrc.sh
+      $ . admin-openrc
 
 #. To create the service credentials, complete these steps:
 
@@ -59,7 +59,7 @@ must create a database, service credentials, and API endpoints.
         +-----------+----------------------------------+
         | Field     | Value                            |
         +-----------+----------------------------------+
-        | domain_id | default                          |
+        | domain_id | e0353a670a9e496da891347c589539e9 |
         | enabled   | True                             |
         | id        | 83a3990fc2144100ba0e2e23886d8acc |
         | name      | manila                           |
@@ -320,8 +320,8 @@ Install and configure components
            auth_uri = http://controller:5000
            auth_url = http://controller:35357
            auth_plugin = password
-           project_domain_id = default
-           user_domain_id = default
+           project_domain_name = default
+           user_domain_name = default
            project_name = service
            username = manila
            password = MANILA_PASS
@@ -348,7 +348,7 @@ Install and configure components
            ...
            lock_path = /var/lock/manila
 
-.. only:: obs or rdo or ubuntu
+.. only:: rdo or ubuntu
 
    3. Populate the Share File System database:
 
