@@ -16,7 +16,6 @@ These options can also be set in the ``manila.conf`` file.
 .. include:: ../tables/manila-ganesha.rst
 .. include:: ../tables/manila-hnas.rst
 .. include:: ../tables/manila-logging.rst
-.. include:: ../tables/manila-lvm.rst
 .. include:: ../tables/manila-quota.rst
 .. include:: ../tables/manila-redis.rst
 .. include:: ../tables/manila-san.rst
@@ -24,5 +23,4 @@ These options can also be set in the ``manila.conf`` file.
 .. include:: ../tables/manila-share.rst
 .. include:: ../tables/manila-tegile.rst
 .. include:: ../tables/manila-winrm.rst
-.. include:: ../tables/manila-zfs.rst
 .. include:: ../tables/manila-zfssa.rst
