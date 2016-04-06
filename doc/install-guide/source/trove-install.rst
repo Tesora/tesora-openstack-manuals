@@ -169,7 +169,12 @@ Install and configure components
 
       .. code-block:: console
 
-         # zypper install openstack-trove python-troveclient
+         # zypper --quiet --non-interactive install python-oslo.db \
+           python-MySQL-python
+
+         # zypper --quiet --non-interactive install openstack-trove-api \
+           openstack-trove-taskmanager openstack-trove-conductor \
+           openstack-trove-guestagent
 
 .. only:: rdo
 
@@ -247,7 +252,6 @@ Install and configure components
    .. code-block:: ini
 
       [DEFAULT]
-      default_datastore = mysql
       auth_strategy = keystone
       ...
       # Config option for showing the IP address that nova doles out
@@ -284,36 +288,8 @@ Install and configure components
       nova_proxy_admin_tenant_name = service
       taskmanager_manager = trove.taskmanager.manager.Manager
 
-
-6. Prepare the Database service:
-
-   * Populate the database:
-
-     .. code-block:: console
-
-        # su -s /bin/sh -c "trove-manage db_sync" trove
-
-   * Create a datastore. You need to create a separate datastore for
-     each type of database you want to use, for example, MySQL, MongoDB,
-     Cassandra. This example shows you how to create a datastore for a
-     MySQL database:
-
-     .. code-block:: console
-
-        # su -s /bin/sh -c "trove-manage datastore_update mysql ''" trove
-
-7. Create a trove image.
-
-   Create an image for the type of database you want to use, for example,
-   MySQL, MongoDB, Cassandra.
-
-   This image must have the trove guest agent installed, and it must have
-   the ``trove-guestagent.conf`` file configured to connect to your
-   OpenStack environment.
-
-   To do this configuration, add these
-   lines to the ``trove-guestagent.conf`` file that resides on the guest
-   instance you are using to build your image:
+6. In ``etc/trove``, edit the ``trove-guestagent.conf`` file
+   so that future trove guests can connect to your OpenStack environment:
 
    .. code-block:: ini
 
@@ -324,16 +300,14 @@ Install and configure components
       nova_proxy_admin_tenant_name = service
       trove_auth_url = http://controller:35357/v2.0
 
-8. Update the datastore to use the new image, using
-   the ``trove-manage`` command.
-
-   This example shows you how to create a MySQL 5.5 datastore:
+7. Populate the trove database you created earlier in this procedure:
 
    .. code-block:: console
 
-      # trove-manage --config-file /etc/trove/trove.conf \
-        datastore_version_update \
-        mysql mysql-5.5 mysql glance_image_ID mysql-server-5.5 1
+      # su -s /bin/sh -c "trove-manage db_sync" trove
+        ...
+        2016-04-06 22:00:17.771 10706 INFO trove.db.sqlalchemy.migration [-]
+        Upgrading mysql://trove:dbaasdb@controller/trove to version latest
 
 
 Finalize installation
