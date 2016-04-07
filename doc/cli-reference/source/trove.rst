@@ -9,7 +9,7 @@ Database service command-line client
 The trove client is the command-line interface (CLI) for
 the Database service API and its extensions.
 
-This chapter documents :command:`trove` version ``2.1.1``.
+This chapter documents :command:`trove` version ``1.4.1``.
 
 For help on a specific :command:`trove` command, enter:
 
@@ -30,7 +30,7 @@ trove usage
                 [--database-service-name <database-service-name>]
                 [--endpoint-type <endpoint-type>]
                 [--os-database-api-version <database-api-ver>]
-                [--retries <retries>] [--json] [--profile HMAC_KEY] [--insecure]
+                [--retries <retries>] [--json] [--insecure]
                 [--os-cacert <ca-certificate>] [--os-cert <certificate>]
                 [--os-key <key>] [--timeout <seconds>]
                 [--os-auth-url OS_AUTH_URL] [--os-domain-id OS_DOMAIN_ID]
@@ -340,6 +340,12 @@ trove usage
 ``user-update-attributes``
   Updates a user's attributes on an instance.
 
+``volume-type-list``
+  Lists available volume types.
+
+``volume-type-show``
+  Shows details of a volume type.
+
 ``bash-completion``
   Prints arguments for bash_completion.
 
@@ -353,7 +359,7 @@ trove optional arguments
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
 ``--version``
-  show program's version number and exit
+  Show program's version number and exit.
 
 ``--debug``
   Print debugging output.
@@ -388,17 +394,6 @@ trove optional arguments
 ``--json, --os-json-output``
   Output JSON instead of prettyprint. Defaults
   to ``env[OS_JSON_OUTPUT]``.
-
-``--profile HMAC_KEY``
-  HMAC key used to encrypt context data when
-  profiling the performance of an operation.
-  This key should be set to one of the HMAC
-  keys configured in Trove (they are found in
-  api-paste.ini, typically in /etc/trove).
-  Without the key, profiling will not be
-  triggered even if it is enabled on the
-  server side. Defaults to
-  ``env[OS_PROFILE_HMACKEY]``.
 
 ``--insecure``
   Explicitly allow client to perform
@@ -546,7 +541,7 @@ Deletes a backup.
 **Positional arguments:**
 
 ``<backup>``
-  ID of the backup.
+  ID or name of the backup.
 
 .. _trove_backup-list:
 
@@ -624,6 +619,7 @@ trove cluster-create
 
    usage: trove cluster-create <name> <datastore> <datastore_version>
                                [--instance "opt=<value>[,opt=<value> ...] "]
+                               [--locality <policy>]
 
 Creates a new cluster.
 
@@ -652,6 +648,11 @@ Creates a new cluster.
   ip=IPv4r_fixed_address, port-id=port_id),
   availability_zone=<AZ_hint_for_Nova>,
   module=<module_name_or_id>.
+
+``--locality <policy>``
+  Locality policy to use when creating
+  cluster. Choose one of affinity, anti-
+  affinity.
 
 .. _trove_cluster-delete:
 
@@ -905,8 +906,7 @@ Lists all instances associated with a configuration group.
 ``<configuration_group>``
   ID of the configuration group.
 
-Optional arguments
-------------------
+**Optional arguments:**
 
 ``--limit <limit>``
   Limit the number of results displayed.
@@ -927,8 +927,7 @@ trove configuration-list
 
 Lists all configuration groups.
 
-Optional arguments
-------------------
+**Optional arguments:**
 
 ``--limit <limit>``
   Limit the number of results displayed.
@@ -1074,8 +1073,7 @@ trove create
                        [--nic <net-id=<net-uuid>,v4-fixed-ip=<ip-addr>,port-id=<port-uuid>>]
                        [--configuration <configuration>]
                        [--replica_of <source_instance>] [--replica_count <count>]
-                       [--locality <policy>]
-                       [--module <module>]
+                       [--module <module>] [--locality <policy>]
 
 Creates a new instance.
 
@@ -1137,14 +1135,14 @@ Creates a new instance.
   Number of replicas to create (defaults to 1
   if replica_of specified).
 
-``--locality <policy>``
-  Locality policy to use when creating
-  replicas. Must be one of ['affinity', 'anti-
-  affinity']
-
 ``--module <module>``
   ID or name of the module to apply. Specify
   multiple times to apply multiple modules.
+
+``--locality <policy>``
+  Locality policy to use when creating
+  replicas. Choose one of affinity, anti-
+  affinity.
 
 .. _trove_database-create:
 
@@ -1370,34 +1368,6 @@ trove limit-list
    usage: trove limit-list
 
 Lists the limits for a tenant.
-
-.. _trove_list:
-
-trove list
-~~~~~~~~~~
-
-.. code-block:: console
-
-   usage: trove list [--limit <limit>] [--marker <ID>] [--include_clustered]
-
-Lists all the instances.
-
-**Optional arguments:**
-
-``--limit <limit>``
-  Limit the number of results displayed.
-
-``--marker <ID>``
-  Begin displaying the results for IDs greater
-  than the specified marker. When used with
-  :option:`--limit,` set this to the last ID displayed
-  in the previous run.
-
-``--include_clustered, --include-clustered``
-  Include instances that are part of a cluster
-  (default False). :option:`--include-clustered` may be
-  deprecated in the future, retaining just
-  :option:`--include_clustered`.
 
 .. _trove_log-disable:
 
@@ -2282,8 +2252,7 @@ trove upgrade
 
 Upgrades an instance to a new datastore version.
 
-Positional arguments
---------------------
+**Positional arguments:**
 
 ``<instance>``
   ID or name of the instance.
@@ -2502,4 +2471,40 @@ must be provided.
 
 ``--new_host <new_host>``
   Optional new host of user.
+
+.. _trove_volume-type-list:
+
+trove volume-type-list
+~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: console
+
+   usage: trove volume-type-list [--datastore_type <datastore_type>]
+                                 [--datastore_version_id <datastore_version_id>]
+
+Lists available volume types.
+
+**Optional arguments:**
+
+``--datastore_type <datastore_type>``
+  Type of the datastore. For eg: mysql.
+
+``--datastore_version_id <datastore_version_id>``
+  ID of the datastore version.
+
+.. _trove_volume-type-show:
+
+trove volume-type-show
+~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: console
+
+   usage: trove volume-type-show <volume_type>
+
+Shows details of a volume type.
+
+**Positional arguments:**
+
+``<volume_type>``
+  ID or name of the volume type.
 
