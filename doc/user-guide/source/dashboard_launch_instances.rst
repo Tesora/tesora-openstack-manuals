@@ -85,15 +85,16 @@ Launch an instance
       Boot from image (creates a new volume)
           With this option, you can boot from an image and create a volume
           by entering the :guilabel:`Device Size` and :guilabel:`Device
-          Name` for your volume. Click the :guilabel:`Delete on Terminate`
-          option to delete the volume on terminating the instance.
+          Name` for your volume. Click the :guilabel:`Delete Volume on
+          Instance Delete` option to delete the volume on deleting the
+          instance.
 
       Boot from volume snapshot (creates a new volume)
           Using this option, you can boot from a volume snapshot and create
           a new volume by choosing :guilabel:`Volume Snapshot` from a list
           and adding a :guilabel:`Device Name` for your volume. Click the
-          :guilabel:`Delete on Terminate` option to delete the volume on
-          terminating the instance.
+          :guilabel:`Delete Volume on Instance Delete` option to delete the
+          volume on deleting the instance.
 
    Image Name
       This field changes based on your previous selection. If you have
@@ -110,8 +111,8 @@ Launch an instance
       This field changes based on your previous selection. If you have
       chosen to launch an instance using a volume, the :guilabel:`Volume`
       field displays. Select the volume name from the dropdown list.
-      If you want to delete the volume on instance terminate,
-      check the :guilabel:`Delete on Terminate` option.
+      If you want to delete the volume on instance delete,
+      check the :guilabel:`Delete Volume on Instance Delete` option.
 
    :guilabel:`Access & Security` tab
 
@@ -136,6 +137,12 @@ Launch an instance
    Selected Networks
       To add a network to the instance, click the :guilabel:`+` in the
       :guilabel:`Available Networks` field.
+
+
+   :guilabel:`Network Ports` tab
+
+   Ports
+      Activate the ports that you want to assign to the instance.
 
    :guilabel:`Post-Creation` tab
 
@@ -213,7 +220,7 @@ file.
 It is also possible to SSH into an instance without an SSH keypair, if the
 administrator has enabled root password injection.  For more information
 about root password injection, see `Injecting the administrator password
-<http://docs.openstack.org/admin-guide-cloud/compute-admin-password-injection.html>`_
+<http://docs.openstack.org/admin-guide/compute-admin-password-injection.html>`_
 in the *OpenStack Administrator Guide*.
 
 Track usage for instances

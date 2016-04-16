@@ -106,8 +106,8 @@ because it only handles layer-2 connectivity.
 .. note::
 
    For VLAN external and project networks, the physical network infrastructure
-   must support VLAN tagging. For best performance with VXLAN project networks,
-   the network infrastructure should support jumbo frames.
+   must support VLAN tagging. For best performance, 10+ Gbps networks should
+   support jumbo frames.
 
 .. warning::
 
@@ -542,7 +542,6 @@ Controller node
    .. code-block:: ini
 
       [DEFAULT]
-      verbose = True
       core_plugin = ml2
       service_plugins = router
       allow_overlapping_ips = True
@@ -591,13 +590,6 @@ Controller node
 Network node
 ------------
 
-#. Configure common options. Edit the ``/etc/neutron/neutron.conf`` file:
-
-   .. code-block:: ini
-
-      [DEFAULT]
-      verbose = True
-
 #. Configure the Linux bridge agent. Edit the
    ``/etc/neutron/plugins/ml2/linuxbridge_agent.ini`` file:
 
@@ -628,7 +620,6 @@ Network node
    .. code-block:: ini
 
       [DEFAULT]
-      verbose = True
       interface_driver = neutron.agent.linux.interface.BridgeInterfaceDriver
       external_network_bridge =
 
@@ -643,25 +634,9 @@ Network node
    .. code-block:: ini
 
          [DEFAULT]
-         verbose = True
          interface_driver = neutron.agent.linux.interface.BridgeInterfaceDriver
          dhcp_driver = neutron.agent.linux.dhcp.Dnsmasq
          enable_isolated_metadata = True
-
-#. (Optional) Reduce MTU for VXLAN project networks.
-
-   #. Edit the ``/etc/neutron/dhcp_agent.ini`` file:
-
-      .. code-block:: ini
-
-         [DEFAULT]
-         dnsmasq_config_file = /etc/neutron/dnsmasq-neutron.conf
-
-   #. Edit the ``/etc/neutron/dnsmasq-neutron.conf`` file:
-
-      .. code-block:: ini
-
-         dhcp-option-force=26,1450
 
 #. Configure the metadata agent. Edit the
    ``/etc/neutron/metadata_agent.ini`` file:
@@ -669,7 +644,6 @@ Network node
    .. code-block:: ini
 
       [DEFAULT]
-      verbose = True
       nova_metadata_ip = controller
       metadata_proxy_shared_secret = METADATA_SECRET
 
@@ -684,13 +658,6 @@ Network node
 
 Compute nodes
 -------------
-
-#. Configure common options. Edit the ``/etc/neutron/neutron.conf`` file:
-
-   .. code-block:: ini
-
-      [DEFAULT]
-      verbose = True
 
 #. Configure the Linux bridge agent. Edit the
    ``/etc/neutron/plugins/ml2/linuxbridge_agent.ini`` file:

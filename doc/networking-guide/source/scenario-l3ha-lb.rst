@@ -83,9 +83,9 @@ require an IP address range because it only handles layer-2 connectivity.
 
 .. note::
 
-   For VLAN external and project networks, the network infrastructure
-   must support VLAN tagging. For best performance with VXLAN project
-   networks, the network infrastructure should support jumbo frames.
+   For VLAN external and project networks, the network infrastructure must
+   support VLAN tagging. For best performance, 10+ Gbps networks should support
+   jumbo frames.
 
 .. warning::
 
@@ -204,7 +204,6 @@ Controller node
    .. code-block:: ini
 
       [DEFAULT]
-      verbose = True
       core_plugin = ml2
       service_plugins = router
       allow_overlapping_ips = True
@@ -262,13 +261,6 @@ Network nodes
 #. Configure the kernel to enable packet forwarding and disable reverse path
    filtering. Edit the ``/etc/sysctl.conf`` file:
 
-#. Configure common options. Edit the ``/etc/neutron/neutron.conf`` file:
-
-   .. code-block:: ini
-
-      [DEFAULT]
-      verbose = True
-
 #. Configure the Linux bridge agent. Edit the
    ``/etc/neutron/plugins/ml2/linuxbridge_agent.ini`` file:
 
@@ -299,7 +291,6 @@ Network nodes
    .. code-block:: ini
 
       [DEFAULT]
-      verbose = True
       interface_driver = neutron.agent.linux.interface.BridgeInterfaceDriver
       external_network_bridge =
       agent_mode = legacy
@@ -315,25 +306,9 @@ Network nodes
    .. code-block:: ini
 
       [DEFAULT]
-      verbose = True
       interface_driver = neutron.agent.linux.interface.BridgeInterfaceDriver
       dhcp_driver = neutron.agent.linux.dhcp.Dnsmasq
       enable_isolated_metadata = True
-
-#. (Optional) Reduce MTU for VXLAN project networks.
-
-   #. Edit the ``/etc/neutron/dhcp_agent.ini`` file:
-
-      .. code-block:: ini
-
-         [DEFAULT]
-         dnsmasq_config_file = /etc/neutron/dnsmasq-neutron.conf
-
-   #. Edit the ``/etc/neutron/dnsmasq-neutron.conf`` file:
-
-      .. code-block:: ini
-
-         dhcp-option-force=26,1450
 
 #. Configure the metadata agent. Edit the
    ``/etc/neutron/metadata_agent.ini`` file:
@@ -341,7 +316,6 @@ Network nodes
    .. code-block:: ini
 
       [DEFAULT]
-      verbose = True
       nova_metadata_ip = controller
       metadata_proxy_shared_secret = METADATA_SECRET
 
@@ -356,13 +330,6 @@ Network nodes
 
 Compute nodes
 -------------
-
-#. Configure common options. Edit the ``/etc/neutron/neutron.conf`` file:
-
-   .. code-block:: ini
-
-      [DEFAULT]
-      verbose = True
 
 #. Configure the Linux bridge agent. Edit the
    ``/etc/neutron/plugins/ml2/linuxbridge_agent.ini`` file:
@@ -673,13 +640,13 @@ Verify network operation
    .. code-block:: console
 
       $ ip netns exec qrouter-7a46dba8-8846-498c-9e10-588664558473 ip addr show
-      11: ha-255d2e4b-33: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UNKNOWN group default
+      11: ha-255d2e4b-33: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue state UNKNOWN group default
           link/ether fa:16:3e:25:05:d7 brd ff:ff:ff:ff:ff:ff
           inet 169.254.192.1/18 brd 169.254.255.255 scope global ha-255d2e4b-33
              valid_lft forever preferred_lft forever
           inet6 fe80::f816:3eff:fe25:5d7/64 scope link
              valid_lft forever preferred_lft forever
-      12: qr-8de3e172-53: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UNKNOWN group default
+      12: qr-8de3e172-53: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue state UNKNOWN group default
           link/ether fa:16:3e:10:9f:f6 brd ff:ff:ff:ff:ff:ff
           inet 192.168.1.1/24 scope global qr-8de3e172-53
              valid_lft forever preferred_lft forever
@@ -697,13 +664,13 @@ Verify network operation
    .. code-block:: console
 
       $ ip netns exec qrouter-7a46dba8-8846-498c-9e10-588664558473 ip addr show
-      11: ha-90d1a59f-b1: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UNKNOWN group default
+      11: ha-90d1a59f-b1: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue state UNKNOWN group default
           link/ether fa:16:3e:ae:3b:22 brd ff:ff:ff:ff:ff:ff
           inet 169.254.192.2/18 brd 169.254.255.255 scope global ha-90d1a59f-b1
              valid_lft forever preferred_lft forever
           inet6 fe80::f816:3eff:feae:3b22/64 scope link
              valid_lft forever preferred_lft forever
-      12: qr-8de3e172-53: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UNKNOWN group default
+      12: qr-8de3e172-53: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue state UNKNOWN group default
           link/ether fa:16:3e:10:9f:f6 brd ff:ff:ff:ff:ff:ff
           inet6 fe80::f816:3eff:fe10:9ff6/64 scope link
              valid_lft forever preferred_lft forever
