@@ -10,7 +10,7 @@
 
 .. _cinder-nexenta:
 
-.. list-table:: Description of Nexenta driver configuration options
+.. list-table:: Description of NexentaStor 4.x driver configuration options
    :header-rows: 1
    :class: config-ref-table
 
@@ -32,30 +32,18 @@
      - (String) Human-readable description for the folder.
    * - ``nexenta_host`` =
      - (String) IP address of Nexenta SA
-   * - ``nexenta_iscsi_service`` =
-     - (String) NexentaEdge iSCSI service name
    * - ``nexenta_iscsi_target_portal_port`` = ``3260``
      - (Integer) Nexenta target portal port
-   * - ``nexenta_lun_container`` =
-     - (String) NexentaEdge logical path of bucket for LUNs
    * - ``nexenta_mount_point_base`` = ``$state_path/mnt``
      - (String) Base directory that contains NFS share mount points
    * - ``nexenta_nms_cache_volroot`` = ``True``
      - (Boolean) If set True cache NexentaStor appliance volroot option value.
-   * - ``nexenta_ns5_blocksize`` = ``32``
-     - (Integer) Block size for datasets
    * - ``nexenta_password`` = ``nexenta``
      - (String) Password to connect to Nexenta SA
-   * - ``nexenta_rest_address`` =
-     - (String) IP address of NexentaEdge management REST API endpoint
-   * - ``nexenta_rest_password`` = ``nexenta``
-     - (String) Password to connect to NexentaEdge
    * - ``nexenta_rest_port`` = ``8080``
      - (Integer) HTTP port to connect to Nexenta REST API server
    * - ``nexenta_rest_protocol`` = ``auto``
      - (String) Use http or https for REST connection (default auto)
-   * - ``nexenta_rest_user`` = ``admin``
-     - (String) User name to connect to NexentaEdge
    * - ``nexenta_rrmgr_compression`` = ``0``
      - (Integer) Enable stream compression, level 1..9. 1 - gives best speed; 9 - gives best compression.
    * - ``nexenta_rrmgr_connections`` = ``2``
@@ -76,5 +64,3 @@
      - (String) User name to connect to Nexenta SA
    * - ``nexenta_volume`` = ``cinder``
      - (String) SA Pool that holds all volumes
-   * - ``nexenta_volume_group`` = ``iscsi``
-     - (String) Volume group for ns5

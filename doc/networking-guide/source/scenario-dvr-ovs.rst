@@ -65,9 +65,9 @@ because it only handles layer 2 connectivity.
 
 .. note::
 
-   For VLAN external and project networks, the network infrastructure
-   must support VLAN tagging. For best performance with VXLAN and GRE
-   project networks, the network infrastructure should support jumbo frames.
+   For VLAN external and project networks, the network infrastructure must
+   support VLAN tagging. For best performance, 10+ Gbps networks should support
+   jumbo frames.
 
 .. warning::
 
@@ -487,7 +487,6 @@ Controller node
    .. code-block:: ini
 
       [DEFAULT]
-      verbose = True
       router_distributed = True
       core_plugin = ml2
       service_plugins = router
@@ -548,13 +547,6 @@ Controller node
 Network node
 ------------
 
-#. Configure common options. Edit the ``/etc/neutron/neutron.conf`` file:
-
-   .. code-block:: ini
-
-      [DEFAULT]
-      verbose = True
-
 #. Configure the Open vSwitch agent. Edit the
    ``/etc/neutron/plugins/ml2/openvswitch_agent.ini`` file:
 
@@ -583,7 +575,6 @@ Network node
    .. code-block:: ini
 
       [DEFAULT]
-      verbose = True
       interface_driver = neutron.agent.linux.interface.OVSInterfaceDriver
       external_network_bridge =
       agent_mode = dvr_snat
@@ -599,25 +590,9 @@ Network node
    .. code-block:: ini
 
       [DEFAULT]
-      verbose = True
       interface_driver = neutron.agent.linux.interface.OVSInterfaceDriver
       dhcp_driver = neutron.agent.linux.dhcp.Dnsmasq
       enable_isolated_metadata = True
-
-#. (Optional) Reduce MTU for GRE/VXLAN project networks.
-
-   #. Edit the ``/etc/neutron/dhcp_agent.ini`` file:
-
-      .. code-block:: ini
-
-         [DEFAULT]
-         dnsmasq_config_file = /etc/neutron/dnsmasq-neutron.conf
-
-   #. Edit the ``/etc/neutron/dnsmasq-neutron.conf`` file:
-
-      .. code-block:: ini
-
-         dhcp-option-force=26,1450
 
 #. Configure the metadata agent. Edit the
    ``/etc/neutron/metadata_agent.ini`` file:
@@ -625,7 +600,6 @@ Network node
    .. code-block:: ini
 
       [DEFAULT]
-      verbose = True
       nova_metadata_ip = controller
       metadata_proxy_shared_secret = METADATA_SECRET
 
@@ -642,13 +616,6 @@ Network node
 Compute nodes
 -------------
 
-#. Configure common options. Edit the ``/etc/neutron/neutron.conf`` file:
-
-   .. code-block:: ini
-
-      [DEFAULT]
-      verbose = True
-
 #. Configure the Open vSwitch agent. Edit the
    ``/etc/neutron/plugins/ml2/openvswitch_agent.ini`` file:
 
@@ -677,7 +644,6 @@ Compute nodes
    .. code-block:: ini
 
       [DEFAULT]
-      verbose = True
       interface_driver = neutron.agent.linux.interface.OVSInterfaceDriver
       external_network_bridge =
       agent_mode = dvr
@@ -693,7 +659,6 @@ Compute nodes
    .. code-block:: ini
 
       [DEFAULT]
-      verbose = True
       nova_metadata_ip = controller
       metadata_proxy_shared_secret = METADATA_SECRET
 

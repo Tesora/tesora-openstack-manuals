@@ -44,6 +44,11 @@ Linux bridge Agent configuration options
 
 .. include:: ../tables/neutron-linuxbridge_agent.rst
 
+MacVTap Agent configuration options
+----------------------------------------
+
+.. include:: ../tables/neutron-macvtap_agent.rst
+
 NEC configuration options
 -------------------------
 
@@ -75,28 +80,6 @@ explicitly in the configuration, and the remainder is allowed to be chosen
 automatically by the Compute service.
 
 This section describes the available configuration options.
-
-.. note::
-
-   Configure MTU for VXLAN tunnelling
-
-   Specific MTU configuration is necessary for VXLAN to function as
-   expected:
-
-   - One option is to increase the MTU value of the physical interface
-     and physical switch fabric by at least 50 bytes. For example,
-     increase the MTU value to 1550. This value enables an automatic
-     50-byte MTU difference between the physical interface (1500) and
-     the VXLAN interface (automatically 1500-50 = 1450). An MTU value
-     of 1450 causes issues when virtual machine taps are configured at
-     an MTU value of 1500.
-   - Another option is to decrease the virtual Ethernet
-     devices' MTU. Set the ``network_device_mtu``
-     option to 1450 in the ``neutron.conf`` file,
-     and set all guest virtual machines' MTU to the same value by
-     using a DHCP option. For information about how to use this
-     option, see `Configure OVS plug-in
-     <http://docs.openstack.org/admin-guide-cloud/networking_config-agents.html>`__.
 
 .. note::
    OpenFlow Agent (ofagent) Mechanism driver is deprecated in favor
@@ -331,6 +314,23 @@ Use the following options in the ``l3_agent.ini`` file for the L3
 agent.
 
 .. include:: ../tables/neutron-l3_agent.rst
+
+Load Balancing service (octavia)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Use the following options to configure the octavia service:
+
+.. include:: ../tables/octavia-api.rst
+.. include:: ../tables/octavia-auth_token.rst
+.. include:: ../tables/octavia-cache.rst
+.. include:: ../tables/octavia-common.rst
+.. include:: ../tables/octavia-cors.rst
+.. include:: ../tables/octavia-database.rst
+.. include:: ../tables/octavia-logging.rst
+.. include:: ../tables/octavia-rabbitmq.rst
+.. include:: ../tables/octavia-redis.rst
+.. include:: ../tables/octavia-rpc.rst
+.. include:: ../tables/octavia-zeromq.rst
 
 Logging
 ~~~~~~~

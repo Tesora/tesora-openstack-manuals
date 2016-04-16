@@ -1,0 +1,374 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2016, OpenStack contributors
+# This file is distributed under the same license as the OpenStack Documentation Team Release Notes package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: OpenStack Documentation Team Release Notes 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-04-08 06:52+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+# ad3e8ce81b004fc799dadf0f7b65d8f5
+#: ../source/index.rst:3
+msgid "Documentation team release notes"
+msgstr ""
+
+# 59d9d34ebb254d8b813caf6238d90184
+#: ../source/index.rst:5
+msgid ""
+"These release notes cover all aspects of the work of the documentation team "
+"with the exception of those repositories that have their own release notes "
+"(currently openstackdocstheme and openstack-doc-tools). Thus this file "
+"covers the content of the following repositories:"
+msgstr ""
+
+# 57153efef6fc4837a840a83bc056edaa
+#: ../source/index.rst:10
+msgid "api-site"
+msgstr ""
+
+# 0cf79a370b014cf7b766a4d43df5df57
+#: ../source/index.rst:11
+msgid "fairy-slipper"
+msgstr ""
+
+# 4551de56d32540ba8ea6549ee04eb264
+#: ../source/index.rst:12
+msgid "ha-guide"
+msgstr ""
+
+# d803886f68b0429a9703a63717b5f94d
+#: ../source/index.rst:13
+msgid "openstack-manuals"
+msgstr ""
+
+# f302bcbf2ba94f3f82d83c67fc89f447
+#: ../source/index.rst:14
+msgid "operations-guide"
+msgstr ""
+
+# 0f816e67752c4b17b7a87acb2bd84ce9
+#: ../source/index.rst:15
+msgid "security-guide"
+msgstr ""
+
+# a2824d7130614061a9f3285a1dbb245b
+#: ../source/index.rst:16
+msgid "training-guide"
+msgstr ""
+
+# fa433511a907461784228f618e829708
+#: ../source/index.rst:17
+msgid "training-labs"
+msgstr ""
+
+# fbf0d119998042288b19aeef51e8eb7d
+#: ../source/index.rst:20
+msgid "Contents"
+msgstr ""
+
+# 9199c30360a741c6a517e71243ec60cf
+#: ../source/mitaka.rst:3
+msgid "Mitaka release"
+msgstr ""
+
+# c92ed8cc1de448858b1b5655b8a2a202
+#: ../source/mitaka.rst:5
+msgid "Tracking of release notes in the ``releasenotes`` directory."
+msgstr ""
+
+# 8f63c5b1d6f343df84b9866b792d35c3
+#: ../source/mitaka.rst:8
+msgid "Configuration Reference"
+msgstr ""
+
+# a9706aed82254e0cbf9c0605e90f5d09
+# 2dafd024107149b39d54bf49594d28af
+# 4d14afca35254689ae667bcaa7b369a4
+# 088eaca61977461aba980254995e3dc2
+#: ../source/mitaka.rst:10 ../source/mitaka.rst:71 ../source/mitaka.rst:76
+#: ../source/mitaka.rst:86
+msgid "Completed RST conversion."
+msgstr ""
+
+# 1308968a8f0a4ba8ad012612ab484e28
+#: ../source/mitaka.rst:11
+msgid "Documented Message service (zaqar)."
+msgstr ""
+
+# 42d92ad6b77f42088eb5d20272431d0e
+#: ../source/mitaka.rst:14
+msgid "High Availability Guide"
+msgstr ""
+
+# 84656d4a85c94ba7b923f7e4906afb43
+#: ../source/mitaka.rst:16
+msgid ""
+"Added the `Highly available Shared File Systems API <http://docs.openstack."
+"org/ha-guide/storage-ha-manila.html>`_ section."
+msgstr ""
+
+# 0194ab4626db4ccf9f7e969973135b7e
+#: ../source/mitaka.rst:19
+msgid ""
+"Improved `Pacemaker/Corosync cluster <http://docs.openstack.org/ha-guide/"
+"controller-ha-pacemaker.html>`_ installation and configuration details."
+msgstr ""
+
+# ff3872ce4add488294de3e16a8275bf7
+#: ../source/mitaka.rst:22
+msgid ""
+"Documented the `Pacemaker cluster manager <http://docs.openstack.org/ha-"
+"guide/intro-ha-arch-pacemaker.html>`_ and `Keepalived architecture <http://"
+"docs.openstack.org/ha-guide/intro-ha-arch-keepalived.html>`_ details and "
+"limitations."
+msgstr ""
+
+# 3e15abafa67647b1a101728886dba5b6
+#: ../source/mitaka.rst:26
+msgid ""
+"Added the `MariaDB Galera cluster <http://docs.openstack.org/ha-guide/"
+"controller-ha-galera.html>`_ installation, configuration, and management "
+"details."
+msgstr ""
+
+# 9305977ed33743dda5799ea027a7ac6d
+#: ../source/mitaka.rst:29
+msgid ""
+"Improved the `RabbitMQ section <http://docs.openstack.org/ha-guide/"
+"controller-ha-rabbitmq.html>`_."
+msgstr ""
+
+# a4e0426cb1e04bbfaf2ec5d00b6576a3
+#: ../source/mitaka.rst:32
+msgid "Installation Guide"
+msgstr ""
+
+# fd9075e2ad9a494cbeabba5b4e4b4db8
+#: ../source/mitaka.rst:34
+msgid "Updated configuration for all services."
+msgstr ""
+
+# 74d87679570e49c9a77c342a49b28ee9
+#: ../source/mitaka.rst:35
+msgid "Added Shared File Systems (manila) content."
+msgstr ""
+
+# c1f6e56210f74a56bba1af1a905df8a9
+#: ../source/mitaka.rst:38
+msgid "Networking Guide"
+msgstr ""
+
+# 7955aa38cb05424bb79ad8b08ec6a9bd
+#: ../source/mitaka.rst:40
+msgid "Documentation of some of the new features in Mitaka."
+msgstr ""
+
+# 6dbe340fb6db44c4ac3badb8e6c6de86
+#: ../source/mitaka.rst:41
+msgid ""
+"New content including documentation for LBaaS, DNS integration, and macvtap "
+"ml2 driver."
+msgstr ""
+
+# 44df9edbdf6840518fc515142c5133a8
+#: ../source/mitaka.rst:46
+msgid "Operations Guide"
+msgstr ""
+
+# 799a69dd4ccf4714ae493759748e5c55
+#: ../source/mitaka.rst:48
+msgid "Added the Shared File Systems chapter."
+msgstr ""
+
+# 0e5f0b62d51f44159ae897f38907e37c
+#: ../source/mitaka.rst:51
+msgid "User Guides"
+msgstr ""
+
+# 549375a77fa0470da94ea9cf9a4e4b1c
+#: ../source/mitaka.rst:53
+msgid ""
+"Reorganised the **Admin User Guide** content together with the **Cloud Admin "
+"Guide** content to create a new **Administrator Guide**."
+msgstr ""
+
+# eaa36a1a867d4803aef4a08c7b769f55
+#: ../source/mitaka.rst:57
+msgid ""
+"Approximately one third of the **Administrator Guide** chapters received a "
+"thorough edit for style and consistency, following the contributor guide "
+"standard."
+msgstr ""
+
+# f0bd1e3470f642b29faad76849670bb6
+#: ../source/mitaka.rst:61
+msgid ""
+"Troubleshooting chapters now have consistent formatting, which is a step "
+"toward improved troubleshooting sections."
+msgstr ""
+
+# 1d9d5c3a78bb4134bccb8fd7af2c1a6e
+#: ../source/mitaka.rst:64
+msgid ""
+"The **Admin User Guide** content has been removed from `OpenStack Docs "
+"<http://docs.openstack.org>`_ since all files have been reorganised into the "
+"**Administrator Guide**."
+msgstr ""
+
+# a61dabb32a164b45bb6ca84db30add8b
+#: ../source/mitaka.rst:69
+msgid "Virtual Machine Image Guide"
+msgstr ""
+
+# aaee336be8f8419cbfe46f16612e8cea
+#: ../source/mitaka.rst:74
+msgid "Command-Line Interface Reference"
+msgstr ""
+
+# c15762c44d3248d5aba34e7628a62b3a
+#: ../source/mitaka.rst:77
+msgid ""
+"Documented that individual CLIs are deprecated in favor of the common "
+"OpenStack client."
+msgstr ""
+
+# f4b3513411fa4df997d1ead90afe67c6
+#: ../source/mitaka.rst:79
+msgid "Marked Identity API v2 as deprecated."
+msgstr ""
+
+# f3484409c0c8423b97f09fb0eed99d96
+#: ../source/mitaka.rst:80
+msgid "Added senlin, monasca, and cloudkitty clients."
+msgstr ""
+
+# 11d255fce8a64087bb48a2d755aa2621
+#: ../source/mitaka.rst:81
+msgid "Removed tuskar client because of retirement."
+msgstr ""
+
+# a95f7b72d1714c6d908804369e9aa8ee
+#: ../source/mitaka.rst:84
+msgid "Architecture Design Guide"
+msgstr ""
+
+# 36a5281c6b534aaa8bec5552c6d839b4
+#: ../source/mitaka.rst:89
+msgid "API Guides"
+msgstr ""
+
+# f5696a309caf4cb8a332c2bbfd7aa8b0
+#: ../source/mitaka.rst:91
+msgid ""
+"New, cleaner `developer.openstack.org <http://developer.openstack.org>`_ "
+"landing page."
+msgstr ""
+
+# 15fd56e3ad7945908b40f1190ad5d038
+#: ../source/mitaka.rst:93
+msgid ""
+"`API Quick Start <http://developer.openstack.org/api-guide/compute/>`_ "
+"converted to RST with theme styling to match."
+msgstr ""
+
+# 61d2849ffa014d09b0ab2278c20c321e
+#: ../source/mitaka.rst:95
+msgid ""
+"`Compute API Guide <http://developer.openstack.org/api-guide/compute/>`_ now "
+"built from nova source tree."
+msgstr ""
+
+# 016ed06443fa4c07a2a9f8a83b1573fa
+#: ../source/mitaka.rst:97
+msgid ""
+"Draft swagger files now built to http://developer.openstack.org/draft/"
+"swagger/"
+msgstr ""
+
+# 4fae09c7b99c48d4b442fb09fbbd1880
+#: ../source/mitaka.rst:98
+msgid ""
+"Created templates for writing API guides for projects teams available in "
+"projects repositories."
+msgstr ""
+
+# ecefad2af0f547a7b1dad30682a7bbbb
+#: ../source/mitaka.rst:100
+msgid ""
+"Released fairy-slipper, a migration tool for WADL to RST plus API reference "
+"information."
+msgstr ""
+
+# d60c66d94da7469b84a2cc2f0fe0fc18
+#: ../source/mitaka.rst:104
+msgid "Training Guides"
+msgstr ""
+
+# dd867f254dfc4173a33276861ea37ed0
+#: ../source/mitaka.rst:106
+msgid ""
+"Added the `Upstream Training Archives <http://docs.openstack.org/upstream-"
+"training/upstream-archives.html>`_ (the list of past global and local "
+"Upstream Training events)."
+msgstr ""
+
+# b81e2e5d58d5447c8f676c6dd3daf561
+#: ../source/mitaka.rst:108
+msgid "Added the bug report links to each slide and the landing page."
+msgstr ""
+
+# aebcbcb4138c4d8186c4990817cb11d5
+#: ../source/mitaka.rst:109
+msgid "Enabled translation."
+msgstr ""
+
+# 6fbccae392364c878f6d485dab2472ed
+#: ../source/mitaka.rst:112
+msgid "Translations"
+msgstr ""
+
+# d0c856578af94def89292160b7cf6b18
+#: ../source/mitaka.rst:114
+msgid "Japanese"
+msgstr ""
+
+# 01a2c69d2c0b4858aab498061d30184c
+#: ../source/mitaka.rst:116
+msgid "Published the Networking Guide."
+msgstr ""
+
+# 64f2928c94974e70a4f2d8aef0bce9a0
+# 3367e48ce6344904a260e7d3c4ce6d87
+# 13832dc18eea485397a41299ef49ece7
+#: ../source/mitaka.rst:117 ../source/mitaka.rst:121 ../source/mitaka.rst:125
+msgid "Published the Upstream Training."
+msgstr ""
+
+# 6dfc1d53cc6f47ae85b5ab81b41689f1
+#: ../source/mitaka.rst:119
+msgid "Korean"
+msgstr ""
+
+# b971ff0e596f4ecf9f80c50927f43125
+#: ../source/mitaka.rst:123
+msgid "German"
+msgstr ""
+
+# 4d573368549341f78bf349999d48926f
+#: ../source/newton.rst:3
+msgid "Next release: Newton"
+msgstr ""
+
+# 070347d42044478980cf105a9f2d9f91
+#: ../source/newton.rst:5
+msgid "Nothing yet."
+msgstr ""
