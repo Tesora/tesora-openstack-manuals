@@ -7,7 +7,7 @@ command options to interact with the Identity service via the
 OpenStack supports simple client environment scripts also known as
 OpenRC files. These scripts typically contain common options for
 all clients, but also support unique options. For more information, see the
-`OpenStack User Guide <http://docs.openstack.org/user-guide/common/
+`OpenStack End User Guide <http://docs.openstack.org/user-guide/common/
 cli_set_environment_variables_using_openstack_rc.html>`__.
 
 Creating the scripts
@@ -28,6 +28,7 @@ scripts to load appropriate credentials for client operations.
       export OS_PASSWORD=ADMIN_PASS
       export OS_AUTH_URL=http://controller:35357/v3
       export OS_IDENTITY_API_VERSION=3
+      export OS_IMAGE_API_VERSION=2
 
    Replace ``ADMIN_PASS`` with the password you chose
    for the ``admin`` user in the Identity service.
@@ -43,6 +44,7 @@ scripts to load appropriate credentials for client operations.
       export OS_PASSWORD=DEMO_PASS
       export OS_AUTH_URL=http://controller:5000/v3
       export OS_IDENTITY_API_VERSION=3
+      export OS_IMAGE_API_VERSION=2
 
    Replace ``DEMO_PASS`` with the password you chose
    for the ``demo`` user in the Identity service.

@@ -39,7 +39,7 @@ Create a network to share:
    +---------------------------+--------------------------------------+
    | admin_state_up            | True                                 |
    | id                        | 6532a265-43fb-4c8c-8edb-e26b39f2277c |
-   | mtu                       | 0                                    |
+   | mtu                       | 1450                                 |
    | name                      | secret_network                       |
    | port_security_enabled     | True                                 |
    | provider:network_type     | vxlan                                |
@@ -167,7 +167,7 @@ it using the :command:`rbac-delete` command:
    Deleted rbac_policy: e45e6917-3f3f-4835-ad54-d12c9151541d
 
 If that project has ports or networks with the QoS policy applied to them,
-the server will not delete the RBAC policy from being deleted until
+the server will not delete the RBAC policy until
 the QoS policy is no longer in use:
 
 .. code-block:: console
@@ -197,7 +197,7 @@ This is accomplished using the ``shared`` flag on the supported object:
    +---------------------------+--------------------------------------+
    | admin_state_up            | True                                 |
    | id                        | 9a4af544-7158-456d-b180-95f2e11eaa8c |
-   | mtu                       | 0                                    |
+   | mtu                       | 1450                                 |
    | name                      | global_network                       |
    | port_security_enabled     | True                                 |
    | provider:network_type     | vxlan                                |

@@ -17,12 +17,10 @@ in the `Heat developer documentation
   .. code-block:: yaml
 
      heat_template_version: 2015-10-15
-     description: Launch a basic instance using the ``m1.tiny`` flavor and one network.
+     description: Launch a basic instance with CirrOS image using the
+                  ``m1.tiny`` flavor, ``mykey`` key,  and one network.
 
      parameters:
-       ImageID:
-         type: string
-         description: Image to use for the instance.
        NetID:
          type: string
          description: Network ID to use for the instance.
@@ -31,8 +29,9 @@ in the `Heat developer documentation
        server:
          type: OS::Nova::Server
          properties:
-           image: { get_param: ImageID }
+           image: cirros
            flavor: m1.tiny
+           key_name: mykey
            networks:
            - network: { get_param: NetID }
 
@@ -83,9 +82,9 @@ Create a stack using the ``demo-template.yml`` template.
 
    .. code-block:: console
 
-      $ heat stack-create -f demo-template.yml -P "ImageID=cirros;NetID=$NET_ID" stack
+      $ openstack stack create -t demo-template.yml --parameter "NetID=$NET_ID" stack
       +--------------------------------------+------------+--------------------+---------------------+--------------+
-      | id                                   | stack_name | stack_status       | creation_time       | updated_time |
+      | ID                                   | Stack Name | Stack Status       | Creation Time       | Updated Time |
       +--------------------------------------+------------+--------------------+---------------------+--------------+
       | dbf46d1b-0b97-4d45-a0b3-9662a1eb6cf3 | stack      | CREATE_IN_PROGRESS | 2015-10-13T15:27:20 | None         |
       +--------------------------------------+------------+--------------------+---------------------+--------------+
@@ -94,9 +93,9 @@ Create a stack using the ``demo-template.yml`` template.
 
    .. code-block:: console
 
-      $ heat stack-list
+      $ openstack stack list
       +--------------------------------------+------------+-----------------+---------------------+--------------+
-      | id                                   | stack_name | stack_status    | creation_time       | updated_time |
+      | ID                                   | Stack Name | Stack Status    | Creation Time       | Updated Time |
       +--------------------------------------+------------+-----------------+---------------------+--------------+
       | dbf46d1b-0b97-4d45-a0b3-9662a1eb6cf3 | stack      | CREATE_COMPLETE | 2015-10-13T15:27:20 | None         |
       +--------------------------------------+------------+-----------------+---------------------+--------------+
@@ -106,7 +105,7 @@ Create a stack using the ``demo-template.yml`` template.
 
    .. code-block:: console
 
-      $ heat output-show --all stack
+      $ openstack stack output show --all stack
       [
         {
           "output_value": "stack-server-3nzfyfofu6d4",
@@ -133,4 +132,4 @@ Create a stack using the ``demo-template.yml`` template.
 
    .. code-block:: console
 
-      $ heat stack-delete stack
+      $ openstack stack delete --yes stack

@@ -124,7 +124,7 @@ follows:
 For more information on production architectures, see the
 `Architecture Design Guide <http://docs.openstack.org/arch-design/>`__,
 `Operations Guide <http://docs.openstack.org/ops/>`__, and
-`Networking Guide <http://docs.openstack.org/liberty/networking-guide/>`__.
+`Networking Guide <http://docs.openstack.org/mitaka/networking-guide/>`__.
 
 .. _figure-hwreqs:
 
@@ -163,7 +163,7 @@ Block Storage
 -------------
 
 The optional Block Storage node contains the disks that the Block
-Storage service provisions for instances.
+Storage and Shared File System services provision for instances.
 
 For simplicity, service traffic between compute nodes and this node
 uses the management network. Production environments should implement

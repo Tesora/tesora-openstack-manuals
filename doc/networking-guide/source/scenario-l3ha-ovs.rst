@@ -81,9 +81,9 @@ require an IP address range because it only handles layer-2 connectivity.
 
 .. note::
 
-   For VLAN external and project networks, the network infrastructure
-   must support VLAN tagging. For best performance with VXLAN and GRE
-   project networks, the network infrastructure should support jumbo frames.
+   For VLAN external and project networks, the network infrastructure must
+   support VLAN tagging. For best performance, 10+ Gbps networks should support
+   jumbo frames.
 
 .. warning::
 
@@ -187,7 +187,7 @@ During normal operation, the master router periodically transmits *heartbeat*
 packets over a hidden project network that connects all HA routers for a
 particular project. By default, this network uses the type indicated by the
 first value in the ``tenant_network_types`` option in the
-``/etc/neutron/plugins/ml2_conf.ini`` file.
+``ml2_conf.ini`` file.
 
 If the backup router stops receiving these packets, it assumes failure
 of the master router and promotes itself to the master router by configuring
@@ -210,61 +210,77 @@ scenario in your environment.
 Controller node
 ---------------
 
-#. Configure common options. Edit the ``/etc/neutron/neutron.conf`` file:
+#. In the ``neutron.conf`` file:
 
-   .. code-block:: ini
+   * Configure common options, enable VRRP, and enable DHCP agent
+     redundancy:
 
-      [DEFAULT]
-      verbose = True
-      core_plugin = ml2
-      service_plugins = router
-      allow_overlapping_ips = True
-      router_distributed = False
-      l3_ha = True
-      l3_ha_net_cidr = 169.254.192.0/18
-      max_l3_agents_per_router = 3
-      min_l3_agents_per_router = 2
-      dhcp_agents_per_network = 2
+     .. code-block:: ini
 
-#. Configure the ML2 plug-in. Edit the
-   ``/etc/neutron/plugins/ml2/ml2_conf.ini`` file:
+        [DEFAULT]
+        core_plugin = ml2
+        service_plugins = router
+        allow_overlapping_ips = True
+        l3_ha = True
+        dhcp_agents_per_network = 2
 
-   .. code-block:: ini
+     .. note::
 
-      [ml2]
-      type_drivers = flat,vlan,gre,vxlan
-      tenant_network_types = vlan,gre,vxlan
-      mechanism_drivers = openvswitch,l2population
-      extension_drivers = port_security
+        You can increase the ``dhcp_agents_per_network`` value up to the
+        number of nodes running the DHCP agent.
 
-      [ml2_type_flat]
-      flat_networks = external
+   * If necessary, :ref:`configure MTU <adv-config-mtu>`.
 
-      [ml2_type_vlan]
-      network_vlan_ranges = external,vlan:MIN_VLAN_ID:MAX_VLAN_ID
+#. In the ``ml2_conf.ini`` file:
 
-      [ml2_type_gre]
-      tunnel_id_ranges = MIN_GRE_ID:MAX_GRE_ID
+   * Configure drivers and network types:
 
-      [ml2_type_vxlan]
-      vni_ranges = MIN_VXLAN_ID:MAX_VXLAN_ID
+     .. code-block:: ini
 
-      [securitygroup]
-      enable_ipset = True
+        [ml2]
+        type_drivers = flat,vlan,gre,vxlan
+        tenant_network_types = vlan,gre,vxlan
+        mechanism_drivers = openvswitch,l2population
+        extension_drivers = port_security
 
-   Replace ``MIN_VLAN_ID``, ``MAX_VLAN_ID``, ``MIN_GRE_ID``, ``MAX_GRE_ID``,
-   ``MIN_VXLAN_ID``, and ``MAX_VXLAN_ID`` with VLAN, GRE, and VXLAN ID minimum
-   and maximum values suitable for your environment.
+   * Configure network mappings and ID ranges:
 
-   .. note::
+     .. code-block:: ini
 
-      The first value in the ``tenant_network_types`` option becomes the
-      default project network type when a regular user creates a network.
+        [ml2_type_flat]
+        flat_networks = external
 
-   .. note::
+        [ml2_type_vlan]
+        network_vlan_ranges = external,vlan:MIN_VLAN_ID:MAX_VLAN_ID
 
-      The ``external`` value in the ``network_vlan_ranges`` option lacks VLAN
-      ID ranges to support use of arbitrary VLAN IDs by administrative users.
+        [ml2_type_gre]
+        tunnel_id_ranges = MIN_GRE_ID:MAX_GRE_ID
+
+        [ml2_type_vxlan]
+        vni_ranges = MIN_VXLAN_ID:MAX_VXLAN_ID
+
+     Replace ``MIN_VLAN_ID``, ``MAX_VLAN_ID``, ``MIN_GRE_ID``, ``MAX_GRE_ID``,
+     ``MIN_VXLAN_ID``, and ``MAX_VXLAN_ID`` with VLAN, GRE, and VXLAN ID minimum
+     and maximum values suitable for your environment.
+
+     .. note::
+
+        The first value in the ``tenant_network_types`` option becomes the
+        default project network type when a regular user creates a network.
+
+     .. note::
+
+        The ``external`` value in the ``network_vlan_ranges`` option lacks VLAN
+        ID ranges to support use of arbitrary VLAN IDs by administrative users.
+
+   * Configure the security group driver:
+
+     .. code-block:: ini
+
+        [securitygroup]
+        firewall_driver = neutron.agent.linux.iptables_firewall.OVSHybridIptablesFirewallDriver
+
+   * If necessary, :ref:`configure MTU <adv-config-mtu>`.
 
 #. Start the following services:
 
@@ -273,15 +289,7 @@ Controller node
 Network nodes
 -------------
 
-#. Configure common options. Edit the ``/etc/neutron/neutron.conf`` file:
-
-   .. code-block:: ini
-
-      [DEFAULT]
-      verbose = True
-
-#. Configure the Open vSwitch agent. Edit the
-   ``/etc/neutron/plugins/ml2/openvswitch_agent.ini`` file:
+#. In the ``openvswitch_agent.ini`` file, configure the Open vSwitch agent:
 
    .. code-block:: ini
 
@@ -292,63 +300,39 @@ Network nodes
       [agent]
       tunnel_types = gre,vxlan
       l2_population = True
-      prevent_arp_spoofing = True
 
       [securitygroup]
       firewall_driver = neutron.agent.linux.iptables_firewall.OVSHybridIptablesFirewallDriver
-      enable_security_group = True
 
    Replace ``TUNNEL_INTERFACE_IP_ADDRESS`` with the IP address of the interface
    that handles GRE/VXLAN project networks.
 
-#. Configure the L3 agent. Edit the ``/etc/neutron/l3_agent.ini`` file:
+#. In the ``l3_agent.ini`` file, configure the L3 agent:
 
    .. code-block:: ini
 
       [DEFAULT]
-      verbose = True
       interface_driver = neutron.agent.linux.interface.OVSInterfaceDriver
       external_network_bridge =
-      agent_mode = legacy
 
    .. note::
 
       The ``external_network_bridge`` option intentionally contains
       no value.
 
-#. Configure the DHCP agent. Edit the ``/etc/neutron/dhcp_agent.ini``
-   file:
+#. In the ``dhcp_agent.ini`` file, configure the DHCP agent:
 
    .. code-block:: ini
 
       [DEFAULT]
-      verbose = True
       interface_driver = neutron.agent.linux.interface.OVSInterfaceDriver
-      dhcp_driver = neutron.agent.linux.dhcp.Dnsmasq
       enable_isolated_metadata = True
 
-#. (Optional) Reduce MTU for VXLAN/GRE project networks.
-
-   #. Edit the ``/etc/neutron/dhcp_agent.ini`` file:
-
-      .. code-block:: ini
-
-         [DEFAULT]
-         dnsmasq_config_file = /etc/neutron/dnsmasq-neutron.conf
-
-   #. Edit the ``/etc/neutron/dnsmasq-neutron.conf`` file:
-
-      .. code-block:: ini
-
-         dhcp-option-force=26,1450
-
-#. Configure the metadata agent. Edit the
-   ``/etc/neutron/metadata_agent.ini`` file:
+#. In the ``metadata_agent.ini`` file, configure the metadata agent:
 
    .. code-block:: ini
 
       [DEFAULT]
-      verbose = True
       nova_metadata_ip = controller
       metadata_proxy_shared_secret = METADATA_SECRET
 
@@ -365,15 +349,7 @@ Network nodes
 Compute nodes
 -------------
 
-#. Configure common options. Edit the ``/etc/neutron/neutron.conf`` file:
-
-   .. code-block:: ini
-
-      [DEFAULT]
-      verbose = True
-
-#. Configure the Open vSwitch agent. Edit the
-   ``/etc/neutron/plugins/ml2/openvswitch_agent.ini`` file:
+#. In the ``openvswitch_agent.ini`` file, configure the Open vSwitch agent:
 
    .. code-block:: ini
 
@@ -384,11 +360,9 @@ Compute nodes
       [agent]
       tunnel_types = gre,vxlan
       l2_population = False
-      prevent_arp_spoofing = True
 
       [securitygroup]
       firewall_driver = neutron.agent.linux.iptables_firewall.OVSHybridIptablesFirewallDriver
-      enable_security_group = True
 
    Replace ``TUNNEL_INTERFACE_IP_ADDRESS`` with the IP address of the interface
    that handles GRE/VXLAN project networks.
@@ -678,13 +652,13 @@ Verify network operation
    .. code-block:: console
 
       $ ip netns exec qrouter-7a46dba8-8846-498c-9e10-588664558473 ip addr show
-      11: ha-255d2e4b-33: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UNKNOWN group default
+      11: ha-255d2e4b-33: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue state UNKNOWN group default
           link/ether fa:16:3e:25:05:d7 brd ff:ff:ff:ff:ff:ff
           inet 169.254.192.1/18 brd 169.254.255.255 scope global ha-255d2e4b-33
              valid_lft forever preferred_lft forever
           inet6 fe80::f816:3eff:fe25:5d7/64 scope link
              valid_lft forever preferred_lft forever
-      12: qr-8de3e172-53: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UNKNOWN group default
+      12: qr-8de3e172-53: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue state UNKNOWN group default
           link/ether fa:16:3e:10:9f:f6 brd ff:ff:ff:ff:ff:ff
           inet 192.168.1.1/24 scope global qr-8de3e172-53
              valid_lft forever preferred_lft forever
@@ -702,13 +676,13 @@ Verify network operation
    .. code-block:: console
 
       $ ip netns exec qrouter-7a46dba8-8846-498c-9e10-588664558473 ip addr show
-      11: ha-90d1a59f-b1: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UNKNOWN group default
+      11: ha-90d1a59f-b1: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue state UNKNOWN group default
           link/ether fa:16:3e:ae:3b:22 brd ff:ff:ff:ff:ff:ff
           inet 169.254.192.2/18 brd 169.254.255.255 scope global ha-90d1a59f-b1
              valid_lft forever preferred_lft forever
           inet6 fe80::f816:3eff:feae:3b22/64 scope link
              valid_lft forever preferred_lft forever
-      12: qr-8de3e172-53: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UNKNOWN group default
+      12: qr-8de3e172-53: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue state UNKNOWN group default
           link/ether fa:16:3e:10:9f:f6 brd ff:ff:ff:ff:ff:ff
           inet6 fe80::f816:3eff:fe10:9ff6/64 scope link
              valid_lft forever preferred_lft forever

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Installation Guide 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-30 06:35+0000\n"
+"POT-Creation-Date: 2016-05-04 06:22+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -37,17 +37,23 @@ msgstr ""
 # #-#-#-#-#  keystone-install.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  keystone-services.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  manila-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
+# #-#-#-#-#  manila-share-install-dhss-false-option1.pot (Installation Guide 0.1)  #-#-#-#-#
+# #-#-#-#-#  manila-share-install-dhss-true-option2.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  neutron-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  nova-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  swift-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  swift-storage-install.pot (Installation Guide 0.1)  #-#-#-#-#
+# #-#-#-#-#  trove-install.pot (Installation Guide 0.1)  #-#-#-#-#
 #: ../ceilometer-aodh.rst:11 ../ceilometer-install.rst:10
 #: ../ceilometer-swift.rst:12 ../cinder-controller-install.rst:14
 #: ../cinder-storage-install.rst:19 ../environment-packages.rst:39
 #: ../glance-install.rst:11 ../heat-install.rst:12 ../keystone-install.rst:14
 #: ../keystone-services.rst:10 ../manila-controller-install.rst:11
+#: ../manila-share-install-dhss-false-option1.rst:11
+#: ../manila-share-install-dhss-true-option2.rst:18
 #: ../neutron-controller-install.rst:7 ../nova-controller-install.rst:10
 #: ../swift-controller-install.rst:16 ../swift-storage-install.rst:20
+#: ../trove-install.rst:22
 msgid "Prerequisites"
 msgstr ""
 
@@ -63,9 +69,11 @@ msgstr ""
 # #-#-#-#-#  heat-install.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  manila-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  neutron-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
+# #-#-#-#-#  trove-install.pot (Installation Guide 0.1)  #-#-#-#-#
 #: ../ceilometer-aodh.rst:16 ../cinder-controller-install.rst:19
 #: ../glance-install.rst:16 ../heat-install.rst:18
 #: ../manila-controller-install.rst:16 ../neutron-controller-install.rst:12
+#: ../trove-install.rst:27
 msgid "To create the database, complete these steps:"
 msgstr ""
 
@@ -77,10 +85,11 @@ msgstr ""
 # #-#-#-#-#  manila-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  neutron-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  nova-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
+# #-#-#-#-#  trove-install.pot (Installation Guide 0.1)  #-#-#-#-#
 #: ../ceilometer-aodh.rst:18 ../cinder-controller-install.rst:21
 #: ../glance-install.rst:18 ../heat-install.rst:20 ../keystone-install.rst:21
 #: ../manila-controller-install.rst:18 ../neutron-controller-install.rst:14
-#: ../nova-controller-install.rst:17
+#: ../nova-controller-install.rst:17 ../trove-install.rst:29
 msgid ""
 "Use the database access client to connect to the database server as the "
 "``root`` user:"
@@ -106,10 +115,11 @@ msgstr ""
 # #-#-#-#-#  manila-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  neutron-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  nova-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
+# #-#-#-#-#  trove-install.pot (Installation Guide 0.1)  #-#-#-#-#
 #: ../ceilometer-aodh.rst:42 ../cinder-controller-install.rst:45
 #: ../glance-install.rst:42 ../heat-install.rst:44 ../keystone-install.rst:45
 #: ../manila-controller-install.rst:42 ../neutron-controller-install.rst:37
-#: ../nova-controller-install.rst:46
+#: ../nova-controller-install.rst:46 ../trove-install.rst:53
 msgid "Exit the database access client."
 msgstr ""
 
@@ -128,13 +138,15 @@ msgstr ""
 # #-#-#-#-#  nova-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  nova-verify.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  swift-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
+# #-#-#-#-#  trove-install.pot (Installation Guide 0.1)  #-#-#-#-#
 #: ../ceilometer-aodh.rst:44 ../ceilometer-install.rst:69
 #: ../ceilometer-verify.rst:12 ../cinder-controller-install.rst:47
-#: ../cinder-verify.rst:12 ../glance-install.rst:44 ../glance-verify.rst:27
+#: ../cinder-verify.rst:12 ../glance-install.rst:44 ../glance-verify.rst:19
 #: ../heat-install.rst:46 ../manila-controller-install.rst:44
 #: ../manila-verify.rst:12 ../neutron-controller-install.rst:39
 #: ../neutron-verify.rst:8 ../nova-controller-install.rst:48
 #: ../nova-verify.rst:10 ../swift-controller-install.rst:30
+#: ../trove-install.rst:55
 msgid ""
 "Source the ``admin`` credentials to gain access to admin-only CLI commands:"
 msgstr ""
@@ -147,10 +159,12 @@ msgstr ""
 # #-#-#-#-#  manila-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  neutron-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  nova-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
+# #-#-#-#-#  trove-install.pot (Installation Guide 0.1)  #-#-#-#-#
 #: ../ceilometer-aodh.rst:51 ../ceilometer-install.rst:76
 #: ../cinder-controller-install.rst:54 ../glance-install.rst:51
 #: ../heat-install.rst:53 ../manila-controller-install.rst:50
 #: ../neutron-controller-install.rst:46 ../nova-controller-install.rst:55
+#: ../trove-install.rst:62
 msgid "To create the service credentials, complete these steps:"
 msgstr ""
 
@@ -176,15 +190,18 @@ msgstr ""
 # #-#-#-#-#  nova-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  swift-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  swift-initial-rings.pot (Installation Guide 0.1)  #-#-#-#-#
+# #-#-#-#-#  swift-verify.pot (Installation Guide 0.1)  #-#-#-#-#
+# #-#-#-#-#  trove-install.pot (Installation Guide 0.1)  #-#-#-#-#
 #: ../ceilometer-aodh.rst:78 ../ceilometer-install.rst:102
-#: ../ceilometer-swift.rst:45 ../cinder-controller-install.rst:80
+#: ../ceilometer-swift.rst:46 ../cinder-controller-install.rst:80
 #: ../glance-install.rst:78 ../heat-install.rst:79 ../heat-install.rst:256
-#: ../heat-install.rst:279 ../keystone-users.rst:86 ../keystone-users.rst:180
+#: ../heat-install.rst:280 ../keystone-users.rst:87 ../keystone-users.rst:182
 #: ../launch-instance-cinder.rst:79 ../launch-instance-selfservice.rst:225
 #: ../manila-controller-install.rst:76 ../neutron-controller-install.rst:73
 #: ../nova-controller-install.rst:82 ../swift-controller-install.rst:62
 #: ../swift-initial-rings.rst:32 ../swift-initial-rings.rst:109
-#: ../swift-initial-rings.rst:186
+#: ../swift-initial-rings.rst:186 ../swift-verify.rst:96
+#: ../trove-install.rst:88
 msgid "This command provides no output."
 msgstr ""
 
@@ -217,17 +234,18 @@ msgstr ""
 # #-#-#-#-#  nova-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  swift-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  swift-storage-install.pot (Installation Guide 0.1)  #-#-#-#-#
+# #-#-#-#-#  trove-install.pot (Installation Guide 0.1)  #-#-#-#-#
 #: ../ceilometer-aodh.rst:149 ../ceilometer-install.rst:173
 #: ../ceilometer-nova.rst:8 ../cinder-controller-install.rst:224
 #: ../cinder-storage-install.rst:134 ../environment-memcached.rst:9
 #: ../environment-messaging.rst:16 ../environment-nosql-database.rst:16
 #: ../environment-ntp-controller.rst:9 ../environment-ntp-other.rst:10
 #: ../environment-sql-database.rst:11 ../glance-install.rst:149
-#: ../heat-install.rst:308 ../horizon-install.rst:23
+#: ../heat-install.rst:310 ../horizon-install.rst:23
 #: ../keystone-install.rst:57 ../manila-controller-install.rst:220
-#: ../manila-share-install.rst:17 ../nova-compute-install.rst:25
+#: ../manila-share-install.rst:10 ../nova-compute-install.rst:25
 #: ../nova-controller-install.rst:153 ../swift-controller-install.rst:133
-#: ../swift-storage-install.rst:139
+#: ../swift-storage-install.rst:139 ../trove-install.rst:160
 msgid "Install and configure components"
 msgstr ""
 
@@ -258,27 +276,29 @@ msgstr ""
 # #-#-#-#-#  nova-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  swift-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  swift-storage-install.pot (Installation Guide 0.1)  #-#-#-#-#
+# #-#-#-#-#  trove-install.pot (Installation Guide 0.1)  #-#-#-#-#
 #: ../ceilometer-aodh.rst:160 ../ceilometer-aodh.rst:171
 #: ../ceilometer-aodh.rst:182 ../ceilometer-install.rst:177
 #: ../ceilometer-install.rst:188 ../ceilometer-install.rst:198
 #: ../ceilometer-nova.rst:12 ../ceilometer-nova.rst:20
-#: ../ceilometer-nova.rst:28 ../ceilometer-swift.rst:50
+#: ../ceilometer-nova.rst:28 ../ceilometer-swift.rst:51
 #: ../cinder-controller-install.rst:228 ../cinder-controller-install.rst:236
 #: ../cinder-controller-install.rst:244 ../cinder-storage-install.rst:138
 #: ../cinder-storage-install.rst:146 ../cinder-storage-install.rst:154
 #: ../environment-memcached.rst:11 ../environment-ntp-controller.rst:11
 #: ../environment-ntp-other.rst:12 ../environment-sql-database.rst:13
 #: ../glance-install.rst:157 ../glance-install.rst:165
-#: ../glance-install.rst:173 ../glance-install.rst:288 ../heat-install.rst:316
-#: ../heat-install.rst:325 ../heat-install.rst:334 ../horizon-install.rst:31
+#: ../glance-install.rst:173 ../glance-install.rst:288 ../heat-install.rst:318
+#: ../heat-install.rst:327 ../heat-install.rst:336 ../horizon-install.rst:31
 #: ../horizon-install.rst:39 ../horizon-install.rst:47
 #: ../horizon-install.rst:55 ../manila-controller-install.rst:224
-#: ../manila-controller-install.rst:232 ../manila-controller-install.rst:240
-#: ../manila-share-install.rst:19 ../nova-compute-install.rst:31
+#: ../manila-controller-install.rst:233 ../manila-controller-install.rst:241
+#: ../manila-share-install.rst:14 ../nova-compute-install.rst:31
 #: ../nova-compute-install.rst:39 ../nova-compute-install.rst:47
-#: ../nova-controller-install.rst:159 ../nova-controller-install.rst:170
-#: ../nova-controller-install.rst:180 ../nova-controller-install.rst:189
+#: ../nova-controller-install.rst:159 ../nova-controller-install.rst:169
+#: ../nova-controller-install.rst:179 ../nova-controller-install.rst:188
 #: ../swift-controller-install.rst:137 ../swift-storage-install.rst:147
+#: ../trove-install.rst:168 ../trove-install.rst:181 ../trove-install.rst:189
 msgid "Install the packages:"
 msgstr ""
 
@@ -300,9 +320,9 @@ msgstr ""
 # #-#-#-#-#  neutron-controller-install-option2.pot (Installation Guide 0.1)  #-#-#-#-#
 #: ../ceilometer-aodh.rst:191 ../ceilometer-install.rst:216
 #: ../cinder-controller-install.rst:263 ../cinder-storage-install.rst:163
-#: ../glance-install.rst:184 ../glance-install.rst:238 ../heat-install.rst:345
-#: ../keystone-install.rst:118 ../manila-controller-install.rst:259
-#: ../manila-share-install.rst:62
+#: ../glance-install.rst:184 ../glance-install.rst:238 ../heat-install.rst:347
+#: ../keystone-install.rst:118 ../manila-controller-install.rst:261
+#: ../manila-share-install.rst:37
 #: ../neutron-controller-install-option1.rst:109
 #: ../neutron-controller-install-option2.rst:69
 msgid "In the ``[database]`` section, configure database access:"
@@ -327,9 +347,9 @@ msgstr ""
 # #-#-#-#-#  nova-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
 #: ../ceilometer-aodh.rst:204 ../ceilometer-install.rst:231
 #: ../ceilometer-nova.rst:37 ../cinder-controller-install.rst:274
-#: ../cinder-storage-install.rst:174 ../heat-install.rst:356
-#: ../manila-controller-install.rst:280 ../manila-share-install.rst:83
-#: ../nova-controller-install.rst:247
+#: ../cinder-storage-install.rst:174 ../heat-install.rst:358
+#: ../manila-controller-install.rst:282 ../manila-share-install.rst:58
+#: ../nova-controller-install.rst:245
 msgid ""
 "In the ``[DEFAULT]`` and ``[oslo_messaging_rabbit]`` sections, configure "
 "``RabbitMQ`` message queue access:"
@@ -349,10 +369,10 @@ msgstr ""
 # #-#-#-#-#  nova-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
 #: ../ceilometer-aodh.rst:219 ../ceilometer-glance.rst:34
 #: ../ceilometer-install.rst:246 ../ceilometer-nova.rst:52
-#: ../ceilometer-swift.rst:108 ../cinder-controller-install.rst:289
-#: ../cinder-storage-install.rst:189 ../heat-install.rst:371
-#: ../manila-controller-install.rst:295 ../manila-share-install.rst:98
-#: ../nova-compute-install.rst:82 ../nova-controller-install.rst:262
+#: ../ceilometer-swift.rst:109 ../cinder-controller-install.rst:289
+#: ../cinder-storage-install.rst:189 ../heat-install.rst:373
+#: ../manila-controller-install.rst:297 ../manila-share-install.rst:73
+#: ../nova-compute-install.rst:82 ../nova-controller-install.rst:260
 msgid ""
 "Replace ``RABBIT_PASS`` with the password you chose for the ``openstack`` "
 "account in ``RabbitMQ``."
@@ -373,10 +393,10 @@ msgstr ""
 #: ../ceilometer-aodh.rst:222 ../ceilometer-install.rst:249
 #: ../ceilometer-nova.rst:55 ../cinder-controller-install.rst:292
 #: ../cinder-storage-install.rst:192 ../manila-controller-install.rst:309
-#: ../manila-share-install.rst:112 ../neutron-compute-install.rst:87
+#: ../manila-share-install.rst:85 ../neutron-compute-install.rst:87
 #: ../neutron-controller-install-option1.rst:148
 #: ../neutron-controller-install-option2.rst:109
-#: ../nova-compute-install.rst:85 ../nova-controller-install.rst:265
+#: ../nova-compute-install.rst:85 ../nova-controller-install.rst:263
 msgid ""
 "In the ``[DEFAULT]`` and ``[keystone_authtoken]`` sections, configure "
 "Identity service access:"
@@ -397,17 +417,7 @@ msgid ""
 "In the ``[service_credentials]`` section, configure service credentials:"
 msgstr ""
 
-# #-#-#-#-#  ceilometer-aodh.pot (Installation Guide 0.1)  #-#-#-#-#
-# #-#-#-#-#  ceilometer-install.pot (Installation Guide 0.1)  #-#-#-#-#
-# #-#-#-#-#  ceilometer-nova.pot (Installation Guide 0.1)  #-#-#-#-#
-#: ../ceilometer-aodh.rst:262 ../ceilometer-install.rst:299
-#: ../ceilometer-nova.rst:96
-msgid ""
-"(Optional) To assist with troubleshooting, enable verbose logging in the "
-"``[DEFAULT]`` section:"
-msgstr ""
-
-#: ../ceilometer-aodh.rst:277
+#: ../ceilometer-aodh.rst:268
 msgid ""
 "Edit the ``/etc/aodh/api_paste.ini`` file and modify the ``[filter:"
 "authtoken]`` section as follows:"
@@ -434,33 +444,34 @@ msgstr ""
 # #-#-#-#-#  nova-compute-install.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  nova-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  swift-finalize-installation.pot (Installation Guide 0.1)  #-#-#-#-#
-#: ../ceilometer-aodh.rst:287 ../ceilometer-cinder.rst:26
-#: ../ceilometer-glance.rst:38 ../ceilometer-install.rst:309
-#: ../ceilometer-nova.rst:121 ../ceilometer-swift.rst:112
+# #-#-#-#-#  trove-install.pot (Installation Guide 0.1)  #-#-#-#-#
+#: ../ceilometer-aodh.rst:278 ../ceilometer-cinder.rst:26
+#: ../ceilometer-glance.rst:38 ../ceilometer-install.rst:300
+#: ../ceilometer-nova.rst:112 ../ceilometer-swift.rst:113
 #: ../cinder-controller-install.rst:360 ../cinder-storage-install.rst:295
 #: ../environment-memcached.rst:46 ../environment-nosql-database.rst:145
 #: ../environment-sql-database.rst:98 ../glance-install.rst:309
-#: ../heat-install.rst:469 ../horizon-install.rst:385
-#: ../manila-controller-install.rst:360 ../manila-share-install.rst:222
+#: ../heat-install.rst:471 ../horizon-install.rst:385
+#: ../manila-controller-install.rst:361 ../manila-share-install.rst:168
 #: ../neutron-compute-install.rst:166 ../neutron-controller-install.rst:239
-#: ../nova-compute-install.rst:245 ../nova-controller-install.rst:410
-#: ../swift-finalize-installation.rst:2
+#: ../nova-compute-install.rst:236 ../nova-controller-install.rst:399
+#: ../swift-finalize-installation.rst:2 ../trove-install.rst:313
 msgid "Finalize installation"
 msgstr ""
 
-#: ../ceilometer-aodh.rst:291
+#: ../ceilometer-aodh.rst:282
 msgid ""
 "Start the Telemetry Alarming services and configure them to start when the "
 "system boots:"
 msgstr ""
 
-#: ../ceilometer-aodh.rst:307
+#: ../ceilometer-aodh.rst:298
 msgid ""
 "Start the Alarming services and configure them to start when the system "
 "boots:"
 msgstr ""
 
-#: ../ceilometer-aodh.rst:323
+#: ../ceilometer-aodh.rst:314
 msgid "Restart the Alarming services:"
 msgstr ""
 
@@ -507,10 +518,9 @@ msgstr ""
 #: ../ceilometer-cinder.rst:57
 msgid ""
 "Use the ``cinder-volume-usage-audit`` command on Block Storage nodes to "
-"retrieve meters on demand. For more information, see the `Cloud "
-"Administrator Guide <http://docs.openstack.org/admin-guide-cloud/ telemetry-"
-"data-collection.html#block-storage-audit-script-setup-to-get- "
-"notifications>`__."
+"retrieve meters on demand. For more information, see the `Administrator "
+"Guide <http://docs.openstack.org/admin-guide/ telemetry-data-collection."
+"html#block-storage-audit-script-setup-to-get- notifications>`__."
 msgstr ""
 
 #: ../ceilometer-glance.rst:2
@@ -549,8 +559,9 @@ msgstr ""
 # #-#-#-#-#  heat-install.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  horizon-install.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  keystone-install.pot (Installation Guide 0.1)  #-#-#-#-#
+# #-#-#-#-#  trove-install.pot (Installation Guide 0.1)  #-#-#-#-#
 #: ../ceilometer-install.rst:2 ../glance-install.rst:2 ../heat-install.rst:4
-#: ../horizon-install.rst:2 ../keystone-install.rst:4
+#: ../horizon-install.rst:2 ../keystone-install.rst:4 ../trove-install.rst:4
 msgid "Install and configure"
 msgstr ""
 
@@ -639,13 +650,13 @@ msgstr ""
 msgid "In the ``[collector]`` section, configure the dispatcher:"
 msgstr ""
 
-#: ../ceilometer-install.rst:313 ../ceilometer-install.rst:329
+#: ../ceilometer-install.rst:304 ../ceilometer-install.rst:320
 msgid ""
 "Start the Telemetry services and configure them to start when the system "
 "boots:"
 msgstr ""
 
-#: ../ceilometer-install.rst:345
+#: ../ceilometer-install.rst:336
 msgid "Restart the Telemetry services:"
 msgstr ""
 
@@ -656,10 +667,11 @@ msgstr ""
 # #-#-#-#-#  manila-next-steps.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  neutron-next-steps.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  swift-next-steps.pot (Installation Guide 0.1)  #-#-#-#-#
+# #-#-#-#-#  trove-next-steps.pot (Installation Guide 0.1)  #-#-#-#-#
 #: ../ceilometer-next-steps.rst:3 ../cinder-next-steps.rst:5
 #: ../heat-next-steps.rst:4 ../horizon-next-steps.rst:3
 #: ../manila-next-steps.rst:5 ../neutron-next-steps.rst:3
-#: ../swift-next-steps.rst:3
+#: ../swift-next-steps.rst:3 ../trove-next-steps.rst:4
 msgid "Next steps"
 msgstr ""
 
@@ -685,30 +697,30 @@ msgid ""
 "service database."
 msgstr ""
 
-#: ../ceilometer-nova.rst:106
+#: ../ceilometer-nova.rst:97
 msgid "Configure Compute to use Telemetry"
 msgstr ""
 
-#: ../ceilometer-nova.rst:108
+#: ../ceilometer-nova.rst:99
 msgid ""
 "Edit the ``/etc/nova/nova.conf`` file and configure notifications in the "
 "``[DEFAULT]`` section:"
 msgstr ""
 
-#: ../ceilometer-nova.rst:125 ../ceilometer-nova.rst:134
+#: ../ceilometer-nova.rst:116 ../ceilometer-nova.rst:125
 msgid "Start the agent and configure it to start when the system boots:"
 msgstr ""
 
 # #-#-#-#-#  ceilometer-nova.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  neutron-compute-install.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  nova-compute-install.pot (Installation Guide 0.1)  #-#-#-#-#
-#: ../ceilometer-nova.rst:143 ../ceilometer-nova.rst:157
+#: ../ceilometer-nova.rst:134 ../ceilometer-nova.rst:148
 #: ../neutron-compute-install.rst:170 ../neutron-compute-install.rst:195
-#: ../neutron-compute-install.rst:211 ../nova-compute-install.rst:306
+#: ../neutron-compute-install.rst:211 ../nova-compute-install.rst:297
 msgid "Restart the Compute service:"
 msgstr ""
 
-#: ../ceilometer-nova.rst:151
+#: ../ceilometer-nova.rst:142
 msgid "Restart the agent:"
 msgstr ""
 
@@ -741,19 +753,19 @@ msgstr ""
 msgid "Create the ``ResellerAdmin`` role:"
 msgstr ""
 
-#: ../ceilometer-swift.rst:37
+#: ../ceilometer-swift.rst:38
 msgid "Add the ``ResellerAdmin`` role to the ``ceilometer`` user:"
 msgstr ""
 
-#: ../ceilometer-swift.rst:48
+#: ../ceilometer-swift.rst:49
 msgid "Install components"
 msgstr ""
 
-#: ../ceilometer-swift.rst:71
+#: ../ceilometer-swift.rst:72
 msgid "Configure Object Storage to use Telemetry"
 msgstr ""
 
-#: ../ceilometer-swift.rst:73
+#: ../ceilometer-swift.rst:74
 msgid ""
 "Perform these steps on the controller and any other nodes that run the "
 "Object Storage proxy service."
@@ -761,26 +773,26 @@ msgstr ""
 
 # #-#-#-#-#  ceilometer-swift.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  swift-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
-#: ../ceilometer-swift.rst:76 ../swift-controller-include.txt:1
+#: ../ceilometer-swift.rst:77 ../swift-controller-include.txt:1
 msgid ""
 "Edit the ``/etc/swift/proxy-server.conf`` file and complete the following "
 "actions:"
 msgstr ""
 
-#: ../ceilometer-swift.rst:79
+#: ../ceilometer-swift.rst:80
 msgid ""
 "In the ``[filter:keystoneauth]`` section, add the ``ResellerAdmin`` role:"
 msgstr ""
 
-#: ../ceilometer-swift.rst:88
+#: ../ceilometer-swift.rst:89
 msgid "In the ``[pipeline:main]`` section, add ``ceilometer``:"
 msgstr ""
 
-#: ../ceilometer-swift.rst:95
+#: ../ceilometer-swift.rst:96
 msgid "In the ``[filter:ceilometer]`` section, configure notifications:"
 msgstr ""
 
-#: ../ceilometer-swift.rst:116 ../ceilometer-swift.rst:124
+#: ../ceilometer-swift.rst:117 ../ceilometer-swift.rst:125
 msgid "Restart the Object Storage proxy service:"
 msgstr ""
 
@@ -796,11 +808,13 @@ msgstr ""
 # #-#-#-#-#  neutron-verify.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  nova-verify.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  swift-verify.pot (Installation Guide 0.1)  #-#-#-#-#
+# #-#-#-#-#  trove-verify.pot (Installation Guide 0.1)  #-#-#-#-#
 #: ../ceilometer-verify.rst:2 ../cinder-verify.rst:4
 #: ../environment-ntp-verify.rst:4 ../glance-verify.rst:2 ../heat-verify.rst:4
 #: ../horizon-verify.rst:2 ../keystone-verify.rst:2
 #: ../launch-instance-networks-selfservice.rst:197 ../manila-verify.rst:4
 #: ../neutron-verify.rst:2 ../nova-verify.rst:2 ../swift-verify.rst:2
+#: ../trove-verify.rst:4
 msgid "Verify operation"
 msgstr ""
 
@@ -909,8 +923,8 @@ msgstr ""
 # #-#-#-#-#  manila-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  nova-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
 #: ../cinder-controller-install.rst:252 ../glance-install.rst:294
-#: ../heat-install.rst:451 ../manila-controller-install.rst:248
-#: ../nova-controller-install.rst:197
+#: ../heat-install.rst:453 ../manila-controller-install.rst:250
+#: ../nova-controller-install.rst:195
 msgid ""
 "Respond to prompts for :doc:`database management <debconf/debconf-dbconfig-"
 "common>`, :doc:`Identity service credentials <debconf/debconf-keystone-"
@@ -948,7 +962,7 @@ msgstr ""
 #: ../neutron-compute-install.rst:113
 #: ../neutron-controller-install-option1.rst:174
 #: ../neutron-controller-install-option2.rst:135
-#: ../nova-compute-install.rst:111 ../nova-controller-install.rst:291
+#: ../nova-compute-install.rst:111 ../nova-controller-install.rst:289
 msgid ""
 "Comment out or remove any other options in the ``[keystone_authtoken]`` "
 "section."
@@ -957,8 +971,8 @@ msgstr ""
 # #-#-#-#-#  cinder-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  manila-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  nova-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
-#: ../cinder-controller-install.rst:321 ../manila-controller-install.rst:332
-#: ../nova-controller-install.rst:294
+#: ../cinder-controller-install.rst:321 ../manila-controller-install.rst:333
+#: ../nova-controller-install.rst:292
 msgid ""
 "In the ``[DEFAULT]`` section, configure the ``my_ip`` option to use the "
 "management interface IP address of the controller node:"
@@ -974,13 +988,13 @@ msgstr ""
 # #-#-#-#-#  nova-compute-install.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  nova-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
 #: ../cinder-controller-install.rst:332 ../cinder-storage-install.rst:286
-#: ../manila-controller-install.rst:343 ../manila-share-install.rst:213
+#: ../manila-controller-install.rst:344 ../manila-share-install.rst:122
 #: ../neutron-compute-install.rst:118
 #: ../neutron-controller-install-option1.rst:203
 #: ../neutron-controller-install-option2.rst:164
 #: ../nova-compute-install.rst:197 ../nova-compute-install.rst:207
-#: ../nova-controller-install.rst:354 ../nova-controller-install.rst:364
-#: ../nova-controller-install.rst:374
+#: ../nova-controller-install.rst:352 ../nova-controller-install.rst:362
+#: ../nova-controller-install.rst:372
 msgid "In the ``[oslo_concurrency]`` section, configure the lock path:"
 msgstr ""
 
@@ -1012,38 +1026,6 @@ msgstr ""
 
 #: ../cinder-controller-install.rst:386
 msgid "Restart the Block Storage services:"
-msgstr ""
-
-# #-#-#-#-#  cinder-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
-# #-#-#-#-#  glance-install.pot (Installation Guide 0.1)  #-#-#-#-#
-# #-#-#-#-#  heat-install.pot (Installation Guide 0.1)  #-#-#-#-#
-# #-#-#-#-#  keystone-install.pot (Installation Guide 0.1)  #-#-#-#-#
-# #-#-#-#-#  manila-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
-# #-#-#-#-#  neutron-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
-# #-#-#-#-#  nova-compute-install.pot (Installation Guide 0.1)  #-#-#-#-#
-# #-#-#-#-#  nova-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
-#: ../cinder-controller-install.rst:395 ../glance-install.rst:332
-#: ../heat-install.rst:495 ../keystone-install.rst:522
-#: ../manila-controller-install.rst:383 ../neutron-controller-install.rst:361
-#: ../nova-compute-install.rst:314 ../nova-controller-install.rst:459
-msgid "By default, the Ubuntu packages create an SQLite database."
-msgstr ""
-
-# #-#-#-#-#  cinder-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
-# #-#-#-#-#  glance-install.pot (Installation Guide 0.1)  #-#-#-#-#
-# #-#-#-#-#  heat-install.pot (Installation Guide 0.1)  #-#-#-#-#
-# #-#-#-#-#  keystone-install.pot (Installation Guide 0.1)  #-#-#-#-#
-# #-#-#-#-#  manila-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
-# #-#-#-#-#  neutron-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
-# #-#-#-#-#  nova-compute-install.pot (Installation Guide 0.1)  #-#-#-#-#
-# #-#-#-#-#  nova-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
-#: ../cinder-controller-install.rst:397 ../glance-install.rst:334
-#: ../heat-install.rst:497 ../keystone-install.rst:524
-#: ../manila-controller-install.rst:385 ../neutron-controller-install.rst:363
-#: ../nova-compute-install.rst:316 ../nova-controller-install.rst:461
-msgid ""
-"Because this configuration uses an SQL database server, you can remove the "
-"SQLite database file:"
 msgstr ""
 
 #: ../cinder-next-steps.rst:7
@@ -1081,13 +1063,19 @@ msgid ""
 "node, you must prepare the storage device."
 msgstr ""
 
+# #-#-#-#-#  cinder-storage-install.pot (Installation Guide 0.1)  #-#-#-#-#
+# #-#-#-#-#  manila-share-install-dhss-false-option1.pot (Installation Guide 0.1)  #-#-#-#-#
 #: ../cinder-storage-install.rst:26
+#: ../manila-share-install-dhss-false-option1.rst:15
 msgid "Perform these steps on the storage node."
 msgstr ""
 
 # #-#-#-#-#  cinder-storage-install.pot (Installation Guide 0.1)  #-#-#-#-#
+# #-#-#-#-#  manila-share-install-dhss-false-option1.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  swift-storage-install.pot (Installation Guide 0.1)  #-#-#-#-#
-#: ../cinder-storage-install.rst:28 ../swift-storage-install.rst:29
+#: ../cinder-storage-install.rst:28
+#: ../manila-share-install-dhss-false-option1.rst:17
+#: ../swift-storage-install.rst:29
 msgid "Install the supporting utility packages:"
 msgstr ""
 
@@ -1095,13 +1083,19 @@ msgstr ""
 msgid "Install the LVM packages:"
 msgstr ""
 
+# #-#-#-#-#  cinder-storage-install.pot (Installation Guide 0.1)  #-#-#-#-#
+# #-#-#-#-#  manila-share-install-dhss-false-option1.pot (Installation Guide 0.1)  #-#-#-#-#
 #: ../cinder-storage-install.rst:38
+#: ../manila-share-install-dhss-false-option1.rst:27
 msgid ""
 "(Optional) If you intend to use non-raw image types such as QCOW2 and VMDK, "
 "install the QEMU package:"
 msgstr ""
 
+# #-#-#-#-#  cinder-storage-install.pot (Installation Guide 0.1)  #-#-#-#-#
+# #-#-#-#-#  manila-share-install-dhss-false-option1.pot (Installation Guide 0.1)  #-#-#-#-#
 #: ../cinder-storage-install.rst:53
+#: ../manila-share-install-dhss-false-option1.rst:42
 msgid ""
 "Start the LVM metadata service and configure it to start when the system "
 "boots:"
@@ -1150,14 +1144,20 @@ msgid ""
 "command:`vgs -vvvv` command to test filters."
 msgstr ""
 
+# #-#-#-#-#  cinder-storage-install.pot (Installation Guide 0.1)  #-#-#-#-#
+# #-#-#-#-#  manila-share-install-dhss-false-option1.pot (Installation Guide 0.1)  #-#-#-#-#
 #: ../cinder-storage-install.rst:115
+#: ../manila-share-install-dhss-false-option1.rst:97
 msgid ""
 "If your storage nodes use LVM on the operating system disk, you must also "
 "add the associated device to the filter. For example, if the ``/dev/sda`` "
 "device contains the operating system:"
 msgstr ""
 
+# #-#-#-#-#  cinder-storage-install.pot (Installation Guide 0.1)  #-#-#-#-#
+# #-#-#-#-#  manila-share-install-dhss-false-option1.pot (Installation Guide 0.1)  #-#-#-#-#
 #: ../cinder-storage-install.rst:123
+#: ../manila-share-install-dhss-false-option1.rst:105
 msgid ""
 "Similarly, if your compute nodes use LVM on the operating system disk, you "
 "must also modify the filter in the ``/etc/lvm/lvm.conf`` file on those nodes "
@@ -1168,12 +1168,15 @@ msgstr ""
 # #-#-#-#-#  cinder-storage-install.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  manila-share-install.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  nova-compute-install.pot (Installation Guide 0.1)  #-#-#-#-#
-#: ../cinder-storage-install.rst:221 ../manila-share-install.rst:135
+#: ../cinder-storage-install.rst:221 ../manila-share-install.rst:109
 #: ../nova-compute-install.rst:133
 msgid "In the ``[DEFAULT]`` section, configure the ``my_ip`` option:"
 msgstr ""
 
+# #-#-#-#-#  cinder-storage-install.pot (Installation Guide 0.1)  #-#-#-#-#
+# #-#-#-#-#  manila-share-install-dhss-false-option1.pot (Installation Guide 0.1)  #-#-#-#-#
 #: ../cinder-storage-install.rst:229
+#: ../manila-share-install-dhss-false-option1.rst:149
 msgid ""
 "Replace ``MANAGEMENT_INTERFACE_IP_ADDRESS`` with the IP address of the "
 "management network interface on your storage node, typically 10.0.0.41 for "
@@ -1192,9 +1195,7 @@ msgstr ""
 msgid "In the ``[DEFAULT]`` section, enable the LVM back end:"
 msgstr ""
 
-# #-#-#-#-#  cinder-storage-install.pot (Installation Guide 0.1)  #-#-#-#-#
-# #-#-#-#-#  manila-share-install.pot (Installation Guide 0.1)  #-#-#-#-#
-#: ../cinder-storage-install.rst:274 ../manila-share-install.rst:203
+#: ../cinder-storage-install.rst:274
 msgid ""
 "Back-end names are arbitrary. As an example, this guide uses the name of the "
 "driver as the name of the back end."
@@ -1214,14 +1215,6 @@ msgstr ""
 
 #: ../cinder-storage-install.rst:319
 msgid "Restart the Block Storage volume service including its dependencies:"
-msgstr ""
-
-# #-#-#-#-#  cinder-storage-install.pot (Installation Guide 0.1)  #-#-#-#-#
-# #-#-#-#-#  manila-share-install.pot (Installation Guide 0.1)  #-#-#-#-#
-#: ../cinder-storage-install.rst:326 ../manila-share-install.rst:253
-msgid ""
-"By default, the Ubuntu packages create an SQLite database. Because this "
-"configuration uses an SQL database server, remove the SQLite database file:"
 msgstr ""
 
 #: ../cinder-verify.rst:6
@@ -1253,19 +1246,27 @@ msgstr ""
 
 #: ../cinder.rst:15
 msgid ""
-"The OpenStack Block Storage service provides block storage devices to guest "
+"The Block Storage service (cinder) provides block storage devices to guest "
 "instances. The method in which the storage is provisioned and consumed is "
 "determined by the Block Storage driver, or drivers in the case of a multi-"
 "backend configuration. There are a variety of drivers that are available: "
-"NAS/SAN, NFS, iSCSI, Ceph, and more. The Block Storage API and scheduler "
-"services typically run on the controller nodes. Depending upon the drivers "
-"used, the volume service can run on controllers, compute nodes, or "
-"standalone storage nodes. For more information, see the `Configuration "
-"Reference <http://docs.openstack.org/liberty/ config-reference/content/"
-"section_volume-drivers.html>`__."
+"NAS/SAN, NFS, iSCSI, Ceph, and more."
 msgstr ""
 
-#: ../cinder.rst:29
+#: ../cinder.rst:21
+msgid ""
+"The Block Storage API and scheduler services typically run on the controller "
+"nodes. Depending upon the drivers used, the volume service can run on "
+"controllers, compute nodes, or standalone storage nodes."
+msgstr ""
+
+#: ../cinder.rst:25
+msgid ""
+"For more information, see the `Configuration Reference <http://docs."
+"openstack.org/mitaka/config-reference/block-storage/volume-drivers.html>`__."
+msgstr ""
+
+#: ../cinder.rst:30
 msgid ""
 "This chapter omits the backup manager because it depends on the Object "
 "Storage service."
@@ -2435,7 +2436,7 @@ msgstr ""
 
 #: ../environment-packages.rst:160
 msgid ""
-"The Liberty release is available directly through the official Debian "
+"The Mitaka release is available directly through the official Debian "
 "backports repository. To use this repository, follow the instruction from "
 "the official `Debian website <http://backports.debian.org/Instructions/>`_, "
 "which basically suggest doing the following steps:"
@@ -2453,7 +2454,7 @@ msgstr ""
 
 # #-#-#-#-#  environment-packages.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  keystone-install.pot (Installation Guide 0.1)  #-#-#-#-#
-#: ../environment-packages.rst:183 ../keystone-install.rst:512
+#: ../environment-packages.rst:183 ../keystone-install.rst:464
 msgid "Finalize the installation"
 msgstr ""
 
@@ -2691,8 +2692,8 @@ msgid ""
 "the host that can interfere with deployment automation tools such as "
 "Ansible, Chef, and Puppet. For example, some OpenStack services add a root "
 "wrapper to ``sudo`` that can interfere with security policies. See the "
-"`Cloud Administrator Guide <http://docs.openstack.org/ admin-guide-cloud/"
-"compute-root-wrap-reference.html>`__ for more information."
+"`Administrator Guide <http://docs.openstack.org/ admin-guide/compute-root-"
+"wrap-reference.html>`__ for more information."
 msgstr ""
 
 #: ../environment-security.rst:81
@@ -2990,32 +2991,26 @@ msgstr ""
 msgid ""
 "For more information about how to download and build images, see `OpenStack "
 "Virtual Machine Image Guide <http://docs.openstack.org/image-guide/>`__. For "
-"information about how to manage images, see the `OpenStack User Guide "
+"information about how to manage images, see the `OpenStack End User Guide "
 "<http://docs.openstack.org/user-guide/common/cli_manage_images.html>`__."
 msgstr ""
 
-#: ../glance-verify.rst:19
-msgid ""
-"In each client environment script, configure the Image service client to use "
-"API version 2:"
-msgstr ""
-
-#: ../glance-verify.rst:34
+#: ../glance-verify.rst:26
 msgid "Download the source image:"
 msgstr ""
 
-#: ../glance-verify.rst:42
+#: ../glance-verify.rst:34
 msgid "Install ``wget`` if your distribution does not include it."
 msgstr ""
 
-#: ../glance-verify.rst:44
+#: ../glance-verify.rst:36
 msgid ""
 "Upload the image to the Image service using the :term:`QCOW2 <QEMU Copy On "
 "Write 2 (QCOW2)>` disk format, :term:`bare` container format, and public "
 "visibility so all projects can access it:"
 msgstr ""
 
-#: ../glance-verify.rst:77
+#: ../glance-verify.rst:69
 msgid ""
 "For information about the :command:`openstack image create` parameters, see "
 "`Image service command-line client <http://docs.openstack.org/cli-reference/"
@@ -3023,7 +3018,7 @@ msgid ""
 "Interface Reference``."
 msgstr ""
 
-#: ../glance-verify.rst:82
+#: ../glance-verify.rst:74
 msgid ""
 "For information about disk and container formats for images, see `Disk and "
 "container formats for images <http://docs.openstack.org/image-guide/image-"
@@ -3033,14 +3028,14 @@ msgstr ""
 # #-#-#-#-#  glance-verify.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  keystone-services.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  keystone-users.pot (Installation Guide 0.1)  #-#-#-#-#
-#: ../glance-verify.rst:89 ../keystone-services.rst:99
+#: ../glance-verify.rst:81 ../keystone-services.rst:99
 #: ../keystone-users.rst:46
 msgid ""
 "OpenStack generates IDs dynamically, so you will see different values in the "
 "example command output."
 msgstr ""
 
-#: ../glance-verify.rst:92
+#: ../glance-verify.rst:84
 msgid "Confirm upload of the image and validate attributes:"
 msgstr ""
 
@@ -3050,12 +3045,12 @@ msgstr ""
 
 #: ../glance.rst:11
 msgid ""
-"The OpenStack Image service (glance) enables users to discover, register, "
-"and retrieve virtual machine images. It offers a :term:`REST <RESTful>` API "
-"that enables you to query virtual machine image metadata and retrieve an "
-"actual image. You can store virtual machine images made available through "
-"the Image service in a variety of locations, from simple file systems to "
-"object-storage systems like OpenStack Object Storage."
+"The Image service (glance) enables users to discover, register, and retrieve "
+"virtual machine images. It offers a :term:`REST <RESTful>` API that enables "
+"you to query virtual machine image metadata and retrieve an actual image. "
+"You can store virtual machine images made available through the Image "
+"service in a variety of locations, from simple file systems to object-"
+"storage systems like OpenStack Object Storage."
 msgstr ""
 
 #: ../glance.rst:21
@@ -3075,8 +3070,8 @@ msgstr ""
 #: ../glance.rst:29
 msgid ""
 "For information on requirements for other back ends, see `Configuration "
-"Reference <http://docs.openstack.org/liberty/ config-reference/content/ "
-"ch_configuring-openstack-image-service.html>`__."
+"Reference <http://docs.openstack.org/mitaka/config-reference/image-service."
+"html>`__."
 msgstr ""
 
 #: ../heat-install.rst:6
@@ -3147,22 +3142,22 @@ msgstr ""
 msgid "Create the ``heat_stack_owner`` role:"
 msgstr ""
 
-#: ../heat-install.rst:270
+#: ../heat-install.rst:271
 msgid ""
 "Add the ``heat_stack_owner`` role to the ``demo`` project and user to enable "
 "stack management by the ``demo`` user:"
 msgstr ""
 
-#: ../heat-install.rst:283
+#: ../heat-install.rst:284
 msgid ""
 "You must add the ``heat_stack_owner`` role to each user that manages stacks."
 msgstr ""
 
-#: ../heat-install.rst:286
+#: ../heat-install.rst:287
 msgid "Create the ``heat_stack_user`` role:"
 msgstr ""
 
-#: ../heat-install.rst:300
+#: ../heat-install.rst:302
 msgid ""
 "The Orchestration service automatically assigns the ``heat_stack_user`` role "
 "to users that it creates during stack deployment. By default, this role "
@@ -3171,65 +3166,65 @@ msgid ""
 "``heat_stack_owner`` role."
 msgstr ""
 
-#: ../heat-install.rst:342 ../heat-install.rst:457
+#: ../heat-install.rst:344 ../heat-install.rst:459
 msgid ""
 "Edit the ``/etc/heat/heat.conf`` file and complete the following actions:"
 msgstr ""
 
-#: ../heat-install.rst:353
+#: ../heat-install.rst:355
 msgid ""
 "Replace ``HEAT_DBPASS`` with the password you chose for the Orchestration "
 "database."
 msgstr ""
 
-#: ../heat-install.rst:374
+#: ../heat-install.rst:376
 msgid ""
 "In the ``[keystone_authtoken]``, ``[trustee]``, ``[clients_keystone]``, and "
 "``[ec2authtoken]`` sections, configure Identity service access:"
 msgstr ""
 
-#: ../heat-install.rst:408
+#: ../heat-install.rst:410
 msgid ""
 "Replace ``HEAT_PASS`` with the password you chose for the ``heat`` user in "
 "the Identity service."
 msgstr ""
 
-#: ../heat-install.rst:411
+#: ../heat-install.rst:413
 msgid ""
 "In the ``[DEFAULT]`` section, configure the metadata and wait condition URLs:"
 msgstr ""
 
-#: ../heat-install.rst:421
+#: ../heat-install.rst:423
 msgid ""
 "In the ``[DEFAULT]`` section, configure the stack domain and administrative "
 "credentials:"
 msgstr ""
 
-#: ../heat-install.rst:432
+#: ../heat-install.rst:434
 msgid ""
 "Replace ``HEAT_DOMAIN_PASS`` with the password you chose for the "
 "``heat_domain_admin`` user in the Identity service."
 msgstr ""
 
-#: ../heat-install.rst:437
+#: ../heat-install.rst:439
 msgid "Populate the Orchestration database:"
 msgstr ""
 
-#: ../heat-install.rst:445
+#: ../heat-install.rst:447
 msgid "Run the following commands to install the packages:"
 msgstr ""
 
-#: ../heat-install.rst:460
+#: ../heat-install.rst:462
 msgid "In the ``[ec2authtoken]`` section, configure Identity service access:"
 msgstr ""
 
-#: ../heat-install.rst:473
+#: ../heat-install.rst:475
 msgid ""
 "Start the Orchestration services and configure them to start when the system "
 "boots:"
 msgstr ""
 
-#: ../heat-install.rst:485
+#: ../heat-install.rst:487
 msgid "Restart the Orchestration services:"
 msgstr ""
 
@@ -3243,7 +3238,9 @@ msgstr ""
 msgid "Verify operation of the Orchestration service."
 msgstr ""
 
-#: ../heat-verify.rst:12
+# #-#-#-#-#  heat-verify.pot (Installation Guide 0.1)  #-#-#-#-#
+# #-#-#-#-#  trove-verify.pot (Installation Guide 0.1)  #-#-#-#-#
+#: ../heat-verify.rst:12 ../trove-verify.rst:12
 msgid "Source the ``admin`` tenant credentials:"
 msgstr ""
 
@@ -3267,8 +3264,9 @@ msgstr ""
 
 #: ../heat.rst:12
 msgid ""
-"The Orchestration service (heat) uses a heat orchestration template (HOT) to "
-"create and manage cloud resources."
+"The Orchestration service (heat) uses a `Heat Orchestration Template (HOT) "
+"<http://docs.openstack.org/developer/heat/template_guide/hot_guide.html>`_ "
+"to create and manage cloud resources."
 msgstr ""
 
 #: ../horizon-install.rst:4
@@ -3445,13 +3443,13 @@ msgstr ""
 #: ../horizon-next-steps.rst:16
 msgid ""
 "Customize your dashboard. See section `Customize the dashboard <http://docs."
-"openstack.org/admin-guide-cloud/common/dashboard_customizing.html>`__."
+"openstack.org/admin-guide/common/dashboard_customizing.html>`__."
 msgstr ""
 
 #: ../horizon-next-steps.rst:20
 msgid ""
 "Set up session storage. See `Set up session storage for the dashboard "
-"<http://docs.openstack.org/admin-guide-cloud/dashboard_sessions.html>`__."
+"<http://docs.openstack.org/admin-guide/dashboard_sessions.html>`__."
 msgstr ""
 
 #: ../horizon-next-steps.rst:24
@@ -3495,29 +3493,13 @@ msgstr ""
 msgid "Dashboard"
 msgstr ""
 
-#: ../horizon.rst:5
+#: ../horizon.rst:11
 msgid ""
-"The OpenStack Dashboard, also known as `horizon <https://git.openstack.org/"
-"cgit/openstack/horizon>`__ is a web interface that enables cloud "
-"administrators and users to manage various OpenStack resources and services."
-msgstr ""
-
-#: ../horizon.rst:10
-msgid ""
-"The Dashboard enables web-based interactions with the OpenStack Compute "
-"cloud controller through the OpenStack APIs."
-msgstr ""
-
-#: ../horizon.rst:13
-msgid "Horizon enables you to customize the brand of the dashboard."
+"The Dashboard (horizon) is a web interface that enables cloud administrators "
+"and users to manage various OpenStack resources and services."
 msgstr ""
 
 #: ../horizon.rst:15
-msgid ""
-"Horizon provides a set of core classes and reusable templates and tools."
-msgstr ""
-
-#: ../horizon.rst:17
 msgid "This example deployment uses an Apache web server."
 msgstr ""
 
@@ -3555,7 +3537,7 @@ msgstr ""
 #: ../index.rst:43
 msgid ""
 "This guide will show you how to install OpenStack by using packages "
-"available on Red Hat Enterprise Linux 7 and its derivatives through the EPEL "
+"available on Red Hat Enterprise Linux 7 and its derivatives through the RDO "
 "repository."
 msgstr ""
 
@@ -3600,11 +3582,11 @@ msgstr ""
 msgid "Contents"
 msgstr ""
 
-#: ../index.rst:133
+#: ../index.rst:134
 msgid "Search in this guide"
 msgstr ""
 
-#: ../index.rst:135
+#: ../index.rst:136
 msgid ":ref:`search`"
 msgstr ""
 
@@ -3765,50 +3747,56 @@ msgid ""
 "content:"
 msgstr ""
 
-#: ../keystone-install.rst:373
+#: ../keystone-install.rst:357
 msgid ""
 "Edit the ``/etc/apache2/apache2.conf`` file and configure the ``ServerName`` "
 "option to reference the controller node:"
 msgstr ""
 
-#: ../keystone-install.rst:380
+#: ../keystone-install.rst:364
 msgid ""
 "Create the ``/etc/apache2/sites-available/wsgi-keystone.conf`` file with the "
 "following content:"
 msgstr ""
 
-#: ../keystone-install.rst:434
+#: ../keystone-install.rst:402
 msgid "Enable the Identity service virtual hosts:"
 msgstr ""
 
-#: ../keystone-install.rst:442
+#: ../keystone-install.rst:410
 msgid ""
 "Edit the ``/etc/sysconfig/apache2`` file and configure the "
 "``APACHE_SERVERNAME`` option to reference the controller node:"
 msgstr ""
 
-#: ../keystone-install.rst:449
+#: ../keystone-install.rst:417
 msgid ""
 "Create the ``/etc/apache2/conf.d/wsgi-keystone.conf`` file with the "
 "following content:"
 msgstr ""
 
-#: ../keystone-install.rst:503
+#: ../keystone-install.rst:455
 msgid "Recursively change the ownership of the ``/etc/keystone`` directory:"
 msgstr ""
 
-#: ../keystone-install.rst:516
+#: ../keystone-install.rst:468
 msgid "Restart the Apache HTTP server:"
 msgstr ""
 
-#: ../keystone-install.rst:533 ../keystone-install.rst:548
+#: ../keystone-install.rst:474
+msgid "By default, the Ubuntu packages create an SQLite database."
+msgstr ""
+
+#: ../keystone-install.rst:476
+msgid ""
+"Because this configuration uses an SQL database server, you can remove the "
+"SQLite database file:"
+msgstr ""
+
+#: ../keystone-install.rst:485 ../keystone-install.rst:494
 msgid ""
 "Start the Apache HTTP service and configure it to start when the system "
 "boots:"
-msgstr ""
-
-#: ../keystone-install.rst:542
-msgid "Activate the Apache module ``mod_version``:"
 msgstr ""
 
 #: ../keystone-openrc.rst:2
@@ -3822,8 +3810,8 @@ msgid ""
 "To increase efficiency of client operations, OpenStack supports simple "
 "client environment scripts also known as OpenRC files. These scripts "
 "typically contain common options for all clients, but also support unique "
-"options. For more information, see the `OpenStack User Guide <http://docs."
-"openstack.org/user-guide/common/ "
+"options. For more information, see the `OpenStack End User Guide <http://"
+"docs.openstack.org/user-guide/common/ "
 "cli_set_environment_variables_using_openstack_rc.html>`__."
 msgstr ""
 
@@ -3842,40 +3830,40 @@ msgstr ""
 msgid "Edit the ``admin-openrc`` file and add the following content:"
 msgstr ""
 
-#: ../keystone-openrc.rst:32
+#: ../keystone-openrc.rst:33
 msgid ""
 "Replace ``ADMIN_PASS`` with the password you chose for the ``admin`` user in "
 "the Identity service."
 msgstr ""
 
-#: ../keystone-openrc.rst:35
+#: ../keystone-openrc.rst:36
 msgid "Edit the ``demo-openrc`` file and add the following content:"
 msgstr ""
 
-#: ../keystone-openrc.rst:47
+#: ../keystone-openrc.rst:49
 msgid ""
 "Replace ``DEMO_PASS`` with the password you chose for the ``demo`` user in "
 "the Identity service."
 msgstr ""
 
-#: ../keystone-openrc.rst:51
+#: ../keystone-openrc.rst:53
 msgid "Using the scripts"
 msgstr ""
 
-#: ../keystone-openrc.rst:53
+#: ../keystone-openrc.rst:55
 msgid ""
 "To run clients as a specific project and user, you can simply load the "
 "associated client environment script prior to running them. For example:"
 msgstr ""
 
-#: ../keystone-openrc.rst:57
+#: ../keystone-openrc.rst:59
 msgid ""
 "Load the ``admin-openrc`` file to populate environment variables with the "
 "location of the Identity service and the ``admin`` project and user "
 "credentials:"
 msgstr ""
 
-#: ../keystone-openrc.rst:65
+#: ../keystone-openrc.rst:67
 msgid "Request an authentication token:"
 msgstr ""
 
@@ -4022,11 +4010,11 @@ msgstr ""
 msgid "Create the ``admin`` role:"
 msgstr ""
 
-#: ../keystone-users.rst:78
+#: ../keystone-users.rst:79
 msgid "Add the ``admin`` role to the ``admin`` project and user:"
 msgstr ""
 
-#: ../keystone-users.rst:90
+#: ../keystone-users.rst:91
 msgid ""
 "Any roles that you create must map to roles specified in the ``policy.json`` "
 "file in the configuration file directory of each OpenStack service. The "
@@ -4036,40 +4024,40 @@ msgid ""
 "projects_users.html>`__."
 msgstr ""
 
-#: ../keystone-users.rst:97
+#: ../keystone-users.rst:98
 msgid ""
 "This guide uses a service project that contains a unique user for each "
 "service that you add to your environment. Create the ``service`` project:"
 msgstr ""
 
-#: ../keystone-users.rst:117
+#: ../keystone-users.rst:118
 msgid ""
 "Regular (non-admin) tasks should use an unprivileged project and user. As an "
 "example, this guide creates the ``demo`` project and user."
 msgstr ""
 
-#: ../keystone-users.rst:120
+#: ../keystone-users.rst:121
 msgid "Create the ``demo`` project:"
 msgstr ""
 
-#: ../keystone-users.rst:140
+#: ../keystone-users.rst:141
 msgid ""
 "Do not repeat this step when creating additional users for this project."
 msgstr ""
 
-#: ../keystone-users.rst:143
+#: ../keystone-users.rst:144
 msgid "Create the ``demo`` user:"
 msgstr ""
 
-#: ../keystone-users.rst:160
+#: ../keystone-users.rst:161
 msgid "Create the ``user`` role:"
 msgstr ""
 
-#: ../keystone-users.rst:172
+#: ../keystone-users.rst:174
 msgid "Add the ``user`` role to the ``demo`` project and user:"
 msgstr ""
 
-#: ../keystone-users.rst:184
+#: ../keystone-users.rst:186
 msgid "You can repeat this procedure to create additional projects and users."
 msgstr ""
 
@@ -4083,16 +4071,9 @@ msgid ""
 "For security reasons, disable the temporary authentication token mechanism:"
 msgstr ""
 
-#: ../keystone-verify.rst:16
+#: ../keystone-verify.rst:16 ../keystone-verify.rst:26
 msgid ""
 "Edit the ``/etc/keystone/keystone-paste.ini`` file and remove "
-"``admin_token_auth`` from the ``[pipeline:public_api]``, ``[pipeline:"
-"admin_api]``, and ``[pipeline:api_v3]`` sections."
-msgstr ""
-
-#: ../keystone-verify.rst:26
-msgid ""
-"Edit the ``/usr/share/keystone/keystone-dist-paste.ini`` file and remove "
 "``admin_token_auth`` from the ``[pipeline:public_api]``, ``[pipeline:"
 "admin_api]``, and ``[pipeline:api_v3]`` sections."
 msgstr ""
@@ -4137,9 +4118,12 @@ msgstr ""
 
 # #-#-#-#-#  launch-instance-cinder.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  launch-instance-heat.pot (Installation Guide 0.1)  #-#-#-#-#
-# #-#-#-#-#  launch-instance-manila.pot (Installation Guide 0.1)  #-#-#-#-#
-#: ../launch-instance-cinder.rst:9 ../launch-instance-heat.rst:52
-#: ../launch-instance-manila.rst:83
+# #-#-#-#-#  launch-instance-manila-dhss-false-option1.pot (Installation Guide 0.1)  #-#-#-#-#
+# #-#-#-#-#  launch-instance-manila-dhss-true-option2.pot (Installation Guide 0.1)  #-#-#-#-#
+#: ../launch-instance-cinder.rst:9 ../launch-instance-heat.rst:51
+#: ../launch-instance-manila-dhss-false-option1.rst:36
+#: ../launch-instance-manila-dhss-true-option2.rst:41
+#: ../launch-instance-manila-dhss-true-option2.rst:89
 msgid ""
 "Source the ``demo`` credentials to perform the following steps as a non-"
 "administrative project:"
@@ -4199,13 +4183,17 @@ msgstr ""
 
 #: ../launch-instance-cinder.rst:123
 msgid ""
-"For more information about how to manage volumes, see the `OpenStack User "
-"Guide <http://docs.openstack.org/user-guide/index.html>`__."
+"For more information about how to manage volumes, see the `Manage volumes "
+"<http://docs.openstack.org/user-guide/common/cli_manage_volumes.html>`__ in "
+"OpenStack End User Guide."
 msgstr ""
 
 # #-#-#-#-#  launch-instance-cinder.pot (Installation Guide 0.1)  #-#-#-#-#
-# #-#-#-#-#  launch-instance-manila.pot (Installation Guide 0.1)  #-#-#-#-#
-#: ../launch-instance-cinder.rst:127 ../launch-instance-manila.rst:198
+# #-#-#-#-#  launch-instance-manila-dhss-false-option1.pot (Installation Guide 0.1)  #-#-#-#-#
+# #-#-#-#-#  launch-instance-manila-dhss-true-option2.pot (Installation Guide 0.1)  #-#-#-#-#
+#: ../launch-instance-cinder.rst:128
+#: ../launch-instance-manila-dhss-false-option1.rst:169
+#: ../launch-instance-manila-dhss-true-option2.rst:223
 msgid "Return to :ref:`launch-instance`."
 msgstr ""
 
@@ -4231,44 +4219,196 @@ msgstr ""
 msgid "Create the ``demo-template.yml`` file with the following content:"
 msgstr ""
 
-#: ../launch-instance-heat.rst:48
+#: ../launch-instance-heat.rst:47
 msgid "Create a stack"
 msgstr ""
 
-#: ../launch-instance-heat.rst:50
+#: ../launch-instance-heat.rst:49
 msgid "Create a stack using the ``demo-template.yml`` template."
 msgstr ""
 
-#: ../launch-instance-heat.rst:59
+#: ../launch-instance-heat.rst:58
 msgid "Determine available networks."
 msgstr ""
 
-#: ../launch-instance-heat.rst:73
+#: ../launch-instance-heat.rst:72
 msgid "This output may differ from your environment."
 msgstr ""
 
-#: ../launch-instance-heat.rst:75
+#: ../launch-instance-heat.rst:74
 msgid ""
 "Set the ``NET_ID`` environment variable to reflect the ID of a network. For "
 "example, using the provider network:"
 msgstr ""
 
-#: ../launch-instance-heat.rst:82
+#: ../launch-instance-heat.rst:81
 msgid "Create a stack of one CirrOS instance on the provider network:"
 msgstr ""
 
-#: ../launch-instance-heat.rst:93
+#: ../launch-instance-heat.rst:92
 msgid "After a short time, verify successful creation of the stack:"
 msgstr ""
 
-#: ../launch-instance-heat.rst:104
+#: ../launch-instance-heat.rst:103
 msgid ""
 "Show the name and IP address of the instance and compare with the output of "
 "the OpenStack client:"
 msgstr ""
 
-#: ../launch-instance-heat.rst:132
+#: ../launch-instance-heat.rst:131
 msgid "Delete the stack."
+msgstr ""
+
+#: ../launch-instance-manila-dhss-false-option1.rst:4
+msgid "Option 1 - Create shares without share servers management support"
+msgstr ""
+
+# #-#-#-#-#  launch-instance-manila-dhss-false-option1.pot (Installation Guide 0.1)  #-#-#-#-#
+# #-#-#-#-#  launch-instance-manila-dhss-true-option2.pot (Installation Guide 0.1)  #-#-#-#-#
+#: ../launch-instance-manila-dhss-false-option1.rst:7
+#: ../launch-instance-manila-dhss-true-option2.rst:12
+msgid "Create a share type"
+msgstr ""
+
+#: ../launch-instance-manila-dhss-false-option1.rst:9
+msgid "Disable DHSS before creating a share using the LVM driver."
+msgstr ""
+
+# #-#-#-#-#  launch-instance-manila-dhss-false-option1.pot (Installation Guide 0.1)  #-#-#-#-#
+# #-#-#-#-#  launch-instance-manila-dhss-true-option2.pot (Installation Guide 0.1)  #-#-#-#-#
+#: ../launch-instance-manila-dhss-false-option1.rst:11
+#: ../launch-instance-manila-dhss-true-option2.rst:16
+msgid "Source the admin credentials to gain access to admin-only CLI commands:"
+msgstr ""
+
+#: ../launch-instance-manila-dhss-false-option1.rst:17
+msgid "Create a default share type with DHSS disabled:"
+msgstr ""
+
+# #-#-#-#-#  launch-instance-manila-dhss-false-option1.pot (Installation Guide 0.1)  #-#-#-#-#
+# #-#-#-#-#  launch-instance-manila-dhss-true-option2.pot (Installation Guide 0.1)  #-#-#-#-#
+# #-#-#-#-#  launch-instance-manila.pot (Installation Guide 0.1)  #-#-#-#-#
+#: ../launch-instance-manila-dhss-false-option1.rst:34
+#: ../launch-instance-manila-dhss-true-option2.rst:87
+#: ../launch-instance-manila.rst:97
+msgid "Create a share"
+msgstr ""
+
+#: ../launch-instance-manila-dhss-false-option1.rst:43
+msgid "Create a NFS share:"
+msgstr ""
+
+# #-#-#-#-#  launch-instance-manila-dhss-false-option1.pot (Installation Guide 0.1)  #-#-#-#-#
+# #-#-#-#-#  launch-instance-manila-dhss-true-option2.pot (Installation Guide 0.1)  #-#-#-#-#
+#: ../launch-instance-manila-dhss-false-option1.rst:76
+#: ../launch-instance-manila-dhss-true-option2.rst:131
+msgid ""
+"After some time, the share status should change from ``creating`` to "
+"``available``:"
+msgstr ""
+
+# #-#-#-#-#  launch-instance-manila-dhss-false-option1.pot (Installation Guide 0.1)  #-#-#-#-#
+# #-#-#-#-#  launch-instance-manila-dhss-true-option2.pot (Installation Guide 0.1)  #-#-#-#-#
+#: ../launch-instance-manila-dhss-false-option1.rst:88
+#: ../launch-instance-manila-dhss-true-option2.rst:143
+msgid "Determine export IP address of the share:"
+msgstr ""
+
+# #-#-#-#-#  launch-instance-manila-dhss-false-option1.pot (Installation Guide 0.1)  #-#-#-#-#
+# #-#-#-#-#  launch-instance-manila-dhss-true-option2.pot (Installation Guide 0.1)  #-#-#-#-#
+#: ../launch-instance-manila-dhss-false-option1.rst:125
+#: ../launch-instance-manila-dhss-true-option2.rst:180
+msgid ""
+"Configure user access to the new share before attempting to mount it via the "
+"network:"
+msgstr ""
+
+# #-#-#-#-#  launch-instance-manila-dhss-false-option1.pot (Installation Guide 0.1)  #-#-#-#-#
+# #-#-#-#-#  launch-instance-manila-dhss-true-option2.pot (Installation Guide 0.1)  #-#-#-#-#
+#: ../launch-instance-manila-dhss-false-option1.rst:142
+#: ../launch-instance-manila-dhss-true-option2.rst:197
+msgid "Replace ``INSTANCE_IP_ADDRESS`` with the IP address of the instance."
+msgstr ""
+
+#: ../launch-instance-manila-dhss-false-option1.rst:146
+msgid ""
+"The instance must have connectivity to the management IP address on the "
+"storage node."
+msgstr ""
+
+# #-#-#-#-#  launch-instance-manila-dhss-false-option1.pot (Installation Guide 0.1)  #-#-#-#-#
+# #-#-#-#-#  launch-instance-manila-dhss-true-option2.pot (Installation Guide 0.1)  #-#-#-#-#
+#: ../launch-instance-manila-dhss-false-option1.rst:150
+#: ../launch-instance-manila-dhss-true-option2.rst:204
+msgid "Mount the share from an instance"
+msgstr ""
+
+# #-#-#-#-#  launch-instance-manila-dhss-false-option1.pot (Installation Guide 0.1)  #-#-#-#-#
+# #-#-#-#-#  launch-instance-manila-dhss-true-option2.pot (Installation Guide 0.1)  #-#-#-#-#
+#: ../launch-instance-manila-dhss-false-option1.rst:152
+#: ../launch-instance-manila-dhss-true-option2.rst:206
+msgid "Create a folder where the mount will be placed:"
+msgstr ""
+
+# #-#-#-#-#  launch-instance-manila-dhss-false-option1.pot (Installation Guide 0.1)  #-#-#-#-#
+# #-#-#-#-#  launch-instance-manila-dhss-true-option2.pot (Installation Guide 0.1)  #-#-#-#-#
+#: ../launch-instance-manila-dhss-false-option1.rst:158
+#: ../launch-instance-manila-dhss-true-option2.rst:212
+msgid ""
+"Mount the NFS share in the instance using the export location of the share:"
+msgstr ""
+
+# #-#-#-#-#  launch-instance-manila-dhss-false-option1.pot (Installation Guide 0.1)  #-#-#-#-#
+# #-#-#-#-#  launch-instance-manila-dhss-true-option2.pot (Installation Guide 0.1)  #-#-#-#-#
+#: ../launch-instance-manila-dhss-false-option1.rst:164
+#: ../launch-instance-manila-dhss-true-option2.rst:218
+msgid ""
+"For more information about how to manage shares, see the `Manage shares "
+"<http://docs.openstack.org/user-guide/cli_manage_shares.html>`__ in "
+"OpenStack End User Guide."
+msgstr ""
+
+#: ../launch-instance-manila-dhss-true-option2.rst:4
+msgid "Option 2 - Create shares with share servers management support"
+msgstr ""
+
+#: ../launch-instance-manila-dhss-true-option2.rst:6
+msgid ""
+"Before being able to create a share, the generic driver with the DHSS mode "
+"enabled requires the definition of at least an image, a flavor, a network, "
+"and a share-network for being used to create a share server where the NFS/"
+"CIFS shares are served."
+msgstr ""
+
+#: ../launch-instance-manila-dhss-true-option2.rst:14
+msgid "Enable DHSS before creating a share using the generic driver."
+msgstr ""
+
+#: ../launch-instance-manila-dhss-true-option2.rst:22
+msgid "Create a default share type with DHSS enabled:"
+msgstr ""
+
+#: ../launch-instance-manila-dhss-true-option2.rst:39
+msgid "Create a share network"
+msgstr ""
+
+#: ../launch-instance-manila-dhss-true-option2.rst:48
+msgid ""
+"List available networks to obtain the network and subnet ID for the "
+"``selfservice`` network:"
+msgstr ""
+
+#: ../launch-instance-manila-dhss-true-option2.rst:61
+msgid ""
+"Create the share network using the ``selfservice`` network and subnet IDs:"
+msgstr ""
+
+#: ../launch-instance-manila-dhss-true-option2.rst:96
+msgid "Create a NFS share using the share network:"
+msgstr ""
+
+#: ../launch-instance-manila-dhss-true-option2.rst:201
+msgid "The instance must use the ``selfservice`` network."
 msgstr ""
 
 # #-#-#-#-#  launch-instance-manila.pot (Installation Guide 0.1)  #-#-#-#-#
@@ -4277,94 +4417,63 @@ msgstr ""
 msgid "Shared File Systems"
 msgstr ""
 
-#: ../launch-instance-manila.rst:6
-msgid ""
-"Before being able to create a share, the manila with the generic driver and "
-"the DHSS mode enabled requires the definition of at least an image, a "
-"network and a share-network for being used to create a share server. For "
-"that back end configuration, the share server is an instance where NFS/CIFS "
-"shares are served."
+#: ../launch-instance-manila.rst:7
+msgid "Create the service image"
 msgstr ""
 
-#: ../launch-instance-manila.rst:14
+#: ../launch-instance-manila.rst:11
 msgid ""
-"This configuration automatically creates a cinder volume for every share. "
-"The cinder volumes are attached to share servers according to the definition "
-"of a share network."
-msgstr ""
-
-#: ../launch-instance-manila.rst:19
-msgid "Determine the configuration of the share server"
+"In typical deployments, you should create an instance from an image that "
+"supports network file systems such as NFS/CIFS to evaluate the Shared File "
+"Systems service. This guide should use the CirrOS image for instances to "
+"reduce resource requirements for evaluation. However, the CirrOS image lacks "
+"support for network file systems. For evaluation of the Shared File Systems "
+"service, this guide creates a regular instance using the ``manila-share-"
+"service`` image because it supports network file systems and using the "
+"``manila-service-flavor`` that limits resource consumption by the instance "
+"to 256 MB memory on the compute node."
 msgstr ""
 
 #: ../launch-instance-manila.rst:21
-msgid "Source the admin credentials to gain access to admin-only CLI commands:"
+msgid "Download the source image of the share server:"
 msgstr ""
 
 #: ../launch-instance-manila.rst:27
-msgid "Create a default share type before running manila-share service:"
+msgid "Add the image to the Image service:"
 msgstr ""
 
-#: ../launch-instance-manila.rst:38
-msgid "Create a manila share server image to the Image service:"
+#: ../launch-instance-manila.rst:59
+msgid "Create a new flavor to support the service image:"
 msgstr ""
 
-#: ../launch-instance-manila.rst:70
+#: ../launch-instance-manila.rst:81
+msgid "Flavor is image specific and may differ from image to image."
+msgstr ""
+
+#: ../launch-instance-manila.rst:84
+msgid "Launch an instance of the service image"
+msgstr ""
+
+#: ../launch-instance-manila.rst:88
 msgid ""
-"List available networks in order to get id and subnets of the private "
-"network:"
+"This section uses ``manila-service-image`` image as an instance for mounting "
+"shares."
 msgstr ""
 
-#: ../launch-instance-manila.rst:114
-msgid "Create a share"
-msgstr ""
-
-#: ../launch-instance-manila.rst:116
-msgid "Create a NFS share using the share network:"
-msgstr ""
-
-#: ../launch-instance-manila.rst:148
+#: ../launch-instance-manila.rst:91
 msgid ""
-"After some time, the share status should change from ``creating`` to "
-"``available``:"
+"Launch an instance using the ``manila-service-image`` and ``manila-service-"
+"flavor``."
 msgstr ""
 
-#: ../launch-instance-manila.rst:160
+#: ../launch-instance-manila.rst:94
+msgid "Log into the instance using ``manila`` as the username and password."
+msgstr ""
+
+#: ../launch-instance-manila.rst:99
 msgid ""
-"Configure user access to the new share before attempting to mount it via the "
-"network:"
-msgstr ""
-
-#: ../launch-instance-manila.rst:165
-msgid ""
-"The image used for launching an instance and mounting a share must have the "
-"NFS packages provided by the distro. Example: The cirros image created at "
-"the image service section is not enough."
-msgstr ""
-
-#: ../launch-instance-manila.rst:171
-msgid ""
-"Use an instance that is connected to the private network used to create the "
-"share-network."
-msgstr ""
-
-#: ../launch-instance-manila.rst:179
-msgid "Mount the share from an instance"
-msgstr ""
-
-#: ../launch-instance-manila.rst:181
-msgid "Create a folder where the mount will be placed:"
-msgstr ""
-
-#: ../launch-instance-manila.rst:187
-msgid ""
-"Mount the NFS share in the instance using the export location of the share:"
-msgstr ""
-
-#: ../launch-instance-manila.rst:194
-msgid ""
-"For more information about how to manage shares, see the `OpenStack User "
-"Guide <http://docs.openstack.org/user-guide/index.html>`__."
+"Create a share for the Shared File Systems service option that you chose in :"
+"ref:`manila-storage`."
 msgstr ""
 
 #: ../launch-instance-networks-provider.rst:4
@@ -4893,9 +5002,9 @@ msgid ""
 "with one instance that uses it and one self-service (private) network with "
 "one instance that uses it. The instructions in this section use command-line "
 "interface (CLI) tools on the controller node. For more information on the "
-"CLI tools, see the `OpenStack User Guide <http://docs.openstack.org/user-"
+"CLI tools, see the `OpenStack End User Guide <http://docs.openstack.org/user-"
 "guide/cli_launch_instances.html>`__. To use the dashboard, see the "
-"`OpenStack User Guide <http://docs.openstack.org/user-guide/dashboard."
+"`OpenStack End User Guide <http://docs.openstack.org/user-guide/dashboard."
 "html>`__."
 msgstr ""
 
@@ -5003,14 +5112,14 @@ msgstr ""
 #: ../launch-instance.rst:191
 msgid ""
 "If your environment includes the Shared File Systems service, you can create "
-"a share."
+"a share and mount it in an instance:"
 msgstr ""
 
 #: ../manila-controller-install.rst:6
 msgid ""
 "This section describes how to install and configure the Shared File Systems "
 "service, code-named manila, on the controller node. This service requires at "
-"least one additional share node that manages file storage back-ends."
+"least one additional share node that manages file storage drivers."
 msgstr ""
 
 #: ../manila-controller-install.rst:13
@@ -5057,15 +5166,20 @@ msgid ""
 msgstr ""
 
 # #-#-#-#-#  manila-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
+# #-#-#-#-#  manila-share-install-dhss-false-option1.pot (Installation Guide 0.1)  #-#-#-#-#
+# #-#-#-#-#  manila-share-install-dhss-true-option2.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  manila-share-install.pot (Installation Guide 0.1)  #-#-#-#-#
-#: ../manila-controller-install.rst:254 ../manila-share-install.rst:59
+#: ../manila-controller-install.rst:256
+#: ../manila-share-install-dhss-false-option1.rst:120
+#: ../manila-share-install-dhss-true-option2.rst:50
+#: ../manila-share-install.rst:34
 msgid ""
 "Edit the ``/etc/manila/manila.conf`` file and complete the following actions:"
 msgstr ""
 
 # #-#-#-#-#  manila-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  manila-share-install.pot (Installation Guide 0.1)  #-#-#-#-#
-#: ../manila-controller-install.rst:277 ../manila-share-install.rst:80
+#: ../manila-controller-install.rst:279 ../manila-share-install.rst:55
 msgid ""
 "Replace ``MANILA_DBPASS`` with the password you chose for the Share File "
 "System database."
@@ -5073,29 +5187,29 @@ msgstr ""
 
 # #-#-#-#-#  manila-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  manila-share-install.pot (Installation Guide 0.1)  #-#-#-#-#
-#: ../manila-controller-install.rst:298 ../manila-share-install.rst:101
+#: ../manila-controller-install.rst:300 ../manila-share-install.rst:76
 msgid "In the ``[DEFAULT]`` section, set the following config values:"
 msgstr ""
 
 # #-#-#-#-#  manila-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  manila-share-install.pot (Installation Guide 0.1)  #-#-#-#-#
-#: ../manila-controller-install.rst:329 ../manila-share-install.rst:132
+#: ../manila-controller-install.rst:330 ../manila-share-install.rst:106
 msgid ""
 "Replace ``MANILA_PASS`` with the password you chose for the ``manila`` user "
 "in the Identity service."
 msgstr ""
 
-#: ../manila-controller-install.rst:353
+#: ../manila-controller-install.rst:354
 msgid "Populate the Share File System database:"
 msgstr ""
 
-#: ../manila-controller-install.rst:364
+#: ../manila-controller-install.rst:365
 msgid ""
 "Start the Share File System services and configure them to start when the "
 "system boots:"
 msgstr ""
 
-#: ../manila-controller-install.rst:374
+#: ../manila-controller-install.rst:375
 msgid "Restart the Share File Systems services:"
 msgstr ""
 
@@ -5106,6 +5220,147 @@ msgid ""
 "environment in the following chapters."
 msgstr ""
 
+#: ../manila-share-install-dhss-false-option1.rst:2
+msgid ""
+"Shared File Systems Option 1: No driver support for share servers management"
+msgstr ""
+
+#: ../manila-share-install-dhss-false-option1.rst:4
+msgid ""
+"For simplicity, this configuration references the same storage node "
+"configuration for the Block Storage service. However, the LVM driver "
+"requires a separate empty local block storage device to avoid conflict with "
+"the Block Storage service. The instructions use ``/dev/sdc``, but you can "
+"substitute a different value for your particular node."
+msgstr ""
+
+#: ../manila-share-install-dhss-false-option1.rst:21
+#: ../manila-share-install-dhss-false-option1.rst:36
+#: ../manila-share-install-dhss-false-option1.rst:52
+msgid "Install LVM and NFS server packages:"
+msgstr ""
+
+#: ../manila-share-install-dhss-false-option1.rst:58
+msgid "Create the LVM physical volume ``/dev/sdc``:"
+msgstr ""
+
+#: ../manila-share-install-dhss-false-option1.rst:65
+msgid "Create the LVM volume group ``manila-volumes``:"
+msgstr ""
+
+#: ../manila-share-install-dhss-false-option1.rst:72
+msgid ""
+"The Shared File Systems service creates logical volumes in this volume group."
+msgstr ""
+
+#: ../manila-share-install-dhss-false-option1.rst:75
+msgid ""
+"Only instances can access Shared File Systems service volumes. However, the "
+"underlying operating system manages the devices associated with the volumes. "
+"By default, the LVM volume scanning tool scans the ``/dev`` directory for "
+"block storage devices that contain volumes. If projects use LVM on their "
+"volumes, the scanning tool detects these volumes and attempts to cache them "
+"which can cause a variety of problems with both the underlying operating "
+"system and project volumes. You must reconfigure LVM to scan only the "
+"devices that contain the ``cinder-volume`` and ``manila-volumes`` volume "
+"groups. Edit the ``/etc/lvm/lvm.conf`` file and complete the following "
+"actions:"
+msgstr ""
+
+#: ../manila-share-install-dhss-false-option1.rst:86
+msgid ""
+"In the ``devices`` section, add a filter that accepts the ``/dev/sdb`` and "
+"``/dev/sdc`` devices and rejects all other devices:"
+msgstr ""
+
+# #-#-#-#-#  manila-share-install-dhss-false-option1.pot (Installation Guide 0.1)  #-#-#-#-#
+# #-#-#-#-#  manila-share-install-dhss-true-option2.pot (Installation Guide 0.1)  #-#-#-#-#
+#: ../manila-share-install-dhss-false-option1.rst:116
+#: ../manila-share-install-dhss-true-option2.rst:46
+msgid "Configure components"
+msgstr ""
+
+#: ../manila-share-install-dhss-false-option1.rst:123
+msgid ""
+"In the ``[DEFAULT]`` section, enable the LVM driver and the NFS/CIFS "
+"protocols:"
+msgstr ""
+
+# #-#-#-#-#  manila-share-install-dhss-false-option1.pot (Installation Guide 0.1)  #-#-#-#-#
+# #-#-#-#-#  manila-share-install-dhss-true-option2.pot (Installation Guide 0.1)  #-#-#-#-#
+#: ../manila-share-install-dhss-false-option1.rst:135
+#: ../manila-share-install-dhss-true-option2.rst:65
+msgid ""
+"Back end names are arbitrary. As an example, this guide uses the name of the "
+"driver."
+msgstr ""
+
+#: ../manila-share-install-dhss-false-option1.rst:138
+msgid "In the ``[lvm]`` section, configure the LVM driver:"
+msgstr ""
+
+# #-#-#-#-#  manila-share-install-dhss-false-option1.pot (Installation Guide 0.1)  #-#-#-#-#
+# #-#-#-#-#  manila-share-install-dhss-true-option2.pot (Installation Guide 0.1)  #-#-#-#-#
+#: ../manila-share-install-dhss-false-option1.rst:154
+#: ../manila-share-install-dhss-true-option2.rst:132
+msgid "Return to :ref:`Finalize installation <manila-share-finalize-install>`."
+msgstr ""
+
+#: ../manila-share-install-dhss-true-option2.rst:2
+msgid ""
+"Shared File Systems Option 2: Driver support for share servers management"
+msgstr ""
+
+#: ../manila-share-install-dhss-true-option2.rst:4
+msgid ""
+"For simplicity, this configuration references the same storage node "
+"configuration for the Block Storage service."
+msgstr ""
+
+#: ../manila-share-install-dhss-true-option2.rst:9
+msgid ""
+"This guide describes how to configure the Shared File Systems service to use "
+"the ``generic`` driver with the driver handles share server mode (DHSS) "
+"enabled. This mode requires Compute (nova), Networking (neutron) and Block "
+"storage (cinder) services for managing share servers. The information used "
+"for creating share servers is configured as share networks. Generic driver "
+"with DHSS enabled also requires network to be attached to a public router."
+msgstr ""
+
+#: ../manila-share-install-dhss-true-option2.rst:20
+msgid ""
+"Before you proceed, verify operation of the Compute, Networking, and Block "
+"Storage services. This options requires implementation of Networking option "
+"2 and requires installation of some Networking service components on the "
+"storage node."
+msgstr ""
+
+#: ../manila-share-install-dhss-true-option2.rst:25
+msgid "Install the Networking service components:"
+msgstr ""
+
+#: ../manila-share-install-dhss-true-option2.rst:53
+msgid ""
+"In the ``[DEFAULT]`` section, enable the generic driver and the NFS/CIFS "
+"protocols:"
+msgstr ""
+
+#: ../manila-share-install-dhss-true-option2.rst:68
+msgid ""
+"In the ``[neutron]``, ``[nova]``, and ``[cinder]`` sections, enable "
+"authentication for those services:"
+msgstr ""
+
+#: ../manila-share-install-dhss-true-option2.rst:113
+msgid "In the ``[generic]`` section, configure the generic driver:"
+msgstr ""
+
+#: ../manila-share-install-dhss-true-option2.rst:129
+msgid ""
+"You can also use SSH keys instead of password authentication for service "
+"instance credentials."
+msgstr ""
+
 #: ../manila-share-install.rst:4
 msgid "Install and configure a share node"
 msgstr ""
@@ -5113,23 +5368,10 @@ msgstr ""
 #: ../manila-share-install.rst:6
 msgid ""
 "This section describes how to install and configure a share node for the "
-"Shared File Systems service. For simplicity, this configuration references "
-"one storage node with the generic driver managing the share servers. The "
-"generic backend manages share servers using compute, networking and block "
-"services for provisioning shares."
+"Shared File Systems service."
 msgstr ""
 
-#: ../manila-share-install.rst:13
-msgid ""
-"The manila-share process can run in two modes, with and without handling of "
-"share servers. In general it depends of the driver support."
-msgstr ""
-
-#: ../manila-share-install.rst:39
-msgid "Install neutron agent packages needed for generic driver:"
-msgstr ""
-
-#: ../manila-share-install.rst:143
+#: ../manila-share-install.rst:117
 msgid ""
 "Replace ``MANAGEMENT_INTERFACE_IP_ADDRESS`` with the IP address of the "
 "management network interface on your share node, typically 10.0.0.41 for the "
@@ -5137,47 +5379,69 @@ msgid ""
 "architectures>`."
 msgstr ""
 
-#: ../manila-share-install.rst:148
-msgid ""
-"Edit the ``/etc/manila/manila.conf`` file, configure nova, cinder and "
-"neutron credentials:"
+#: ../manila-share-install.rst:131
+msgid "Configure share server management support options"
 msgstr ""
 
-#: ../manila-share-install.rst:171
-msgid "In the ``[generic]`` section, configure the generic share driver:"
+#: ../manila-share-install.rst:133
+msgid ""
+"The share node can support two modes, with and without the handling of share "
+"servers. The mode depends on driver support."
 msgstr ""
 
-#: ../manila-share-install.rst:179
+#: ../manila-share-install.rst:136
 msgid ""
-"In the ``[generic]`` section, enable driver handles share servers (DHSS), "
-"setup flavor (m1.small has id=2) and image configurations:"
+"Option 1 deploys the service without driver support for share management. In "
+"this mode, the service does not do anything related to networking. The "
+"operator must ensure network connectivity between instances and the NFS "
+"server. This option uses LVM driver that requires LVM and NFS packages as "
+"well as an additional disk for the ``manila-share`` LVM volume group."
+msgstr ""
+
+#: ../manila-share-install.rst:142
+msgid ""
+"Option 2 deploys the service with driver support for share management. In "
+"this mode, the service requires Compute (nova), Networking (neutron) and "
+"Block storage (cinder) services for managing share servers. The information "
+"used for creating share servers is configured as share networks. This option "
+"uses the generic driver with the handling of share servers capacity and "
+"requires attaching the ``selfservice`` network to a router."
+msgstr ""
+
+#: ../manila-share-install.rst:151
+msgid ""
+"A bug prevents using both driver options on the same share node. For more "
+"information, see LVM Driver section at the `Configuration Reference <http://"
+"docs.openstack.org/mitaka/config-reference/content/section_share-drivers."
+"html>`__."
+msgstr ""
+
+#: ../manila-share-install.rst:155
+msgid ""
+"Choose one of the following options to configure the share driver. "
+"Afterwards, return here and proceed to :ref:`manila-share-finalize-install`."
+msgstr ""
+
+#: ../manila-share-install.rst:172 ../manila-share-install.rst:182
+msgid ""
+"Start the Share File Systems service including its dependencies and "
+"configure them to start when the system boots:"
 msgstr ""
 
 #: ../manila-share-install.rst:192
-msgid ""
-"In the ``[generic]`` section, configure linux bridge for interface driver:"
-msgstr ""
-
-#: ../manila-share-install.rst:199
-msgid "In the ``[DEFAULT]`` section, enable the generic back end:"
-msgstr ""
-
-#: ../manila-share-install.rst:223
-msgid "Prepare manila-share as start/stop service:"
-msgstr ""
-
-#: ../manila-share-install.rst:227 ../manila-share-install.rst:237
-msgid ""
-"Start the Share File System service including its dependencies and configure "
-"them to start when the system boots:"
-msgstr ""
-
-#: ../manila-share-install.rst:247
-msgid "Start the Share File System service including its dependencies:"
+msgid "Start the Share File Systems service including its dependencies:"
 msgstr ""
 
 #: ../manila-verify.rst:6
 msgid "Verify operation of the Shared File Systems service."
+msgstr ""
+
+#: ../manila-verify.rst:21
+msgid "For deployments using option 1:"
+msgstr ""
+
+#: ../manila-verify.rst:33
+msgid "For deployments using option 2:"
 msgstr ""
 
 #: ../manila.rst:5
@@ -5186,34 +5450,21 @@ msgstr ""
 
 #: ../manila.rst:15
 msgid ""
-"The OpenStack Shared File Systems service provides coordinated access to "
+"The Shared File Systems service (manila) provides coordinated access to "
 "shared or distributed file systems. The method in which the share is "
 "provisioned and consumed is determined by the Shared File Systems driver, or "
-"drivers in the case of a multi-backend configuration. There are a variety of "
-"drivers that support NFS, CIFS, HDFS and/or protocols as well. The Shared "
-"File Systems API and scheduler services typically run on the controller "
-"nodes. Depending upon the drivers used, the share service can run on "
-"controllers, compute nodes, or storage nodes."
+"drivers in the case of a multi-driver configuration. There are a variety of "
+"drivers that support NFS, CIFS, HDFS and/or protocols as well."
 msgstr ""
 
-#: ../manila.rst:26
+#: ../manila.rst:21
 msgid ""
-"For simplicity, this guide describes configuring the Shared File Systems "
-"service to use the ``generic`` back end with the driver handles share server "
-"mode (DHSS) enabled that uses Compute (nova), Networking (neutron) and Block "
-"storage (cinder) services. Networking service configuration requires the "
-"capability of networks being attached to a public router in order to create "
-"share networks."
+"The Shared File Systems API and scheduler services typically run on the "
+"controller nodes. Depending upon the drivers used, the share service can run "
+"on controllers, compute nodes, or storage nodes."
 msgstr ""
 
-#: ../manila.rst:33
-msgid ""
-"Before you proceed, ensure that Compute, Networking and Block storage "
-"services are properly working. For networking service, ensure that option 2 "
-"is properly configured."
-msgstr ""
-
-#: ../manila.rst:37
+#: ../manila.rst:25
 msgid ""
 "For more information, see the `Configuration Reference <http://docs."
 "openstack.org/mitaka/config-reference/content/section_share-drivers.html>`__."
@@ -5496,7 +5747,7 @@ msgstr ""
 # #-#-#-#-#  nova-compute-install.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  nova-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
 #: ../neutron-compute-install.rst:144 ../nova-compute-install.rst:62
-#: ../nova-controller-install.rst:217
+#: ../nova-controller-install.rst:215
 msgid ""
 "Edit the ``/etc/nova/nova.conf`` file and complete the following actions:"
 msgstr ""
@@ -5659,7 +5910,7 @@ msgstr ""
 #: ../neutron-controller-install-option1.rst:92
 #: ../neutron-controller-install-option1.rst:198
 #: ../neutron-controller-install-option2.rst:159
-#: ../nova-compute-install.rst:106 ../nova-controller-install.rst:286
+#: ../nova-compute-install.rst:106 ../nova-controller-install.rst:284
 msgid ""
 "Replace ``NOVA_PASS`` with the password you chose for the ``nova`` user in "
 "the Identity service."
@@ -6078,14 +6329,18 @@ msgstr ""
 msgid "Networking service"
 msgstr ""
 
-#: ../neutron.rst:7
+#: ../neutron.rst:17
 msgid ""
-"This chapter explains how to install and configure the OpenStack Networking "
-"service (neutron) using the :ref:`provider networks <network1>` or :ref:"
-"`self-service networks <network2>` option. For more information about the "
-"Networking service including virtual networking components, layout, and "
-"traffic flows, see the `Networking Guide <http://docs.openstack.org/liberty/"
-"networking-guide>`__."
+"This chapter explains how to install and configure the Networking service "
+"(neutron) using the :ref:`provider networks <network1>` or :ref:`self-"
+"service networks <network2>` option."
+msgstr ""
+
+#: ../neutron.rst:21
+msgid ""
+"For more information about the Networking service including virtual "
+"networking components, layout, and traffic flows, see the `Networking Guide "
+"<http://docs.openstack.org/mitaka/networking-guide/>`__."
 msgstr ""
 
 #: ../nova-compute-install.rst:2
@@ -6147,7 +6402,7 @@ msgstr ""
 
 # #-#-#-#-#  nova-compute-install.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  nova-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
-#: ../nova-compute-install.rst:146 ../nova-controller-install.rst:317
+#: ../nova-compute-install.rst:146 ../nova-controller-install.rst:315
 msgid ""
 "In the ``[DEFAULT]`` section, enable support for the Networking service:"
 msgstr ""
@@ -6180,77 +6435,69 @@ msgstr ""
 
 # #-#-#-#-#  nova-compute-install.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  nova-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
-#: ../nova-compute-install.rst:186 ../nova-controller-install.rst:343
+#: ../nova-compute-install.rst:186 ../nova-controller-install.rst:341
 msgid ""
 "In the ``[glance]`` section, configure the location of the Image service API:"
 msgstr ""
 
 # #-#-#-#-#  nova-compute-install.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  nova-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
-#: ../nova-compute-install.rst:221 ../nova-controller-install.rst:388
+#: ../nova-compute-install.rst:221 ../nova-controller-install.rst:386
 msgid ""
 "Due to a packaging bug, remove the ``logdir`` option from the ``[DEFAULT]`` "
 "section."
 msgstr ""
 
-# #-#-#-#-#  nova-compute-install.pot (Installation Guide 0.1)  #-#-#-#-#
-# #-#-#-#-#  nova-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
-#: ../nova-compute-install.rst:224 ../nova-controller-install.rst:391
-msgid ""
-"In the ``[DEFAULT]`` section, enable verbose mode to assist with potential "
-"troubleshooting:"
-msgstr ""
-
-#: ../nova-compute-install.rst:235
+#: ../nova-compute-install.rst:226
 msgid "Ensure the kernel module ``nbd`` is loaded."
 msgstr ""
 
-#: ../nova-compute-install.rst:241
+#: ../nova-compute-install.rst:232
 msgid ""
 "Ensure the module loads on every boot by adding ``nbd`` to the ``/etc/"
 "modules-load.d/nbd.conf`` file."
 msgstr ""
 
-#: ../nova-compute-install.rst:247
+#: ../nova-compute-install.rst:238
 msgid ""
 "Determine whether your compute node supports hardware acceleration for "
 "virtual machines:"
 msgstr ""
 
-#: ../nova-compute-install.rst:254
+#: ../nova-compute-install.rst:245
 msgid ""
 "If this command returns a value of ``one or greater``, your compute node "
 "supports hardware acceleration which typically requires no additional "
 "configuration."
 msgstr ""
 
-#: ../nova-compute-install.rst:258
+#: ../nova-compute-install.rst:249
 msgid ""
 "If this command returns a value of ``zero``, your compute node does not "
 "support hardware acceleration and you must configure ``libvirt`` to use QEMU "
 "instead of KVM."
 msgstr ""
 
-#: ../nova-compute-install.rst:264
+#: ../nova-compute-install.rst:255
 msgid ""
 "Edit the ``[libvirt]`` section in the ``/etc/nova/nova.conf`` file as "
 "follows:"
 msgstr ""
 
-#: ../nova-compute-install.rst:275
+#: ../nova-compute-install.rst:266
 msgid ""
 "Edit the ``[libvirt]`` section in the ``/etc/nova/nova-compute.conf`` file "
 "as follows:"
 msgstr ""
 
-#: ../nova-compute-install.rst:286
+#: ../nova-compute-install.rst:277
 msgid ""
 "Replace the ``nova-compute-kvm`` package with ``nova-compute-qemu`` which "
 "automatically changes the ``/etc/nova/nova-compute.conf`` file and installs "
 "the necessary dependencies:"
 msgstr ""
 
-#: ../nova-compute-install.rst:296
+#: ../nova-compute-install.rst:287
 msgid ""
 "Start the Compute service including its dependencies and configure them to "
 "start automatically when the system boots:"
@@ -6300,13 +6547,13 @@ msgstr ""
 msgid "Create the Compute service API endpoints:"
 msgstr ""
 
-#: ../nova-controller-install.rst:205
+#: ../nova-controller-install.rst:203
 msgid ""
 "``nova-api-metadata`` is included in the ``nova-api`` package, and can be "
 "selected through debconf."
 msgstr ""
 
-#: ../nova-controller-install.rst:210
+#: ../nova-controller-install.rst:208
 msgid ""
 "A unique ``nova-consoleproxy`` package provides the ``nova-novncproxy``, "
 "``nova-spicehtml5proxy``, and ``nova-xvpvncproxy`` packages. To select "
@@ -6315,24 +6562,24 @@ msgid ""
 "consoleproxy`` file, and stop and start the console daemons."
 msgstr ""
 
-#: ../nova-controller-install.rst:220
+#: ../nova-controller-install.rst:218
 msgid ""
 "In the ``[DEFAULT]`` section, enable only the compute and metadata APIs:"
 msgstr ""
 
-#: ../nova-controller-install.rst:231
+#: ../nova-controller-install.rst:229
 msgid ""
 "In the ``[api_database]`` and ``[database]`` sections, configure database "
 "access:"
 msgstr ""
 
-#: ../nova-controller-install.rst:244
+#: ../nova-controller-install.rst:242
 msgid ""
 "Replace ``NOVA_DBPASS`` with the password you chose for the Compute "
 "databases."
 msgstr ""
 
-#: ../nova-controller-install.rst:305
+#: ../nova-controller-install.rst:303
 msgid ""
 "The ``.config`` and ``.postinst`` maintainer scripts of the ``nova-common`` "
 "package detect automatically the IP address which goes in the ``my_ip`` "
@@ -6341,7 +6588,7 @@ msgid ""
 "common`` is installed:"
 msgstr ""
 
-#: ../nova-controller-install.rst:328
+#: ../nova-controller-install.rst:326
 msgid ""
 "By default, Compute uses an internal firewall driver. Since the Networking "
 "service includes a firewall driver, you must disable the Compute firewall "
@@ -6349,22 +6596,22 @@ msgid ""
 "driver."
 msgstr ""
 
-#: ../nova-controller-install.rst:333
+#: ../nova-controller-install.rst:331
 msgid ""
 "In the ``[vnc]`` section, configure the VNC proxy to use the management "
 "interface IP address of the controller node:"
 msgstr ""
 
-#: ../nova-controller-install.rst:402
+#: ../nova-controller-install.rst:391
 msgid "Populate the Compute databases:"
 msgstr ""
 
-#: ../nova-controller-install.rst:414 ../nova-controller-install.rst:430
+#: ../nova-controller-install.rst:403 ../nova-controller-install.rst:417
 msgid ""
 "Start the Compute services and configure them to start when the system boots:"
 msgstr ""
 
-#: ../nova-controller-install.rst:446
+#: ../nova-controller-install.rst:431
 msgid "Restart the Compute services:"
 msgstr ""
 
@@ -6372,9 +6619,9 @@ msgstr ""
 msgid "Verify operation of the Compute service."
 msgstr ""
 
-#: ../nova-verify.rst:35
+#: ../nova-verify.rst:34
 msgid ""
-"This output should indicate four service components enabled on the "
+"This output should indicate three service components enabled on the "
 "controller node and one service component enabled on the compute node."
 msgstr ""
 
@@ -6647,7 +6894,7 @@ msgid ""
 "For more information on production architectures, see the `Architecture "
 "Design Guide <http://docs.openstack.org/arch-design/>`__, `Operations Guide "
 "<http://docs.openstack.org/ops/>`__, and `Networking Guide <http://docs."
-"openstack.org/liberty/networking-guide/>`__."
+"openstack.org/mitaka/networking-guide/>`__."
 msgstr ""
 
 #: ../overview.rst:134
@@ -6698,7 +6945,7 @@ msgstr ""
 #: ../overview.rst:165
 msgid ""
 "The optional Block Storage node contains the disks that the Block Storage "
-"service provisions for instances."
+"and Shared File System services provision for instances."
 msgstr ""
 
 #: ../overview.rst:168 ../overview.rst:182
@@ -6799,6 +7046,9 @@ msgstr ""
 # #-#-#-#-#  heat-install.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  horizon-install.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  keystone-install.pot (Installation Guide 0.1)  #-#-#-#-#
+# #-#-#-#-#  manila-share-install-dhss-false-option1.pot (Installation Guide 0.1)  #-#-#-#-#
+# #-#-#-#-#  manila-share-install-dhss-true-option2.pot (Installation Guide 0.1)  #-#-#-#-#
+# #-#-#-#-#  manila-share-install.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  neutron-compute-install.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  neutron-controller-install-option1.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  nova-compute-install.pot (Installation Guide 0.1)  #-#-#-#-#
@@ -6806,6 +7056,7 @@ msgstr ""
 # #-#-#-#-#  swift-controller-install.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  swift-finalize-installation.pot (Installation Guide 0.1)  #-#-#-#-#
 # #-#-#-#-#  swift-storage-install.pot (Installation Guide 0.1)  #-#-#-#-#
+# #-#-#-#-#  trove-install.pot (Installation Guide 0.1)  #-#-#-#-#
 #: ../shared/note_configuration_vary_by_distribution.rst:3
 msgid ""
 "Default configuration files vary by distribution. You might need to add "
@@ -6854,19 +7105,19 @@ msgid ""
 "In the ``[filter:authtoken]`` section, configure Identity service access:"
 msgstr ""
 
-#: ../swift-controller-include.txt:68
+#: ../swift-controller-include.txt:69
 msgid ""
 "Replace ``SWIFT_PASS`` with the password you chose for the ``swift`` user in "
 "the Identity service."
 msgstr ""
 
-#: ../swift-controller-include.txt:73
+#: ../swift-controller-include.txt:74
 msgid ""
 "Comment out or remove any other options in the ``[filter:authtoken]`` "
 "section."
 msgstr ""
 
-#: ../swift-controller-include.txt:76
+#: ../swift-controller-include.txt:77
 msgid ""
 "In the ``[filter:cache]`` section, configure the ``memcached`` location:"
 msgstr ""
@@ -7250,7 +7501,7 @@ msgid ""
 "from the Object Storage source repository:"
 msgstr ""
 
-#: ../swift-storage-install.rst:183 ../swift-storage-install.rst:201
+#: ../swift-storage-install.rst:183 ../swift-storage-install.rst:202
 msgid "Ensure proper ownership of the mount point directory structure:"
 msgstr ""
 
@@ -7272,62 +7523,292 @@ msgid ""
 msgstr ""
 
 #: ../swift-verify.rst:25
-msgid ""
-"Due to a `bug <https://bugs.launchpad.net/python-swiftclient/"
-"+bug/1554885>`_, you must add a version to the ``OS_AUTH_URL`` variable in "
-"the environment scripts. For example:"
-msgstr ""
-
-#: ../swift-verify.rst:34
 msgid "Source the ``demo`` credentials:"
 msgstr ""
 
-#: ../swift-verify.rst:40
+#: ../swift-verify.rst:31
 msgid "Show the service status:"
 msgstr ""
 
-#: ../swift-verify.rst:58
+#: ../swift-verify.rst:49
 msgid "Create ``container1`` container:"
 msgstr ""
 
-#: ../swift-verify.rst:69
+#: ../swift-verify.rst:60
 msgid "Upload a test file to the ``container1`` container:"
 msgstr ""
 
-#: ../swift-verify.rst:80
+#: ../swift-verify.rst:71
 msgid ""
 "Replace ``FILE`` with the name of a local file to upload to the "
 "``container1`` container."
 msgstr ""
 
-#: ../swift-verify.rst:83
+#: ../swift-verify.rst:74
 msgid "List files in the ``container1`` container:"
 msgstr ""
 
-#: ../swift-verify.rst:94
+#: ../swift-verify.rst:85
 msgid "Download a test file from the ``container1`` container:"
 msgstr ""
 
-#: ../swift-verify.rst:101
+#: ../swift-verify.rst:91
 msgid ""
 "Replace ``FILE`` with the name of the file uploaded to the ``container1`` "
 "container."
-msgstr ""
-
-#: ../swift-verify.rst:106
-msgid ""
-"Due to a bug with the OpenStack client, you must use the conventional "
-"``swift`` client or other compatible client to download files."
 msgstr ""
 
 #: ../swift.rst:5
 msgid "Object Storage service"
 msgstr ""
 
-#: ../swift.rst:7
+#: ../swift.rst:18
 msgid ""
-"The OpenStack Object Storage services (swift) work together to provide "
-"object storage and retrieval through a :term:`REST API <RESTful>`. Your "
-"environment must at least include the Identity service (keystone) prior to "
-"deploying Object Storage."
+"The Object Storage services (swift) work together to provide object storage "
+"and retrieval through a :term:`REST API <RESTful>`."
+msgstr ""
+
+#: ../swift.rst:21
+msgid ""
+"Your environment must at least include the Identity service (keystone) prior "
+"to deploying Object Storage."
+msgstr ""
+
+#: ../trove-install.rst:6
+msgid ""
+"This section describes how to install and configure the Database service, "
+"code-named trove, on the controller node."
+msgstr ""
+
+#: ../trove-install.rst:9
+msgid ""
+"This section assumes that you already have a working OpenStack environment "
+"with at least the following components installed: Compute, Image Service, "
+"Identity."
+msgstr ""
+
+#: ../trove-install.rst:13
+msgid "If you want to do backup and restore, you also need Object Storage."
+msgstr ""
+
+#: ../trove-install.rst:15
+msgid ""
+"If you want to provision datastores on block-storage volumes, you also need "
+"Block Storage."
+msgstr ""
+
+#: ../trove-install.rst:24
+msgid ""
+"Before you install and configure the Database service, you must create a "
+"database, service credentials, and API endpoints."
+msgstr ""
+
+#: ../trove-install.rst:36
+msgid "Create the ``trove`` database:"
+msgstr ""
+
+#: ../trove-install.rst:42
+msgid "Grant proper access to the ``trove`` database:"
+msgstr ""
+
+#: ../trove-install.rst:51
+msgid "Replace ``TROVE_DBPASS`` with a suitable password."
+msgstr ""
+
+#: ../trove-install.rst:64
+msgid "Create the ``trove`` user:"
+msgstr ""
+
+#: ../trove-install.rst:80
+msgid "Add the ``admin`` role to the ``trove`` user:"
+msgstr ""
+
+#: ../trove-install.rst:90
+msgid "Create the ``trove`` service entity:"
+msgstr ""
+
+#: ../trove-install.rst:107
+msgid "Create the Database service API endpoints:"
+msgstr ""
+
+#: ../trove-install.rst:201
+msgid ""
+"In ``/etc/trove``, edit the following configuration files, taking the below "
+"actions for each file:"
+msgstr ""
+
+#: ../trove-install.rst:204
+msgid "``trove.conf``"
+msgstr ""
+
+#: ../trove-install.rst:206 ../trove-install.rst:323
+msgid "``trove-taskmanager.conf``"
+msgstr ""
+
+#: ../trove-install.rst:208 ../trove-install.rst:325
+msgid "``trove-conductor.conf``"
+msgstr ""
+
+#: ../trove-install.rst:210
+msgid "Provide appropriate values for the following settings:"
+msgstr ""
+
+#: ../trove-install.rst:226
+msgid ""
+"Configure the Database module to use the ``RabbitMQ`` message broker by "
+"setting the following options in the ``[DEFAULT]`` configuration group of "
+"each file:"
+msgstr ""
+
+#: ../trove-install.rst:242
+msgid "Verify that the ``api-paste.ini`` file is present in ``/etc/trove``."
+msgstr ""
+
+#: ../trove-install.rst:245
+msgid ""
+"If the file is not present, you can get it from this `location <http://git."
+"openstack.org/cgit/openstack/trove/plain/etc/trove/api-paste.ini?h=stable/"
+"mitaka>`__."
+msgstr ""
+
+#: ../trove-install.rst:248
+msgid ""
+"Edit the ``trove.conf`` file so it includes appropriate values for the "
+"settings shown below:"
+msgstr ""
+
+#: ../trove-install.rst:273
+msgid ""
+"Edit the ``trove-taskmanager.conf`` file so it includes the required "
+"settings to connect to the OpenStack Compute service as shown below:"
+msgstr ""
+
+#: ../trove-install.rst:290
+msgid ""
+"In ``etc/trove``, edit the ``trove-guestagent.conf`` file so that future "
+"trove guests can connect to your OpenStack environment:"
+msgstr ""
+
+#: ../trove-install.rst:302
+msgid "Populate the trove database you created earlier in this procedure:"
+msgstr ""
+
+#: ../trove-install.rst:317
+msgid ""
+"Due to a bug in the Ubuntu packages, you need to edit the service definition "
+"files to use the correct configuration settings."
+msgstr ""
+
+#: ../trove-install.rst:320
+msgid ""
+"To do this, navigate to ``/etc/init`` and edit the following files as "
+"described below:"
+msgstr ""
+
+#: ../trove-install.rst:327
+msgid ""
+"(Note that, although they have the same names, these files are in a "
+"different location and have different content than the similarly named files "
+"you edited earlier in this procedure.)"
+msgstr ""
+
+#: ../trove-install.rst:331
+msgid "In each file, find this line:"
+msgstr ""
+
+#: ../trove-install.rst:341
+msgid "Note that ``--config-file`` incorrectly points to ``trove.conf``."
+msgstr ""
+
+#: ../trove-install.rst:343
+msgid ""
+"In ``trove-taskmanager.conf``, edit ``config-file`` to point to ``/etc/trove/"
+"trove-taskmanager.conf``."
+msgstr ""
+
+#: ../trove-install.rst:346
+msgid ""
+"In ``trove-conductor.conf``, edit ``config-file`` to point to ``/etc/trove/"
+"trove-conductor.conf``."
+msgstr ""
+
+#: ../trove-install.rst:349
+msgid "Restart the Database services:"
+msgstr ""
+
+#: ../trove-install.rst:359
+msgid ""
+"Start the Database services and configure them to start when the system "
+"boots:"
+msgstr ""
+
+#: ../trove-next-steps.rst:6
+msgid "Your OpenStack environment now includes Database services."
+msgstr ""
+
+#: ../trove-verify.rst:6
+msgid "Verify operation of the Database service."
+msgstr ""
+
+#: ../trove-verify.rst:10
+msgid "Perform these commands on the node where you installed trove."
+msgstr ""
+
+#: ../trove-verify.rst:18
+msgid "Run the ``trove list`` command. You should see output similar to this:"
+msgstr ""
+
+#: ../trove-verify.rst:28
+msgid "Add a datastore to trove:"
+msgstr ""
+
+#: ../trove-verify.rst:31
+msgid ""
+"Create an image for the type of database you want to use, for example, "
+"MySQL, MongoDB, Cassandra."
+msgstr ""
+
+#: ../trove-verify.rst:34
+msgid "This image must have the trove guest agent installed."
+msgstr ""
+
+#: ../trove-verify.rst:34
+msgid ""
+"`Create a trove image <http://docs.openstack.org/developer/trove/dev/"
+"building_guest_images.html>`_."
+msgstr ""
+
+#: ../trove-verify.rst:36
+msgid "Upload the image to glance. Example:"
+msgstr ""
+
+#: ../trove-verify.rst:64
+msgid ""
+"Create a datastore. You need to create a separate datastore for each type of "
+"database you want to use, for example, MySQL, MongoDB, Cassandra. This "
+"example shows you how to create a datastore for a MySQL database:"
+msgstr ""
+
+#: ../trove-verify.rst:78
+msgid "Update the datastore to use the new image."
+msgstr ""
+
+#: ../trove-verify.rst:80
+msgid "This example shows you how to update a MySQL 5.6 datastore:"
+msgstr ""
+
+#: ../trove-verify.rst:90
+msgid ""
+"Create a database `instance <http://docs.openstack.org/user-guide/create_db."
+"html>`_."
+msgstr ""
+
+#: ../trove.rst:3
+msgid "Database service"
+msgstr ""
+
+#: ../trove.rst:12
+msgid ""
+"The Database service (trove) provides cloud provisioning functionality for "
+"database engines."
 msgstr ""

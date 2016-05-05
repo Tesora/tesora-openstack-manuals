@@ -9,20 +9,12 @@ For more information about how to download and build images, see
 `OpenStack Virtual Machine Image Guide
 <http://docs.openstack.org/image-guide/>`__.
 For information about how to manage images, see the
-`OpenStack User Guide
+`OpenStack End User Guide
 <http://docs.openstack.org/user-guide/common/cli_manage_images.html>`__.
 
 .. note::
 
    Perform these commands on the controller node.
-
-#. In each client environment script, configure the Image service
-   client to use API version 2:
-
-   .. code-block:: console
-
-      $ echo "export OS_IMAGE_API_VERSION=2" \
-        | tee -a admin-openrc demo-openrc
 
 #. Source the ``admin`` credentials to gain access to
    admin-only CLI commands:

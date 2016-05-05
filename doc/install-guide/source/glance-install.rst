@@ -82,11 +82,11 @@ configuration stores images on the local file system.
         .. code-block:: console
 
            $ openstack service create --name glance \
-             --description "OpenStack Image service" image
+             --description "OpenStack Image" image
            +-------------+----------------------------------+
            | Field       | Value                            |
            +-------------+----------------------------------+
-           | description | OpenStack Image service          |
+           | description | OpenStack Image                  |
            | enabled     | True                             |
            | id          | 8c2c7f1b9b5049ea9e63757b5533e6d2 |
            | name        | glance                           |
@@ -328,12 +328,3 @@ Install and configure components
 
             # service glance-registry restart
             # service glance-api restart
-
-      #. By default, the Ubuntu packages create an SQLite database.
-
-         Because this configuration uses an SQL database server, you can
-         remove the SQLite database file:
-
-         .. code-block:: console
-
-            # rm -f /var/lib/glance/glance.sqlite

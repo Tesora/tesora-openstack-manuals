@@ -194,7 +194,7 @@ Install and configure components
 
         [database]
         ...
-        connection = mongodb://aodh:AODH_DBPASS@controller:27017/aodh
+        connection = mysql+pymysql://aodh:AODH_DBPASS@controller/aodh
 
      Replace ``AODH_DBPASS`` with the password you chose for the
      Telemetry Alarming module database. You must escape special characters
@@ -258,15 +258,6 @@ Install and configure components
 
      Replace ``AODH_PASS`` with the password you chose for
      the ``aodh`` user in the Identity service.
-
-   * (Optional) To assist with troubleshooting, enable verbose
-     logging in the ``[DEFAULT]`` section:
-
-     .. code-block:: ini
-
-        [DEFAULT]
-        ...
-        verbose = True
 
 .. todo:
 

@@ -221,15 +221,6 @@ Install and configure components
       * Due to a packaging bug, remove the ``logdir`` option from the
         ``[DEFAULT]`` section.
 
-   * In the ``[DEFAULT]`` section, enable verbose mode to assist with
-     potential troubleshooting:
-
-     .. code-block:: ini
-
-        [DEFAULT]
-        ...
-        verbose = True
-
 .. only:: obs or debian
 
    3. Ensure the kernel module ``nbd`` is loaded.
@@ -308,14 +299,3 @@ Finalize installation
       .. code-block:: console
 
          # service nova-compute restart
-
-.. only:: ubuntu
-
-   3. By default, the Ubuntu packages create an SQLite database.
-
-      Because this configuration uses an SQL database server, you can
-      remove the SQLite database file:
-
-      .. code-block:: console
-
-         # rm -f /var/lib/nova/nova.sqlite

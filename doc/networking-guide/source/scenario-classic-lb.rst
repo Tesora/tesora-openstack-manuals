@@ -106,8 +106,8 @@ because it only handles layer-2 connectivity.
 .. note::
 
    For VLAN external and project networks, the physical network infrastructure
-   must support VLAN tagging. For best performance with VXLAN project networks,
-   the network infrastructure should support jumbo frames.
+   must support VLAN tagging. For best performance, 10+ Gbps networks should
+   support jumbo frames.
 
 .. warning::
 
@@ -537,38 +537,43 @@ scenario in your environment.
 Controller node
 ---------------
 
-#. Configure common options. Edit the ``/etc/neutron/neutron.conf`` file:
+#. In the ``neutron.conf`` file:
 
-   .. code-block:: ini
+   * Configure common options:
 
-      [DEFAULT]
-      verbose = True
-      core_plugin = ml2
-      service_plugins = router
-      allow_overlapping_ips = True
+     .. code-block:: ini
 
-#. Configure the ML2 plug-in. Edit the
-   ``/etc/neutron/plugins/ml2/ml2_conf.ini`` file:
+        [DEFAULT]
+        core_plugin = ml2
+        service_plugins = router
+        allow_overlapping_ips = True
 
-   .. code-block:: ini
+   * If necessary, :ref:`configure MTU <adv-config-mtu>`.
 
-      [ml2]
-      type_drivers = flat,vlan,vxlan
-      tenant_network_types = vlan,vxlan
-      mechanism_drivers = linuxbridge,l2population
-      extension_drivers = port_security
+#. In the ``ml2_conf.ini`` file:
 
-      [ml2_type_flat]
-      flat_networks = external
+   * Configure drivers and network types:
 
-      [ml2_type_vlan]
-      network_vlan_ranges = external,vlan:MIN_VLAN_ID:MAX_VLAN_ID
+     .. code-block:: ini
 
-      [ml2_type_vxlan]
-      vni_ranges = MIN_VXLAN_ID:MAX_VXLAN_ID
+        [ml2]
+        type_drivers = flat,vlan,vxlan
+        tenant_network_types = vlan,vxlan
+        mechanism_drivers = linuxbridge,l2population
+        extension_drivers = port_security
 
-      [securitygroup]
-      enable_ipset = True
+   * Configure network mappings and ID ranges:
+
+     .. code-block:: ini
+
+        [ml2_type_flat]
+        flat_networks = external
+
+        [ml2_type_vlan]
+        network_vlan_ranges = external,vlan:MIN_VLAN_ID:MAX_VLAN_ID
+
+        [ml2_type_vxlan]
+        vni_ranges = MIN_VXLAN_ID:MAX_VXLAN_ID
 
    Replace ``MIN_VLAN_ID``, ``MAX_VLAN_ID``, ``MIN_VXLAN_ID``, and
    ``MAX_VXLAN_ID`` with VLAN and VXLAN ID minimum and maximum values suitable
@@ -584,6 +589,15 @@ Controller node
       The ``external`` value in the ``network_vlan_ranges`` option lacks VLAN
       ID ranges to support use of arbitrary VLAN IDs by administrative users.
 
+   * Configure the security group driver:
+
+     .. code-block:: ini
+
+        [securitygroup]
+        firewall_driver = neutron.agent.linux.iptables_firewall.IptablesFirewallDriver
+
+   * If necessary, :ref:`configure MTU <adv-config-mtu>`.
+
 #. Start the following services:
 
    * Server
@@ -591,15 +605,7 @@ Controller node
 Network node
 ------------
 
-#. Configure common options. Edit the ``/etc/neutron/neutron.conf`` file:
-
-   .. code-block:: ini
-
-      [DEFAULT]
-      verbose = True
-
-#. Configure the Linux bridge agent. Edit the
-   ``/etc/neutron/plugins/ml2/linuxbridge_agent.ini`` file:
+#. In the ``linuxbridge_agent.ini`` file, configure the Linux bridge agent:
 
    .. code-block:: ini
 
@@ -607,28 +613,22 @@ Network node
       physical_interface_mappings = vlan:PROJECT_VLAN_INTERFACE,external:EXTERNAL_INTERFACE
 
       [vxlan]
-      enable_vxlan = True
       local_ip = TUNNEL_INTERFACE_IP_ADDRESS
       l2_population = True
 
-      [agent]
-      prevent_arp_spoofing = True
-
       [securitygroup]
       firewall_driver = neutron.agent.linux.iptables_firewall.IptablesFirewallDriver
-      enable_security_group = True
 
    Replace ``PROJECT_VLAN_INTERFACE`` and ``EXTERNAL_INTERFACE`` with the name
    of the underlying interface that handles VLAN project networks and external
    networks, respectively. Replace ``TUNNEL_INTERFACE_IP_ADDRESS`` with the IP
    address of the interface that handles project tunnel networks.
 
-#. Configure the L3 agent. Edit the ``/etc/neutron/l3_agent.ini`` file:
+#. In the ``l3_agent.ini`` file, configure the L3 agent:
 
    .. code-block:: ini
 
       [DEFAULT]
-      verbose = True
       interface_driver = neutron.agent.linux.interface.BridgeInterfaceDriver
       external_network_bridge =
 
@@ -637,39 +637,19 @@ Network node
       The ``external_network_bridge`` option intentionally contains
       no value.
 
-#. Configure the DHCP agent. Edit the ``/etc/neutron/dhcp_agent.ini``
-   file:
-
-   .. code-block:: ini
-
-         [DEFAULT]
-         verbose = True
-         interface_driver = neutron.agent.linux.interface.BridgeInterfaceDriver
-         dhcp_driver = neutron.agent.linux.dhcp.Dnsmasq
-         enable_isolated_metadata = True
-
-#. (Optional) Reduce MTU for VXLAN project networks.
-
-   #. Edit the ``/etc/neutron/dhcp_agent.ini`` file:
-
-      .. code-block:: ini
-
-         [DEFAULT]
-         dnsmasq_config_file = /etc/neutron/dnsmasq-neutron.conf
-
-   #. Edit the ``/etc/neutron/dnsmasq-neutron.conf`` file:
-
-      .. code-block:: ini
-
-         dhcp-option-force=26,1450
-
-#. Configure the metadata agent. Edit the
-   ``/etc/neutron/metadata_agent.ini`` file:
+#. In the ``dhcp_agent.ini`` file, configure the DHCP agent:
 
    .. code-block:: ini
 
       [DEFAULT]
-      verbose = True
+      interface_driver = neutron.agent.linux.interface.BridgeInterfaceDriver
+      enable_isolated_metadata = True
+
+#. In the ``metadata_agent.ini`` file, configure the metadata agent:
+
+   .. code-block:: ini
+
+      [DEFAULT]
       nova_metadata_ip = controller
       metadata_proxy_shared_secret = METADATA_SECRET
 
@@ -685,15 +665,7 @@ Network node
 Compute nodes
 -------------
 
-#. Configure common options. Edit the ``/etc/neutron/neutron.conf`` file:
-
-   .. code-block:: ini
-
-      [DEFAULT]
-      verbose = True
-
-#. Configure the Linux bridge agent. Edit the
-   ``/etc/neutron/plugins/ml2/linuxbridge_agent.ini`` file:
+#. In the ``linuxbridge_agent.ini`` file, configure the Linux bridge agent:
 
    .. code-block:: ini
 
@@ -701,16 +673,11 @@ Compute nodes
       physical_interface_mappings = vlan:PROJECT_VLAN_INTERFACE
 
       [vxlan]
-      enable_vxlan = True
       local_ip = TUNNEL_INTERFACE_IP_ADDRESS
       l2_population = True
 
-      [agent]
-      prevent_arp_spoofing = True
-
       [securitygroup]
       firewall_driver = neutron.agent.linux.iptables_firewall.IptablesFirewallDriver
-      enable_security_group = True
 
    Replace ``PROJECT_VLAN_INTERFACE`` with the name of the underlying
    interface that handles VLAN project networks and external networks,

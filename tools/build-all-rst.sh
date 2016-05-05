@@ -2,8 +2,6 @@
 
 mkdir -p publish-docs
 
-GLOSSARY="--glossary"
-
 LINKCHECK=""
 if [[ $# > 0 ]] ; then
     if [ "$1" = "--linkcheck" ] ; then
@@ -11,20 +9,19 @@ if [[ $# > 0 ]] ; then
     fi
 fi
 
-for guide in user-guide user-guide-admin admin-guide-cloud \
-    contributor-guide image-guide arch-design cli-reference; do
-    tools/build-rst.sh doc/$guide $GLOSSARY --build build \
-        --target $guide $LINKCHECK
-    # Build it only the first time
-    GLOSSARY=""
-done
+# Do not build from stable/mitaka
+#for guide in user-guide admin-guide \
+#    contributor-guide image-guide arch-design cli-reference; do
+#    tools/build-rst.sh doc/$guide --build build \
+#        --target $guide $LINKCHECK
+#done
 
 # Draft guides
 # This includes guides that we publish from stable branches
 # as versioned like the networking-guide.
-for guide in networking-guide arch-design-draft config-reference; do
+for guide in networking-guide config-reference ; do
     tools/build-rst.sh doc/$guide --build build \
-        --target "draft/$guide" $LINKCHECK
+        --target "mitaka/$guide" $LINKCHECK
 done
 
 tools/build-install-guides-rst.sh $LINKCHECK

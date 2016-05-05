@@ -8,15 +8,15 @@ Guide <http://docs.openstack.org/contributor-guide/>`_.
 
 It includes these manuals:
 
- * Admin User Guide
+ * Administrator Guide
  * Architecture Design Guide
- * Cloud Administrator Guide
  * Command-Line Interface Reference
  * Configuration Reference
  * Documentation Contributor Guide
  * End User Guide
  * Installation Guides
  * Networking Guide
+ * Operations Guide
  * Virtual Machine Image Guide
 
 In addition to the guides, this repository contains:
@@ -116,6 +116,14 @@ documentation to testing to deployment scripts.
 If you would like to contribute to the documents, please see the
 `OpenStack Documentation contributor guide
 <http://docs.openstack.org/contributor-guide/>`_.
+
+Generated files
+---------------
+
+Some documentation files are generated using tools. These files include
+a ``do not edit`` header and should not be modified by hand. Please see
+`Generated files
+<http://docs.openstack.org/contributor-guide/tools-and-content-overview.html#Generated-files/>`_.
 
 
 Bugs
