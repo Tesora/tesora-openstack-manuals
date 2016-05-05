@@ -27,12 +27,13 @@ node.
    .. code-block:: console
 
       $ openstack role create ResellerAdmin
-      +-------+----------------------------------+
-      | Field | Value                            |
-      +-------+----------------------------------+
-      | id    | 462fa46c13fd4798a95a3bfbe27b5e54 |
-      | name  | ResellerAdmin                    |
-      +-------+----------------------------------+
+      +-----------+----------------------------------+
+      | Field     | Value                            |
+      +-----------+----------------------------------+
+      | domain_id | None                             |
+      | id        | 462fa46c13fd4798a95a3bfbe27b5e54 |
+      | name      | ResellerAdmin                    |
+      +-----------+----------------------------------+
 
 #. Add the ``ResellerAdmin`` role to the ``ceilometer`` user:
 
@@ -87,7 +88,7 @@ run the Object Storage proxy service.
 
   * In the ``[pipeline:main]`` section, add ``ceilometer``:
 
-   .. code-block:: ini
+    .. code-block:: ini
 
        [pipeline:main]
        pipeline = ceilometer catch_errors gatekeeper healthcheck proxy-logging cache container_sync bulk ratelimit authtoken keystoneauth container-quotas account-quotas slo dlo versioned_writes proxy-logging proxy-server

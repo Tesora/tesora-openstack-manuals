@@ -43,9 +43,9 @@ Update ``nova-compute`` servers:
 
 #. Restart ``nova-compute``.
 
-Follow the instructions in the OpenStack Admin User Guide under the
+Follow the instructions in the OpenStack Administrator Guide under the
 heading `Create an encrypted volume
-type <http://docs.openstack.org/user-guide-admin/dashboard_manage_volumes.html>`__
+type <http://docs.openstack.org/admin-guide/dashboard_manage_volumes.html>`__
 or alternatively, see ``TODO`` in this manual to do this via the
 command line.
 
@@ -77,7 +77,7 @@ the volume.
 
    .. code-block:: console
 
-      $ source admin-openrc.sh
+      $ . admin-openrc.sh
 
 #. Create the volume type:
 
@@ -121,7 +121,7 @@ type, ``unencrypted``, is used.
 
    .. code-block:: console
 
-      $ source admin-openrc.sh
+      $ . admin-openrc.sh
 
 #. Create an unencrypted 1 GB test volume:
 

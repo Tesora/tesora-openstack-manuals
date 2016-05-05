@@ -31,8 +31,9 @@ function copy_to_branch {
         cp -a publish-docs/draft/* publish-docs/$BRANCH/
         # We don't need this file
         rm -f publish-docs/$BRANCH/draft-index.html
-        # We don't need Contributor Guide
-        rm -rf publish-docs/$BRANCH/contributor-guide
+        # We don't need these draft guides on the branch
+        rm -rf publish-docs/$BRANCH/arch-design-draft
+        rm -rf publish-docs/$BRANCH/ops-guide
 
         for f in $(find publish-docs/$BRANCH -name "atom.xml"); do
             sed -i -e "s|/draft/|/$BRANCH/|g" $f
@@ -52,27 +53,24 @@ tools/build-all-rst.sh
 
 # Build the www pages so that openstack-doc-test creates a link to
 # www/www-index.html.
-if [ "$PUBLISH" = "build" ] ; then
-    python tools/www-generator.py --source-directory www/ \
-        --output-directory publish-docs/www/
-    rsync -a www/static/ publish-docs/www/
-    # publish-docs/www-index.html is the trigger for openstack-doc-test
-    # to include the file.
-    mv publish-docs/www/www-index.html publish-docs/www-index.html
-fi
-if [ "$PUBLISH" = "publish" ] ; then
-    python tools/www-generator.py --source-directory www/ \
-        --output-directory publish-docs
-    rsync -a www/static/ publish-docs/
-    # Don't publish this file
-    rm publish-docs/www-index.html
-fi
+# Disabled for stable/mitaka:
+#if [ "$PUBLISH" = "build" ] ; then
+#    python tools/www-generator.py --source-directory www/ \
+#        --output-directory publish-docs/www/
+#    rsync -a www/static/ publish-docs/www/
+#    # publish-docs/www-index.html is the trigger for openstack-indexpage
+#    # to include the file.
+#    mv publish-docs/www/www-index.html publish-docs/www-index.html
+#fi
+#if [ "$PUBLISH" = "publish" ] ; then
+#    python tools/www-generator.py --source-directory www/ \
+#        --output-directory publish-docs
+#    rsync -a www/static/ publish-docs/
+#    # Don't publish this file
+#    rm publish-docs/www-index.html
+#fi
 
-# We only publish changed manuals.
-if [ "$PUBLISH" = "publish" ] ; then
-    openstack-doc-test --check-build --publish
-    # For publishing to both /draft and /BRANCH
-    copy_to_branch mitaka
-else
-    openstack-doc-test --check-build
+if [ "$PUBLISH" = "build" ] ; then
+    # Create index page for viewing
+    openstack-indexpage publish-docs
 fi

@@ -54,7 +54,6 @@ external_ingress_mark l3_agent
 external_network_bridge l3_agent
 external_pids agent
 fatal_deprecations logging
-force_gateway_on_subnet common
 force_metadata dhcp_agent
 gateway_external_network_id l3_agent
 global_physnet_mtu common
@@ -191,7 +190,7 @@ AGENT/minimize_polling openvswitch_agent
 AGENT/ovsdb_monitor_respawn_interval openvswitch_agent
 AGENT/polling_interval hyperv_agent
 AGENT/prevent_arp_spoofing openvswitch_agent
-AGENT/quitting_rpc_timeout openvswitch_agent linuxbridge_agent
+AGENT/quitting_rpc_timeout openvswitch_agent linuxbridge_agent macvtap_agent
 AGENT/report_interval metering_agent
 AGENT/root_helper common
 AGENT/root_helper_daemon common
@@ -247,8 +246,6 @@ QUOTAS/track_quota_usage quotas
 SECURITYGROUP/enable_ipset securitygroups
 SECURITYGROUP/enable_security_group securitygroups
 SECURITYGROUP/firewall_driver securitygroups
-SRIOV_NIC/exclude_devices sriov
-SRIOV_NIC/physical_device_mappings sriov
 VXLAN/arp_responder linuxbridge_agent
 VXLAN/enable_vxlan linuxbridge_agent
 VXLAN/l2_population linuxbridge_agent
@@ -351,7 +348,7 @@ keystone_authtoken/revocation_cache_time auth_token
 keystone_authtoken/signing_dir auth_token
 keystone_authtoken/token_cache_time auth_token
 l2pop/agent_boot_time ml2_l2pop
-macvtap/physical_interface_mappings linuxbridge_agent
+macvtap/physical_interface_mappings macvtap_agent
 matchmaker_redis/check_timeout redis
 matchmaker_redis/host redis
 matchmaker_redis/password redis

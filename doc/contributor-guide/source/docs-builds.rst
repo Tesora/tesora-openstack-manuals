@@ -14,8 +14,8 @@ currently maintains. There are also version dependent documents.
 
 In addition to this page, the `release`_ and master branches of the
 openstack-manuals and other repositories indicate where docs are
-published. For example, from the stable/liberty release branch, doc
-source files are published to docs.openstack.org/liberty, and from the
+published. For example, from the stable/mitaka release branch, doc
+source files are published to docs.openstack.org/mitaka, and from the
 master branch, doc source files are published for versioned documents to
 docs.openstack.org/draft and for continuously published documents to
 docs.openstack.org/ by our lovely Jenkins butlers always at the ready.
@@ -33,7 +33,7 @@ Installation guides
 -------------------
 
 These guides are versioned and only built from the release branches
-(stable/release_name) like the example above of stable/liberty.
+(stable/release_name) like the example above of stable/mitaka.
 
 .. list-table::
    :header-rows: 1
@@ -42,21 +42,17 @@ These guides are versioned and only built from the release branches
      - Source location
      - Target location
 
-   * - Installation Guide for Debian 8.0
-     - http://git.openstack.org/cgit/openstack/openstack-manuals/tree/doc/install-guide
-     - use docs-draft on review.openstack.org for interim reviews
-
    * - Installation Guide for openSUSE and SUSE Linux Enterprise Server
      - http://git.openstack.org/cgit/openstack/openstack-manuals/tree/doc/install-guide
-     - http://docs.openstack.org/liberty/install-guide-obs
+     - http://docs.openstack.org/mitaka/install-guide-obs
 
    * - Installation Guide for Red Hat Enterprise Linux and CentOS
      - http://git.openstack.org/cgit/openstack/openstack-manuals/tree/doc/install-guide
-     - http://docs.openstack.org/liberty/install-guide-rdo
+     - http://docs.openstack.org/mitaka/install-guide-rdo
 
    * - Installation Guide for Ubuntu 14.04 (LTS)
      - http://git.openstack.org/cgit/openstack/openstack-manuals/tree/doc/install-guide
-     - http://docs.openstack.org/liberty/install-guide-ubuntu
+     - http://docs.openstack.org/mitaka/install-guide-ubuntu
 
 Guides for deployers and administrators
 ---------------------------------------
@@ -74,11 +70,11 @@ Guides for deployers and administrators
 
    * - Configuration Reference
      - http://git.openstack.org/cgit/openstack/openstack-manuals/tree/doc/config-reference
-     - http://docs.openstack.org/liberty/config-reference/content
+     - http://docs.openstack.org/mitaka/config-reference/
 
-   * - Cloud Administrator Guide
-     - http://git.openstack.org/cgit/openstack/openstack-manuals/tree/doc/admin-guide-cloud
-     - http://docs.openstack.org/admin-guide-cloud
+   * - Administrator Guide
+     - http://git.openstack.org/cgit/openstack/openstack-manuals/tree/doc/admin-guide
+     - http://docs.openstack.org/admin-guide
 
    * - High Availability Guide
      - http://git.openstack.org/cgit/openstack/ha-guide
@@ -86,7 +82,7 @@ Guides for deployers and administrators
 
    * - Networking Guide
      - http://git.openstack.org/cgit/openstack/openstack-manuals/tree/doc/networking-guide
-     - http://docs.openstack.org/liberty/networking-guide
+     - http://docs.openstack.org/mitaka/networking-guide
 
    * - Operations Guide
      - http://git.openstack.org/cgit/openstack/operations-guide/
@@ -122,10 +118,6 @@ Guides for end users
      - http://git.openstack.org/cgit/openstack/openstack-manuals/tree/doc/user-guide
      - http://docs.openstack.org/user-guide
 
-   * - Admin User Guide
-     - http://git.openstack.org/cgit/openstack/openstack-manuals/tree/doc/user-guide-admin
-     - http://docs.openstack.org/user-guide-admin
-
    * - Command Line Interface Reference
      - http://git.openstack.org/cgit/openstack/openstack-manuals/tree/doc/cli-reference
      - http://docs.openstack.org/cli-reference
@@ -139,6 +131,11 @@ See http://docs.openstack.org/developer/openstack-projects.html.
 
 API Complete Reference pages (HTML)
 -----------------------------------
+
+We are migrating away from WADL in 2016. Refer to :ref:`api-docs` for details.
+Once the migration is complete, the API reference pages will be stored in the
+project repositories and we will have redirects in place for these API pages.
+
 **POM file location**: api-site/api-ref/pom.xml
 
 **Source file location**:

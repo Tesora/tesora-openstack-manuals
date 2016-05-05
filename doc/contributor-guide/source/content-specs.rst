@@ -23,7 +23,6 @@ Installation Guides
 The OpenStack Installation Guide describes a manual install process for
 multiple distributions based on the following packaging systems:
 
-* Installation Guide for Debian - will be published with Liberty
 * `Installation Guide for openSUSE and SUSE Linux Enterprise Server`_
 * `Installation Guide for Red Hat Enterprise Linux and CentOS`_
 * `Installation Guide for Ubuntu`_
@@ -53,7 +52,7 @@ Guides for deployers and administrators
 
 * `OpenStack Architecture Design Guide`_: Contains information on how to plan,
   design and architect an OpenStack cloud.
-* `OpenStack Cloud Administrator Guide`_: Contains how-to information for
+* `OpenStack Administrator Guide`_: Contains how-to information for
   managing an OpenStack cloud as needed for your use cases, such as storage,
   computing, or software-defined-networking.
 * `OpenStack High Availability Guide`_: Describes potential strategies for
@@ -69,9 +68,6 @@ Guides for end users
 
 * `OpenStack End User Guide`_: Shows OpenStack end users how to create and
   manage resources in an OpenStack cloud with the OpenStack dashboard and
-  OpenStack client commands.
-* `OpenStack Admin User Guide`_: Shows OpenStack administrators how to create
-  and manage resources in an OpenStack cloud with the OpenStack dashboard and
   OpenStack client commands.
 * `OpenStack API Guide`_: A brief overview of how to send REST API
   requests to endpoints for OpenStack services.
@@ -103,7 +99,7 @@ Licenses
 This section shows the license indicators as of March 20, 2015.
 
 * OpenStack Architecture Design Guide: Apache 2.0 and CC-by-sa 3.0
-* OpenStack Cloud Administrator Guide: Apache 2.0 and CC-by-sa 3.0
+* OpenStack Administrator Guide: Apache 2.0 and CC-by-sa 3.0
 
 * OpenStack Install Guides (all): Apache 2.0
 * OpenStack High Availability Guide: Apache 2.0
@@ -114,7 +110,6 @@ This section shows the license indicators as of March 20, 2015.
 * Virtual Machine Image Guide: CC-by 3.0
 * OpenStack Operations Guide: CC-by 3.0
 * OpenStack End User Guide: CC-by 3.0
-* OpenStack Admin User Guide: CC-by 3.0
 * Command-Line Interface Reference: CC-by 3.0
 
 * Contributor dev docs (docs.openstack.org/developer/<projectname>): none
@@ -127,14 +122,13 @@ This section shows the license indicators as of March 20, 2015.
 What to do to make more consistent output:
 
 * OpenStack Architecture Design Guide: Apache 2.0 and CC-by 3.0
-* OpenStack Cloud Administrator Guide: Apache 2.0 and CC-by 3.0
+* OpenStack Administrator Guide: Apache 2.0 and CC-by 3.0
 * OpenStack Install Guides (all): Apache 2.0 and CC-by 3.0
 * OpenStack High Availability Guide: Apache 2.0 and CC-by 3.0
 * OpenStack Security Guide: CC-by 3.0
 * Virtual Machine Image Guide: CC-by 3.0
 * OpenStack Operations Guide: CC-by 3.0
 * OpenStack End User Guide: CC-by 3.0
-* OpenStack Admin User Guide: CC-by 3.0
 
 These guides are created by "scraping" code:
 
@@ -154,24 +148,23 @@ This guide has a review in place to get a license indicator in output:
 
 
 .. Links
-.. _`Installation Guide for openSUSE and SUSE Linux Enterprise Server`: http://docs.openstack.org/liberty/install-guide-obs/
-.. _`Installation Guide for Red Hat Enterprise Linux and CentOS`: http://docs.openstack.org/liberty/install-guide-rdo/
-.. _`Installation Guide for Ubuntu`: http://docs.openstack.org/liberty/install-guide-ubuntu/
+.. _`Installation Guide for openSUSE and SUSE Linux Enterprise Server`: http://docs.openstack.org/mitaka/install-guide-obs/
+.. _`Installation Guide for Red Hat Enterprise Linux and CentOS`: http://docs.openstack.org/mitaka/install-guide-rdo/
+.. _`Installation Guide for Ubuntu`: http://docs.openstack.org/mitaka/install-guide-ubuntu/
 
-.. _`OpenStack Configuration Reference`: http://docs.openstack.org/liberty/config-reference/content/
+.. _`OpenStack Configuration Reference`: http://docs.openstack.org/mitaka/config-reference/
 
-.. _`OpenStack Networking Guide`: http://docs.openstack.org/liberty/networking-guide/
+.. _`OpenStack Networking Guide`: http://docs.openstack.org/mitaka/networking-guide/
 
 .. _`release information`: https://wiki.openstack.org/wiki/Releases
 
 .. _`OpenStack Architecture Design Guide`: http://docs.openstack.org/arch-design/
-.. _`OpenStack Cloud Administrator Guide`: http://docs.openstack.org/admin-guide-cloud/index.html
+.. _`OpenStack Administrator Guide`: http://docs.openstack.org/admin-guide/index.html
 .. _`OpenStack High Availability Guide`: http://docs.openstack.org/ha-guide/index.html
 .. _`OpenStack Security Guide`: http://docs.openstack.org/sec/
 .. _`Virtual Machine Image Guide`: http://docs.openstack.org/image-guide/
 
 .. _`OpenStack End User Guide`: http://docs.openstack.org/user-guide/index.html
-.. _`OpenStack Admin User Guide`: http://docs.openstack.org/user-guide-admin/index.html
 .. _`OpenStack API Guide`: http://developer.openstack.org/api-guide/quick-start/
 .. _`Command-Line Interface Reference`: http://docs.openstack.org/cli-reference/
 

@@ -42,7 +42,7 @@ to `QoS rule types
 
 .. note::
 
-   For the Liberty release only egress bandwidth limit rules are supported.
+   For the Newton release onward DSCP marking will be supported.
 
 In the most simple case, the property can be represented by a simple Python
 list defined on the class.
@@ -94,12 +94,26 @@ Modify ``/etc/neutron/policy.json`` policy entries as follows:
    "create_policy": "rule:regular_user",
    "update_policy": "rule:regular_user",
    "delete_policy": "rule:regular_user",
+
+To enable bandwidth limit rule:
+
+.. code-block:: json
+
    "get_policy_bandwidth_limit_rule": "rule:regular_user",
-   "create_policy_bandwidth_limit_rule": "rule:regular_user",
-   "delete_policy_bandwidth_limit_rule": "rule:regular_user",
-   "update_policy_bandwidth_limit_rule": "rule:regular_user",
+   "create_policy_bandwidth_limit_rule": "rule:admin_only",
+   "delete_policy_bandwidth_limit_rule": "rule:admin_only",
+   "update_policy_bandwidth_limit_rule": "rule:admin_only",
    "get_rule_type": "rule:regular_user",
 
+To enable DSCP marking rule:
+
+.. code-block:: json
+
+   "get_policy_dscp_marking_rule": "rule:regular_user",
+   "create_dscp_marking_rule": "rule:admin_only",
+   "delete_dscp_marking_rule": "rule:admin_only",
+   "update_dscp_marking_rule": "rule:admin_only",
+   "get_rule_type": "rule:regular_user",
 
 User workflow
 ~~~~~~~~~~~~~
@@ -111,7 +125,7 @@ behalf of the Cloud tenants.
 If tenants are trusted to create their own policies, check the trusted tenants
 ``policy.json`` configuration section.
 
-First, create a QoS policy and its bandwidth limit rules:
+First, create a QoS policy and its bandwidth limit rule:
 
 .. code-block:: console
 
@@ -140,6 +154,12 @@ First, create a QoS policy and its bandwidth limit rules:
    | max_burst_kbps | 300                                  |
    | max_kbps       | 3000                                 |
    +----------------+--------------------------------------+
+
+.. note::
+
+   The burst value is given in kilobits, not in kilobits per second as the name
+   of the parameter might suggest. This is an amount of data which can be sent
+   before the bandwidth limit applies.
 
 Second, associate the created policy with an existing neutron port.
 In order to do this, user extracts the port id to be associated to
@@ -214,6 +234,19 @@ network, or initially create the network attached to the policy.
     $ neutron net-update private --qos-policy bw-limiter
     Updated network: private
 
+.. note::
+
+   Configuring the proper burst value is very important. If the burst value is
+   set too low, bandwidth usage will be throttled even with a proper bandwidth
+   limit setting. This issue is discussed in various documentation sources, for
+   example in `Juniper's documentation
+   <http://www.juniper.net/documentation/en_US/junos12.3/topics/concept/policer-mx-m120-m320-burstsize-determining.html>`_.
+   Burst value for TCP traffic can be set as 80% of desired bandwidth limit
+   value. For example, if the bandwidth limit is set to 1000kbps then enough
+   burst value will be 800kbit. If the configured burst value is too low,
+   achieved bandwidth limit will be lower than expected. If the configured burst
+   value is too high, too few packets could be limited and achieved bandwidth
+   limit would be higher than expected.
 
 Administrator enforcement
 -------------------------
@@ -249,3 +282,63 @@ attached port.
     | max_kbps       | 2000                                 |
     +----------------+--------------------------------------+
 
+Just like with bandwidth limiting, create a policy for DSCP marking rule:
+
+.. code-block:: console
+
+    $ neutron qos-policy-create dscp-marking
+
+    Created a new policy:
+    +-------------+--------------------------------------+
+    | Field       | Value                                |
+    +-------------+--------------------------------------+
+    | description |                                      |
+    | id          | 8569fb4d-3d63-483e-b49a-9f9290d794f4 |
+    | name        | dscp-marking                         |
+    | rules       |                                      |
+    | shared      | False                                |
+    | tenant_id   | 85b859134de2428d94f6ee910dc545d8     |
+    +-------------+--------------------------------------+
+
+You can create, update, list, delete, and show DSCP markings
+with the neutron client:
+
+.. code-block:: console
+
+    $ neutron qos-dscp-marking-rule-create dscp-marking --dscp-mark 26
+
+    Created a new dscp marking rule
+    +----------------+--------------------------------------+
+    | Field          | Value                                |
+    +----------------+--------------------------------------+
+    | id             | 115e4f70-8034-4176-8fe9-2c47f8878a7d |
+    | dscp_mark      | 26                                   |
+    +----------------+--------------------------------------+
+
+.. code-block:: console
+
+    $ neutron qos-dscp-marking-rule-update \
+        115e4f70-8034-4176-8fe9-2c47f8878a7d dscp-marking --dscp-mark 22
+    Updated dscp_rule: 115e4f70-8034-4176-8fe9-2c47f8878a7d
+
+    $ neutron qos-dscp-marking-rule-show \
+        115e4f70-8034-4176-8fe9-2c47f8878a7d dscp-marking
+
+    +----------------+--------------------------------------+
+    | Field          | Value                                |
+    +----------------+--------------------------------------+
+    | id             | 115e4f70-8034-4176-8fe9-2c47f8878a7d |
+    | dscp_mark      | 22                                   |
+    +----------------+--------------------------------------+
+
+    $ neutron qos-dscp-marking-rule-delete \
+        115e4f70-8034-4176-8fe9-2c47f8878a7d dscp-marking
+      Deleted dscp_rule: 115e4f70-8034-4176-8fe9-2c47f8878a7d
+
+    $ neutron qos-dscp-marking-rule-list
+
+    +--------------------------------------+----------------------------------+
+    | id                                   | dscp_mark                        |
+    +--------------------------------------+----------------------------------+
+    | 115e4f70-8034-4176-8fe9-2c47f8878a7d | 22                               |
+    +--------------------------------------+----------------------------------+

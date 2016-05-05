@@ -13,7 +13,8 @@ and manage the HAProxy daemon. LBaaS v2 adds the concept of listeners to the
 LBaaS v1 load balancers. LBaaS v2 allows you to configure multiple listener
 ports on a single load balancer IP address.
 
-Another LBaaS v2 implementation, `Octavia`_, has a separate API and
+Another LBaaS v2 implementation, `Octavia
+<http://docs.openstack.org/developer/octavia/>`_, has a separate API and
 separate worker processes that build load balancers within virtual machines on
 hypervisors that are managed by the Compute service. You do not need an agent
 for Octavia.
@@ -22,19 +23,14 @@ Currently, no migration path exists between v1 and v2 load balancers. If you
 choose to switch from v1 to v2, you must recreate all load balancers, pools,
 and health monitors.
 
-.. _octavia: http://docs.openstack.org/developer/octavia/
-
 LBaaS v1
 ~~~~~~~~
 
 LBaaS v1 is deprecated in the Liberty release. These links provide more
 details about how LBaaS v1 works and how to configure it:
 
-* `Load-Balancer-as-a-Service (LBaaS) overview`_
-* `Basic Load-Balancer-as-a-Service operations`_
-
-.. _Load-Balancer-as-a-Service (LBaaS) overview: http://docs.openstack.org/admin-guide-cloud/networking_introduction.html#load-balancer-as-a-service-lbaas-overview
-.. _Basic Load-Balancer-as-a-Service operations: http://docs.openstack.org/admin-guide-cloud/networking_adv-features.html#basic-load-balancer-as-a-service-operations
+* `Load-Balancer-as-a-Service (LBaaS) overview <http://docs.openstack.org/admin-guide/networking_introduction.html#load-balancer-as-a-service-lbaas-overview>`__
+* `Basic Load-Balancer-as-a-Service operations <http://docs.openstack.org/admin-guide/networking_adv-features.html#basic-load-balancer-as-a-service-operations>`__
 
 LBaaS v2
 ~~~~~~~~
@@ -66,9 +62,7 @@ Health monitor
 
 LBaaS v2 has multiple implementations via different service plug-ins. The two
 most common implementations use either an agent or the Octavia services. Both
-implementations use the `LBaaS v2 API`_.
-
-.. _LBaaS v2 API: http://developer.openstack.org/api-ref-networking-v2-ext.html#lbaas-v2.0
+implementations use the `LBaaS v2 API <http://developer.openstack.org/api-ref-networking-v2-ext.html#lbaas-v2.0>`_.
 
 Configuring LBaaS v2 with an agent
 ----------------------------------
@@ -118,14 +112,16 @@ Configuring LBaaS v2 with Octavia
 ---------------------------------
 
 Octavia provides additional capabilities for load balancers, including using a
-compute driver to build instances that operate as load balancers. The `Hands
-on Lab - Install and Configure OpenStack Octavia`_ session at the OpenStack
-Summit in Tokyo provides an overview of Octavia.
+compute driver to build instances that operate as load balancers.
+The `Hands on Lab - Install and Configure OpenStack Octavia
+<https://www.openstack.org/summit/tokyo-2015/videos/presentation/rsvp-required-hands-on-lab-install-and-configure-openstack-octavia>`_
+session at the OpenStack Summit in Tokyo provides an overview of Octavia.
 
-The DevStack documentation offers a `simple method to deploy Octavia`_ and test
-the service with redundant load balancer instances. If you already have Octavia
-installed and configured within your environment, you can configure the Network
-service to use Octavia:
+The DevStack documentation offers a `simple method to deploy Octavia
+<http://docs.openstack.org/developer/devstack/guides/devstack-with-lbaas-v2.html>`_
+and test the service with redundant load balancer instances. If you already
+have Octavia installed and configured within your environment, you can
+configure the Network service to use Octavia:
 
 #.  Add the LBaaS v2 service plug-in to the ``service_plugins`` configuration
     directive in ``/etc/neutron/neutron.conf``. The plug-in list is
@@ -149,9 +145,6 @@ service to use Octavia:
 
 #.  Restart the Network service to activate the new configuration. You are now
     ready to create and manage load balancers with Octavia.
-
-.. _Hands on Lab - Install and Configure OpenStack Octavia: https://www.openstack.org/summit/tokyo-2015/videos/presentation/rsvp-required-hands-on-lab-install-and-configure-openstack-octavia
-.. _simple method to deploy Octavia: http://docs.openstack.org/developer/devstack/guides/devstack-with-lbaas-v2.html
 
 LBaaS v2 operations
 ~~~~~~~~~~~~~~~~~~~
@@ -192,10 +185,10 @@ Building an LBaaS v2 load balancer
        | vip_subnet_id       | f1e7827d-1bfe-40b6-b8f0-2d9fd946f59b           |
        +---------------------+------------------------------------------------+
 
-#.  The security group must be updated to allow traffic to reach the load
-    balancer. Create a new security group along with ingress rules to allow
-    traffic into the new load balancer. The neutron port for the load balancer
-    is shown as ``vip_port_id`` above.
+#.  Update the security group to allow traffic to reach the new load balancer.
+    Create a new security group along with ingress rules to allow traffic into
+    the new load balancer. The neutron port for the load balancer is shown as
+    ``vip_port_id`` above.
 
     Create a security group and rules to allow TCP port 80, TCP port 443, and
     all ICMP traffic:
@@ -399,3 +392,28 @@ You can adjust quotas using the :command:`quota-update` command:
    $ neutron quota-update --tenant-id TENANT_UUID --pool 50
 
 A setting of ``-1`` disables the quota for a tenant.
+
+Retrieving load balancer statistics
+-----------------------------------
+
+The LBaaS v2 agent collects four types of statistics for each load balancer
+every six seconds. Users can query these statistics with the
+:command:`lbaas-loadbalancer-stats` command:
+
+.. code-block:: console
+
+   $ neutron lbaas-loadbalancer-stats test-lb
+   +--------------------+----------+
+   | Field              | Value    |
+   +--------------------+----------+
+   | active_connections | 0        |
+   | bytes_in           | 40264557 |
+   | bytes_out          | 71701666 |
+   | total_connections  | 384601   |
+   +--------------------+----------+
+
+The ``active_connections`` count is the total number of connections that were
+active at the time the agent polled the load balancer. The other three
+statistics are cumulative since the load balancer was last started. For
+example, if the load balancer restarts due to a system error or a configuration
+change, these statistics will be reset.
