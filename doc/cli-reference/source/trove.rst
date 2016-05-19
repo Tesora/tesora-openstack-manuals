@@ -9,7 +9,7 @@ Database service command-line client
 The trove client is the command-line interface (CLI) for
 the Database service API and its extensions.
 
-This chapter documents :command:`trove` version ``2.2.0``.
+This chapter documents :command:`trove` version ``1.4.1``.
 
 For help on a specific :command:`trove` command, enter:
 
@@ -340,6 +340,12 @@ trove usage
 ``user-update-attributes``
   Updates a user's attributes on an instance.
 
+``volume-type-list``
+  Lists available volume types.
+
+``volume-type-show``
+  Shows details of a volume type.
+
 ``bash-completion``
   Prints arguments for bash_completion.
 
@@ -353,7 +359,7 @@ trove optional arguments
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
 ``--version``
-  show program's version number and exit
+  Show program's version number and exit.
 
 ``--debug``
   Print debugging output.
@@ -546,7 +552,7 @@ Deletes a backup.
 **Positional arguments:**
 
 ``<backup>``
-  ID of the backup.
+  ID or name of the backup.
 
 .. _trove_backup-list:
 
@@ -624,6 +630,7 @@ trove cluster-create
 
    usage: trove cluster-create <name> <datastore> <datastore_version>
                                [--instance "opt=<value>[,opt=<value> ...] "]
+                               [--locality <policy>]
 
 Creates a new cluster.
 
@@ -641,7 +648,7 @@ Creates a new cluster.
 **Optional arguments:**
 
 ``--instance "opt=<value>[,opt=<value> ...] "``
-  Create an instance for the cluster. Specify
+  Add an instance to the cluster. Specify
   multiple times to create multiple instances.
   Valid options are:
   flavor=<flavor_name_or_id>,
@@ -652,6 +659,11 @@ Creates a new cluster.
   ip=IPv4r_fixed_address, port-id=port_id),
   availability_zone=<AZ_hint_for_Nova>,
   module=<module_name_or_id>.
+
+``--locality <policy>``
+  Locality policy to use when creating
+  cluster. Choose one of affinity, anti-
+  affinity.
 
 .. _trove_cluster-delete:
 
@@ -691,8 +703,14 @@ Adds more instances to a cluster.
 ``--instance "opt=<value>[,opt=<value> ...] "``
   Add an instance to the cluster. Specify
   multiple times to create multiple instances.
-  Valid options are: name=<name>,
-  flavor=<flavor_name_or_id>, volume=<volume>,
+  Valid options are:
+  flavor=<flavor_name_or_id>,
+  volume=<disk_size_in_GB>,
+  volume_type=<type>, nic='<net-id=<net-uuid>,
+  v4-fixed-ip=<ip-addr>, port-id=<port-uuid>>'
+  (where net-id=network_id, v4-fixed-
+  ip=IPv4r_fixed_address, port-id=port_id),
+  availability_zone=<AZ_hint_for_Nova>,
   module=<module_name_or_id>.
 
 .. _trove_cluster-instances:
@@ -905,8 +923,7 @@ Lists all instances associated with a configuration group.
 ``<configuration_group>``
   ID of the configuration group.
 
-Optional arguments
-------------------
+**Optional arguments:**
 
 ``--limit <limit>``
   Limit the number of results displayed.
@@ -927,8 +944,7 @@ trove configuration-list
 
 Lists all configuration groups.
 
-Optional arguments
-------------------
+**Optional arguments:**
 
 ``--limit <limit>``
   Limit the number of results displayed.
@@ -1074,8 +1090,7 @@ trove create
                        [--nic <net-id=<net-uuid>,v4-fixed-ip=<ip-addr>,port-id=<port-uuid>>]
                        [--configuration <configuration>]
                        [--replica_of <source_instance>] [--replica_count <count>]
-                       [--locality <policy>]
-                       [--module <module>]
+                       [--module <module>] [--locality <policy>]
 
 Creates a new instance.
 
@@ -1137,14 +1152,14 @@ Creates a new instance.
   Number of replicas to create (defaults to 1
   if replica_of specified).
 
-``--locality <policy>``
-  Locality policy to use when creating
-  replicas. Must be one of ['affinity', 'anti-
-  affinity']
-
 ``--module <module>``
   ID or name of the module to apply. Specify
   multiple times to apply multiple modules.
+
+``--locality <policy>``
+  Locality policy to use when creating
+  replicas. Choose one of affinity, anti-
+  affinity.
 
 .. _trove_database-create:
 
@@ -2254,8 +2269,7 @@ trove upgrade
 
 Upgrades an instance to a new datastore version.
 
-Positional arguments
---------------------
+**Positional arguments:**
 
 ``<instance>``
   ID or name of the instance.
@@ -2474,4 +2488,40 @@ must be provided.
 
 ``--new_host <new_host>``
   Optional new host of user.
+
+.. _trove_volume-type-list:
+
+trove volume-type-list
+~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: console
+
+   usage: trove volume-type-list [--datastore_type <datastore_type>]
+                                 [--datastore_version_id <datastore_version_id>]
+
+Lists available volume types.
+
+**Optional arguments:**
+
+``--datastore_type <datastore_type>``
+  Type of the datastore. For eg: mysql.
+
+``--datastore_version_id <datastore_version_id>``
+  ID of the datastore version.
+
+.. _trove_volume-type-show:
+
+trove volume-type-show
+~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: console
+
+   usage: trove volume-type-show <volume_type>
+
+Shows details of a volume type.
+
+**Positional arguments:**
+
+``<volume_type>``
+  ID or name of the volume type.
 
