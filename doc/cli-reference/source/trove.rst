@@ -9,7 +9,7 @@ Database service command-line client
 The trove client is the command-line interface (CLI) for
 the Database service API and its extensions.
 
-This chapter documents :command:`trove` version ``2.2.0``.
+This chapter documents :command:`trove` version ``1.4.1``.
 
 For help on a specific :command:`trove` command, enter:
 
@@ -340,6 +340,12 @@ trove usage
 ``user-update-attributes``
   Updates a user's attributes on an instance.
 
+``volume-type-list``
+  Lists available volume types.
+
+``volume-type-show``
+  Shows details of a volume type.
+
 ``bash-completion``
   Prints arguments for bash_completion.
 
@@ -353,7 +359,7 @@ trove optional arguments
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
 ``--version``
-  show program's version number and exit
+  Show program's version number and exit.
 
 ``--debug``
   Print debugging output.
@@ -478,7 +484,7 @@ trove optional arguments
 .. _trove_backup-copy:
 
 trove backup-copy
------------------
+~~~~~~~~~~~~~~~~~
 
 .. code-block:: console
 
@@ -506,7 +512,7 @@ Creates a backup from another backup.
 .. _trove_backup-create:
 
 trove backup-create
--------------------
+~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: console
 
@@ -535,7 +541,7 @@ Creates a backup of an instance.
 .. _trove_backup-delete:
 
 trove backup-delete
--------------------
+~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: console
 
@@ -546,12 +552,12 @@ Deletes a backup.
 **Positional arguments:**
 
 ``<backup>``
-  ID of the backup.
+  ID or name of the backup.
 
 .. _trove_backup-list:
 
 trove backup-list
------------------
+~~~~~~~~~~~~~~~~~
 
 .. code-block:: console
 
@@ -576,7 +582,7 @@ Lists available backups.
 .. _trove_backup-list-instance:
 
 trove backup-list-instance
---------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: console
 
@@ -602,7 +608,7 @@ Lists available backups for an instance.
 .. _trove_backup-show:
 
 trove backup-show
------------------
+~~~~~~~~~~~~~~~~~
 
 .. code-block:: console
 
@@ -618,12 +624,13 @@ Shows details of a backup.
 .. _trove_cluster-create:
 
 trove cluster-create
---------------------
+~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: console
 
    usage: trove cluster-create <name> <datastore> <datastore_version>
                                [--instance "opt=<value>[,opt=<value> ...] "]
+                               [--locality <policy>]
 
 Creates a new cluster.
 
@@ -641,7 +648,7 @@ Creates a new cluster.
 **Optional arguments:**
 
 ``--instance "opt=<value>[,opt=<value> ...] "``
-  Create an instance for the cluster. Specify
+  Add an instance to the cluster. Specify
   multiple times to create multiple instances.
   Valid options are:
   flavor=<flavor_name_or_id>,
@@ -653,10 +660,15 @@ Creates a new cluster.
   availability_zone=<AZ_hint_for_Nova>,
   module=<module_name_or_id>.
 
+``--locality <policy>``
+  Locality policy to use when creating
+  cluster. Choose one of affinity, anti-
+  affinity.
+
 .. _trove_cluster-delete:
 
 trove cluster-delete
---------------------
+~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: console
 
@@ -672,7 +684,7 @@ Deletes a cluster.
 .. _trove_cluster-grow:
 
 trove cluster-grow
-------------------
+~~~~~~~~~~~~~~~~~~
 
 .. code-block:: console
 
@@ -691,14 +703,20 @@ Adds more instances to a cluster.
 ``--instance "opt=<value>[,opt=<value> ...] "``
   Add an instance to the cluster. Specify
   multiple times to create multiple instances.
-  Valid options are: name=<name>,
-  flavor=<flavor_name_or_id>, volume=<volume>,
+  Valid options are:
+  flavor=<flavor_name_or_id>,
+  volume=<disk_size_in_GB>,
+  volume_type=<type>, nic='<net-id=<net-uuid>,
+  v4-fixed-ip=<ip-addr>, port-id=<port-uuid>>'
+  (where net-id=network_id, v4-fixed-
+  ip=IPv4r_fixed_address, port-id=port_id),
+  availability_zone=<AZ_hint_for_Nova>,
   module=<module_name_or_id>.
 
 .. _trove_cluster-instances:
 
 trove cluster-instances
------------------------
+~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: console
 
@@ -714,7 +732,7 @@ Lists all instances of a cluster.
 .. _trove_cluster-list:
 
 trove cluster-list
-------------------
+~~~~~~~~~~~~~~~~~~
 
 .. code-block:: console
 
@@ -735,7 +753,7 @@ Lists all the clusters.
 .. _trove_cluster-modules:
 
 trove cluster-modules
----------------------
+~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: console
 
@@ -751,7 +769,7 @@ Lists all modules for each instance of a cluster.
 .. _trove_cluster-show:
 
 trove cluster-show
-------------------
+~~~~~~~~~~~~~~~~~~
 
 .. code-block:: console
 
@@ -767,7 +785,7 @@ Shows details of a cluster.
 .. _trove_cluster-shrink:
 
 trove cluster-shrink
---------------------
+~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: console
 
@@ -787,7 +805,7 @@ Drops instances from a cluster.
 .. _trove_configuration-attach:
 
 trove configuration-attach
---------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: console
 
@@ -806,7 +824,7 @@ Attaches a configuration group to an instance.
 .. _trove_configuration-create:
 
 trove configuration-create
---------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: console
 
@@ -843,7 +861,7 @@ Creates a configuration group.
 .. _trove_configuration-default:
 
 trove configuration-default
----------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: console
 
@@ -859,7 +877,7 @@ Shows the default configuration of an instance.
 .. _trove_configuration-delete:
 
 trove configuration-delete
---------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: console
 
@@ -875,7 +893,7 @@ Deletes a configuration group.
 .. _trove_configuration-detach:
 
 trove configuration-detach
---------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: console
 
@@ -891,7 +909,7 @@ Detaches a configuration group from an instance.
 .. _trove_configuration-instances:
 
 trove configuration-instances
------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: console
 
@@ -905,8 +923,7 @@ Lists all instances associated with a configuration group.
 ``<configuration_group>``
   ID of the configuration group.
 
-Optional arguments
-------------------
+**Optional arguments:**
 
 ``--limit <limit>``
   Limit the number of results displayed.
@@ -919,7 +936,7 @@ Optional arguments
 .. _trove_configuration-list:
 
 trove configuration-list
-------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: console
 
@@ -927,8 +944,7 @@ trove configuration-list
 
 Lists all configuration groups.
 
-Optional arguments
-------------------
+**Optional arguments:**
 
 ``--limit <limit>``
   Limit the number of results displayed.
@@ -941,7 +957,7 @@ Optional arguments
 .. _trove_configuration-parameter-list:
 
 trove configuration-parameter-list
-----------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: console
 
@@ -966,7 +982,7 @@ Lists available parameters for a configuration group.
 .. _trove_configuration-parameter-show:
 
 trove configuration-parameter-show
-----------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: console
 
@@ -994,7 +1010,7 @@ Shows details of a configuration parameter.
 .. _trove_configuration-patch:
 
 trove configuration-patch
--------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: console
 
@@ -1013,7 +1029,7 @@ Patches a configuration group.
 .. _trove_configuration-show:
 
 trove configuration-show
-------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: console
 
@@ -1029,7 +1045,7 @@ Shows details of a configuration group.
 .. _trove_configuration-update:
 
 trove configuration-update
---------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: console
 
@@ -1059,7 +1075,7 @@ Updates a configuration group.
 .. _trove_create:
 
 trove create
-------------
+~~~~~~~~~~~~
 
 .. code-block:: console
 
@@ -1074,8 +1090,7 @@ trove create
                        [--nic <net-id=<net-uuid>,v4-fixed-ip=<ip-addr>,port-id=<port-uuid>>]
                        [--configuration <configuration>]
                        [--replica_of <source_instance>] [--replica_count <count>]
-                       [--locality <policy>]
-                       [--module <module>]
+                       [--module <module>] [--locality <policy>]
 
 Creates a new instance.
 
@@ -1137,19 +1152,19 @@ Creates a new instance.
   Number of replicas to create (defaults to 1
   if replica_of specified).
 
-``--locality <policy>``
-  Locality policy to use when creating
-  replicas. Must be one of ['affinity', 'anti-
-  affinity']
-
 ``--module <module>``
   ID or name of the module to apply. Specify
   multiple times to apply multiple modules.
 
+``--locality <policy>``
+  Locality policy to use when creating
+  replicas. Choose one of affinity, anti-
+  affinity.
+
 .. _trove_database-create:
 
 trove database-create
----------------------
+~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: console
 
@@ -1178,7 +1193,7 @@ Creates a database on an instance.
 .. _trove_database-delete:
 
 trove database-delete
----------------------
+~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: console
 
@@ -1197,7 +1212,7 @@ Deletes a database from an instance.
 .. _trove_database-list:
 
 trove database-list
--------------------
+~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: console
 
@@ -1213,7 +1228,7 @@ Lists available databases on an instance.
 .. _trove_datastore-list:
 
 trove datastore-list
---------------------
+~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: console
 
@@ -1224,7 +1239,7 @@ Lists available datastores.
 .. _trove_datastore-show:
 
 trove datastore-show
---------------------
+~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: console
 
@@ -1240,7 +1255,7 @@ Shows details of a datastore.
 .. _trove_datastore-version-list:
 
 trove datastore-version-list
-----------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: console
 
@@ -1256,7 +1271,7 @@ Lists available versions for a datastore.
 .. _trove_datastore-version-show:
 
 trove datastore-version-show
-----------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: console
 
@@ -1279,7 +1294,7 @@ Shows details of a datastore version.
 .. _trove_delete:
 
 trove delete
-------------
+~~~~~~~~~~~~
 
 .. code-block:: console
 
@@ -1295,7 +1310,7 @@ Deletes an instance.
 .. _trove_detach-replica:
 
 trove detach-replica
---------------------
+~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: console
 
@@ -1311,7 +1326,7 @@ Detaches a replica instance from its replication source.
 .. _trove_eject-replica-source:
 
 trove eject-replica-source
---------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: console
 
@@ -1327,7 +1342,7 @@ Ejects a replica source from its set.
 .. _trove_flavor-list:
 
 trove flavor-list
------------------
+~~~~~~~~~~~~~~~~~
 
 .. code-block:: console
 
@@ -1347,7 +1362,7 @@ Lists available flavors.
 .. _trove_flavor-show:
 
 trove flavor-show
------------------
+~~~~~~~~~~~~~~~~~
 
 .. code-block:: console
 
@@ -1363,7 +1378,7 @@ Shows details of a flavor.
 .. _trove_limit-list:
 
 trove limit-list
-----------------
+~~~~~~~~~~~~~~~~
 
 .. code-block:: console
 
@@ -1371,38 +1386,10 @@ trove limit-list
 
 Lists the limits for a tenant.
 
-.. _trove_list:
-
-trove list
-----------
-
-.. code-block:: console
-
-   usage: trove list [--limit <limit>] [--marker <ID>] [--include_clustered]
-
-Lists all the instances.
-
-**Optional arguments:**
-
-``--limit <limit>``
-  Limit the number of results displayed.
-
-``--marker <ID>``
-  Begin displaying the results for IDs greater
-  than the specified marker. When used with
-  :option:`--limit,` set this to the last ID displayed
-  in the previous run.
-
-``--include_clustered, --include-clustered``
-  Include instances that are part of a cluster
-  (default False). :option:`--include-clustered` may be
-  deprecated in the future, retaining just
-  :option:`--include_clustered`.
-
 .. _trove_log-disable:
 
 trove log-disable
------------------
+~~~~~~~~~~~~~~~~~
 
 .. code-block:: console
 
@@ -1426,7 +1413,7 @@ Instructs Trove guest to stop collecting log details.
 .. _trove_log-discard:
 
 trove log-discard
------------------
+~~~~~~~~~~~~~~~~~
 
 .. code-block:: console
 
@@ -1445,7 +1432,7 @@ Instructs Trove guest to discard the container of the published log.
 .. _trove_log-enable:
 
 trove log-enable
-----------------
+~~~~~~~~~~~~~~~~
 
 .. code-block:: console
 
@@ -1464,7 +1451,7 @@ Instructs Trove guest to start collecting log details.
 .. _trove_log-list:
 
 trove log-list
---------------
+~~~~~~~~~~~~~~
 
 .. code-block:: console
 
@@ -1480,7 +1467,7 @@ Lists the log files available for instance.
 .. _trove_log-publish:
 
 trove log-publish
------------------
+~~~~~~~~~~~~~~~~~
 
 .. code-block:: console
 
@@ -1507,7 +1494,7 @@ Instructs Trove guest to publish latest log entries on instance.
 .. _trove_log-save:
 
 trove log-save
---------------
+~~~~~~~~~~~~~~
 
 .. code-block:: console
 
@@ -1534,7 +1521,7 @@ Save log file for instance.
 .. _trove_log-show:
 
 trove log-show
---------------
+~~~~~~~~~~~~~~
 
 .. code-block:: console
 
@@ -1553,7 +1540,7 @@ Instructs Trove guest to show details of log.
 .. _trove_log-tail:
 
 trove log-tail
---------------
+~~~~~~~~~~~~~~
 
 .. code-block:: console
 
@@ -1580,7 +1567,7 @@ Display log entries for instance.
 .. _trove_metadata-create:
 
 trove metadata-create
----------------------
+~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: console
 
@@ -1602,7 +1589,7 @@ Creates metadata in the database for instance <id>.
 .. _trove_metadata-delete:
 
 trove metadata-delete
----------------------
+~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: console
 
@@ -1621,7 +1608,7 @@ Deletes metadata for instance <id>.
 .. _trove_metadata-edit:
 
 trove metadata-edit
--------------------
+~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: console
 
@@ -1643,7 +1630,7 @@ Replaces metadata value with a new one, this is non-destructive.
 .. _trove_metadata-list:
 
 trove metadata-list
--------------------
+~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: console
 
@@ -1659,7 +1646,7 @@ Shows all metadata for instance <id>.
 .. _trove_metadata-show:
 
 trove metadata-show
--------------------
+~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: console
 
@@ -1678,7 +1665,7 @@ Shows metadata entry for key <key> and instance <id>.
 .. _trove_metadata-update:
 
 trove metadata-update
----------------------
+~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: console
 
@@ -1703,7 +1690,7 @@ Updates metadata, this is destructive.
 .. _trove_module-apply:
 
 trove module-apply
-------------------
+~~~~~~~~~~~~~~~~~~
 
 .. code-block:: console
 
@@ -1722,7 +1709,7 @@ Apply modules to an instance.
 .. _trove_module-create:
 
 trove module-create
--------------------
+~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: console
 
@@ -1778,7 +1765,7 @@ Create a module.
 .. _trove_module-delete:
 
 trove module-delete
--------------------
+~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: console
 
@@ -1794,7 +1781,7 @@ Delete a module.
 .. _trove_module-instances:
 
 trove module-instances
-----------------------
+~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: console
 
@@ -1826,7 +1813,7 @@ Lists the instances that have a particular module applied.
 .. _trove_module-list:
 
 trove module-list
------------------
+~~~~~~~~~~~~~~~~~
 
 .. code-block:: console
 
@@ -1843,7 +1830,7 @@ Lists the modules available.
 .. _trove_module-list-instance:
 
 trove module-list-instance
---------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: console
 
@@ -1859,7 +1846,7 @@ Lists the modules that have been applied to an instance.
 .. _trove_module-query:
 
 trove module-query
-------------------
+~~~~~~~~~~~~~~~~~~
 
 .. code-block:: console
 
@@ -1875,7 +1862,7 @@ Query the status of the modules on an instance.
 .. _trove_module-remove:
 
 trove module-remove
--------------------
+~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: console
 
@@ -1894,7 +1881,7 @@ Remove a module from an instance.
 .. _trove_module-retrieve:
 
 trove module-retrieve
----------------------
+~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: console
 
@@ -1923,7 +1910,7 @@ Retrieve module contents from an instance.
 .. _trove_module-show:
 
 trove module-show
------------------
+~~~~~~~~~~~~~~~~~
 
 .. code-block:: console
 
@@ -1939,7 +1926,7 @@ Shows details of a module.
 .. _trove_module-update:
 
 trove module-update
--------------------
+~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: console
 
@@ -2021,7 +2008,7 @@ Update a module.
 .. _trove_promote-to-replica-source:
 
 trove promote-to-replica-source
--------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: console
 
@@ -2037,7 +2024,7 @@ Promotes a replica to be the new replica source of its set.
 .. _trove_resize-instance:
 
 trove resize-instance
----------------------
+~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: console
 
@@ -2056,7 +2043,7 @@ Resizes an instance with a new flavor.
 .. _trove_resize-volume:
 
 trove resize-volume
--------------------
+~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: console
 
@@ -2075,7 +2062,7 @@ Resizes the volume size of an instance.
 .. _trove_restart:
 
 trove restart
--------------
+~~~~~~~~~~~~~
 
 .. code-block:: console
 
@@ -2091,7 +2078,7 @@ Restarts an instance.
 .. _trove_root-disable:
 
 trove root-disable
-------------------
+~~~~~~~~~~~~~~~~~~
 
 .. code-block:: console
 
@@ -2107,7 +2094,7 @@ Disables root for an instance.
 .. _trove_root-enable:
 
 trove root-enable
------------------
+~~~~~~~~~~~~~~~~~
 
 .. code-block:: console
 
@@ -2129,7 +2116,7 @@ Enables root for an instance and resets if already exists.
 .. _trove_root-show:
 
 trove root-show
----------------
+~~~~~~~~~~~~~~~
 
 .. code-block:: console
 
@@ -2145,7 +2132,7 @@ Gets status if root was ever enabled for an instance or cluster.
 .. _trove_secgroup-add-rule:
 
 trove secgroup-add-rule
------------------------
+~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: console
 
@@ -2164,7 +2151,7 @@ Creates a security group rule.
 .. _trove_secgroup-delete-rule:
 
 trove secgroup-delete-rule
---------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: console
 
@@ -2180,7 +2167,7 @@ Deletes a security group rule.
 .. _trove_secgroup-list:
 
 trove secgroup-list
--------------------
+~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: console
 
@@ -2191,7 +2178,7 @@ Lists all security groups.
 .. _trove_secgroup-list-rules:
 
 trove secgroup-list-rules
--------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: console
 
@@ -2207,7 +2194,7 @@ Lists all rules for a security group.
 .. _trove_secgroup-show:
 
 trove secgroup-show
--------------------
+~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: console
 
@@ -2223,7 +2210,7 @@ Shows details of a security group.
 .. _trove_show:
 
 trove show
-----------
+~~~~~~~~~~
 
 .. code-block:: console
 
@@ -2239,7 +2226,7 @@ Shows details of an instance.
 .. _trove_update:
 
 trove update
-------------
+~~~~~~~~~~~~
 
 .. code-block:: console
 
@@ -2282,8 +2269,7 @@ trove upgrade
 
 Upgrades an instance to a new datastore version.
 
-Positional arguments
---------------------
+**Positional arguments:**
 
 ``<instance>``
   ID or name of the instance.
@@ -2294,7 +2280,7 @@ Positional arguments
 .. _trove_user-create:
 
 trove user-create
------------------
+~~~~~~~~~~~~~~~~~
 
 .. code-block:: console
 
@@ -2326,7 +2312,7 @@ Creates a user on an instance.
 .. _trove_user-delete:
 
 trove user-delete
------------------
+~~~~~~~~~~~~~~~~~
 
 .. code-block:: console
 
@@ -2350,7 +2336,7 @@ Deletes a user from an instance.
 .. _trove_user-grant-access:
 
 trove user-grant-access
------------------------
+~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: console
 
@@ -2378,7 +2364,7 @@ Grants access to a database(s) for a user.
 .. _trove_user-list:
 
 trove user-list
----------------
+~~~~~~~~~~~~~~~
 
 .. code-block:: console
 
@@ -2394,7 +2380,7 @@ Lists the users for an instance.
 .. _trove_user-revoke-access:
 
 trove user-revoke-access
-------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: console
 
@@ -2421,7 +2407,7 @@ Revokes access to a database for a user.
 .. _trove_user-show:
 
 trove user-show
----------------
+~~~~~~~~~~~~~~~
 
 .. code-block:: console
 
@@ -2445,7 +2431,7 @@ Shows details of a user of an instance.
 .. _trove_user-show-access:
 
 trove user-show-access
-----------------------
+~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: console
 
@@ -2469,7 +2455,7 @@ Shows access details of a user of an instance.
 .. _trove_user-update-attributes:
 
 trove user-update-attributes
-----------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: console
 
@@ -2502,4 +2488,40 @@ must be provided.
 
 ``--new_host <new_host>``
   Optional new host of user.
+
+.. _trove_volume-type-list:
+
+trove volume-type-list
+~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: console
+
+   usage: trove volume-type-list [--datastore_type <datastore_type>]
+                                 [--datastore_version_id <datastore_version_id>]
+
+Lists available volume types.
+
+**Optional arguments:**
+
+``--datastore_type <datastore_type>``
+  Type of the datastore. For eg: mysql.
+
+``--datastore_version_id <datastore_version_id>``
+  ID of the datastore version.
+
+.. _trove_volume-type-show:
+
+trove volume-type-show
+~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: console
+
+   usage: trove volume-type-show <volume_type>
+
+Shows details of a volume type.
+
+**Positional arguments:**
+
+``<volume_type>``
+  ID or name of the volume type.
 
