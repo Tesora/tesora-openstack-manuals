@@ -10,11 +10,11 @@ if [[ $# > 0 ]] ; then
 fi
 
 # Do not build from stable/mitaka
-#for guide in user-guide admin-guide \
-#    contributor-guide image-guide arch-design cli-reference; do
-#    tools/build-rst.sh doc/$guide --build build \
-#        --target $guide $LINKCHECK
-#done
+for guide in user-guide admin-guide \
+    contributor-guide image-guide arch-design cli-reference; do
+    tools/build-rst.sh doc/$guide --build build \
+        --target $guide $LINKCHECK
+done
 
 # Draft guides
 # This includes guides that we publish from stable branches
