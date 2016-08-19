@@ -285,6 +285,12 @@ trove usage
   Promotes a replica to be the new replica
   source of its set.
 
+``quota-show``
+  Show quotas for a tenant.
+
+``quota-update``
+  Update quotas for a tenant.
+
 ``reset-status``
   Set the status to NONE.
 
@@ -663,7 +669,7 @@ trove cluster-create
 
    usage: trove cluster-create <name> <datastore> <datastore_version>
                                [--instance "opt=<value>[,opt=<value> ...] "]
-                               [--locality <policy>]
+                               [--locality <policy>] [--property <key=value>]
 
 Creates a new cluster.
 
@@ -697,6 +703,10 @@ Creates a new cluster.
   Locality policy to use when creating
   cluster. Choose one of affinity, anti-
   affinity.
+
+``--property <key=value>``
+  Arbitrary key/value properties for the
+  datastore.
 
 .. _trove_cluster-delete:
 
@@ -1165,7 +1175,7 @@ Creates a new instance.
   Name of the instance.
 
 ``<flavor>``
-  Flavor ID or name of the instance.
+  A flavor name or ID.
 
 **Optional arguments:**
 
@@ -2143,6 +2153,44 @@ Promotes a replica to be the new replica source of its set.
 
 ``<instance>``
   ID or name of the instance.
+
+.. _trove_quota-show:
+
+trove quota-show
+~~~~~~~~~~~~~~~~
+
+.. code-block:: console
+
+   usage: trove quota-show <tenant_id>
+
+Show quotas for a tenant.
+
+**Positional arguments:**
+
+``<tenant_id>``
+  Id of tenant for which to show quotas.
+
+.. _trove_quota-update:
+
+trove quota-update
+~~~~~~~~~~~~~~~~~~
+
+.. code-block:: console
+
+   usage: trove quota-update <tenant_id> <resource> <limit>
+
+Update quotas for a tenant.
+
+**Positional arguments:**
+
+``<tenant_id>``
+  Id of tenant for which to show quotas.
+
+``<resource>``
+  Id of resource to change.
+
+``<limit>``
+  New limit to set for the named resource.
 
 .. _trove_reset-status:
 
