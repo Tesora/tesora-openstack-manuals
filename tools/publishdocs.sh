@@ -185,6 +185,9 @@ cat << FOOTER >> $TARGET
 </html>
 FOOTER
 
+# remove 1 line of HTML that was a heading with a broken link
+sed -i '/^<h[0-9]>.*Contents.*<\/h[0-9]>$/d' $TARGET
+
 cat << IFRAME > $WRAPPER
 <iframe frameborder="0" height="650" src="http://docs.elasticdb.org/manuals/$ZUUL_REF/$TARGET" style="" width="100%"> </iframe></p>
 IFRAME
