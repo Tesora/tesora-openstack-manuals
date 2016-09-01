@@ -23,7 +23,6 @@ To insert a semantic markup into your document, use the syntax below.
 
   :markup:`inline text`
 
-
 Application
 ~~~~~~~~~~~
 
@@ -89,12 +88,11 @@ A term that appears in the glossary.
 +------------------------+---------------------------------------------------+
 | **Markup**             | ``:term:``                                        |
 +------------------------+---------------------------------------------------+
-| **Syntax**             | ``:term:`IaaS```                                  |
+| **Syntax**             | ``:term:`neutron```                               |
 |                        | or ``:term:`services <service>```                 |
 +------------------------+---------------------------------------------------+
-| **Example of output**  | OpenStack provides an :term:`IaaS` solution       |
-|                        | through a variety of complemental                 |
-|                        | :term:`services <service>`.                       |
+| **Example of output**  | OpenStack :term:`neutron` provides                |
+|                        | network-related :term:`services <service>`.       |
 +------------------------+---------------------------------------------------+
 
 .. _gui_element:
@@ -205,5 +203,3 @@ A literal text with a *variable* part in it wrapped in curly braces.
 | **Example of output**  | Use the :samp:`--flavor {FLAVOR}` parameter to    |
 |                        | specify the ID or name of the flavor.             |
 +------------------------+---------------------------------------------------+
-
-

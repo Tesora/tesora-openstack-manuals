@@ -66,15 +66,13 @@ and their associated references in the guide:
      - Password of Compute service user ``nova``
    * - ``RABBIT_PASS``
      - Password of user guest of RabbitMQ
-   * - ``SWIFT_PASS``
-     - Password of Object Storage service user ``swift``
 
 OpenStack and supporting services require administrative privileges
 during installation and operation. In some cases, services perform
 modifications to the host that can interfere with deployment automation
 tools such as Ansible, Chef, and Puppet. For example, some OpenStack
 services add a root wrapper to ``sudo`` that can interfere with security
-policies. See the `Administrator Guide <http://docs.openstack.org/
+policies. See the `OpenStack Administrator Guide <http://docs.openstack.org/
 admin-guide/compute-root-wrap-reference.html>`__
 for more information.
 

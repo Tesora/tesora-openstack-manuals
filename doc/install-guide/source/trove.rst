@@ -4,7 +4,7 @@ Database service
 
 .. toctree::
 
-   common/get_started_database_service.rst
+   common/get-started-database-service.rst
    trove-install.rst
    trove-verify.rst
    trove-next-steps.rst

@@ -20,10 +20,6 @@
      -
    * - ``agent_mode`` = ``legacy``
      - (String) The working mode for the agent. Allowed modes are: 'legacy' - this preserves the existing behavior where the L3 agent is deployed on a centralized networking node to provide L3 services like DNAT, and SNAT. Use this mode if you do not want to adopt DVR. 'dvr' - this mode enables DVR functionality and must be used for an L3 agent that runs on a compute host. 'dvr_snat' - this enables centralized SNAT support in conjunction with DVR. This mode must be used for an L3 agent running on a centralized node (or in single-host deployments, e.g. devstack)
-   * - ``allow_automatic_dhcp_failover`` = ``True``
-     - (Boolean) Automatically remove networks from offline DHCP agents.
-   * - ``allow_automatic_l3agent_failover`` = ``False``
-     - (Boolean) Automatically reschedule routers from offline L3 agents to online L3 agents.
    * - ``enable_metadata_proxy`` = ``True``
      - (Boolean) Allow running metadata proxy.
    * - ``enable_snat_by_default`` = ``True``
@@ -64,8 +60,6 @@
      - (Integer) Maximum number of L3 agents which a HA router will be scheduled on. If it is set to 0 then the router will be scheduled on every agent.
    * - ``min_l3_agents_per_router`` = ``2``
      - (Integer) Minimum number of L3 agents which a HA router will be scheduled on. If it is set to 0 then the router will be scheduled on every agent.
-   * - ``router_id`` =
-     - (String) DEPRECATED: If non-empty, the l3 agent can only configure a router that has the matching router ID.
    * - ``send_arp_for_ha`` = ``3``
      - (Integer) Send this many gratuitous ARPs for HA setup, if less than or equal to 0, the feature is disabled
    * - **[AGENT]**

@@ -11,9 +11,9 @@ value for your particular node.
 
 The service provisions logical volumes on this device using the
 :term:`LVM <Logical Volume Manager (LVM)>` driver and provides them
-to instances via :term:`iSCSI` transport. You can follow these
-instructions with minor modifications to horizontally scale your
-environment with additional storage nodes.
+to instances via :term:`iSCSI <iSCSI Qualified Name (IQN)>` transport.
+You can follow these instructions with minor modifications to horizontally
+scale your environment with additional storage nodes.
 
 Prerequisites
 -------------
@@ -147,9 +147,9 @@ Install and configure components
 
       .. code-block:: console
 
-         # yum install openstack-cinder targetcli
+         # yum install openstack-cinder targetcli python-keystone
 
-.. only:: ubuntu
+.. only:: ubuntu or debian
 
    #. Install the packages:
 
@@ -314,7 +314,7 @@ Finalize installation
         # systemctl enable openstack-cinder-volume.service target.service
         # systemctl start openstack-cinder-volume.service target.service
 
-.. only:: ubuntu
+.. only:: ubuntu or debian
 
    #. Restart the Block Storage volume service including its dependencies:
 
@@ -322,11 +322,3 @@ Finalize installation
 
          # service tgt restart
          # service cinder-volume restart
-
-   #. By default, the Ubuntu packages create an SQLite database.
-      Because this configuration uses an SQL database server,
-      remove the SQLite database file:
-
-      .. code-block:: console
-
-         # rm -f /var/lib/cinder/cinder.sqlite

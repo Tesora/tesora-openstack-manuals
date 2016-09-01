@@ -146,7 +146,7 @@ Launch the instance
       +--------------------------------------+-------------------+--------+---------------------------------+
       | ID                                   | Name              | Status | Networks                        |
       +--------------------------------------+-------------------+--------+---------------------------------+
-      | 181c52ba-aebc-4c32-a97d-2e8e82e4eaaf | provider-instance | ACTIVE | provider=203.0.113.103 |
+      | 181c52ba-aebc-4c32-a97d-2e8e82e4eaaf | provider-instance | ACTIVE | provider=203.0.113.103          |
       +--------------------------------------+-------------------+--------+---------------------------------+
 
    The status changes from ``BUILD`` to ``ACTIVE`` when the build process
@@ -241,8 +241,10 @@ Access the instance remotely
       $
 
 If your instance does not launch or seem to work as you expect, see the
-`OpenStack Operations Guide <http://docs.openstack.org/ops>`__ for more
-information or use one of the :doc:`many other options <common/app_support>`
+`Instance Boot Failures
+<http://docs.openstack.org/ops-guide/ops-maintenance-compute.html#instances>`__
+section in OpenStack Operations Guide for more information or use one of
+the :doc:`many other options <common/app-support>`
 to seek assistance. We want your first installation to work!
 
 Return to :ref:`Launch an instance <launch-instance-complete>`.

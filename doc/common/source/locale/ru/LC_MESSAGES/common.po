@@ -5,16 +5,17 @@
 # Ilya Alekseyev <ilyaalekseyev@acm.org>, 2014
 # Stanislav Hanzhin <hanzhin.stas@gmail.com>, 2012
 # Andreas Jaeger <jaegerandi@gmail.com>, 2016. #zanata
+# Ilya Alekseyev <ilyaalekseyev@acm.org>, 2016. #zanata
 msgid ""
 msgstr ""
 "Project-Id-Version: Common documents 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-30 05:09+0000\n"
+"POT-Creation-Date: 2016-08-31 10:46+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2015-09-02 12:35+0000\n"
-"Last-Translator: openstackjenkins <jenkins@openstack.org>\n"
+"PO-Revision-Date: 2016-08-30 06:23+0000\n"
+"Last-Translator: Ilya Alekseyev <ilyaalekseyev@acm.org>\n"
 "Language: ru\n"
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
@@ -32,12 +33,6 @@ msgid ""
 "A minimal Linux distribution designed for use as a test image on clouds such "
 "as OpenStack."
 msgstr "CirrOS"
-
-msgid "ACL"
-msgstr "ACL"
-
-msgid "AWS"
-msgstr "AWS"
 
 msgid "Active Directory"
 msgstr "Active Directory"
@@ -84,15 +79,6 @@ msgstr "BMC"
 msgid "Bootstrap Protocol (BOOTP)"
 msgstr "Протокол Bootstrap (BOOTP)"
 
-msgid "CA"
-msgstr "CA"
-
-msgid "CADF"
-msgstr "CADF"
-
-msgid "CMDB"
-msgstr "CMDB"
-
 msgid "Cactus"
 msgstr "Cactus"
 
@@ -114,23 +100,14 @@ msgstr "CirrOS"
 msgid "Client"
 msgstr "Клиент"
 
+msgid "Community support"
+msgstr "Поддержка сообщества"
+
 msgid "Conceptual architecture"
 msgstr "Концептуальная архитектура"
 
 msgid "Crowbar"
 msgstr "Crowbar"
-
-msgid "DAC"
-msgstr "DAC"
-
-msgid "DHCP"
-msgstr "DHCP"
-
-msgid "DNS"
-msgstr "DNS"
-
-msgid "DRTM"
-msgstr "DRTM"
 
 msgid "Database"
 msgstr "База данных"
@@ -149,6 +126,32 @@ msgstr "Diablo"
 
 msgid "Django"
 msgstr "Django"
+
+msgid "Documentation"
+msgstr "Документация"
+
+msgid ""
+"During the set up or testing of OpenStack, you might have questions about "
+"how a specific task is completed or be in a situation where a feature does "
+"not work correctly. Use the `ask.openstack.org <https://ask.openstack."
+"org>`__ site to ask questions and get answers. When you visit the https://"
+"ask.openstack.org site, scan the recently asked questions to see whether "
+"your question has already been answered. If not, ask a new question. Be sure "
+"to give a clear, concise summary in the title and provide as much detail as "
+"possible in the description. Paste in your command output or stack traces, "
+"links to screen shots, and any other information which might be useful."
+msgstr ""
+"В течении установки или тестирования OpenStack, у вас могут появится вопросы "
+"о том как  справится с определенной задачей или встретится ситуация в "
+"которой определенная функциональность работает не корректно. Используйте "
+"ресурс `ask.openstack.org <https://ask.openstack.org>`__ чтобы задавать "
+"вопросы и получать на них ответы. Когда вы посетите сайт https://ask."
+"openstack.org, осмотрите список недавно заданных вопросов, возможно вы "
+"найдете ответ на свой вопрос. Если ответ найти не удалось, задайте вопрос. "
+"Убедитесь, что вы предоставили понятный краткий заголовок вопроса и добавьте "
+"в описании как можно более полную информацию. Скопируйте вывод ваших комманд "
+"или трассировки стека, ссылки на снимки экрана и другую информацию которая "
+"может быть полезна."
 
 msgid "EC2"
 msgstr "EC2"
@@ -189,6 +192,13 @@ msgstr "Folsom"
 msgid "For example:"
 msgstr "Например:"
 
+msgid ""
+"For the available OpenStack documentation, see `docs.openstack.org <http://"
+"docs.openstack.org>`__."
+msgstr ""
+"Документация OpenStack доступна по ссылке `docs.openstack.org <http://docs."
+"openstack.org>`__."
+
 msgid "FormPost"
 msgstr "FormPost"
 
@@ -220,27 +230,6 @@ msgstr "Havana"
 
 msgid "Hyper-V"
 msgstr "Hyper-V"
-
-msgid "ICMP"
-msgstr "ICMP"
-
-msgid "IDS"
-msgstr "IDS"
-
-msgid "INI"
-msgstr "INI"
-
-msgid "IOPS"
-msgstr "IOPS"
-
-msgid "IPL"
-msgstr "IPL"
-
-msgid "IPMI"
-msgstr "IPMI"
-
-msgid "IaaS"
-msgstr "IaaS"
 
 msgid "Icehouse"
 msgstr "Icehouse"
@@ -278,8 +267,8 @@ msgstr "OpenLDAP"
 msgid "OpenStack"
 msgstr "OpenStack"
 
-msgid "OpenStack dashboard"
-msgstr "Панель управления OpenStack"
+msgid "OpenStack mailing lists"
+msgstr "Листы рассылки OpenStack"
 
 msgid "Overview"
 msgstr "Обзор"
@@ -326,9 +315,6 @@ msgstr "S3"
 msgid "SELinux"
 msgstr "SELinux"
 
-msgid "SPICE"
-msgstr "SPICE"
-
 msgid "SQL-Alchemy"
 msgstr "SQL-Alchemy"
 
@@ -359,9 +345,68 @@ msgstr "Багтрекер Launchpad"
 msgid "The OpenStack IRC channel"
 msgstr "IRC канал OpenStack"
 
+msgid "The OpenStack wiki"
+msgstr "OpenStack wiki"
+
+msgid ""
+"The following books explain how to configure and run an OpenStack cloud:"
+msgstr ""
+"Следующие книги объясняют как сконфигурировать и запустить облако OpenStack:"
+
+msgid ""
+"The following books explain how to install an OpenStack cloud and its "
+"associated components:"
+msgstr ""
+"Следующие книги объясняют как установить облако OpenStack и связанные с ним "
+"компоненты:"
+
+msgid ""
+"The following books explain how to use the OpenStack dashboard and command-"
+"line clients:"
+msgstr ""
+"Следующие книги объясняют как использовать веб-портал OpenStack и клиентов "
+"командной строки:"
+
 msgid ""
 "The following diagram shows the relationships among the OpenStack services:"
 msgstr "Следующая диаграмма показывает отношения между сервисами OpenStack:"
+
+msgid ""
+"The following documentation provides reference and guidance information for "
+"the OpenStack APIs:"
+msgstr ""
+"Следующие разделы документации предоставляют справку и руководства по API:"
+
+msgid ""
+"The following guide provides how to contribute to OpenStack documentation:"
+msgstr ""
+"Следующее руководство содержит информацию о том как внести свой вклад в "
+"документацию OpenStack:"
+
+msgid ""
+"The following resources are available to help you run and use OpenStack. The "
+"OpenStack community constantly improves and adds to the main features of "
+"OpenStack, but if you have any questions, do not hesitate to ask. Use the "
+"following resources to get OpenStack support and troubleshoot your "
+"installations."
+msgstr ""
+"Чтобы помочь вам запустить и использовать OpenStack доступны следующие "
+"ресурсы . Сообщество OpenStack постоянно улучшает и делает дополнения к "
+"основной функциональности OpenStack, и если у вас есть любые вопросы не "
+"стесняйтесь их задавать. Используйте эти ресурсы чтобы получить поддержку по "
+"OpenStack и решить проблемы ваших инсталляций."
+
+msgid ""
+"To provide feedback on documentation, join and use the openstack-docs@lists."
+"openstack.org mailing list at `OpenStack Documentation Mailing List <http://"
+"lists.openstack.org/cgi-bin/mailman/listinfo/openstack-docs>`__, or `report "
+"a bug <https://bugs.launchpad.net/openstack-manuals/+filebug>`__."
+msgstr ""
+"Свои комментарии по документации вы можете отправить в лист рассылки  "
+"openstack-docs@lists.openstack.org предварительно присоединившись к листу  "
+"по ссылке `OpenStack Documentation Mailing List <http://lists.openstack.org/"
+"cgi-bin/mailman/listinfo/openstack-docs>`__, или добавив баг по ссылке "
+"`report a bug <https://bugs.launchpad.net/openstack-manuals/+filebug>`__."
 
 msgid "TripleO"
 msgstr "TripleO"
@@ -371,9 +416,6 @@ msgstr "Ubuntu"
 
 msgid "VIF UUID"
 msgstr "VIF UUID"
-
-msgid "VIP"
-msgstr "VIP"
 
 msgid "VirtualBox"
 msgstr "VirtualBox"
@@ -396,11 +438,110 @@ msgstr "ZeroMQ"
 msgid "Zuul"
 msgstr "Zuul"
 
+msgid ""
+"`API Complete Reference (HTML) <http://developer.openstack.org/api-ref."
+"html>`__"
+msgstr ""
+"`Полная справка по API (HTML) <http://developer.openstack.org/api-ref."
+"html>`__"
+
+msgid ""
+"`API Complete Reference (PDF) <http://developer.openstack.org/api-ref-guides/"
+"bk-api-ref.pdf>`__"
+msgstr ""
+"`Полная справка по API (PDF) <http://developer.openstack.org/api-ref-guides/"
+"bk-api-ref.pdf>`__"
+
+msgid "`API Guide <http://developer.openstack.org/api-guide/quick-start/>`__"
+msgstr ""
+"`Руководство по API <http://developer.openstack.org/api-guide/quick-start/"
+">`__"
+
+msgid "`Administrator Guide <http://docs.openstack.org/admin-guide/>`__"
+msgstr ""
+"`Руководство администратора <http://docs.openstack.org/admin-guide/>`__"
+
+msgid "`Architecture Design Guide <http://docs.openstack.org/arch-design/>`__"
+msgstr ""
+"`Руководство по проектированию архитектуры <http://docs.openstack.org/arch-"
+"design/>`__"
+
+msgid ""
+"`Command-Line Interface Reference <http://docs.openstack.org/cli-reference/"
+">`__"
+msgstr ""
+"`Справка по интерфейсу командной строки <http://docs.openstack.org/cli-"
+"reference/>`__"
+
+msgid ""
+"`Configuration Reference <http://docs.openstack.org/mitaka/config-reference/"
+">`__"
+msgstr ""
+"`Справка по конфигурации <http://docs.openstack.org/mitaka/config-reference/"
+">`__"
+
+msgid ""
+"`Documentation Contributor Guide <http://docs.openstack.org/contributor-"
+"guide/>`__"
+msgstr ""
+"`Руководство контрибьютора документации <http://docs.openstack.org/"
+"contributor-guide/>`__"
+
+msgid "`End User Guide <http://docs.openstack.org/user-guide/>`__"
+msgstr ""
+"`Руководство конечного пользователя <http://docs.openstack.org/user-guide/"
+">`__"
+
+msgid "`High Availability Guide <http://docs.openstack.org/ha-guide/>`__"
+msgstr ""
+"`Руководство по высокой доступности <http://docs.openstack.org/ha-guide/>`__"
+
+msgid ""
+"`Installation Guide for Red Hat Enterprise Linux 7 and CentOS 7 <http://docs."
+"openstack.org/mitaka/install-guide-rdo/>`__"
+msgstr ""
+"`Руководство по установке для Red Hat Enterprise Linux 7 и CentOS 7 <http://"
+"docs.openstack.org/mitaka/install-guide-rdo/>`__"
+
+msgid ""
+"`Installation Guide for Ubuntu 14.04 (LTS) <http://docs.openstack.org/mitaka/"
+"install-guide-ubuntu/>`__"
+msgstr ""
+"`Руководство по установке для Ubuntu 14.04 (LTS) <http://docs.openstack.org/"
+"mitaka/install-guide-ubuntu/>`__"
+
+msgid ""
+"`Installation Guide for openSUSE Leap 42.1 and SUSE Linux Enterprise Server "
+"12 SP1 <http://docs.openstack.org/mitaka/install-guide-obs/>`__"
+msgstr ""
+"`Руководство по установке для openSUSE Leap 42.1 и SUSE Linux Enterprise "
+"Server 12 SP1 <http://docs.openstack.org/mitaka/install-guide-obs/>`__"
+
+msgid ""
+"`Networking Guide <http://docs.openstack.org/mitaka/networking-guide>`__"
+msgstr ""
+"`Руководство по сети <http://docs.openstack.org/mitaka/networking-guide>`__"
+
+msgid "`Operations Guide <http://docs.openstack.org/ops/>`__"
+msgstr "`Руководство по эксплуатации <http://docs.openstack.org/ops/>`__"
+
+msgid "`Security Guide <http://docs.openstack.org/sec/>`__"
+msgstr "`Руководство по безопасности <http://docs.openstack.org/sec/>`__"
+
+msgid ""
+"`Virtual Machine Image Guide <http://docs.openstack.org/image-guide/>`__"
+msgstr ""
+"`Руководство по образам виртуальных машин <http://docs.openstack.org/image-"
+"guide/>`__"
+
 msgid "access key"
 msgstr "ключ доступа"
 
 msgid "account"
 msgstr "аккаунт"
+
+msgid "ask.openstack.org"
+msgstr "ask.openstack.org"
 
 msgid "ceilometer"
 msgstr "ceilometer"
@@ -437,9 +578,6 @@ msgstr "horizon"
 
 msgid "host"
 msgstr "Узел"
-
-msgid "iSCSI"
-msgstr "iSCSI"
 
 msgid "instance"
 msgstr "инстанс"

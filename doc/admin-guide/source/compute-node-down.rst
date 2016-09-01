@@ -13,7 +13,7 @@ Evacuate instances
 
 If a hardware malfunction or other error causes the cloud compute node to
 fail, you can use the :command:`nova evacuate` command to evacuate instances.
-See the `Administrator Guide <http://docs.openstack.org/admin-guide/cli_nova_evacuate.html>`__.
+See the `OpenStack Administrator Guide <http://docs.openstack.org/admin-guide/cli-nova-evacuate.html>`__.
 
 .. _nova-compute-node-down-manual-recovery:
 
@@ -326,3 +326,9 @@ session. This example closes an iSCSI session with the number ``15``:
    # iscsiadm -m session -u -r 15
 
 Do not forget the :option:`-r` option. Otherwise, all sessions close.
+
+.. warning::
+
+   There is potential for data loss while running instances during
+   this procedure. If you are using Liberty or earlier, ensure you have the
+   correct patch and set the options appropriately.

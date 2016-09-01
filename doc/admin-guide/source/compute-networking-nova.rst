@@ -135,7 +135,7 @@ compute node runs its own ``nova-network`` service. In both cases, all
 traffic between VMs and the internet flows through ``nova-network``. Each
 mode has benefits and drawbacks. For more on this, see the Network
 Topology section in the `OpenStack Operations Guide
-<http://docs.openstack.org/openstack-ops/content/network_design.html#network_topology>`__.
+<http://docs.openstack.org/ops-guide/arch-network-design.html#network-topology>`__.
 
 All networking options require network connectivity to be already set up
 between OpenStack physical nodes. OpenStack does not configure any
@@ -719,7 +719,7 @@ to perform floating IP operations:
 
 For more information about how administrators can associate floating IPs
 with instances, see `Manage IP
-addresses <http://docs.openstack.org/admin-guide/cli_admin_manage_ip_addresses.html>`__
+addresses <http://docs.openstack.org/admin-guide/cli-admin-manage-ip-addresses.html>`__
 in the OpenStack Administrator Guide.
 
 Automatically add floating IPs

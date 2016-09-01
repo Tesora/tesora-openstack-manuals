@@ -843,7 +843,7 @@ arrived and then flushes them all down the pipeline at once:
          parameters:
              size: 15
 
-**Muli meter arithmetic transformer**
+**Multi meter arithmetic transformer**
 
 This transformer enables us to perform arithmetic calculations over one
 or more meters and/or their metadata, for example:
@@ -938,7 +938,7 @@ A standard meter definition looks like:
        type: 'type of meter eg: gauge, cumulative or delta'
        unit: 'name of unit eg: MB'
        volume: 'path to a measurable value eg: $.payload.size'
-       resource_id: 'path to resouce id eg: $.payload.id'
+       resource_id: 'path to resource id eg: $.payload.id'
        project_id: 'path to project id eg: $.payload.owner'
 
 The definition above shows a simple meter definition with some fields,

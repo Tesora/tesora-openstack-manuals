@@ -74,11 +74,11 @@ iSCSI connections.
 Configure storage pools
 -----------------------
 
-Each instance of the IBM Storwize/SVC driver allocates all volumes in a
-single pool. The pool should be created in advance and be provided to
-the driver using the ``storwize_svc_volpool_name`` configuration flag.
-For more details, see the configuration flags and how to provide the flags to
-the driver here: :ref:`config_flags`.
+The IBM Storwize/SVC driver can allocate volumes in multiple pools.
+The pools should be created in advance and be provided to the driver
+using the ``storwize_svc_volpool_name`` configuration flag in the form
+of a comma-separated list.
+For the complete list of configuration flags, see :ref:`config_flags`.
 
 Configure user authentication for the driver
 --------------------------------------------
@@ -88,7 +88,8 @@ management interface. The driver communicates with the management using
 SSH. The driver should be provided with the Storwize family or SVC
 management IP using the ``san_ip`` flag, and the management port should
 be provided by the ``san_ssh_port`` flag. By default, the port value is
-configured to be port 22 (SSH).
+configured to be port 22 (SSH). Also, you can set the secondary
+management IP using the ``storwize_san_secondary_ip`` flag.
 
 .. note::
 

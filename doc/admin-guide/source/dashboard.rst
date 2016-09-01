@@ -13,21 +13,25 @@ for your operating system.
 .. toctree::
    :maxdepth: 2
 
-   common/dashboard_customizing.rst
-   dashboard_sessions.rst
-   dashboard_manage_images.rst
-   dashboard_admin_manage_roles.rst
-   dashboard_manage_instances.rst
-   dashboard_manage_flavors.rst
-   dashboard_manage_volumes.rst
-   dashboard_manage_shares.rst
-   dashboard_set_quotas.rst
-   dashboard_manage_resources.rst
-   dashboard_manage_host_aggregates.rst
-   dashboard_admin_manage_stacks.rst
+   common/dashboard-customizing.rst
+   dashboard-sessions.rst
+   dashboard-manage-images.rst
+   dashboard-admin-manage-roles.rst
+   dashboard-manage-instances.rst
+   dashboard-manage-flavors.rst
+   dashboard-manage-volumes.rst
+   dashboard-manage-shares.rst
+   dashboard-set-quotas.rst
+   dashboard-manage-resources.rst
+   dashboard-manage-host-aggregates.rst
+   dashboard-admin-manage-stacks.rst
 
 - To deploy the dashboard, see the `OpenStack dashboard documentation
   <http://docs.openstack.org/developer/horizon/topics/deployment.html>`__.
-- To launch instances with the dashboard, see the `OpenStack End User
-  Guide <http://docs.openstack.org/user-guide/dashboard_launch_instances.html>`__.
-
+- To launch instances with the dashboard as an end user, see the
+  `Launch and manage instances
+  <http://docs.openstack.org/user-guide/dashboard-launch-instances.html>`__.
+  in the OpenStack End User Guide.
+- To create and manage ports, see the `Create and manage networks
+  <http://docs.openstack.org/user-guide/dashboard-create-networks.html#create-a-port>`__
+  section of the OpenStack End User Guide.
