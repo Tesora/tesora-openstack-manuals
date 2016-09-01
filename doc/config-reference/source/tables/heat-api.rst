@@ -93,7 +93,7 @@
    * - ``bind_host`` = ``0.0.0.0``
      - (Unknown) Address to bind the server. Useful when selecting a particular network interface.
    * - ``bind_port`` = ``8004``
-     - (Unknown) The port on which the server will listen.
+     - (Port number) The port on which the server will listen.
    * - ``cert_file`` = ``None``
      - (String) Location of the SSL certificate file to use for SSL mode.
    * - ``key_file`` = ``None``
@@ -110,14 +110,6 @@
      - (Integer) The maximum body size for each request, in bytes.
    * - ``secure_proxy_ssl_header`` = ``X-Forwarded-Proto``
      - (String) DEPRECATED: The HTTP Header that will be used to determine what the original request protocol scheme was, even if it was hidden by an SSL termination proxy.
-   * - **[oslo_policy]**
-     -
-   * - ``policy_default_rule`` = ``default``
-     - (String) Default rule. Enforced when a requested rule is not found.
-   * - ``policy_dirs`` = ``['policy.d']``
-     - (Multi-valued) Directories where policy configuration files are stored. They can be relative to any directory in the search path defined by the config_dir option, or absolute paths. The file defined by policy_file must exist for these directories to be searched. Missing or empty directories are ignored.
-   * - ``policy_file`` = ``policy.json``
-     - (String) The JSON file that defines policies.
    * - **[oslo_versionedobjects]**
      -
    * - ``fatal_exception_format_errors`` = ``False``

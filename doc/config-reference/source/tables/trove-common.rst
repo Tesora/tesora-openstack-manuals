@@ -32,6 +32,8 @@
      - (Integer) Size of executor thread pool.
    * - ``expected_filetype_suffixes`` = ``json``
      - (List) Filetype endings not to be reattached to an ID by the utils method correct_id_with_req.
+   * - ``format_options`` = ``-m 5``
+     - (String) Options to use when formatting a volume.
    * - ``host`` = ``0.0.0.0``
      - (Unknown) Host to listen for RPC messages.
    * - ``memcached_servers`` = ``None``
@@ -42,12 +44,16 @@
      - (List) A list of module types supported. A module type corresponds to the name of a ModuleDriver.
    * - ``modules_page_size`` = ``20``
      - (Integer) Page size for listing modules.
+   * - ``network_label_regex`` = ``^private$``
+     - (String) Regular expression to match Trove network labels.
    * - ``pybasedir`` = ``/usr/lib/python/site-packages/trove/trove``
      - (String) Directory where the Trove python module is installed.
    * - ``pydev_path`` = ``None``
      - (String) Set path to pydevd library, used if pydevd is not found in python sys.path.
    * - ``quota_notification_interval`` = ``3600``
      - (Integer) Seconds to wait between pushing events.
+   * - ``sql_query_logging`` = ``False``
+     - (Boolean) Allow insecure logging while executing queries through SQLAlchemy.
    * - ``taskmanager_queue`` = ``taskmanager``
      - (String) Message queue name the Taskmanager will listen to.
    * - ``template_path`` = ``/etc/trove/templates/``
@@ -62,10 +68,6 @@
      - (String) Name of the Barbican authentication method to use
    * - ``cert_manager_type`` = ``barbican``
      - (String) Certificate Manager plugin. Defaults to barbican.
-   * - **[keystone_authtoken]**
-     -
-   * - ``memcached_servers`` = ``None``
-     - (List) Optionally specify a list of memcached server(s) to use for caching. If left undefined, tokens will instead be cached in-process.
    * - **[service_auth]**
      -
    * - ``admin_password`` = ``password``

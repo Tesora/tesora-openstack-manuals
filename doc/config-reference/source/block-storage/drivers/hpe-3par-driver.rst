@@ -191,7 +191,7 @@ Priority Optimization license installed.
 
 ``hpe3par:vvs``
  The virtual volume set name that has been predefined by the Administrator
- with Quality of Service (QoS) rules associated to it. If you specify
+ with :term:`quality of service (QoS)` rules associated to it. If you specify
  extra_specs ``hpe3par:vvs``, the qos_specs ``minIOPS``, ``maxIOPS``,
  ``minBWS``, and ``maxBWS`` settings are ignored.
 
@@ -229,6 +229,8 @@ Adaptive Flash Cache license installed.
 
 * ``hpe3par:flash_cache`` - The flash-cache policy, which can be turned on and
   off by setting the value to ``true`` or ``false``.
+
+LDAP authentication is supported if the 3PAR is configured to do so.
 
 Enable the HPE 3PAR Fibre Channel and iSCSI drivers
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -361,13 +363,11 @@ OpenStack software.
    .. note::
 
       You can configure one or more iSCSI addresses by using the
-      ``hpe3par_iscsi_ips`` option. When you configure multiple addresses, the
-      driver selects the iSCSI port with the fewest active volumes at attach
-      time. The IP address might include an IP port by using a colon (``:``)
-      to separate the address from port. If you do not define an IP port, the
-      default port 3260 is used. Separate IP addresses with a comma (``,``).
-      The ``iscsi_ip_address``/``iscsi_port`` options might be used as an
-      alternative to ``hpe3par_iscsi_ips`` for single port iSCSI configuration.
+      ``hpe3par_iscsi_ips`` option. Separate multiple IP addresses with a
+      comma (``,``). When you configure multiple addresses, the driver selects
+      the iSCSI port with the fewest active volumes at attach time. The 3PAR
+      array does not allow the default port 3260 to be changed, so IP ports
+      need not be specified.
 
 #. Save the changes to the ``cinder.conf`` file and restart the cinder-volume
    service.

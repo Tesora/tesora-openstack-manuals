@@ -125,8 +125,8 @@ The following steps are run during stack creation:
    in the stack domain are still assigned the ``heat_stack_user`` role, so
    the API surface they can access is limited through
    the :file:`policy.json` file.
-   For more  information, see :ref:`OpenStack Identity
-   documentation <identity_management>`.
+   For more  information, see :doc:`OpenStack Identity
+   documentation <identity-management>`.
 
 #. When API requests are processed, the Orchestration service performs
    an internal lookup, and allows stack details for a given stack to be
@@ -147,6 +147,6 @@ or::
   GET v1/​{stack_domain_project_id}​/stacks/​{stack_name}​/​\
   {stack_id}​/resources/​{resource_name}​/metadata
 
-The stack owner uses the former (via ``heat resource-metadata
-{stack_name} {resource_name}``), and any agents in the instance
+The stack owner uses the former (via ``openstack stack resource metadata
+STACK RESOURCE``), and any agents in the instance
 use the latter.

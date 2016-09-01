@@ -25,8 +25,8 @@ manage flavors. To see information for this command, run:
       ``compute_extension:flavormanage`` in ``/etc/nova/policy.json``
       on the ``nova-api`` server.
 
-   -  You can modify an existing flavor from the :guilabel:`Edit Flavor`
-      button in the Dashboard.
+   -  The Dashboard simulates the ability to modify a flavor
+      by deleting an existing flavor and creating a new one with the same name.
 
 Flavors define these elements:
 
@@ -46,17 +46,18 @@ Flavors define these elements:
 +-------------+---------------------------------------------------------------+
 | Ephemeral   | Specifies the size of a secondary ephemeral data disk. This   |
 |             | is an empty, unformatted disk and exists only for the life o\ |
-|             | f the instance.                                               |
+|             | f the instance. Default value is ``0``.                       |
 +-------------+---------------------------------------------------------------+
-| Swap        | Optional swap space allocation for the instance.              |
+| Swap        | Optional swap space allocation for the instance. Default      |
+|             | value is ``0``.                                               |
 +-------------+---------------------------------------------------------------+
 | VCPUs       | Number of virtual CPUs presented to the instance.             |
 +-------------+---------------------------------------------------------------+
 | RXTX Factor | Optional property allows created servers to have a different  |
 |             | bandwidth cap than that defined in the network they are att\  |
 |             | ached to. This factor is multiplied by the rxtx_base propert\ |
-|             | y of the network. Default value is 1.0. That is, the same as  |
-|             | attached network. This parameter is only available for Xen    |
+|             | y of the network. Default value is ``1.0``. That is, the same |
+|             | as attached network. This parameter is only available for Xen |
 |             | or NSX based systems.                                         |
 +-------------+---------------------------------------------------------------+
 | Is Public   | Boolean value, whether flavor is available to all users or p\ |
@@ -196,7 +197,8 @@ Disk I/O limits
        is -1 which indicates unlimited usage.
 
     -  ``disk_io_reservation``: Specifies the guaranteed minimum disk
-       allocation in terms of :term:`IOPS`.
+       allocation in terms of :term:`IOPS <Input/output Operations Per
+       Second (IOPS)>`.
 
     -  ``disk_io_shares_level``: Specifies the allocation
        level. This can be ``custom``, ``high``, ``normal`` or ``low``.
@@ -246,7 +248,7 @@ Bandwidth I/O
     Incoming and outgoing traffic can be shaped independently. The
     bandwidth element can have at most, one inbound and at most, one
     outbound child element. If you leave any of these child elements
-    out, no quality of service (QoS) is applied on that traffic
+    out, no :term:`quality of service (QoS)` is applied on that traffic
     direction. So, if you want to shape only the network's incoming
     traffic, use inbound only (and vice versa). Each element has one
     mandatory attribute average, which specifies the average bit rate on
@@ -355,11 +357,11 @@ CPU topology
     Where:
 
     -  FLAVOR-SOCKETS: (integer) The number of sockets for the guest VM. By
-       this is set to the number of vCPUs requested.
+       default, this is set to the number of vCPUs requested.
     -  FLAVOR-CORES: (integer) The number of cores per socket for the guest
-       VM. By this is set to 1.
+       VM. By default, this is set to ``1``.
     -  FLAVOR-THREADS: (integer) The number of threads per core for the guest
-       VM. By this is set to 1.
+       VM. By default, this is set to ``1``.
 
 CPU pinning policy
     For the libvirt driver, you can pin the virtual CPUs (vCPUs) of instances
@@ -418,6 +420,64 @@ CPU pinning policy
        but not enough cores with free thread siblings are available, then
        scheduling fails.
 
+    .. note::
+
+        The ``hw:cpu_thread_policy`` option is only valid if ``hw:cpu_policy``
+        is set to ``dedicated``.
+
+NUMA topology
+    For the libvirt driver, you can define the host NUMA placement for the
+    instance vCPU threads as well as the allocation of instance vCPUs and
+    memory from the host NUMA nodes. For flavors whose memory and vCPU
+    allocations are larger than the size of NUMA nodes in the compute hosts,
+    the definition of a NUMA topology allows hosts to better utilize NUMA
+    and improve performance of the instance OS.
+
+    .. code-block:: console
+
+       $ openstack flavor set FLAVOR-NAME \
+           --property hw:numa_nodes=FLAVOR-NODES \
+           --property hw:numa_cpus.N=FLAVOR-CORES \
+           --property hw:numa_mem.N=FLAVOR-MEMORY
+
+    Where:
+
+    -  FLAVOR-NODES: (integer) The number of host NUMA nodes to restrict
+       execution of instance vCPU threads to. If not specified, the vCPU
+       threads can run on any number of the host NUMA nodes available.
+    -  N: (integer) The instance NUMA node to apply a given CPU or memory
+       configuration to, where N is in the range ``0`` to ``FLAVOR-NODES``
+       - ``1``.
+    -  FLAVOR-CORES: (comma-separated list of integers) A list of instance
+       vCPUs to map to instance NUMA node N. If not specified, vCPUs are evenly
+       divided among available NUMA nodes.
+    -  FLAVOR-MEMORY: (integer) The number of MB of instance memory to map to
+       instance instance NUMA node N. If not specified, memory is evenly divided
+       among available NUMA nodes.
+
+    .. note::
+
+       ``hw:numa_cpus.N`` and ``hw:numa_mem.N`` are only valid if
+       ``hw:numa_nodes`` is set. Additionally, they are only required if the
+       instance's NUMA nodes have an asymetrical allocation of CPUs and RAM
+       (important for some NFV workloads).
+
+    .. note::
+
+       The ``N`` parameter is an index of *guest* NUMA nodes and may not
+       correspond to *host* NUMA nodes. For example, on a platform with two
+       NUMA nodes, the scheduler may opt to place guest NUMA node 0, as
+       referenced in ``hw:numa_mem.0`` on host NUMA node 1 and vice versa.
+       Similarly, the integers used for ``FLAVOR-CORES`` are indexes of
+       *guest* vCPUs and may not correspond to *host* CPUs. As such, this
+       feature cannot be used to constrain instances to specific host CPUs or
+       NUMA nodes.
+
+    .. warning::
+
+       If the combined values of ``hw:numa_cpus.N`` or ``hw:numa_mem.N``
+       are greater than the available number of CPUs or memory respectively,
+       an exception is raised.
 
 Large pages allocation
     You can configure the size of large pages used to back the VMs.
@@ -449,3 +509,19 @@ Large pages allocation
         if a guest OS does intend to use huge pages, it is very important that
         the guest RAM be backed by huge pages. Otherwise, the guest OS will not
         be getting the performance benefit it is expecting.
+
+PCI passthrough
+    You can assign PCI devices to a guest by specifying them in the flavor.
+
+    .. code:: console
+
+       $ openstack flavor set FLAVOR-NAME \
+           --property pci_passthrough:alias=ALIAS:COUNT
+
+    Where:
+
+    - ALIAS: (string) The alias which correspond to a particular PCI device
+      class as configured in the nova configuration file (see `nova.conf
+      configuration options <http://docs.openstack.org/mitaka/config-reference/compute/config-options.html>`_).
+    - COUNT: (integer) The amount of PCI devices of type ALIAS to be assigned
+      to a guest.

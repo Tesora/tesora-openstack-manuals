@@ -28,6 +28,8 @@
      - (String) File name for the paste.deploy config for manila-api.
    * - ``api_rate_limit`` = ``True``
      - (Boolean) Whether to rate limit the API.
+   * - ``db_backend`` = ``sqlalchemy``
+     - (String) The backend to use for database.
    * - ``enable_v1_api`` = ``False``
      - (Boolean) Deploy v1 of the Manila API. This option is deprecated, is not used, and will be removed in a future release.
    * - ``enable_v2_api`` = ``False``
@@ -45,7 +47,7 @@
    * - ``osapi_share_listen`` = ``::``
      - (String) IP address for OpenStack Share API to listen on.
    * - ``osapi_share_listen_port`` = ``8786``
-     - (Unknown) Port for OpenStack Share API to listen on.
+     - (Port number) Port for OpenStack Share API to listen on.
    * - ``osapi_share_workers`` = ``1``
      - (Integer) Number of workers for OpenStack Share API service.
    * - ``share_api_class`` = ``manila.share.api.API``
@@ -62,11 +64,3 @@
      - (Integer) The maximum body size for each request, in bytes.
    * - ``secure_proxy_ssl_header`` = ``X-Forwarded-Proto``
      - (String) DEPRECATED: The HTTP Header that will be used to determine what the original request protocol scheme was, even if it was hidden by an SSL termination proxy.
-   * - **[oslo_policy]**
-     -
-   * - ``policy_default_rule`` = ``default``
-     - (String) Default rule. Enforced when a requested rule is not found.
-   * - ``policy_dirs`` = ``['policy.d']``
-     - (Multi-valued) Directories where policy configuration files are stored. They can be relative to any directory in the search path defined by the config_dir option, or absolute paths. The file defined by policy_file must exist for these directories to be searched. Missing or empty directories are ignored.
-   * - ``policy_file`` = ``policy.json``
-     - (String) The JSON file that defines policies.

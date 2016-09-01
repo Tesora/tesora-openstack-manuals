@@ -364,58 +364,67 @@ scenario in your environment.
 Controller node
 ---------------
 
-#. Configure common options. Edit the ``/etc/neutron/neutron.conf`` file:
+#. In the ``neutron.conf`` file:
 
-   .. code-block:: ini
+   * Configure common options:
 
-      [DEFAULT]
-      core_plugin = ml2
-      service_plugins =
+     .. code-block:: ini
 
-   .. note::
+        [DEFAULT]
+        core_plugin = ml2
+        service_plugins =
 
-      The ``service_plugins`` option contains no value because the
-      Networking service does not provide layer-3 services such as
-      routing. However, this breaks portions of the dashboard that
-      manage the Networking service. See the
-      `Installation Guide <http://docs.openstack.org/mitaka/install-guide-ubuntu/horizon-install.html>`__
-      for more information.
+     .. note::
 
-#. Configure the ML2 plug-in and Linux bridge agent. Edit the
-   ``/etc/neutron/plugins/ml2/ml2_conf.ini`` file:
+        The ``service_plugins`` option contains no value because the
+        Networking service does not provide layer-3 services such as
+        routing. However, this breaks portions of the dashboard that
+        manage the Networking service. See the
+        `Installation Guide <http://docs.openstack.org/mitaka/install-guide-ubuntu/horizon-install.html>`__
+        for more information.
 
-   .. code-block:: ini
+   * If necessary, :ref:`configure MTU <config-mtu>`.
 
-      [ml2]
-      type_drivers = flat,vlan
-      tenant_network_types =
-      mechanism_drivers = linuxbridge
-      extension_drivers = port_security
+#. In the ``ml2_conf.ini`` file:
 
-      [ml2_type_flat]
-      flat_networks = provider
+   * Configure drivers and network types:
 
-      [ml2_type_vlan]
-      network_vlan_ranges = provider
+     .. code-block:: ini
 
-      [securitygroup]
-      enable_ipset = True
+        [ml2]
+        type_drivers = flat,vlan
+        tenant_network_types =
+        mechanism_drivers = linuxbridge
+        extension_drivers = port_security
 
-   Replace ``PROVIDER_INTERFACE`` with the name of the underlying interface
-   that handles provider networks. For example, ``eth1``.
+   * Configure network mappings:
 
-   .. note::
+     .. code-block:: ini
 
-      The ``tenant_network_types`` option contains no value because the
-      architecture does not support project (private) networks.
+        [ml2_type_flat]
+        flat_networks = provider
 
-   .. note::
+        [ml2_type_vlan]
+        network_vlan_ranges = provider
 
-      The ``provider`` value in the ``network_vlan_ranges`` option lacks VLAN
-      ID ranges to support use of arbitrary VLAN IDs.
+     .. note::
 
-#. Configure the Linux bridge agent. Edit the
-   ``/etc/neutron/plugins/ml2/linuxbridge_agent.ini`` file:
+        The ``tenant_network_types`` option contains no value because the
+        architecture does not support project (private) networks.
+
+     .. note::
+
+        The ``provider`` value in the ``network_vlan_ranges`` option lacks VLAN
+        ID ranges to support use of arbitrary VLAN IDs.
+
+   * Configure the security group driver:
+
+     .. code-block:: ini
+
+        [securitygroup]
+        firewall_driver = iptables
+
+#. In the ``linuxbridge_agent.ini`` file, configure the Linux bridge agent:
 
    .. code-block:: ini
 
@@ -425,21 +434,18 @@ Controller node
       [vxlan]
       enable_vxlan = False
 
-      [agent]
-      prevent_arp_spoofing = True
-
       [securitygroup]
-      firewall_driver = neutron.agent.linux.iptables_firewall.IptablesFirewallDriver
-      enable_security_group = True
+      firewall_driver = iptables
 
-#. Configure the DHCP agent. Edit the ``/etc/neutron/dhcp_agent.ini``
-   file:
+   Replace ``PROVIDER_INTERFACE`` with the name of the underlying interface
+   that handles provider networks. For example, ``eth1``.
+
+#. In the ``dhcp_agent.ini`` file, configure the DHCP agent:
 
    .. code-block:: ini
 
       [DEFAULT]
       interface_driver = neutron.agent.linux.interface.BridgeInterfaceDriver
-      dhcp_driver = neutron.agent.linux.dhcp.Dnsmasq
       enable_isolated_metadata = True
 
 #. Start the following services:
@@ -451,8 +457,7 @@ Controller node
 Compute nodes
 -------------
 
-#. Configure the Linux bridge agent. Edit the
-   ``/etc/neutron/plugins/ml2/linuxbridge_agent.ini`` file:
+#. In the ``linuxbridge_agent.ini`` file, configure the Linux bridge agent:
 
    .. code-block:: ini
 
@@ -462,11 +467,8 @@ Compute nodes
       [vxlan]
       enable_vxlan = False
 
-      [agent]
-      prevent_arp_spoofing = True
-
       [securitygroup]
-      firewall_driver = neutron.agent.linux.iptables_firewall.IptablesFirewallDriver
+      firewall_driver = iptables
       enable_security_group = True
 
    Replace ``PROVIDER_INTERFACE`` with the name of the underlying interface
@@ -602,7 +604,8 @@ Verify network operation
 
    .. code-block:: console
 
-      $ nova boot --flavor m1.tiny --image cirros-0.3.3-x86_64-disk test_server
+      $ nova boot --flavor m1.tiny --image cirros-0.3.3-x86_64-disk \
+        --nic net-id=572a3fc9-ad1f-4e54-a63a-4bf5047c1a4a test_server
 
       +--------------------------------------+-----------------------------------------------------------------+
       | Property                             | Value                                                           |

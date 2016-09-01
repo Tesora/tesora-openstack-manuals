@@ -7,8 +7,8 @@ supports all types of cloud environments. The project aims for simple
 implementation, massive scalability, and a rich set of features. Cloud
 computing experts from around the world contribute to the project.
 
-OpenStack provides an :term:`Infrastructure-as-a-Service (IaaS)<IaaS>` solution
-through a variety of complemental services. Each service offers an
+OpenStack provides an :term:`Infrastructure-as-a-Service (IaaS)` solution
+through a variety of complementary services. Each service offers an
 :term:`Application Programming Interface (API)` that facilitates this
 integration.
 
@@ -123,8 +123,8 @@ follows:
 
 For more information on production architectures, see the
 `Architecture Design Guide <http://docs.openstack.org/arch-design/>`__,
-`Operations Guide <http://docs.openstack.org/ops/>`__, and
-`Networking Guide <http://docs.openstack.org/mitaka/networking-guide/>`__.
+`OpenStack Operations Guide <http://docs.openstack.org/ops/>`__, and
+`OpenStack Networking Guide <http://docs.openstack.org/mitaka/networking-guide/>`__.
 
 .. _figure-hwreqs:
 
@@ -139,7 +139,8 @@ Controller
 The controller node runs the Identity service, Image service, management
 portions of Compute, management portion of Networking, various Networking
 agents, and the dashboard. It also includes supporting services such as
-an SQL database, :term:`message queue`, and :term:`NTP`.
+an SQL database, :term:`message queue`, and :term:`NTP <Network Time Protocol
+(NTP)>`.
 
 Optionally, the controller node runs portions of Block Storage, Object
 Storage, Orchestration, and Telemetry services.
@@ -163,7 +164,7 @@ Block Storage
 -------------
 
 The optional Block Storage node contains the disks that the Block
-Storage service provisions for instances.
+Storage and Shared File System services provision for instances.
 
 For simplicity, service traffic between compute nodes and this node
 uses the management network. Production environments should implement
@@ -200,15 +201,17 @@ The provider networks option deploys the OpenStack Networking service
 in the simplest way possible with primarily layer-2 (bridging/switching)
 services and VLAN segmentation of networks. Essentially, it bridges virtual
 networks to physical networks and relies on physical network infrastructure
-for layer-3 (routing) services. Additionally, a :term:`DHCP` service provides
-IP address information to instances.
+for layer-3 (routing) services. Additionally, a :term:`DHCP<Dynamic Host
+Configuration Protocol (DHCP)>` service provides IP address information to
+instances.
 
 .. note::
 
    This option lacks support for self-service (private) networks, layer-3
-   (routing) services, and advanced services such as :term:`LBaaS` and
-   :term:`FWaaS`. Consider the self-service networks option if you
-   desire these features.
+   (routing) services, and advanced services such as
+   :term:`LBaaS <Load-Balancer-as-a-Service (LBaaS)>` and
+   :term:`FWaaS<FireWall-as-a-Service (FWaaS)>`.
+   Consider the self-service networks option if you desire these features.
 
 .. _figure-network1-services:
 
@@ -223,9 +226,10 @@ Networking Option 2: Self-service networks
 The self-service networks option augments the provider networks option
 with layer-3 (routing) services that enable
 :term:`self-service` networks using overlay segmentation methods such
-as :term:`VXLAN`. Essentially, it routes virtual networks to physical networks
-using :term:`NAT`. Additionally, this option provides the foundation
-for advanced services such as LBaaS and FWaaS.
+as :term:`VXLAN <Virtual Extensible LAN (VXLAN)>`. Essentially, it routes
+virtual networks to physical networks using :term:`NAT<Network Address
+Translation (NAT)>`. Additionally, this option provides the foundation for
+advanced services such as LBaaS and FWaaS.
 
 .. _figure-network2-services:
 

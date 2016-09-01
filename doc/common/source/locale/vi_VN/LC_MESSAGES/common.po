@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Common documents 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-07 04:53+0000\n"
+"POT-Creation-Date: 2016-08-31 10:46+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -43,9 +43,6 @@ msgstr "**MacOS**"
 
 msgid "**Microsoft Windows**"
 msgstr "**Microsoft Windows**"
-
-msgid "**Red Hat Enterprise Linux, CentOS, or Fedora.**"
-msgstr "**Red Hat Enterprise Linux, CentOS, hoặc Fedora.**"
 
 msgid "**Ubuntu:** https://wiki.ubuntu.com/ServerTeam/CloudArchive"
 msgstr "**Ubuntu:** https://wiki.ubuntu.com/ServerTeam/CloudArchive"
@@ -503,18 +500,6 @@ msgstr ""
 "của Compute. Một thuật ngữ thay thế cho một project."
 
 msgid ""
-"A high availability system design approach and associated service "
-"implementation ensures that a prearranged level of operational performance "
-"will be met during a contractual measurement period. High availability "
-"systems seeks to minimize system downtime and data loss."
-msgstr ""
-"Một hướng tiếp cận thiết kế hệ thống có tính sẵn sàng cao và cài đặt các "
-"dịch vụ đi kèm đảm bảo rằng một mức độ đã được sắp đặt trước về hiệu suất "
-"hoạt động sẽ được đáp ứng trong một khoảng thời gian đo lường được định sẵn. "
-"Các hệ thống có tính sẵn sàng cao hướng tới việc giảm thiểu thời gian chết "
-"hệ thống và mất mát dữ liệu."
-
-msgid ""
 "A horizon component that stores and tracks client session information. "
 "Implemented through the Django sessions framework."
 msgstr ""
@@ -637,13 +622,6 @@ msgstr ""
 "Một phương pháp cài đặt hệ điều hành mà ở đó một image hoàn chỉnh được tạo "
 "ra và sau đó được sử dụng bởi tất cả các node mà không có thêm bất kì chỉnh "
 "sửa nào."
-
-msgid ""
-"A method to automatically configure networking for a host at boot time. "
-"Provided by both Networking and Compute."
-msgstr ""
-"Một phương pháp tự động cấu hình hệ thống mạng cho một máy chủ tại thời điểm "
-"khởi động. Được cung cấp bởi cả Networking và Compute."
 
 msgid ""
 "A method to establish trusts between identity providers and the OpenStack "
@@ -908,21 +886,6 @@ msgid "A scripting language that is used to build web pages."
 msgstr "Một ngôn ngữ kịch bản được dùng để xây dựng các trang web."
 
 msgid ""
-"A security model that focuses on data confidentiality and controlled access "
-"to classified information. This model divide the entities into subjects and "
-"objects. The clearance of a subject is compared to the classification of the "
-"object to determine if the subject is authorized for the specific access "
-"mode. The clearance or classification scheme is expressed in terms of a "
-"lattice."
-msgstr ""
-"Mô hình bảo mật tập trung chủ yếu vào an toàn dữ liệu và được phép điều "
-"khiển truy nhập tới các thông tin đã được phân loại. Mô hình này chia các "
-"thực thể thành nhiều vấn đề và vật thể. Sự rõ ràng của một vấn đề được so "
-"sánh với việc phân loại vật thể để xác định đâu là vấn đề được ủy quyền cho "
-"một mô hình truy nhập cụ thể. Sự rõ ràng cũng như kế hoạch phân loại được "
-"thể hiện trong các thuật ngữ của mạng. "
-
-msgid ""
 "A set of OpenStack resources created and managed by the Orchestration "
 "service according to a given template (either an AWS CloudFormation template "
 "or a Heat Orchestration Template (HOT))."
@@ -943,13 +906,6 @@ msgid ""
 msgstr ""
 "Tập các mảnh vật thể trong Object Storage được nhóm lại và gửi tới người "
 "dùng. "
-
-msgid ""
-"A simple certificate authority provided by Compute for cloudpipe VPNs and VM "
-"image decryption."
-msgstr ""
-"Một chứng nhận ủy quyền đơn giản được cung cấp bởi Compute cho việc giải mã "
-"các cloudpipe VPN và image máy ảo."
 
 msgid ""
 "A special Object Storage object that contains the manifest for a large "
@@ -1078,9 +1034,6 @@ msgid ""
 "associated metadata, such as machine state, OS disk size, and so on."
 msgstr "người phát triển"
 
-msgid "ACL"
-msgstr "ACL"
-
 msgid "API endpoint"
 msgstr "Điểm cuối API"
 
@@ -1114,9 +1067,6 @@ msgstr "phiên bản API"
 
 msgid "ATA over Ethernet (AoE)"
 msgstr "ATA over Ethernet (AoE)"
-
-msgid "AWS"
-msgstr "AWS"
 
 msgid "AWS CloudFormation template"
 msgstr "Mãu AWS CloudFormation"
@@ -1276,9 +1226,6 @@ msgstr "Amazon Machine Image (AMI)"
 
 msgid "Amazon Ramdisk Image (ARI)"
 msgstr "Amazon Ramdisk Image (ARI)"
-
-msgid "Amazon Web Services."
-msgstr "Amazon Web Services."
 
 msgid ""
 "An API endpoint used for both service-to-service communication and end-user "
@@ -1879,20 +1826,11 @@ msgstr ""
 "Xây dựng và quản lý các ring nằm trong Object Storage, gán các phân vùng vào "
 "các thiết bị và đẩy cấu hình sang các node lưu trữ khác."
 
-msgid "CA"
-msgstr "CA"
-
-msgid "CADF"
-msgstr "CADF"
-
 msgid "CALL"
 msgstr "CALL"
 
 msgid "CAST"
 msgstr "CAST"
-
-msgid "CMDB"
-msgstr "CMDB"
 
 msgid "Cactus"
 msgstr "Cactus"
@@ -1919,27 +1857,6 @@ msgstr "Ceph"
 
 msgid "CephFS"
 msgstr "CephFS"
-
-msgid ""
-"Certificate Authority or Certification Authority. In cryptography, an entity "
-"that issues digital certificates. The digital certificate certifies the "
-"ownership of a public key by the named subject of the certificate. This "
-"enables others (relying parties) to rely upon signatures or assertions made "
-"by the private key that corresponds to the certified public key. In this "
-"model of trust relationships, a CA is a trusted third party for both the "
-"subject (owner) of the certificate and the party relying upon the "
-"certificate. CAs are characteristic of many public key infrastructure (PKI) "
-"schemes."
-msgstr ""
-"Chứng nhận Ủy Quyền hoặc Thông tin Chứng nhận Ủy quyền. Trong mật mã học, CA "
-"là một thực thể phát hành các chứng chỉ kĩ thuật số. Chứng chỉ kĩ thuật số "
-"chứng nhận quyền sở hữu một public key của đối tượng có tên trong chứng chỉ. "
-"Điều này cho phép các bên liên quan khác dựa vào chữ ký hoặc các xác nhận "
-"được tạo ra bởi private key tương ứng với public key đã được chứng nhận. "
-"Trong mô hình quan hệ tin tưởng này, CA đóng vai trò là bên thứ ba được tin "
-"tưởng bởi cả chủ thể (chủ sở hữu) của chứng chỉ và các bên phụ thuộc vào "
-"chứng chỉ. CA là thành phần đặc trưng của rất nhiều đề án cơ sở hạ tầng dựa "
-"trên public key (PKI)."
 
 msgid "Challenge-Handshake Authentication Protocol (CHAP)"
 msgstr "Giao thức Xác thực Bắt tay Ba bước (CHAP)"
@@ -2100,18 +2017,12 @@ msgstr ""
 "Tùy chọn cấu hình bên trong Object Storage để hạn chế ghi cơ sở dữ liện lên "
 "trên một cơ sở cho mỗi tài khoản và/hoặc cho mỗi container."
 
-msgid "Configuration Management Database."
-msgstr "Cơ sở dữ liệu Quản lý Cấu hình."
-
 msgid ""
 "Configuration setting within RabbitMQ that enables or disables message "
 "acknowledgment. Enabled by default."
 msgstr ""
 "Cài đặt cấu hình trong RabbitMQ cho phép hoặc không cho phép hiện tin nhắn "
 "xác nhận. Tính năng cho chép được bật mặc định."
-
-msgid "Containers service"
-msgstr "Containers service"
 
 msgid ""
 "Contains configuration information that Object Storage uses to reconfigure a "
@@ -2163,26 +2074,14 @@ msgid "Custom modules that extend some OpenStack core APIs."
 msgstr ""
 "Các module tùy chỉnh có tác dụng mở rộng một vài API chính của OpenStack"
 
-msgid "DAC"
-msgstr "DAC"
-
-msgid "DHCP"
-msgstr "DHCP"
-
 msgid "DHCP agent"
 msgstr "DHCP agent"
-
-msgid "DNS"
-msgstr "Máy chủ phân giải tên miền"
 
 msgid "DNS record"
 msgstr "bản ghi DNS"
 
 msgid "DNS service"
 msgstr "dịch vụ DNS"
-
-msgid "DRTM"
-msgstr "DRTM"
 
 msgid ""
 "Daemon that provides DNS, DHCP, BOOTP, and TFTP services for virtual "
@@ -2280,17 +2179,6 @@ msgstr ""
 "suất nhưng giảm độ tin cậy."
 
 msgid ""
-"Discretionary access control. Governs the ability of subjects to access "
-"objects, while enabling users to make policy decisions and assign security "
-"attributes. The traditional UNIX system of users, groups, and read-write-"
-"execute permissions is an example of DAC."
-msgstr ""
-"Kiểm soát truy cập tùy ý. Quản lý khả năng truy cập các đối tượng của các "
-"chủ thể, đồng thời cho phép người dùng thực hiện các quyết định chính sách "
-"và gán các giá trị bảo mật. Hệ thống UNIX truyền thống của người dùng, nhóm "
-"và các quyền đọc-viết-thực hiện là một ví dụ của DAC."
-
-msgid ""
 "Disk-based data storage generally represented as an iSCSI target with a file "
 "system that supports extended attributes; can be persistent or ephemeral."
 msgstr ""
@@ -2324,26 +2212,8 @@ msgstr "Hệ thống Tên Miền (DNS)"
 msgid "Dynamic Host Configuration Protocol (DHCP)"
 msgstr "Giao thức Cấu hình Động Máy chủ (DHCP)"
 
-msgid ""
-"Dynamic Host Configuration Protocol. A network protocol that configures "
-"devices that are connected to a network so that they can communicate on that "
-"network by using the Internet Protocol (IP). The protocol is implemented in "
-"a client-server model where DHCP clients request configuration data, such as "
-"an IP address, a default route, and one or more DNS server addresses from a "
-"DHCP server."
-msgstr ""
-"Giao thức Cấu hình Máy chủ Động. Một giao thức mạng đảm nhận việc cấu hình "
-"các thiết bị được kết nối vào một hệ thống mạng để chúng có thể giao tiếp "
-"trên hệ thống mạng đó bằng cách sử dụng Giao thức Liên mạng (IP). Giao thức "
-"này được cài đặt theo mô hình client-server khi mà các DHCP client yêu cầu "
-"các dữ liệu cấu hình như địa chỉ IP, đường đi mặc định và một hoặc nhiều địa "
-"chỉ DNS server từ một DHCP server."
-
 msgid "Dynamic HyperText Markup Language (DHTML)"
 msgstr "Ngôn ngữ Đánh dấu Siêu Văn bản Động (DHTML)"
-
-msgid "Dynamic root of trust measurement."
-msgstr "Thư mục gốc động của thước đo tin tưởng"
 
 msgid "EBS boot volume"
 msgstr "khối lượng khởi chạy EBS"
@@ -2368,22 +2238,6 @@ msgstr "ESXi"
 
 msgid "ETag"
 msgstr "ETag"
-
-msgid ""
-"Each OpenStack release has a code name. Code names ascend in alphabetical "
-"order: Austin, Bexar, Cactus, Diablo, Essex, Folsom, Grizzly, Havana, "
-"Icehouse, Juno, Kilo, Liberty, and Mitaka. Code names are cities or counties "
-"near where the corresponding OpenStack design summit took place. An "
-"exception, called the Waldon exception, is granted to elements of the state "
-"flag that sound especially cool. Code names are chosen by popular vote."
-msgstr ""
-"Mỗi phiên bản OpenStack đều có một tên mã. Các tên mã được sắp xếp theo thứ "
-"tự alphabet: Austin, Bexar, Cactus, Diablo, Essex, Folsom, Grizzly, Havana, "
-"Icehouse, Juno, Kilo, Liberty và Mitaka. Tên mã được lấy theo tên các thành "
-"phố hoặc các hạt ở gần nơi tổ chức các hội nghị thượng định thiết kế "
-"OpenStack. Một ngoại lệ, được gọi là ngoại lệ Waldon, được cấp cho các yếu "
-"tố nghe hay ho trên lá cờ bang. Các tên mã được lựa chọn theo hình thức bình "
-"chọn."
 
 msgid ""
 "Either a soft or hard reboot of a server. With a soft reboot, the operating "
@@ -2609,44 +2463,14 @@ msgstr "Giao tiếp truyền tải siêu văn bản (HTTP)"
 msgid "Hypertext Transfer Protocol Secure (HTTPS)"
 msgstr "Giao thức truyền tải siêu văn bản bảo mật (HTTPS)"
 
-msgid "ICMP"
-msgstr "ICMP"
-
 msgid "ID number"
 msgstr "số ID"
-
-msgid "IDS"
-msgstr "IDS"
-
-msgid "INI"
-msgstr "INI"
-
-msgid "IOPS"
-msgstr "IOPS"
-
-msgid ""
-"IOPS (Input/Output Operations Per Second) are a common performance "
-"measurement used to benchmark computer storage devices like hard disk "
-"drives, solid state drives, and storage area networks."
-msgstr ""
-"IOPS (Input/Output Operations Per Second) là một thước đo hiệu quả thường "
-"được sử dụng với các thiết bị lưu trữ máy tính chuẩn như ổ đĩa cứng, ổ đĩa "
-"trạng thái rắn, và các khu vực mạng lưu trữ."
 
 msgid "IP Address Management (IPAM)"
 msgstr "Quản lý địa chỉ IP (IPAM)"
 
 msgid "IP address"
 msgstr "địa chỉ IP"
-
-msgid "IPL"
-msgstr "IPL"
-
-msgid "IPMI"
-msgstr "IPMI"
-
-msgid "IaaS"
-msgstr "IaaS"
 
 msgid "Icehouse"
 msgstr "Icehouse"
@@ -2763,24 +2587,6 @@ msgstr ""
 "Thông tin chỉ bao gồm các số 1 và số 0, và là ngôn ngữ của các máy tính. "
 
 msgid ""
-"Infrastructure-as-a-Service. IaaS is a provisioning model in which an "
-"organization outsources physical components of a data center, such as "
-"storage, hardware, servers, and networking components. A service provider "
-"owns the equipment and is responsible for housing, operating and maintaining "
-"it. The client typically pays on a per-use basis. IaaS is a model for "
-"providing cloud services."
-msgstr ""
-"Cơ sở hạ tầng là một dịch vụ. IaaS là một mô hình cung cấp trong đó một tổ "
-"chức thu thập về các thành phần vật lý của một trung tâm dữ liệu như thiết "
-"bị lưu trữ, phần cứng, các máy chủ và các thành phần hệ thống mạng. Một nhà "
-"cung cấp dịch vụ sở hữu các thiết bị và có trách nhiệm quản lý, vận hành và "
-"duy trì nó. Khách hàng thường trả theo lưu lượng sử dụng. IaaS là một mô "
-"hình để cung cấp các dịch vụ điện toán đám mây."
-
-msgid "Initial Program Loader."
-msgstr "Bộ nạp chương trình khởi động"
-
-msgid ""
 "Interactions and processes that are obfuscated from the user, such as "
 "Compute volume mount, data transmission to an iSCSI target by a daemon, or "
 "Object Storage object integrity checks."
@@ -2804,9 +2610,6 @@ msgstr "Internet Small Computer System Interface (iSCSI)"
 
 msgid "Internet protocol (IP)"
 msgstr "Internet protocol (IP)"
-
-msgid "Intrusion Detection System."
-msgstr "Hệ thống Phát hiện Xâm nhập."
 
 msgid "Java"
 msgstr "Java"
@@ -3182,15 +2985,6 @@ msgstr "OpenLDAP"
 msgid "OpenStack"
 msgstr "OpenStack"
 
-msgid "OpenStack Block Storage"
-msgstr "Thành phần Block Storage trong OpenStack"
-
-msgid "OpenStack Compute"
-msgstr "OpenStack Compute"
-
-msgid "OpenStack Image service"
-msgstr "Dịch vụ Image OpenStack"
-
 msgid ""
 "OpenStack Networking agent that provides DHCP services for virtual networks."
 msgstr "OpenStack Networking agent cung cấp dịch vụ DHCP cho các mạng ảo"
@@ -3211,14 +3005,8 @@ msgid ""
 msgstr ""
 "OpenStack Networking agent cung cấp các dịch vụ metadata cho các máy ảo"
 
-msgid "OpenStack Object Storage"
-msgstr "Đối tượng lưu trữ (Object storage)"
-
 msgid "OpenStack code name"
 msgstr "Tên mã OpenStack"
-
-msgid "OpenStack dashboard"
-msgstr "Bảng điều khiển OpenStack"
 
 msgid ""
 "OpenStack is a cloud operating system that controls large pools of compute, "
@@ -3293,15 +3081,6 @@ msgstr ""
 "năng mở rộng và các giao diện quản lý đi kèm. Tên mã của dự án này là sahara."
 
 msgid ""
-"OpenStack project that provides a set of services for management of "
-"application containers in a multi-tenant cloud environment. The code name of "
-"the project name is magnum."
-msgstr ""
-"Một dự án của OpenStack cung cấp một bộ các dịch vụ cho mục địch quản lý các "
-"container ứng dụng trong một môi trường cloud đa tenant. Tên mã của dự án là "
-"magnum."
-
-msgid ""
 "OpenStack project that provides a simple YAML-based language to write "
 "workflows, tasks and transition rules, and a service that allows to upload "
 "them, modify, run them at scale and in a highly available manner, manage and "
@@ -3359,20 +3138,6 @@ msgstr "Dự án của OpenStack cung cấp dịch vụ quản lý (Governance).
 
 msgid "OpenStack project that provides the Workflow service."
 msgstr "Project của OpenStack có tác dụng cung cấp dịch vụ Workflow."
-
-msgid ""
-"OpenStack project that provisions bare metal, as opposed to virtual, "
-"machines."
-msgstr ""
-"Dự án của OpenStack có quy định về dịch vụ bare-metal, đối lập với các máy "
-"ảo. "
-
-msgid ""
-"OpenStack project that provisions bare metal, as opposed to virtual, "
-"machines. The code name for the project is ironic."
-msgstr ""
-"Dự án của OpenStack có quy định về dịch vụ bare-metal, đối lập với các máy "
-"ảo. Tên mã của dự án này là Ironic."
 
 msgid "OpenStack supports accessing the Amazon EC2 API through Compute."
 msgstr "OpenStack hỗ trợ truy cập vào Amazon EC2 API thông qua Compute."
@@ -3659,9 +3424,6 @@ msgstr ""
 "Chuẩn SINA nhằm định rõ một RESTful API để quản lý các object trong cloud, "
 "hiện không được hỗ trợ trong OpenStack."
 
-msgid "SPICE"
-msgstr "SPICE"
-
 msgid "SQL database"
 msgstr "cơ sở dữ liệu SQL"
 
@@ -3676,9 +3438,6 @@ msgstr "SUSE Linux Enterprise Server (SLES)"
 
 msgid "See API endpoint."
 msgstr "Xem API endpoint."
-
-msgid "See access control list."
-msgstr "Xem danh sách điều khiển truy nhập."
 
 msgid "Server"
 msgstr "Máy chủ"
@@ -3786,13 +3545,6 @@ msgid ""
 msgstr ""
 "Giao thức lưu trữ tương tự như TCP/IP về mặt khái niệm, đóng gói các lệnh và "
 "dữ liệu SCSI."
-
-msgid ""
-"Storage protocol that encapsulates SCSI frames for transport over IP "
-"networks."
-msgstr ""
-"Giao thức lưu trữ có nhiệm vụ đóng gói các frame SCSI để vận chuyện qua các "
-"mạng IP."
 
 msgid "Stores CephFS metadata."
 msgstr "Lưu trữ metadata của CephFS."
@@ -4057,22 +3809,6 @@ msgstr ""
 msgid "The POSIX-compliant file system provided by Ceph."
 msgstr "Hệ thống tập tin phù hợp với POSIX được cung cấp bởi Ceph."
 
-msgid ""
-"The SCSI disk protocol tunneled within Ethernet, supported by Compute, "
-"Object Storage, and Image service."
-msgstr ""
-"Giao thức đĩa SCSI chạy ngầm trong Ethernet, được hỗ trợ bởi Compute, Object "
-"Storage và Image service."
-
-msgid ""
-"The Simple Protocol for Independent Computing Environments (SPICE) provides "
-"remote desktop access to guest virtual machines. It is an alternative to "
-"VNC. SPICE is supported by OpenStack."
-msgstr ""
-"Giao thức Đơn giản cho các Môi trường Tính toán Độc lập (SPICE) cung cấp "
-"truy cập desktop từ xa cho các máy ảo khách. Nó là một lựa chọn khác bên "
-"cạnh VNC. SPICE được hỗ trợ bởi OpenStack."
-
 msgid "The Xen administrative API, which is supported by Compute."
 msgstr "Giao diện quản lý Xen, được hỗ trợ bởi Compute."
 
@@ -4326,19 +4062,6 @@ msgid ""
 msgstr ""
 "Trong việc luyện tập sử dụng môi trường phụ để dựng linh hoạt các máy ảo "
 "theo nhu cầu nhất định khi môi trường chính bị hạn chế nguồn."
-
-msgid ""
-"The primary load balancing configuration object. Specifies the virtual IP "
-"address and port where client traffic is received. Also defines other "
-"details such as the load balancing method to be used, protocol, and so on. "
-"This entity is sometimes known in load-balancing products as a virtual "
-"server, vserver, or listener."
-msgstr ""
-"Đối tượng cân bằng tải thiết yếu. Làm rõ các địa chỉ IP ảo và các cổng nơi "
-"mà đường truyền dữ liệu của các máy Client đi qua. Cùng đó xác định những "
-"chi tiết như là cách thức cân bằng tải cần được sử dụng, giao thức và các "
-"chi tiết khác. Đối tượng này nhiều khi được biết đến trong danh mục những "
-"phần mềm cân bằng tải như là một máy chủ ảo, vserver, hoặc là listener."
 
 msgid ""
 "The process associating a Compute floating IP address with a fixed IP "
@@ -4735,9 +4458,6 @@ msgstr ""
 msgid "VIF UUID"
 msgstr "VIF UUID"
 
-msgid "VIP"
-msgstr "VIP"
-
 msgid "VLAN manager"
 msgstr "Phần tử quản lí VLAN"
 
@@ -4865,9 +4585,6 @@ msgstr "Công cụ Zuul"
 
 msgid "absolute limit"
 msgstr "giới hạn tuyệt đối"
-
-msgid "access control list"
-msgstr "Danh sách điều khiển truy nhập (Access control list)"
 
 msgid "access key"
 msgstr "key truy nhập"
@@ -5042,9 +4759,6 @@ msgstr "chuyển tiếp cell"
 
 msgid "cell manager"
 msgstr "trình quản lý cell"
-
-msgid "certificate authority"
-msgstr "chứng nhận ủy quyền"
 
 msgid "chance scheduler"
 msgstr "lịch trình ngẫu nhiên"
@@ -5402,9 +5116,6 @@ msgstr "hypervisor"
 
 msgid "hypervisor pool"
 msgstr "tập hợp trình điều khiển máy ảo"
-
-msgid "iSCSI"
-msgstr "iSCSI"
 
 msgid "identity provider"
 msgstr "trình cung cấp identity"
@@ -6011,9 +5722,6 @@ msgstr "dữ liệu người dùng"
 
 msgid "vSphere"
 msgstr "vSphere"
-
-msgid "virtual IP"
-msgstr "IP ảo"
 
 msgid "virtual VLAN"
 msgstr "VLAN ảo"

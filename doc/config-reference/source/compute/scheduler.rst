@@ -62,6 +62,8 @@ see `Evacuate instances <http://docs.openstack.org/admin-guide/
 compute-node-down.html#evacuate-instances>`_ section of the
 OpenStack Administrator Guide.
 
+.. _compute-scheduler-filters:
+
 Filter scheduler
 ~~~~~~~~~~~~~~~~
 
@@ -69,11 +71,6 @@ The filter scheduler (``nova.scheduler.filter_scheduler.FilterScheduler``)
 is the default scheduler for scheduling virtual machine instances.
 It supports filtering and weighting to make informed decisions on
 where a new instance should be created.
-
-.. _compute-scheduler-filters:
-
-Filters
-~~~~~~~
 
 When the filter scheduler receives a request for a resource, it first
 applies filters to determine which hosts are eligible for consideration
@@ -113,7 +110,10 @@ service. The default filters are:
 
    scheduler_default_filters = RetryFilter, AvailabilityZoneFilter, RamFilter, ComputeFilter, ComputeCapabilitiesFilter, ImagePropertiesFilter, ServerGroupAntiAffinityFilter, ServerGroupAffinityFilter
 
-The following sections describe the available filters.
+Compute filters
+~~~~~~~~~~~~~~~
+
+The following sections describe the available compute filters.
 
 AggregateCoreFilter
 -------------------
@@ -801,6 +801,31 @@ Dynamically limits hosts to one instance type. An instance can only be
 launched on a host, if no instance with different instances types
 are running on it, or if the host has no running instances at all.
 
+Cell filters
+~~~~~~~~~~~~
+
+The following sections describe the available cell filters.
+
+DifferentCellFilter
+-------------------
+
+Schedules the instance on a different cell from a set of instances.
+To take advantage of this filter, the requester must pass a scheduler hint,
+using ``different_cell`` as the key and a list of instance UUIDs as the value.
+
+ImagePropertiesFilter
+---------------------
+
+Filters cells based on properties defined on the instance’s image.
+This filter works specifying the hypervisor required in the image
+metadata and the supported hypervisor version in cell capabilities.
+
+TargetCellFilter
+----------------
+
+Filters target cells. This filter works by specifying a scheduler
+hint of ``target_cell``. The value should be the full cell path.
+
 .. _weights:
 
 Weights
@@ -848,13 +873,22 @@ the ``/etc/nova/nova.conf`` file:
        Use an integer value.
    * - [DEFAULT]
      - ``scheduler_weight_classes``
-     - Defaults to ``nova.scheduler.weights.all_weighers``, which selects
-       the RamWeigher and MetricsWeigher. Hosts are then weighted and
-       sorted with the largest weight winning.
+     - Defaults to ``nova.scheduler.weights.all_weighers``.
+       Hosts are then weighted and sorted with the largest weight winning.
    * - [DEFAULT]
      - ``io_ops_weight_multiplier``
      - Multiplier used for weighing host I/O operations. A negative
        value means a preference to choose light workload compute hosts.
+   * - [DEFAULT]
+     - ``soft_affinity_weight_multiplier``
+     - Multiplier used for weighing hosts for group soft-affinity.
+       Only a positive value is meaningful. Negative means that the
+       behavior will change to the opposite, which is soft-anti-affinity.
+   * - [DEFAULT]
+     - ``soft_anti_affinity_weight_multiplier``
+     - Multiplier used for weighing hosts for group soft-anti-affinity.
+       Only a positive value is meaningful. Negative means that the
+       behavior will change to the opposite, which is soft-affinity.
    * - [metrics]
      - ``weight_multiplier``
      - Multiplier for weighting meters. Use a floating-point value.
@@ -887,6 +921,8 @@ For example:
    scheduler_weight_classes = nova.scheduler.weights.all_weighers
    ram_weight_multiplier = 1.0
    io_ops_weight_multiplier = 2.0
+   soft_affinity_weight_multiplier = 1.0
+   soft_anti_affinity_weight_multiplier = 1.0
    [metrics]
    weight_multiplier = 1.0
    weight_setting = name1=1.0, name2=-1.0

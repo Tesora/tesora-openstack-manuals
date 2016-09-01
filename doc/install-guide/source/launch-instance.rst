@@ -11,10 +11,10 @@ network with one instance that uses it and one self-service (private)
 network with one instance that uses it. The instructions in this
 section use command-line interface (CLI) tools on the controller
 node. For more information on the CLI tools, see the
-`OpenStack User Guide
-<http://docs.openstack.org/user-guide/cli_launch_instances.html>`__.
+`OpenStack End User Guide
+<http://docs.openstack.org/user-guide/cli-launch-instances.html>`__.
 To use the dashboard, see the
-`OpenStack User Guide
+`OpenStack End User Guide
 <http://docs.openstack.org/user-guide/dashboard.html>`__.
 
 .. _launch-instance-networks:
@@ -70,7 +70,7 @@ Most cloud images support :term:`public key authentication` rather than
 conventional password authentication. Before launching an instance, you
 must add a public key to the Compute service.
 
-#. Source the ``demo`` tenant credentials:
+#. Source the ``demo`` project credentials:
 
    .. code-block:: console
 
@@ -116,7 +116,7 @@ secure shell (SSH).
 
 * Add rules to the ``default`` security group:
 
-  * Permit :term:`ICMP` (ping):
+  * Permit :term:`ICMP <Internet Control Message Protocol (ICMP)>` (ping):
 
     .. code-block:: console
 
@@ -180,18 +180,15 @@ Orchestration
 If your environment includes the Orchestration service, you can create
 a stack that launches an instance.
 
-.. toctree::
-   :maxdepth: 1
-
-   launch-instance-heat.rst
+For more information, see the
+`Orchestration installation guide <http://docs.openstack.org/project-install-guide/orchestration/draft/launch-instance.html>`_.
 
 Shared File Systems
 -------------------
 
 If your environment includes the Shared File Systems service, you can create
-a share and mount it in an instance:
+a share and mount it in an instance.
 
-.. toctree::
-   :maxdepth: 1
-
-   launch-instance-manila.rst
+For more information, see the
+`Shared File Systems installation guide
+<http://docs.openstack.org/project-install-guide/shared-file-systems/draft>`_.

@@ -24,6 +24,8 @@
      - (Boolean) Allow the usage of the pagination
    * - ``allow_sorting`` = ``False``
      - (Boolean) Allow the usage of the sorting
+   * - ``pagination_max_limit`` = ``-1``
+     - (String) The maximum number of items returned in a single response, value was 'infinite' or negative integer means no limit
    * - ``api_extensions_path`` =
      - (String) The path for API extensions
    * - ``api_handler`` = ``queue_producer``
@@ -35,17 +37,11 @@
    * - ``bind_host`` = ``0.0.0.0``
      - (Unknown) The host IP to bind to
    * - ``bind_port`` = ``9876``
-     - (Unknown) The port to bind to
+     - (Port number) The port to bind to
    * - ``control_exchange`` = ``octavia``
      - (String) The default exchange under which topics are scoped. May be overridden by an exchange name specified in the transport_url option.
-   * - ``debug`` = ``False``
-     - (Boolean) If set to true, the logging level will be set to DEBUG instead of the default INFO level.
-   * - ``default_log_levels`` = ``amqp=WARN, amqplib=WARN, boto=WARN, qpid=WARN, sqlalchemy=WARN, suds=INFO, oslo.messaging=INFO, iso8601=WARN, requests.packages.urllib3.connectionpool=WARN, urllib3.connectionpool=WARN, websocket=WARN, requests.packages.urllib3.util.retry=WARN, urllib3.util.retry=WARN, keystonemiddleware=WARN, routes.middleware=WARN, stevedore=WARN, taskflow=WARN, keystoneauth=WARN, oslo.cache=INFO, dogpile.core.dogpile=INFO``
-     - (List) List of package logging levels in logger=LEVEL pairs. This option is ignored if log_config_append is set.
    * - ``executor_thread_pool_size`` = ``64``
      - (Integer) Size of executor thread pool.
-   * - ``fatal_deprecations`` = ``False``
-     - (Boolean) Enables or disables fatal status of deprecations.
    * - ``host`` = ``localhost``
      - (String) The hostname Octavia is running on
    * - ``octavia_plugins`` = ``hot_plug_plugin``
@@ -149,7 +145,7 @@
    * - ``bind_host`` = ``0.0.0.0``
      - (Unknown) The host IP to bind to
    * - ``bind_port`` = ``9443``
-     - (Unknown) The port to bind to
+     - (Port number) The port to bind to
    * - ``client_cert`` = ``/etc/octavia/certs/client.pem``
      - (String) The client certificate to talk to the agent
    * - ``connection_max_retries`` = ``300``
@@ -179,7 +175,7 @@
    * - ``bind_ip`` = ``0.0.0.0``
      - (Unknown) IP address the controller will listen on for heart beats
    * - ``bind_port`` = ``5555``
-     - (Unknown) Port number the controller will listen onfor heart beats
+     - (Port number) Port number the controller will listen onfor heart beats
    * - ``controller_ip_port_list`` =
      - (List) List of controller ip and port pairs for the heartbeat receivers. Example 127.0.0.1:5555, 192.168.0.1:5555
    * - ``event_streamer_driver`` = ``noop_event_streamer``

@@ -9,7 +9,7 @@ group>` for instances.
 Install the components
 ----------------------
 
-.. only:: ubuntu
+.. only:: ubuntu or debian
 
    .. code-block:: console
 
@@ -17,40 +17,19 @@ Install the components
 
 .. only:: rdo
 
+   .. todo:
+
+      https://bugzilla.redhat.com/show_bug.cgi?id=1334626
+
    .. code-block:: console
 
-      # yum install openstack-neutron-linuxbridge ebtables
+      # yum install openstack-neutron-linuxbridge ebtables ipset
 
 .. only:: obs
 
    .. code-block:: console
 
       # zypper install --no-recommends openstack-neutron-linuxbridge-agent
-
-.. only:: debian
-
-   Install and configure the Networking components
-   -----------------------------------------------
-
-   #. .. code-block:: console
-
-         # apt-get install neutron-plugin-linuxbridge-agent
-
-   #. Respond to prompts for ``database management``, ``Identity service
-      credentials``, ``service endpoint``, and ``message queue credentials``.
-
-   #. Select the ML2 plug-in:
-
-      .. image:: figures/debconf-screenshots/neutron_1_plugin_selection.png
-         :alt: Neutron plug-in selection dialog
-
-      .. note::
-
-         Selecting the ML2 plug-in also populates the ``service_plugins`` and
-         ``allow_overlapping_ips`` options in the
-         ``/etc/neutron/neutron.conf`` file with the appropriate values.
-
-.. only:: ubuntu or rdo or obs
 
 Configure the common component
 ------------------------------

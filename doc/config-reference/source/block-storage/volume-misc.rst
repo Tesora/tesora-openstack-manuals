@@ -7,18 +7,12 @@ These options can also be set in the ``cinder.conf`` file.
 .. include:: ../tables/cinder-api.rst
 .. include:: ../tables/cinder-amqp.rst
 .. include:: ../tables/cinder-auth.rst
-.. include:: ../tables/cinder-auth_token.rst
 .. include:: ../tables/cinder-backups.rst
 .. include:: ../tables/cinder-block-device.rst
-.. include:: ../tables/cinder-cloudbyte.rst
-.. include:: ../tables/cinder-coho.rst
 .. include:: ../tables/cinder-common.rst
 .. include:: ../tables/cinder-compute.rst
 .. include:: ../tables/cinder-coordination.rst
-.. include:: ../tables/cinder-cors.rst
-.. include:: ../tables/cinder-database.rst
 .. include:: ../tables/cinder-debug.rst
-.. include:: ../tables/cinder-disco.rst
 .. include:: ../tables/cinder-drbd.rst
 .. include:: ../tables/cinder-emc.rst
 .. include:: ../tables/cinder-eternus.rst
@@ -31,7 +25,6 @@ These options can also be set in the ``cinder.conf`` file.
 .. include:: ../tables/cinder-images.rst
 .. include:: ../tables/cinder-infortrend.rst
 .. include:: ../tables/cinder-keymgr.rst
-.. include:: ../tables/cinder-logging.rst
 .. include:: ../tables/cinder-nas.rst
 .. include:: ../tables/cinder-profiler.rst
 .. include:: ../tables/cinder-pure.rst
@@ -44,6 +37,5 @@ These options can also be set in the ``cinder.conf`` file.
 .. include:: ../tables/cinder-scst.rst
 .. include:: ../tables/cinder-storage.rst
 .. include:: ../tables/cinder-tegile.rst
-.. include:: ../tables/cinder-vzstorage.rst
 .. include:: ../tables/cinder-zeromq.rst
 .. include:: ../tables/cinder-zones.rst
