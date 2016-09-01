@@ -40,21 +40,23 @@ Host networking
    distribution, see the `SLES 12 <https://www.suse.com/documentation/sles-12/book_sle_admin/data/sec_basicnet_manconf.html>`__ or `openSUSE <http://activedoc.opensuse.org/book/opensuse-reference/chapter-13-basic-networking>`__ documentation.
 
 All nodes require Internet access for administrative purposes such as package
-installation, security updates, :term:`DNS`, and :term:`NTP`. In most cases,
-nodes should obtain internet access through the management network interface.
+installation, security updates, :term:`DNS <Domain Name System (DNS)>`, and
+:term:`NTP <Network Time Protocol (NTP)>`. In most cases, nodes should obtain
+internet access through the management network interface.
 To highlight the importance of network separation, the example architectures
 use `private address space <https://tools.ietf.org/html/rfc1918>`__ for the
 management network and assume that the physical network infrastructure
-provides Internet access via :term:`NAT` or other method. The example
-architectures use routable IP address space for the provider (external)
-network and assume that the physical network infrastructure provides direct
-Internet access.
+provides Internet access via :term:`NAT <Network Address Translation (NAT)>`
+or other method. The example architectures use routable IP address space for
+the provider (external) network and assume that the physical network
+infrastructure provides direct Internet access.
 
 In the provider networks architecture, all instances attach directly
 to the provider network. In the self-service (private) networks architecture,
 instances can attach to a self-service or provider network. Self-service
 networks can reside entirely within OpenStack or provide some level of external
-network access using :term:`NAT` through the provider network.
+network access using :term:`NAT <Network Address Translation (NAT)>` through
+the provider network.
 
 .. _figure-networklayout:
 
@@ -67,7 +69,8 @@ The example architectures assume use of the following networks:
 
   This network requires a gateway to provide Internet access to all
   nodes for administrative purposes such as package installation,
-  security updates, :term:`DNS`, and :term:`NTP`.
+  security updates, :term:`DNS <Domain Name System (DNS)>`, and
+  :term:`NTP <Network Time Protocol (NTP)>`.
 
 * Provider on 203.0.113.0/24 with gateway 203.0.113.1
 
@@ -119,5 +122,4 @@ the controller node.
    environment-networking-controller.rst
    environment-networking-compute.rst
    environment-networking-storage-cinder.rst
-   environment-networking-storage-swift.rst
    environment-networking-verify.rst

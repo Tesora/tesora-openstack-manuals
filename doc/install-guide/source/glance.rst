@@ -4,11 +4,11 @@ Image service
 
 .. toctree::
 
-   common/get_started_image_service.rst
+   common/get-started-image-service.rst
    glance-install.rst
    glance-verify.rst
 
-The OpenStack Image service (glance) enables users to discover,
+The Image service (glance) enables users to discover,
 register, and retrieve virtual machine images. It offers a
 :term:`REST <RESTful>` API that enables you to query virtual
 machine image metadata and retrieve an actual image.

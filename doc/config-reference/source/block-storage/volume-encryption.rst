@@ -10,57 +10,42 @@ Initial configuration
 ~~~~~~~~~~~~~~~~~~~~~
 
 Configuration changes need to be made to any nodes running the
-``cinder-volume`` or ``nova-compute`` server.
+``cinder-api`` or ``nova-compute`` server.
 
-Steps to update ``cinder-volume`` servers:
+Steps to update ``cinder-api`` servers:
 
 #. Edit the ``/etc/cinder/cinder.conf`` file to use Key management service
    as follows:
 
-   * Look for the ``[keymgr]`` section.
+   * Look for the ``[key_manager]`` section.
 
-   * Enter a new line directly below ``[keymgr]`` with the following:
+   * Enter a new line directly below ``[key_manager]`` with the following:
 
      .. code-block:: ini
 
-        api_class = cinder.keymgr.barbican.BarbicanKeyManager
+        api_class = cinder.key_manager.barbican.BarbicanKeyManager
 
      .. note::
 
         Use a '#' prefix to comment out the line in this section that
         begins with 'fixed_key'.
 
-#. Restart ``cinder-volume``.
+#. Restart ``cinder-api``.
 
 Update ``nova-compute`` servers:
 
-#. Set up the Key Manager service by editing ``/etc/nova/nova.conf``.
+#. Install the ``cryptsetup`` utility and the ``python-barbicanclient``
+   Python package.
+
+#. Set up the Key Manager service by editing ``/etc/nova/nova.conf``:
 
    .. code-block:: ini
 
-      [keymgr]
-      api_class = nova.keymgr.barbican.BarbicanKeyManager
+      [key_manager]
+      api_class = nova.key_manager.barbican.BarbicanKeyManager
 
 #. Restart ``nova-compute``.
 
-Follow the instructions in the OpenStack Administrator Guide under the
-heading `Create an encrypted volume
-type <http://docs.openstack.org/admin-guide/dashboard_manage_volumes.html>`__
-or alternatively, see ``TODO`` in this manual to do this via the
-command line.
-
-TODO: Add link to section_create-encrypted-volume-type.
-
-Create an encrypted volume by typing the command:
-
-.. code-block:: console
-
-    $ cinder create --name encryptedVolume --volume-type LUKS 1
-
-For alternate instructions and details, including the console output,
-see the TODO in this document.
-
-TODO: Add link to section_create_volume.
 
 Create an encrypted volume type
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -106,7 +91,9 @@ the volume.
       +--------------------------------------+-------------------------------------------+-----------------+----------+------------------+
 
 The OpenStack dashboard (horizon) supports creating the encrypted
-volume type as of the Kilo release.
+volume type as of the Kilo release. For instructions, see
+`Create an encrypted volume type
+<http://docs.openstack.org/admin-guide/dashboard-manage-volumes.html>`_.
 
 Create an encrypted volume
 ~~~~~~~~~~~~~~~~~~~~~~~~~~

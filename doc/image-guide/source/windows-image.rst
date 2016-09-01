@@ -69,7 +69,7 @@ using the :command:`virt-install` command and the KVM hypervisor.
 
    .. code-block:: console
 
-      C:\Invoke-WebRequest -UseBasicParsing http://www.cloudbase.it/downloads/CloudbaseInitSetup_Stable_x64.msi -OutFile cloudbaseinit.msi
+      C:\Invoke-WebRequest -UseBasicParsing https://cloudbase.it/downloads/CloudbaseInitSetup_Stable_x64.msi -OutFile cloudbaseinit.msi
       C:\.\cloudbaseinit.msi
 
    In the :guilabel:`configuration options` window,
@@ -90,5 +90,4 @@ Your image is ready to upload to the Image service:
 
 .. code-block:: console
 
-   $ glance image-create --name WS2012 --disk-format qcow2 \
-     --container-format bare --file ws2012.qcow2
+   $ openstack image create --disk-format qcow2 --file ws2012.qcow2 WS2012

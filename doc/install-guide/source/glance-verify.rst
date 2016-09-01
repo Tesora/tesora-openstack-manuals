@@ -9,8 +9,8 @@ For more information about how to download and build images, see
 `OpenStack Virtual Machine Image Guide
 <http://docs.openstack.org/image-guide/>`__.
 For information about how to manage images, see the
-`OpenStack User Guide
-<http://docs.openstack.org/user-guide/common/cli_manage_images.html>`__.
+`OpenStack End User Guide
+<http://docs.openstack.org/user-guide/common/cli-manage-images.html>`__.
 
 .. note::
 
@@ -44,7 +44,7 @@ For information about how to manage images, see the
         --disk-format qcow2 --container-format bare \
         --public
       +------------------+------------------------------------------------------+
-      | Property         | Value                                                |
+      | Field            | Value                                                |
       +------------------+------------------------------------------------------+
       | checksum         | 133eae9fb1c98f45894a4e60d8736619                     |
       | container_format | bare                                                 |
@@ -86,8 +86,8 @@ For information about how to manage images, see the
    .. code-block:: console
 
       $ openstack image list
-      +--------------------------------------+--------+
-      | ID                                   | Name   |
-      +--------------------------------------+--------+
-      | 38047887-61a7-41ea-9b49-27987d5e8bb9 | cirros |
-      +--------------------------------------+--------+
+      +--------------------------------------+--------+--------+
+      | ID                                   | Name   | Status |
+      +--------------------------------------+--------+--------+
+      | 38047887-61a7-41ea-9b49-27987d5e8bb9 | cirros | active |
+      +--------------------------------------+--------+--------+

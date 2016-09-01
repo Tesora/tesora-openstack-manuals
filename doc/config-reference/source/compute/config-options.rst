@@ -6,22 +6,16 @@ For a complete list of all available configuration options for each
 OpenStack Compute service, run
 :command:`bin/nova-<servicename>` ``--help``.
 
-.. include:: ../tables/nova-api.rst
-.. include:: ../tables/nova-apiv21.rst
+.. include:: ../tables/nova-api_database.rst
 .. include:: ../tables/nova-authentication.rst
-.. include:: ../tables/nova-auth_token.rst
 .. include:: ../tables/nova-availabilityzones.rst
 .. include:: ../tables/nova-barbican.rst
-.. include:: ../tables/nova-ca.rst
-.. include:: ../tables/nova-cache.rst
 .. include:: ../tables/nova-cells.rst
 .. include:: ../tables/nova-common.rst
 .. include:: ../tables/nova-compute.rst
 .. include:: ../tables/nova-conductor.rst
 .. include:: ../tables/nova-configdrive.rst
 .. include:: ../tables/nova-console.rst
-.. include:: ../tables/nova-cors.rst
-.. include:: ../tables/nova-database.rst
 .. include:: ../tables/nova-debug.rst
 .. include:: ../tables/nova-ephemeral_storage_encryption.rst
 .. include:: ../tables/nova-fping.rst
@@ -57,4 +51,5 @@ OpenStack Compute service, run
 .. include:: ../tables/nova-vnc.rst
 .. include:: ../tables/nova-volumes.rst
 .. include:: ../tables/nova-vpn.rst
+.. include:: ../tables/nova-wsgi.rst
 .. include:: ../tables/nova-xen.rst

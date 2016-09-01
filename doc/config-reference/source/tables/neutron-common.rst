@@ -20,6 +20,10 @@
      -
    * - ``agent_down_time`` = ``75``
      - (Integer) Seconds to regard the agent is down; should be at least twice report_interval, to be sure the agent is down for good.
+   * - ``allow_automatic_dhcp_failover`` = ``True``
+     - (Boolean) Automatically remove networks from offline DHCP agents.
+   * - ``allow_automatic_l3agent_failover`` = ``False``
+     - (Boolean) Automatically reschedule routers from offline L3 agents to online L3 agents.
    * - ``api_workers`` = ``None``
      - (Integer) Number of separate API worker processes for service. If not specified, the default is equal to the number of CPUs available for best performance.
    * - ``auth_ca_cert`` = ``None``
@@ -33,7 +37,7 @@
    * - ``bind_host`` = ``0.0.0.0``
      - (String) The host IP to bind to
    * - ``bind_port`` = ``9696``
-     - (Unknown) The port to bind to
+     - (Port number) The port to bind to
    * - ``core_plugin`` = ``None``
      - (String) The core plugin Neutron will use
    * - ``default_availability_zones`` =
@@ -108,14 +112,12 @@
      - (Integer) Interval between checks of child process liveness (seconds), use 0 to disable
    * - ``log_agent_heartbeats`` = ``False``
      - (Boolean) Log agent heartbeats
+   * - ``polling_interval`` = ``2``
+     - (Integer) The number of seconds the agent will wait between polling for local device changes.
    * - ``root_helper`` = ``sudo``
      - (String) Root helper application. Use 'sudo neutron-rootwrap /etc/neutron/rootwrap.conf' to use the real root filter facility. Change to 'sudo' to skip the filtering and just run the command directly.
    * - ``root_helper_daemon`` = ``None``
      - (String) Root helper daemon application to use when possible.
-   * - **[keystone_authtoken]**
-     -
-   * - ``memcached_servers`` = ``None``
-     - (List) Optionally specify a list of memcached server(s) to use for caching. If left undefined, tokens will instead be cached in-process.
    * - **[qos]**
      -
    * - ``notification_drivers`` = ``message_queue``
