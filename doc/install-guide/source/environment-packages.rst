@@ -5,6 +5,11 @@ Distributions release OpenStack packages as part of the distribution or
 using other methods because of differing release schedules. Perform
 these procedures on all nodes.
 
+.. note::
+
+   The set up of OpenStack packages described here needs to be done on
+   all nodes: controller, compute, and Block Storage nodes.
+
 .. warning::
 
    Your hosts must contain the latest versions of base installation
@@ -22,16 +27,12 @@ these procedures on all nodes.
 
    .. code-block:: console
 
-      # apt-get install software-properties-common
-      # add-apt-repository cloud-archive:mitaka
+      # apt install software-properties-common
+      # add-apt-repository cloud-archive:newton
 
-   .. note::
+   .. end
 
-      For pre-release testing, use the staging repository:
-
-      .. code-block:: console
-
-         # add-apt-repository cloud-archive:mitaka-proposed
+.. endonly
 
 .. only:: rdo
 
@@ -55,11 +56,15 @@ these procedures on all nodes.
 
          # subscription-manager register --username="USERNAME" --password="PASSWORD"
 
+      .. end
+
    #. Find entitlement pools containing the channels for your RHEL system:
 
       .. code-block:: console
 
          # subscription-manager list --available
+
+      .. end
 
    #. Use the pool identifiers found in the previous step to attach your RHEL
       entitlements:
@@ -68,12 +73,18 @@ these procedures on all nodes.
 
          # subscription-manager attach --pool="POOLID"
 
+      .. end
+
    #. Enable required repositories:
 
       .. code-block:: console
 
          # subscription-manager repos --enable=rhel-7-server-optional-rpms \
            --enable=rhel-7-server-extras-rpms --enable=rhel-7-server-rh-common-rpms
+
+      .. end
+
+.. endonly
 
 .. only:: rdo
 
@@ -87,7 +98,9 @@ these procedures on all nodes.
 
      .. code-block:: console
 
-        # yum install centos-release-openstack-mitaka
+        # yum install centos-release-openstack-newton
+
+     .. end
 
    * On RHEL, download and install the RDO repository RPM to enable the
      OpenStack repository.
@@ -96,19 +109,7 @@ these procedures on all nodes.
 
         # yum install https://rdoproject.org/repos/rdo-release.rpm
 
-   .. note::
-
-      For pre-release testing on CentOS or RHEL, install the
-      ``yum-plugin-priorities`` package so that the Delorean repository takes
-      precedence over the main RDO repositories, and use the Delorean
-      repositories:
-
-      .. code-block:: console
-
-         # yum install yum-plugin-priorities
-         # cd /etc/yum.repos.d/
-         # curl -O http://trunk.rdoproject.org/centos7/delorean-deps.repo
-         # curl -O http://trunk.rdoproject.org/centos7/current-passed-ci/delorean.repo
+     .. end
 
 .. only:: obs
 
@@ -122,23 +123,32 @@ these procedures on all nodes.
 
      .. code-block:: console
 
-        # zypper addrepo -f obs://Cloud:OpenStack:Mitaka/openSUSE_Leap_42.1 Mitaka
+        # zypper addrepo -f obs://Cloud:OpenStack:Newton/openSUSE_Leap_42.1 Newton
 
-     The openSUSE distribution uses the concept of patterns to represent
-     collections of packages. If you selected 'Minimal Server Selection (Text
-     Mode)' during the initial installation, you may be presented with a
-     dependency conflict when you attempt to install the OpenStack packages.
-     To avoid this, remove the minimal\_base-conflicts package:
+     .. end
 
-     .. code-block:: console
+     .. note::
 
-        # zypper rm patterns-openSUSE-minimal_base-conflicts
+        The openSUSE distribution uses the concept of patterns to
+        represent collections of packages. If you selected 'Minimal
+        Server Selection (Text Mode)' during the initial installation,
+        you may be presented with a dependency conflict when you
+        attempt to install the OpenStack packages. To avoid this,
+        remove the minimal\_base-conflicts package:
+
+        .. code-block:: console
+
+           # zypper rm patterns-openSUSE-minimal_base-conflicts
+
+        .. end
 
      **On SLES:**
 
      .. code-block:: console
 
-        # zypper addrepo -f obs://Cloud:OpenStack:Mitaka/SLE_12_SP1 Mitaka
+        # zypper addrepo -f obs://Cloud:OpenStack:Newton/SLE_12_SP2 Newton
+
+     .. end
 
      .. note::
 
@@ -152,12 +162,16 @@ these procedures on all nodes.
            Key Created:      2015-12-16T16:48:37 CET
            Key Expires:      2018-02-23T16:48:37 CET
 
+        .. end
+
+.. endonly
+
 .. only:: debian
 
    Enable the backports repository
    -------------------------------
 
-   The Mitaka release is available directly through the official
+   The Newton release is available directly through the official
    Debian backports repository. To use this repository, follow
    the instruction from the official
    `Debian website <http://backports.debian.org/Instructions/>`_,
@@ -171,13 +185,19 @@ these procedures on all nodes.
          # echo "deb http://http.debian.net/debian jessie-backports main" \
            >>/etc/apt/sources.list
 
+      .. end
+
       .. note::
 
          Later you can use the following command to install a package:
 
          .. code-block:: console
 
-            # apt-get -t jessie-backports install ``PACKAGE``
+            # apt -t jessie-backports install ``PACKAGE``
+
+         .. end
+
+.. endonly
 
 Finalize the installation
 -------------------------
@@ -188,7 +208,11 @@ Finalize the installation
 
       .. code-block:: console
 
-         # apt-get update && apt-get dist-upgrade
+         # apt update && apt dist-upgrade
+
+      .. end
+
+   .. endonly
 
    .. only:: rdo
 
@@ -196,11 +220,19 @@ Finalize the installation
 
          # yum upgrade
 
+      .. end
+
+   .. endonly
+
    .. only:: obs
 
       .. code-block:: console
 
          # zypper refresh && zypper dist-upgrade
+
+      .. end
+
+   .. endonly
 
    .. note::
 
@@ -213,7 +245,11 @@ Finalize the installation
 
       .. code-block:: console
 
-         # apt-get install python-openstackclient
+         # apt install python-openstackclient
+
+      .. end
+
+   .. endonly
 
    .. only:: rdo
 
@@ -221,11 +257,19 @@ Finalize the installation
 
          # yum install python-openstackclient
 
+      .. end
+
+   .. endonly
+
    .. only:: obs
 
       .. code-block:: console
 
          # zypper install python-openstackclient
+
+      .. end
+
+   .. endonly
 
 .. only:: rdo
 
@@ -236,3 +280,7 @@ Finalize the installation
       .. code-block:: console
 
          # yum install openstack-selinux
+
+      .. end
+
+.. endonly

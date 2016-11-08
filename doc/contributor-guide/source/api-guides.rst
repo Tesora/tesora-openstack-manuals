@@ -9,17 +9,13 @@ Source files for developer.openstack.org
 
 The `developer.openstack.org`_ web site is intended for application developers
 using the OpenStack APIs to build upon. It contains links to multiple SDKs for
-specific programming languages, an API reference, and API Guides.
+specific programming languages, API references, and API Guides.
 
 For existing APIs, the reference information comes from RST and YAML source
-files. To convert from WADL to RST, use a tool called `wadl2rst`_. Then store
-the RST and YAML files in your project repository in an ``api-ref`` directory.
-The nova project has an example you can follow, including tox jobs for running
-``tox -e api`` to generate the documents.
-
-Alternatively, a project can describe their API with Swagger or OpenAPI. To
-learn more about the Swagger format and OpenAPI initiative, refer to
-https://swagger.io.
+files. The RST and YAML files get stored in your project repository in an
+``api-ref`` directory. The nova project has an example you can follow,
+including tox jobs for running ``tox -e api-ref`` within the ``api-ref``
+directory to generate the documents.
 
 The RST conceptual and how-to files are stored in each project's
 ``doc/source/api-guide`` directory. These are built to locations based on the
@@ -34,94 +30,129 @@ Standards for API reference in OpenStack
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The API working group has `API documentation guidelines`_ that all teams
-providing a REST API service in OpenStack strive to follow.
+providing a REST API service in OpenStack strive to follow. This
+document tells you what and how much to write. If you follow the suggested
+outline, your API guide will be accurate and complete.
 
-How to document your OpenStack API service
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-If your project already has WADL files, they are migrated to Swagger files with
-every commit to the api-site repository. However, some APIs cannot be described
-with Swagger.
-
-If your project needs to migrate to RST and YAML as nova has done, follow these
-steps.
-
-#. Clone the api-site repository locally.::
-
-    git clone git@github.com:openstack/api-site.git
-
-#. Clone the wadl2rst repository locally.::
-
-    git@github.com:annegentle/wadl2rst.git
-
-#. Change directories to the ``wadl2rst`` directory.::
-
-    cd wadl2rst
-
-#. In the wadl2rst directory, create a configuration YAML file to indicate
-which WADL file to migrate as well as the title and destination directory. The
-first line provides a relative path to the WADL file. If you have multiple WADL
-files, list them all in a single YAML file.::
-
-    ../api-site/api-ref/src/wadls/compute-api/src/v2.1/wadl/os-instance-actions-v2.1.wadl:
-    title: OpenStack Compute API v2.1
-    output_directory: dist/collected
-    ../api-site/api-ref/src/wadls/compute-api/src/v2.1/wadl/os-instance-usage-audit-log-v2.1.wadl:
-    title: OpenStack Compute API v2.1
-    output_directory: dist/collected
-
-#. Save the file as a ``.yaml`` file, such as ``project.config.yaml``.
-
-#. In the wadl2rst directory, run the script::
-
-    wadl2rst project.config.yaml
-
-#. Look at the RST files generated and make sure they contain all the
-operations you expect.
-
-Optional: You can run a screen scraper program if you want to get a count of
-your project's total number of operations. The Python script,
-``apirefscrape.py``, is in a ``/scripts/`` directory in the wadl2rst
-repository. Run it like so.::
-
-    python apirefscrape.py
-
-You see output of each service, a count of all operations, and a listing of
-each operation.
-
-If your project does not have any documentation, then you may write Swagger
-plus RST to document your API calls, parameters, and reference information. You
-can generate Swagger from annotations or create Swagger from scratch. You
-should review, store, and build RST for conceptual or how-to information from
-your project team’s repository. You can find a suggested outline in the
-`API documentation guidelines`_. The Compute project has examples to follow:
+If your project does not have any documentation, you can find a suggested
+outline in the `API documentation guidelines`_. The Compute project has
+examples to follow:
 
 * http://git.openstack.org/cgit/openstack/nova/tree/api-guide
 * http://git.openstack.org/cgit/openstack/nova/tree/api-ref
 
-You need the `extensions`_ for the API reference information.
+For service names, you must adhere to the official name for the service as
+indicated in the governance repository in the ``reference/projects.yaml``
+file. These names are used in the URL for the documentation by stating the
+target directory for the content in the ``api-ref-jobs:`` indicator. If
+your service does not have a name indicated in the governance repo,
+please ask your PTL or a Technical Committee member how to proceed.
 
-All projects should use this set of `API documentation guidelines`_ from the
-OpenStack API working group any time their service has a REST API. This
-document tells you what and how much to write. If you follow the suggested
-outline, your API guide will be accurate and complete.
+.. _how-to-document-api:
+
+How to document your OpenStack API service
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Use these instructions if you have no documentation currently, or want to
+update it to match OpenStack standards.
+
+The basic steps are:
+
+#. Create an ``api-ref/source`` directory in your project repository.
+
+#. Create a ``conf.py`` for the project, similar to the `nova example`_. In it,
+   include the html theme, openstackdocstheme, use the os-api-ref Sphinx
+   extension, and also point the bug reporting link to your project's repo::
+
+    import openstackdocstheme
+
+    extensions = [
+        'os_api_ref',
+    ]
+
+
+    html_theme = 'openstackdocs'
+    html_theme_path = [openstackdocstheme.get_html_theme_path()]
+    html_theme_options = {
+        "sidebar_mode": "toc",
+    }
+    html_context = {'bug_project': 'nova', 'bug_tag': 'api-ref'}
+
+#. Update the ``test-requirements.txt`` file for the project with a line for
+   the ``os-api-ref`` Sphinx extension::
+
+       os-api-ref>=1.0.0 # Apache-2.0
+
+#. Create RST files for each operation.
+
+#. In the RST file, use ``.. rest_method::`` for each operation.
+
+   Example: ``.. rest_method:: GET /v2.1/{tenant_id}/flavors``
+
+#. In the RST file, add requests and responses that point to a
+   ``parameters.yaml`` file::
+
+    .. rest_parameters:: parameters.yaml
+
+       - tenant_id: tenant_id
+
+   Here is an example entry in ``parameters.yaml``::
+
+       admin_tenant_id:
+         description: |
+           The UUID of the administrative project.
+         in: path
+         required: true
+         type: string
+
+#. Create sample JSON requests and responses and store in a directory, and
+   point to those in your RST files. As an example::
+
+    .. literalinclude:: samples/os-evacuate/server-evacuate-resp.json
+       :language: javascript
+
+#. Update the project's ``tox.ini`` file to include a configuration for
+   building the API reference locally with these lines:
+
+   .. code-block:: console
+
+      [testenv:api-ref]
+      # This environment is called from CI scripts to test and publish
+      # the API Ref to developer.openstack.org.
+      commands =
+      rm -rf api-ref/build
+      sphinx-build -W -b html -d api-ref/build/doctrees api-ref/source api-ref/build/html
+
+#. Test the ``tox.ini`` changes by running this tox command:
+
+   .. code-block:: console
+
+      $ tox -e api-ref
+
+#. Create a build job similar to the nova job for your project. Examples:
+   https://review.openstack.org/#/c/305464/ and
+   https://review.openstack.org/#/c/305485/.
 
 After the source files and build jobs exist, the docs are built to
 `developer.openstack.org`_.
 
-For the nova project, place your how-to and conceptual articles in the
-``api-guide`` folder in the nova repository. Other projects can mimic these
-patches that created an api-guide and build jobs for the Compute api-guide. You
-should also set up reference information in your project repo.
+If your document is completely new, you need to add links to it from the API
+landing page and the OpenStack Governance reference document, projects.yaml.
 
-You can embed annotations in your source code if you want to generate the
-reference information. Here’s an `example patch`_ from the nova project.
-Because we haven’t had a project do this yet completely, the build jobs still
-need to be written.
+To add a link to the project's API docs to the API landing page, patch the
+``index.rst`` file stored in the `openstack/api-site repository`_.
+
+To ensure the openstack/governance repository has the correct link to your API
+documentation, patch the ``reference/projects.yaml`` file in the
+`openstack/governance repository`.
+
+
 
 .. _`developer.openstack.org`: http://developer.openstack.org
 .. _`wadl2rst`: http://github.com/annegentle/wadl2rst
 .. _`Compute API Guide`: http://developer.openstack.org/api-guide/compute
 .. _`example patch`: https://review.openstack.org/#/c/233446/
 .. _`API documentation guidelines`: http://specs.openstack.org/openstack/api-wg/guidelines/api-docs.html
-.. _`extensions`: http://git.openstack.org/cgit/openstack/nova/tree/api-ref/ext
+.. _`nova example`: https://github.com/openstack/nova/blob/master/api-ref/source/conf.py
+.. _`openstack/api-site repository`: http://git.openstack.org/cgit/openstack/api-site/tree/api-quick-start/source/index.rst
+.. _`openstack/governance repository`: http://git.openstack.org/cgit/openstack/governance/tree/reference/projects.yaml

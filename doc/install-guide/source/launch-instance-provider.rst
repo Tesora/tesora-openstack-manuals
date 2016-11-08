@@ -16,6 +16,8 @@ name, network, security group, key, and instance name.
 
       $ . demo-openrc
 
+   .. end
+
 #. A flavor specifies a virtual resource allocation profile which
    includes processor, memory, and storage.
 
@@ -24,18 +26,14 @@ name, network, security group, key, and instance name.
    .. code-block:: console
 
       $ openstack flavor list
-      +----+-----------+-------+------+-----------+-------+-----------+
-      | ID | Name      |   RAM | Disk | Ephemeral | VCPUs | Is Public |
-      +----+-----------+-------+------+-----------+-------+-----------+
-      | 1  | m1.tiny   |   512 |    1 |         0 |     1 | True      |
-      | 2  | m1.small  |  2048 |   20 |         0 |     1 | True      |
-      | 3  | m1.medium |  4096 |   40 |         0 |     2 | True      |
-      | 4  | m1.large  |  8192 |   80 |         0 |     4 | True      |
-      | 5  | m1.xlarge | 16384 |  160 |         0 |     8 | True      |
-      +----+-----------+-------+------+-----------+-------+-----------+
 
-   This instance uses the ``m1.tiny`` flavor. If you created the optional
-   ``m1.nano`` flavor, use it instead of the ``m1.tiny`` flavor.
+      +----+---------+-----+------+-----------+-------+-----------+
+      | ID | Name    | RAM | Disk | Ephemeral | VCPUs | Is Public |
+      +----+---------+-----+------+-----------+-------+-----------+
+      | 0  | m1.nano |  64 |    1 |         0 |     1 | True      |
+      +----+---------+-----+------+-----------+-------+-----------+
+
+   .. end
 
    .. note::
 
@@ -46,11 +44,14 @@ name, network, security group, key, and instance name.
    .. code-block:: console
 
       $ openstack image list
+
       +--------------------------------------+--------+--------+
       | ID                                   | Name   | Status |
       +--------------------------------------+--------+--------+
       | 390eb5f7-8d49-41ec-95b7-68c0d5d54b34 | cirros | active |
       +--------------------------------------+--------+--------+
+
+   .. end
 
    This instance uses the ``cirros`` image.
 
@@ -59,12 +60,15 @@ name, network, security group, key, and instance name.
    .. code-block:: console
 
       $ openstack network list
+
       +--------------------------------------+--------------+--------------------------------------+
       | ID                                   | Name         | Subnets                              |
       +--------------------------------------+--------------+--------------------------------------+
       | 4716ddfe-6e60-40e7-b2a8-42e57bf3c31c | selfservice  | 2112d5eb-f9d6-45fd-906e-7cabd38b7c7c |
       | b5b6993c-ddf9-40e7-91d0-86806a42edb8 | provider     | 310911f6-acf0-4a47-824e-3032916582ff |
       +--------------------------------------+--------------+--------------------------------------+
+
+   .. end
 
    This instance uses the ``provider`` provider network. However, you must
    reference this network using the ID instead of the name.
@@ -79,11 +83,14 @@ name, network, security group, key, and instance name.
    .. code-block:: console
 
       $ openstack security group list
-      +--------------------------------------+---------+------------------------+
-      | ID                                   | Name    | Description            |
-      +--------------------------------------+---------+------------------------+
-      | dd2b614c-3dad-48ed-958b-b155a3b38515 | default | Default security group |
-      +--------------------------------------+---------+------------------------+
+
+      +--------------------------------------+---------+------------------------+----------------------------------+
+      | ID                                   | Name    | Description            | Project                          |
+      +--------------------------------------+---------+------------------------+----------------------------------+
+      | dd2b614c-3dad-48ed-958b-b155a3b38515 | default | Default security group | a516b957032844328896baa01e0f906c |
+      +--------------------------------------+---------+------------------------+----------------------------------+
+
+   .. end
 
    This instance uses the ``default`` security group.
 
@@ -103,7 +110,7 @@ Launch the instance
 
    .. code-block:: console
 
-      $ openstack server create --flavor m1.tiny --image cirros \
+      $ openstack server create --flavor m1.nano --image cirros \
         --nic net-id=PROVIDER_NET_ID --security-group default \
         --key-name mykey provider-instance
 
@@ -122,7 +129,7 @@ Launch the instance
       | adminPass                            | hdF4LMQqC5PB                                  |
       | config_drive                         |                                               |
       | created                              | 2015-09-17T21:58:18Z                          |
-      | flavor                               | m1.tiny (1)                                   |
+      | flavor                               | m1.nano                                       |
       | hostId                               |                                               |
       | id                                   | 181c52ba-aebc-4c32-a97d-2e8e82e4eaaf          |
       | image                                | cirros (38047887-61a7-41ea-9b49-27987d5e8bb9) |
@@ -138,16 +145,21 @@ Launch the instance
       | user_id                              | 684286a9079845359882afc3aa5011fb              |
       +--------------------------------------+-----------------------------------------------+
 
+   .. end
+
 #. Check the status of your instance:
 
    .. code-block:: console
 
       $ openstack server list
-      +--------------------------------------+-------------------+--------+---------------------------------+
-      | ID                                   | Name              | Status | Networks                        |
-      +--------------------------------------+-------------------+--------+---------------------------------+
-      | 181c52ba-aebc-4c32-a97d-2e8e82e4eaaf | provider-instance | ACTIVE | provider=203.0.113.103 |
-      +--------------------------------------+-------------------+--------+---------------------------------+
+
+      +--------------------------------------+-------------------+--------+------------------------+------------+
+      | ID                                   | Name              | Status | Networks               | Image Name |
+      +--------------------------------------+-------------------+--------+------------------------+------------+
+      | 181c52ba-aebc-4c32-a97d-2e8e82e4eaaf | provider-instance | ACTIVE | provider=203.0.113.103 | cirros     |
+      +--------------------------------------+-------------------+--------+------------------------+------------+
+
+   .. end
 
    The status changes from ``BUILD`` to ``ACTIVE`` when the build process
    successfully completes.
@@ -161,12 +173,15 @@ Access the instance using the virtual console
    .. code-block:: console
 
       $ openstack console url show provider-instance
+
       +-------+---------------------------------------------------------------------------------+
       | Field | Value                                                                           |
       +-------+---------------------------------------------------------------------------------+
       | type  | novnc                                                                           |
       | url   | http://controller:6080/vnc_auto.html?token=5eeccb47-525c-4918-ac2a-3ad1e9f1f493 |
       +-------+---------------------------------------------------------------------------------+
+
+   .. end
 
    .. note::
 
@@ -184,6 +199,7 @@ Access the instance using the virtual console
    .. code-block:: console
 
       $ ping -c 4 203.0.113.1
+
       PING 203.0.113.1 (203.0.113.1) 56(84) bytes of data.
       64 bytes from 203.0.113.1: icmp_req=1 ttl=64 time=0.357 ms
       64 bytes from 203.0.113.1: icmp_req=2 ttl=64 time=0.473 ms
@@ -194,11 +210,14 @@ Access the instance using the virtual console
       4 packets transmitted, 4 received, 0% packet loss, time 2998ms
       rtt min/avg/max/mdev = 0.357/0.451/0.504/0.055 ms
 
+   .. end
+
 #. Verify access to the internet:
 
    .. code-block:: console
 
       $ ping -c 4 openstack.org
+
       PING openstack.org (174.143.194.225) 56(84) bytes of data.
       64 bytes from 174.143.194.225: icmp_req=1 ttl=53 time=17.4 ms
       64 bytes from 174.143.194.225: icmp_req=2 ttl=53 time=17.5 ms
@@ -209,6 +228,8 @@ Access the instance using the virtual console
       4 packets transmitted, 4 received, 0% packet loss, time 3003ms
       rtt min/avg/max/mdev = 17.431/17.575/17.734/0.143 ms
 
+   .. end
+
 Access the instance remotely
 ----------------------------
 
@@ -218,6 +239,7 @@ Access the instance remotely
    .. code-block:: console
 
       $ ping -c 4 203.0.113.103
+
       PING 203.0.113.103 (203.0.113.103) 56(84) bytes of data.
       64 bytes from 203.0.113.103: icmp_req=1 ttl=63 time=3.18 ms
       64 bytes from 203.0.113.103: icmp_req=2 ttl=63 time=0.981 ms
@@ -228,21 +250,27 @@ Access the instance remotely
       4 packets transmitted, 4 received, 0% packet loss, time 3002ms
       rtt min/avg/max/mdev = 0.929/1.539/3.183/0.951 ms
 
+   .. end
+
 #. Access your instance using SSH from the controller node or any
    host on the provider physical network:
 
    .. code-block:: console
 
       $ ssh cirros@203.0.113.103
+
       The authenticity of host '203.0.113.102 (203.0.113.102)' can't be established.
       RSA key fingerprint is ed:05:e9:e7:52:a0:ff:83:68:94:c7:d1:f2:f8:e2:e9.
       Are you sure you want to continue connecting (yes/no)? yes
       Warning: Permanently added '203.0.113.102' (RSA) to the list of known hosts.
-      $
+
+   .. end
 
 If your instance does not launch or seem to work as you expect, see the
-`OpenStack Operations Guide <http://docs.openstack.org/ops>`__ for more
-information or use one of the :doc:`many other options <common/app_support>`
+`Instance Boot Failures
+<http://docs.openstack.org/ops-guide/ops-maintenance-compute.html#instances>`__
+section in OpenStack Operations Guide for more information or use one of
+the :doc:`many other options <common/app-support>`
 to seek assistance. We want your first installation to work!
 
 Return to :ref:`Launch an instance <launch-instance-complete>`.

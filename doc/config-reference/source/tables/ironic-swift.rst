@@ -18,5 +18,19 @@
      - Description
    * - **[swift]**
      -
+   * - ``auth_section`` = ``None``
+     - (Unknown) Config Section from which to load plugin specific options
+   * - ``auth_type`` = ``None``
+     - (Unknown) Authentication type to load
+   * - ``cafile`` = ``None``
+     - (String) PEM encoded Certificate Authority to use when verifying HTTPs connections.
+   * - ``certfile`` = ``None``
+     - (String) PEM encoded client certificate cert file
+   * - ``insecure`` = ``False``
+     - (Boolean) Verify HTTPS connections.
+   * - ``keyfile`` = ``None``
+     - (String) PEM encoded client certificate key file
    * - ``swift_max_retries`` = ``2``
      - (Integer) Maximum number of times to retry a Swift request, before failing.
+   * - ``timeout`` = ``None``
+     - (Integer) Timeout value for http requests

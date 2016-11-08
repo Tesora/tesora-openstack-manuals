@@ -16,13 +16,21 @@ Install and configure components
 
       .. code-block:: console
 
-         # apt-get install mariadb-server python-pymysql
+         # apt install mariadb-server python-pymysql
+
+      .. end
+
+   .. endonly
 
    .. only:: debian
 
       .. code-block:: console
 
-         # apt-get install mysql-server python-pymysql
+         # apt install mysql-server python-pymysql
+
+      .. end
+
+   .. endonly
 
    .. only:: rdo
 
@@ -30,69 +38,98 @@ Install and configure components
 
          # yum install mariadb mariadb-server python2-PyMySQL
 
+      .. end
+
+   .. endonly
+
    .. only:: obs
 
       .. code-block:: console
 
          # zypper install mariadb-client mariadb python-PyMySQL
 
-.. only:: ubuntu or debian
+      .. end
 
-   2. Choose a suitable password for the database ``root`` account.
+   .. endonly
 
-   3. Create and edit the ``/etc/mysql/conf.d/openstack.cnf`` file
+.. only:: debian
+
+   2. Create and edit the ``/etc/mysql/conf.d/openstack.cnf`` file
       and complete the following actions:
 
-      - In the ``[mysqld]`` section, set the
-        ``bind-address`` key to the management IP
-        address of the controller node to enable access by other
-        nodes via the management network:
+      - Create a ``[mysqld]`` section, and set the ``bind-address``
+        key to the management IP address of the controller node to
+        enable access by other nodes via the management network. Set
+        additional keys to enable useful options and the UTF-8
+        character set:
 
+        .. path /etc/mysql/conf.d/openstack.cnf
         .. code-block:: ini
 
            [mysqld]
-           ...
            bind-address = 10.0.0.11
 
-      - In the ``[mysqld]`` section, set the following keys to enable
-        useful options and the UTF-8 character set:
+           default-storage-engine = innodb
+           innodb_file_per_table
+           max_connections = 4096
+           collation-server = utf8_general_ci
+           character-set-server = utf8
+
+        .. end
+
+.. endonly
+
+.. only:: ubuntu
+
+   2. Create and edit the ``/etc/mysql/mariadb.conf.d/99-openstack.cnf`` file
+      and complete the following actions:
+
+      - Create a ``[mysqld]`` section, and set the ``bind-address``
+        key to the management IP address of the controller node to
+        enable access by other nodes via the management network. Set
+        additional keys to enable useful options and the UTF-8
+        character set:
 
         .. code-block:: ini
 
            [mysqld]
-           ...
+           bind-address = 10.0.0.11
+
            default-storage-engine = innodb
            innodb_file_per_table
+           max_connections = 4096
            collation-server = utf8_general_ci
            character-set-server = utf8
+        .. end
+
+.. endonly
 
 .. only:: obs or rdo
 
    2. Create and edit the ``/etc/my.cnf.d/openstack.cnf`` file
       and complete the following actions:
 
-      - In the ``[mysqld]`` section, set the
-        ``bind-address`` key to the management IP
-        address of the controller node to enable access by other
-        nodes via the management network:
+      - Create a ``[mysqld]`` section, and set the ``bind-address``
+        key to the management IP address of the controller node to
+        enable access by other nodes via the management network. Set
+        additional keys to enable useful options and the UTF-8
+        character set:
 
+        .. path /etc/my.cnf.d/openstack.cnf
         .. code-block:: ini
 
            [mysqld]
-           ...
            bind-address = 10.0.0.11
 
-      - In the ``[mysqld]`` section, set the following keys to enable
-        useful options and the UTF-8 character set:
-
-        .. code-block:: ini
-
-           [mysqld]
-           ...
            default-storage-engine = innodb
            innodb_file_per_table
+           max_connections = 4096
            collation-server = utf8_general_ci
            character-set-server = utf8
+
+        .. end
+
+.. endonly
 
 Finalize installation
 ---------------------
@@ -104,6 +141,10 @@ Finalize installation
       .. code-block:: console
 
          # service mysql restart
+
+      .. end
+
+.. endonly
 
 .. only:: rdo or obs
 
@@ -117,6 +158,10 @@ Finalize installation
             # systemctl enable mariadb.service
             # systemctl start mariadb.service
 
+         .. end
+
+      .. endonly
+
       .. only:: obs
 
          .. code-block:: console
@@ -124,16 +169,11 @@ Finalize installation
             # systemctl enable mysql.service
             # systemctl start mysql.service
 
-.. only:: ubuntu
+         .. end
 
-   2. Secure the database service by running the ``mysql_secure_installation``
-      script.
+      .. endonly
 
-      .. code-block:: console
-
-         # mysql_secure_installation
-
-.. only:: rdo or obs
+.. only:: rdo or obs or ubuntu
 
    2. Secure the database service by running the ``mysql_secure_installation``
       script. In particular, choose a suitable password for the database
@@ -142,3 +182,7 @@ Finalize installation
       .. code-block:: console
 
          # mysql_secure_installation
+
+      .. end
+
+.. endonly

@@ -3,7 +3,7 @@ Compute
 =======
 
 The OpenStack Compute service allows you to control an
-:term:`Infrastructure-as-a-Service (IaaS) <IaaS>` cloud computing platform.
+:term:`Infrastructure-as-a-Service (IaaS)` cloud computing platform.
 It gives you control over instances and networks, and allows you to manage
 access to the cloud through users and projects.
 
@@ -15,12 +15,12 @@ web-based API.
 .. toctree::
    :maxdepth: 2
 
-   compute_arch.rst
+   compute-arch.rst
    compute-images-instances.rst
    compute-networking-nova.rst
    compute-system-admin.rst
    support-compute.rst
 
 .. TODO (bmoss)
-   ../common/section_compute-configure-console.xml
+   ../common/section-compute-configure-console.xml
 

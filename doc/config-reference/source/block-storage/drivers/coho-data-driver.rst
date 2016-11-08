@@ -19,18 +19,34 @@ Supported operations
 ~~~~~~~~~~~~~~~~~~~~
 
 * Create, delete, attach, detach, retype, clone, and extend volumes.
-
 * Create, list, and delete volume snapshots.
-
 * Create a volume from a snapshot.
-
 * Copy a volume to an image.
-
 * Copy an image to a volume.
-
 * Create a thin provisioned volume.
-
 * Get volume statistics.
+
+Coho Data QoS support
+~~~~~~~~~~~~~~~~~~~~~
+
+QoS support for the Coho Data driver includes the ability to set the
+following capabilities in the OpenStack Block Storage API
+``cinder.api.contrib.qos_specs_manage`` QoS specs extension module:
+
+* **maxIOPS** - The maximum number of IOPS allowed for this volume.
+
+* **maxMBS** - The maximum throughput allowed for this volume.
+
+The QoS keys above must be created and associated with a volume type.
+For information about how to set the key-value pairs and associate
+them with a volume type, see the `volume qos
+<http://docs.openstack.org/developer/python-openstackclient/command-objects/volume-qos.html>`_
+section in the OpenStackClient command list.
+
+.. note::
+
+   If you change a volume type with QoS to a new volume type
+   without QoS, the QoS configuration settings will be removed.
 
 System requirements
 ~~~~~~~~~~~~~~~~~~~
@@ -44,7 +60,7 @@ Coho Data Block Storage driver configuration
 
    .. code-block:: console
 
-      $ cinder type-create coho-1
+      $ openstack volume type create coho-1
 
 #. Edit the OpenStack Block Storage service configuration file.
    The following sample, ``/etc/cinder/cinder.conf``, configuration lists the
@@ -74,3 +90,4 @@ Coho Data Block Storage driver configuration
 
 #. Restart the ``cinder-volume`` service to enable Coho Data driver.
 
+.. include:: ../../tables/cinder-coho.rst

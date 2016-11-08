@@ -32,31 +32,27 @@
      - (String) The API paste config file to use
    * - ``auth_strategy`` = ``keystone``
      - (String) The type of authentication to use
-   * - ``bind_host`` = ``0.0.0.0``
-     - (Unknown) The host IP to bind to
+   * - ``bind_host`` = ``127.0.0.1``
+     - (IP) The host IP to bind to
    * - ``bind_port`` = ``9876``
-     - (Unknown) The port to bind to
+     - (Port number) The port to bind to
    * - ``control_exchange`` = ``octavia``
      - (String) The default exchange under which topics are scoped. May be overridden by an exchange name specified in the transport_url option.
-   * - ``debug`` = ``False``
-     - (Boolean) If set to true, the logging level will be set to DEBUG instead of the default INFO level.
-   * - ``default_log_levels`` = ``amqp=WARN, amqplib=WARN, boto=WARN, qpid=WARN, sqlalchemy=WARN, suds=INFO, oslo.messaging=INFO, iso8601=WARN, requests.packages.urllib3.connectionpool=WARN, urllib3.connectionpool=WARN, websocket=WARN, requests.packages.urllib3.util.retry=WARN, urllib3.util.retry=WARN, keystonemiddleware=WARN, routes.middleware=WARN, stevedore=WARN, taskflow=WARN, keystoneauth=WARN, oslo.cache=INFO, dogpile.core.dogpile=INFO``
-     - (List) List of package logging levels in logger=LEVEL pairs. This option is ignored if log_config_append is set.
    * - ``executor_thread_pool_size`` = ``64``
      - (Integer) Size of executor thread pool.
-   * - ``fatal_deprecations`` = ``False``
-     - (Boolean) Enables or disables fatal status of deprecations.
    * - ``host`` = ``localhost``
      - (String) The hostname Octavia is running on
    * - ``octavia_plugins`` = ``hot_plug_plugin``
      - (String) Name of the controller plugin to use
+   * - ``pagination_max_limit`` = ``-1``
+     - (String) The maximum number of items returned in a single response. The string 'infinite' or a negative integer value means 'no limit'
    * - **[amphora_agent]**
      -
    * - ``agent_server_ca`` = ``/etc/octavia/certs/client_ca.pem``
      - (String) The ca which signed the client certificates
    * - ``agent_server_cert`` = ``/etc/octavia/certs/server.pem``
      - (String) The server certificate for the agent.py server to use
-   * - ``agent_server_network_dir`` = ``/etc/network/interfaces.d/``
+   * - ``agent_server_network_dir`` = ``/etc/netns/amphora-haproxy/network/interfaces.d/``
      - (String) The directory where new network interfaces are located
    * - ``agent_server_network_file`` = ``None``
      - (String) The file where the network interfaces are located. Specifying this will override any value set for agent_server_network_dir.
@@ -64,11 +60,11 @@
      - (String) The amphora ID.
    * - **[anchor]**
      -
-   * - ``password`` = ``simplepassword``
+   * - ``password`` = ``None``
      - (String) Anchor password
    * - ``url`` = ``http://localhost:9999/v1/sign/default``
      - (String) Anchor URL
-   * - ``username`` = ``myusername``
+   * - ``username`` = ``None``
      - (String) Anchor username
    * - **[certificates]**
      -
@@ -98,16 +94,20 @@
      - (Integer) Retry attempts to wait for Amphora to become active
    * - ``amp_active_wait_sec`` = ``10``
      - (Integer) Seconds to wait between checks on whether an Amphora has become active
+   * - ``amp_boot_network_list`` =
+     - (List) List of networks to attach to the Amphorae. All networks defined in the list will be attached to each amphora.
    * - ``amp_flavor_id`` =
      - (String) Nova instance flavor id for the Amphora
    * - ``amp_image_id`` =
      - (String) DEPRECATED: Glance image id for the Amphora image to boot Superseded by amp_image_tag option.
+   * - ``amp_image_owner_id`` =
+     - (String) Restrict glance image selection to a specific owner ID. This is a recommended security setting.
    * - ``amp_image_tag`` =
      - (String) Glance image tag for the Amphora image to boot. Use this option to be able to update the image without reconfiguring Octavia. Ignored if amp_image_id is defined.
    * - ``amp_network`` =
-     - (String) Network to attach to the Amphora
+     - (String) DEPRECATED: Network to attach to the Amphorae. Replaced by amp_boot_network_list.
    * - ``amp_secgroup_list`` =
-     - (List) List of security groups to attach to the Amphora
+     - (List) List of security groups to attach to the Amphora.
    * - ``amp_ssh_access_allowed`` = ``True``
      - (Boolean) Determines whether or not to allow access to the Amphorae
    * - ``amp_ssh_key_name`` =
@@ -147,9 +147,9 @@
    * - ``base_path`` = ``/var/lib/octavia``
      - (String) Base directory for amphora files.
    * - ``bind_host`` = ``0.0.0.0``
-     - (Unknown) The host IP to bind to
+     - (IP) The host IP to bind to
    * - ``bind_port`` = ``9443``
-     - (Unknown) The port to bind to
+     - (Port number) The port to bind to
    * - ``client_cert`` = ``/etc/octavia/certs/client.pem``
      - (String) The client certificate to talk to the agent
    * - ``connection_max_retries`` = ``300``
@@ -176,10 +176,10 @@
      - (Boolean) If False, use sysvinit.
    * - **[health_manager]**
      -
-   * - ``bind_ip`` = ``0.0.0.0``
-     - (Unknown) IP address the controller will listen on for heart beats
+   * - ``bind_ip`` = ``127.0.0.1``
+     - (IP) IP address the controller will listen on for heart beats
    * - ``bind_port`` = ``5555``
-     - (Unknown) Port number the controller will listen onfor heart beats
+     - (Port number) Port number the controller will listen onfor heart beats
    * - ``controller_ip_port_list`` =
      - (List) List of controller ip and port pairs for the heartbeat receivers. Example 127.0.0.1:5555, 192.168.0.1:5555
    * - ``event_streamer_driver`` = ``noop_event_streamer``
@@ -189,7 +189,7 @@
    * - ``health_check_interval`` = ``3``
      - (Integer) Sleep time between health checks in seconds.
    * - ``heartbeat_interval`` = ``10``
-     - (Integer) Sleep time between sending hearthbeats.
+     - (Integer) Sleep time between sending heartbeats.
    * - ``heartbeat_key`` = ``None``
      - (String) key used to validate amphora sendingthe message
    * - ``heartbeat_timeout`` = ``60``
@@ -210,6 +210,8 @@
      - (Integer) Number of threads performing amphora certificate rotation
    * - ``cleanup_interval`` = ``30``
      - (Integer) DB cleanup interval in seconds
+   * - ``load_balancer_expiry_age`` = ``604800``
+     - (Integer) Load balancer expiry age in seconds
    * - ``spare_amphora_pool_size`` = ``0``
      - (Integer) Number of spare amphorae
    * - ``spare_check_interval`` = ``30``
@@ -221,19 +223,21 @@
    * - ``vrrp_check_interval`` = ``5``
      - (Integer) VRRP health check script run interval in seconds.
    * - ``vrrp_fail_count`` = ``2``
-     - (Integer) Number of successive failure before transition to a fail state.
+     - (Integer) Number of successive failures before transition to a fail state.
    * - ``vrrp_garp_refresh_count`` = ``2``
      - (Integer) Number of gratuitous ARP announcements to make on each refresh interval.
    * - ``vrrp_garp_refresh_interval`` = ``5``
      - (Integer) Time in seconds between gratuitous ARP announcements from the MASTER.
    * - ``vrrp_success_count`` = ``2``
-     - (Integer) Number of successive failure before transition to a success state.
+     - (Integer) Number of consecutive successes before transition to a success state.
    * - **[networking]**
      -
    * - ``lb_network_name`` = ``None``
      - (String) Name of amphora internal network
    * - ``max_retries`` = ``15``
      - (Integer) The maximum attempts to retry an action with the networking service.
+   * - ``port_detach_timeout`` = ``300``
+     - (Integer) Seconds to wait for a port to detach from an amphora.
    * - ``retry_interval`` = ``1``
      - (Integer) Seconds to wait before retrying an action with the networking service.
    * - **[neutron]**
@@ -268,10 +272,12 @@
      - (String) The name of the nova service in the keystone catalog
    * - **[oslo_middleware]**
      -
+   * - ``enable_proxy_headers_parsing`` = ``False``
+     - (Boolean) Whether the application is behind a proxy or not. This determines if the middleware should parse the headers or not.
    * - ``max_request_body_size`` = ``114688``
      - (Integer) The maximum body size for each request, in bytes.
    * - ``secure_proxy_ssl_header`` = ``X-Forwarded-Proto``
-     - (String) DEPRECATED: The HTTP Header that will be used to determine what the original request protocol scheme was, even if it was hidden by an SSL termination proxy.
+     - (String) DEPRECATED: The HTTP Header that will be used to determine what the original request protocol scheme was, even if it was hidden by a SSL termination proxy.
    * - **[task_flow]**
      -
    * - ``engine`` = ``serial``

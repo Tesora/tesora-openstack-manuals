@@ -2,8 +2,6 @@
 
 mkdir -p publish-docs
 
-GLOSSARY="--glossary"
-
 LINKCHECK=""
 if [[ $# > 0 ]] ; then
     if [ "$1" = "--linkcheck" ] ; then
@@ -11,12 +9,10 @@ if [[ $# > 0 ]] ; then
     fi
 fi
 
-for guide in user-guide admin-guide \
-    contributor-guide image-guide arch-design cli-reference; do
-    tools/build-rst.sh doc/$guide $GLOSSARY --build build \
+for guide in admin-guide arch-design cli-reference contributor-guide \
+    ha-guide image-guide ops-guide user-guide; do
+    tools/build-rst.sh doc/$guide --build build \
         --target $guide $LINKCHECK
-    # Build it only the first time
-    GLOSSARY=""
 done
 
 # Draft guides
@@ -28,3 +24,8 @@ for guide in networking-guide arch-design-draft config-reference; do
 done
 
 tools/build-install-guides-rst.sh $LINKCHECK
+
+# This marker is needed for infra publishing.
+# Note for stable branches, this needs to be the top of each manual.
+MARKER_TEXT="Project: $ZUUL_PROJECT Ref: $ZUUL_REFNAME Build: $ZUUL_UUID Revision: $ZUUL_NEWREV"
+echo $MARKER_TEXT > publish-docs/.root-marker

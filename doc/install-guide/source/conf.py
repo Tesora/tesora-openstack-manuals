@@ -40,7 +40,7 @@ import openstackdocstheme
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 # TODO(ajaeger): enable PDF building, for example add 'rst2pdf.pdfbuilder'
-# extensions =
+extensions = ['sphinxmark']
 
 # Add any paths that contain templates here, relative to this directory.
 # templates_path = ['_templates']
@@ -92,14 +92,19 @@ html_context = {"gitsha": gitsha, "bug_tag": bug_tag,
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
 exclude_patterns = ['common/cli*', 'common/nova*',
-                    'common/get_started_with_openstack.rst',
-                    'common/get_started_openstack_services.rst',
-                    'common/get_started_feedback.rst',
-                    'common/get_started_logical_architecture.rst',
-                    'common/get_started_dashboard.rst',
-                    'common/get_started_storage_concepts.rst',
-                    'common/get_started_sahara.rst',
-                    'common/dashboard_customizing.rst',
+                    'common/get-started-with-openstack.rst',
+                    'common/get-started-openstack-services.rst',
+                    'common/get-started-feedback.rst',
+                    'common/get-started-logical-architecture.rst',
+                    'common/get-started-dashboard.rst',
+                    'common/get-started-storage-concepts.rst',
+                    'common/get-started-database-service.rst',
+                    'common/get-started-data-processing.rst',
+                    'common/get-started-object-storage.rst',
+                    'common/get-started-orchestration.rst',
+                    'common/get-started-shared-file-systems.rst',
+                    'common/get-started-telemetry.rst',
+                    'common/dashboard-customizing.rst',
                     'shared/note_configuration_vary_by_distribution.rst']
 
 # The reST default role (used for this markup: `text`) to use for all
@@ -306,3 +311,9 @@ pdf_documents = [
     ('index', u'InstallGuide', u'Install Guide',
      u'OpenStack contributors')
 ]
+
+# -- Options for sphinxmark -----------------------------------------------
+sphinxmark_enable = True
+sphinxmark_div = 'docs-body'
+sphinxmark_image = 'text'
+sphinxmark_text = 'Newton'

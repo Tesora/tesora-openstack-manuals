@@ -11,7 +11,7 @@ logging, the format of the log entries and the log levels.
 The log settings can be changed in ``ceilometer.conf``. The list of
 configuration options are listed in the logging configuration options
 table in the `Telemetry
-section <http://docs.openstack.org/mitaka/config-reference/telemetry.html>`__
+section <http://docs.openstack.org/newton/config-reference/telemetry.html>`__
 in the OpenStack Configuration Reference.
 
 By default ``stderr`` is used as standard output for the log messages.
@@ -64,8 +64,8 @@ For the list of meters that are originated from notifications, see the
 Reference <http://docs.openstack.org/developer/ceilometer/measurements.html>`__.
 
 
-Recommended ``auth_url`` to be used
------------------------------------
+Recommended auth_url to be used
+-------------------------------
 
 When using the Telemetry command-line client, the credentials and the
 ``os_auth_url`` have to be set in order for the client to authenticate

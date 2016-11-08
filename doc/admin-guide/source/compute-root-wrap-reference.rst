@@ -41,11 +41,14 @@ filters definition files. This chain ensures that the Compute
 user itself is not in control of the configuration or modules
 used by the :command:`nova-rootwrap` executable.
 
-Rootwrap is configured using the ``rootwrap.conf`` file. Because
-it's in the trusted security path, it must be owned and writable
-by only the root user. The file's location is specified in both
-the sudoers entry and in the ``nova.conf`` configuration file
-with the ``rootwrap_config=entry`` parameter.
+Configure rootwrap
+~~~~~~~~~~~~~~~~~~
+
+Configure rootwrap in the ``rootwrap.conf`` file. Because
+it is in the trusted security path, it must be owned and writable
+by only the root user. The ``rootwrap_config=entry`` parameter
+specifies the file's location in the sudoers entry and in the
+``nova.conf`` configuration file.
 
 The ``rootwrap.conf`` file uses an INI file format with these
 sections and parameters:
@@ -99,3 +102,17 @@ should be different for each filter you define:
      - (ListOpt) Comma-separated list containing the filter class to
        use, followed by the Filter arguments (which vary depending
        on the Filter class selected).
+
+Configure the rootwrap daemon
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Administrators can use rootwrap daemon support instead of running
+rootwrap with :command:`sudo`. The rootwrap daemon reduces the
+overhead and performance loss that results from running
+``oslo.rootwrap`` with :command:`sudo`. Each call that needs rootwrap
+privileges requires a new instance of rootwrap. The daemon
+prevents overhead from the repeated calls. The daemon does not support
+long running processes, however.
+
+To enable the rootwrap daemon, set ``use_rootwrap_daemon`` to ``True``
+in the Compute service configuration file.

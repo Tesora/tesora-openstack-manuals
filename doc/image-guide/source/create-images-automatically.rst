@@ -59,8 +59,8 @@ On Fedora, install Oz with yum:
 
 A full treatment of Oz is beyond the scope of this document,
 but we will provide an example. You can find additional examples of
-Oz template files on GitHub at `rackerjoe/oz-image-build/templates
-<https://github.com/rackerjoe/oz-image-build/tree/master/templates>`_.
+Oz template files on GitHub at `rcbops/oz-image-build/tree/master/templates
+<https://github.com/rcbops/oz-image-build/tree/master/templates>`_.
 Here's how you would create a CentOS 6.4 image with Oz.
 
 Create a template file (we'll call it ``centos64.tdl``) with
@@ -141,20 +141,6 @@ For example:
 Oz will invoke libvirt to boot the image inside of KVM,
 then Oz will ssh into the instance and perform the customizations.
 
-VMBuilder
-~~~~~~~~~
-
-`VMBuilder <https://launchpad.net/vmbuilder>`_ (Virtual Machine Builder)
-is a command-line tool that creates virtual machine images for
-different hypervisors. The version of VMBuilder that ships
-with Ubuntu can only create Ubuntu virtual machine guests.
-The version of VMBuilder that ships with Debian can create
-Ubuntu and Debian virtual machine guests.
-
-The `Ubuntu Server Guide
-<https://help.ubuntu.com/12.04/serverguide/jeos-and-vmbuilder.html>`_
-has documentation on how to use VMBuilder to create an Ubuntu image.
-
 VeeWee
 ~~~~~~
 
@@ -167,6 +153,14 @@ Packer
 
 `Packer <https://packer.io>`_ is a tool for creating machine
 images for multiple platforms from a single source configuration.
+
+image-bootstrap
+~~~~~~~~~~~~~~~
+
+`image-bootstrap <https://github.com/hartwork/image-bootstrap>`_
+is a command line tool that generates bootable virtual machine images
+with support of Arch, Debian, Gentoo, Ubuntu, and is prepared for use
+with OpenStack.
 
 imagefactory
 ~~~~~~~~~~~~

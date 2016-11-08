@@ -28,11 +28,21 @@ in one programming language within one file. By default, the code-block
 formatted this way is shown in a Python highlighting mode.
 
 To define another highlighting language, use the ``code-block`` directive
-as described in the :ref:`non-standard-block` section.
+as described in the :ref:`non-standard-block` section. Make sure to close these
+tags with ``end``. Additionally, add the ``path`` tag to provide the parser
+with the path of the configuration files. This should allow the parser to parse
+the markup syntax to Bash.
+
+.. note::
+
+  The ``end`` tag allows the parser to identify the scope of code blocks.
+  The ``path`` tag allows the parser to identify the path of the config
+  file. For more information, refer to the :doc:`rst2bash` section.
+  These changes are mandatory only for the installation guides.
 
 **Input**
 
-.. code::
+.. code-block:: none
 
    Add logging statements::
 
@@ -45,7 +55,6 @@ Add logging statements::
 
   from nova.openstack.common import log as logging
   LOG = logging.getLogger(__name__)
-
 
 .. _non-standard-block:
 
@@ -70,8 +79,9 @@ files, ``console`` for console inputs and outputs, and so on.
 
 **Input**
 
-.. code::
+.. code-block:: none
 
+   .. path /path/to/config/file
    .. code-block:: ini
 
       # Configuration for nova-rootwrap
@@ -79,6 +89,8 @@ files, ``console`` for console inputs and outputs, and so on.
 
       [DEFAULT]
       # List of directories to load filter definitions from (separated by ',').
+
+   .. end
 
 **Output**
 
@@ -121,11 +133,14 @@ content from a remote URL (``http`` or ``https``).
 
 **Input**
 
-.. code::
+.. code-block:: none
 
+   .. path /path/to/config/file
    .. remote-code-block:: ini
 
-      http://git.openstack.org/cgit/openstack/nova/tree/etc/nova/api-paste.ini?h=stable/liberty
+      http://git.openstack.org/cgit/openstack/nova/tree/etc/nova/api-paste.ini?h=stable/newton
+
+   .. end
 
 **Output**
 
@@ -140,3 +155,4 @@ content from a remote URL (``http`` or ``https``).
 
    [pipeline:meta]
    pipeline = cors ec2faultwrap logrequest metaapp
+

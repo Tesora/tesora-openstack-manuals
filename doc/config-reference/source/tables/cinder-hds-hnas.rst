@@ -19,6 +19,6 @@
    * - **[DEFAULT]**
      -
    * - ``hds_hnas_iscsi_config_file`` = ``/opt/hds/hnas/cinder_iscsi_conf.xml``
-     - (String) Configuration file for HDS iSCSI cinder plugin
+     - (String) DEPRECATED: Legacy configuration file for HNAS iSCSI Cinder plugin. This is not needed if you fill all configuration on cinder.conf
    * - ``hds_hnas_nfs_config_file`` = ``/opt/hds/hnas/cinder_nfs_conf.xml``
-     - (String) Configuration file for HDS NFS cinder plugin
+     - (String) DEPRECATED: Legacy configuration file for HNAS NFS Cinder plugin. This is not needed if you fill all configuration on cinder.conf

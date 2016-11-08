@@ -3,12 +3,15 @@ bgp BGP
 bigswitch BigSwitch
 brocade Brocade
 brocade_vyatta_l3 Brocade Vyatta L3 plug-in
+cache cache
 cfg_agent cfg agent
 cisco Cisco
+designate DNS service
 dhcp_agent DHCP agent
 dvr DVR
 dvs VMware DVS
 embrane Embrane
+fdb_agent FDB agent
 fwaas Firewall-as-a-Service
 fwaas_ngfw FWaaS NGFW plug-in
 fwaas_varmour FWaaS vArmour plug-in
@@ -25,8 +28,7 @@ l3_brocade_mlx Brocade MLX L3 plug-in
 l3_brocade_mlx_switch Brocade MLX L3 switch
 lbaas Load-Balancer-as-a-Service
 lbaas_agent LBaaS agent
-lbaas_services LBaaS Embrane, Radware, NetScaler, HAproxy, Octavia plugin
-octavia Octavia
+lbaas_services LBaaS Embrane, Radware, NetScaler, HAproxy, octavia plug-in
 linuxbridge_agent Linux Bridge agent
 macvtap_agent MacVTap agent
 metering_agent metering agent
@@ -58,6 +60,7 @@ nova nova
 nsx VMware NSX
 nuage Nuage
 nvsd NVSD driver
+octavia octavia
 onos Open Networking Operating System (ONOS)
 opencontrail OpenContrail
 openvswitch_agent Open vSwitch agent
@@ -70,7 +73,7 @@ ryu RYU
 sdnve SDN-VE
 securitygroups security groups
 service_auth LBaaS service authentication
-sriov SR-IOV
+sriov_agent SR-IOV agent
 vpnaas VPN-as-a-Service
 vpnaas_ipsec VPNaaS IPsec plug-in
 vpnaas_libreswan VPNaaS libreSwan plug-in

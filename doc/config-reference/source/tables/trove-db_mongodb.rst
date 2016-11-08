@@ -33,19 +33,23 @@
    * - ``cluster_support`` = ``True``
      - (Boolean) Enable clusters to be created and managed.
    * - ``configsvr_port`` = ``27019``
-     - (Unknown) Port for instances running as config servers.
+     - (Port number) Port for instances running as config servers.
+   * - ``default_password_length`` = ``36``
+     - (Integer) Character length of generated passwords.
    * - ``device_path`` = ``/dev/vdb``
      - (String) Device path for volume if volume support is enabled.
    * - ``guest_log_exposed_logs`` =
      - (String) List of Guest Logs to expose for publishing.
    * - ``guestagent_strategy`` = ``trove.common.strategies.cluster.experimental.mongodb.guestagent.MongoDbGuestAgentStrategy``
      - (String) Class that implements datastore-specific Guest Agent API logic.
+   * - ``icmp`` = ``False``
+     - (Boolean) Whether to permit ICMP.
    * - ``ignore_dbs`` = ``admin, local, config``
      - (List) Databases to exclude when listing databases.
    * - ``ignore_users`` = ``admin.os_admin, admin.root``
      - (List) Users to exclude when listing users.
    * - ``mongodb_port`` = ``27017``
-     - (Unknown) Port for mongod and mongos instances.
+     - (Port number) Port for mongod and mongos instances.
    * - ``mount_point`` = ``/var/lib/mongodb``
      - (String) Filesystem path for mounting volumes if volume support is enabled.
    * - ``num_config_servers_per_cluster`` = ``3``

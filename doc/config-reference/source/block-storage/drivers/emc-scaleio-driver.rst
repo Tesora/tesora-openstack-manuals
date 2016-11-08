@@ -14,15 +14,52 @@ nodes to a ScaleIO storage cluster.
 Support matrix
 ~~~~~~~~~~~~~~
 
-* ScaleIO: Version 1.32
-* ScaleIO: Version 2.0
+.. list-table::
+   :widths: 10 25
+   :header-rows: 1
+
+   * - ScaleIO version
+     - Supported Linux operating systems
+   * - 1.32
+     - CentOS 6.x, CentOS 7.x, SLES 11 SP3, SLES 12
+   * - 2.0
+     - CentOS 6.x, CentOS 7.x, SLES 11 SP3, SLES 12, Ubuntu 14.04
+
+Deployment prerequisites
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+* ScaleIO Gateway must be installed and accessible in the network.
+  For installation steps, refer to the Preparing the installation Manager
+  and the Gateway section in ScaleIO Deployment Guide. See
+  :ref:`scale_io_docs`.
+
+* ScaleIO Data Client (SDC) must be installed on all OpenStack nodes.
+
+.. note:: Ubuntu users must follow the specific instructions in the ScaleIO
+          deployment guide for Ubuntu environments. See the Deploying on
+          Ubuntu servers section in ScaleIO Deployment Guide. See
+          :ref:`scale_io_docs`.
+
+.. _scale_io_docs:
+
+Official documentation
+----------------------
+
+To find the ScaleIO documentation:
+
+#. Go to the `ScaleIO product documentation page <https://support.emc.com/products/33925_ScaleIO/Documentation/?source=promotion>`_.
+
+#. From the left-side panel, select the relevant version (1.32 or 2.0).
+
+#. Search for "ScaleIO Installation Guide 1.32" or "ScaleIO 2.0 Deployment
+   Guide" accordingly.
 
 Supported operations
 ~~~~~~~~~~~~~~~~~~~~
 
-* Create, delete, clone, attach, and detach volumes
+* Create, delete, clone, attach, detach, manage, and unmanage volumes
 
-* Create and delete volume snapshots
+* Create, delete, manage, and unmanage volume snapshots
 
 * Create a volume from a snapshot
 
@@ -33,8 +70,6 @@ Supported operations
 * Extend a volume
 
 * Get volume statistics
-
-* Manage and unmanage a volume
 
 * Create, list, update, and delete consistency groups
 
@@ -47,9 +82,13 @@ QoS support for the ScaleIO driver includes the ability to set the
 following capabilities in the Block Storage API
 ``cinder.api.contrib.qos_specs_manage`` QoS specs extension module:
 
-* ``minBWS``
+* ``maxIOPS``
+
+* ``maxIOPSperGB``
 
 * ``maxBWS``
+
+* ``maxBWSperGB``
 
 The QoS keys above must be created and associated with a volume type.
 For information about how to set the key-value pairs and associate
@@ -57,19 +96,30 @@ them with a volume type, run the following commands:
 
 .. code-block:: console
 
-   $ cinder help qos-create
-
-   $ cinder help qos-key
-
-   $ cinder help qos-associate
-
-``maxBWS``
- The QoS I/O issue bandwidth rate limit in KBs. If not set, the I/O issue
- bandwidth rate has no limit. The setting must be a multiple of 1024.
+   $ openstack help volume qos
 
 ``maxIOPS``
- The QoS I/O issue bandwidth rate limit in MBs. If not set, the I/O issue
- bandwidth rate has no limit. The setting must be larger than 10.
+ The QoS I/O rate limit. If not set, the I/O rate will be unlimited.
+ The setting must be larger than 10.
+
+``maxIOPSperGB``
+ The QoS I/O rate limit.
+ The limit will be calculated by the specified value multiplied by
+ the volume size.
+ The setting must be larger than 10.
+
+``maxBWS``
+ The QoS I/O bandwidth rate limit in KBs. If not set, the I/O
+ bandwidth rate will be unlimited. The setting must be a multiple of 1024.
+
+``maxBWSperGB``
+ The QoS I/O bandwidth rate limit in KBs.
+ The limit will be calculated by the specified value multiplied by
+ the volume size.
+ The setting must be a multiple of 1024.
+
+The driver always chooses the minimum between the QoS keys value
+and the relevant calculated value of ``maxIOPSperGB`` or ``maxBWSperGB``.
 
 Since the limits are per SDC, they will be applied after the volume
 is attached to an instance, and thus to a compute node/SDC.
@@ -77,17 +127,56 @@ is attached to an instance, and thus to a compute node/SDC.
 ScaleIO thin provisioning support
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The Block Storage driver supports creation of thin-provisioned volumes,
-in addition to thick provisioning.
-The provisioning type settings should be added as an extra specification
+The Block Storage driver supports creation of thin-provisioned and
+thick-provisioned volumes.
+The provisioning type settings can be added as an extra specification
 of the volume type, as follows:
 
 .. code-block:: ini
 
-   sio:provisioning_type = thin\thick
+   provisioning:type = thin\thick
 
-If the provisioning type value is not specified, the default value of
-"thick" will be used.
+The old specification: ``sio:provisioning_type`` is deprecated.
+
+Oversubscription
+----------------
+
+Configure the oversubscription ratio by adding the following parameter
+under the seperate section for ScaleIO:
+
+.. code-block:: ini
+
+   sio_max_over_subscription_ratio = OVER_SUBSCRIPTION_RATIO
+
+.. note::
+
+   The default value for ``sio_max_over_subscription_ratio``
+   is 10.0.
+
+Oversubscription is calculated correctly by the Block Storage service
+only if the extra specification ``provisioning:type``
+appears in the volume type regardless to the default provisioning type.
+Maximum oversubscription value supported for ScaleIO is 10.0.
+
+Default provisioning type
+-------------------------
+
+If provisioning type settings are not specified in the volume type,
+the default value is set according to the ``san_thin_provision``
+option in the configuration file. The default provisioning type
+will be ``thin`` if the option is not specified in the configuration
+file. To set the default provisioning type ``thick``, set
+the ``san_thin_provision`` option to ``false``
+in the configuration file, as follows:
+
+.. code-block:: ini
+
+   san_thin_provision = false
+
+The configuration file is usually located in
+``/etc/cinder/cinder.conf``.
+For a configuration example, see:
+:ref:`cinder.conf <cg_configuration_example_emc>`.
 
 ScaleIO Block Storage driver configuration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -223,6 +312,7 @@ parameters as follows:
    sio_storage_pools = Domain1:Pool1,Domain2:Pool2
    san_login = SIO_USER
    san_password = SIO_PASSWD
+   san_thin_provision = false
 
 Configuration options
 ~~~~~~~~~~~~~~~~~~~~~
