@@ -15,6 +15,8 @@ following command:
 
    $ openssl rand -hex 10
 
+.. end
+
 For OpenStack services, this guide uses ``SERVICE_PASS`` to reference
 service account passwords and ``SERVICE_DBPASS`` to reference database
 passwords.
@@ -32,10 +34,6 @@ and their associated references in the guide:
      - Root password for the database
    * - ``ADMIN_PASS``
      - Password of user ``admin``
-   * - ``CEILOMETER_DBPASS``
-     - Database password for the Telemetry service
-   * - ``CEILOMETER_PASS``
-     - Password of Telemetry service user ``ceilometer``
    * - ``CINDER_DBPASS``
      - Database password for the Block Storage service
    * - ``CINDER_PASS``
@@ -48,12 +46,6 @@ and their associated references in the guide:
      - Database password for Image service
    * - ``GLANCE_PASS``
      - Password of Image service user ``glance``
-   * - ``HEAT_DBPASS``
-     - Database password for the Orchestration service
-   * - ``HEAT_DOMAIN_PASS``
-     - Password of Orchestration domain
-   * - ``HEAT_PASS``
-     - Password of Orchestration service user ``heat``
    * - ``KEYSTONE_DBPASS``
      - Database password of Identity service
    * - ``NEUTRON_DBPASS``
@@ -66,15 +58,13 @@ and their associated references in the guide:
      - Password of Compute service user ``nova``
    * - ``RABBIT_PASS``
      - Password of user guest of RabbitMQ
-   * - ``SWIFT_PASS``
-     - Password of Object Storage service user ``swift``
 
 OpenStack and supporting services require administrative privileges
 during installation and operation. In some cases, services perform
 modifications to the host that can interfere with deployment automation
 tools such as Ansible, Chef, and Puppet. For example, some OpenStack
 services add a root wrapper to ``sudo`` that can interfere with security
-policies. See the `Administrator Guide <http://docs.openstack.org/
+policies. See the `OpenStack Administrator Guide <http://docs.openstack.org/
 admin-guide/compute-root-wrap-reference.html>`__
 for more information.
 

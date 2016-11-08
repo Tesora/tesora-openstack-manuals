@@ -10,7 +10,7 @@
 
 .. _ceilometer-dispatchers:
 
-.. list-table:: Description of dispatchers configuration options
+.. list-table:: Description of Dispatchers configuration options
    :header-rows: 1
    :class: config-ref-table
 
@@ -18,7 +18,7 @@
      - Description
    * - **[DEFAULT]**
      -
-   * - ``event_dispatchers`` = ``['database']``
+   * - ``event_dispatchers`` = ``[]``
      - (Multi-valued) Dispatchers to process event data.
    * - ``meter_dispatchers`` = ``['database']``
      - (Multi-valued) Dispatchers to process metering data.

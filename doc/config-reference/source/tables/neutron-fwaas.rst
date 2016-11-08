@@ -18,5 +18,9 @@
      - Description
    * - **[fwaas]**
      -
+   * - ``agent_version`` = ``v1``
+     - (String) Firewall agent class
+   * - ``driver`` =
+     - (String) Name of the FWaaS Driver
    * - ``enabled`` = ``False``
      - (Boolean) Enable FWaaS

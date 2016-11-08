@@ -30,7 +30,7 @@
      - (Boolean) Specifies that volumes are created as sparse files which initially consume no space. If set to False, the volume is created as a fully allocated file, in which case, creation may take a significantly longer time.
    * - ``gpfs_storage_pool`` = ``system``
      - (String) Specifies the storage pool that volumes are assigned to. By default, the system storage pool is used.
-   * - ``nas_ip`` =
+   * - ``nas_host`` =
      - (String) IP address or Hostname of NAS system.
    * - ``nas_login`` = ``admin``
      - (String) User name to connect to NAS system.
@@ -39,4 +39,4 @@
    * - ``nas_private_key`` =
      - (String) Filename of private key to use for SSH authentication.
    * - ``nas_ssh_port`` = ``22``
-     - (Unknown) SSH port to use to connect to NAS system.
+     - (Port number) SSH port to use to connect to NAS system.

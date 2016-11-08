@@ -24,7 +24,7 @@ of meters, alarm definitions and so forth.
 The Telemetry API URL can be retrieved from the service catalog provided
 by OpenStack Identity, which is populated during the installation
 process. The API access needs a valid token and proper permission to
-retrieve data, as described in :ref:`telemetry-users-roles-tenants`.
+retrieve data, as described in :ref:`telemetry-users-roles-projects`.
 
 Further information about the available API endpoints can be found in
 the `Telemetry API Reference
@@ -189,8 +189,8 @@ the requested operations.
 To be able to use the :command:`ceilometer` command, the
 python-ceilometerclient package needs to be installed and configured
 properly. For details about the installation process, see the `Telemetry
-chapter <http://docs.openstack.org/mitaka/install-guide-ubuntu/ceilometer.html>`__
-in the OpenStack Installation Guide.
+chapter <http://docs.openstack.org/project-install-guide/telemetry/newton/>`__
+in the Installation Tutorials and Guides.
 
 .. note::
 
@@ -230,7 +230,7 @@ be used:
 
 The :command:`ceilometer` command was run with ``admin`` rights, which means
 that all the data is accessible in the database. For more information
-about access right see :ref:`telemetry-users-roles-tenants`. As it can be seen
+about access right see :ref:`telemetry-users-roles-projects`. As it can be seen
 in the above example, there are two VM instances existing in the system, as
 there are VM instance related meters on the top of the result list. The
 existence of these meters does not indicate that these instances are running at
@@ -265,6 +265,7 @@ VM instance:
     +-------------------------+------------+-----------+--------------------------------------+----------------------------------+----------------------------------+
     | cpu                     | cumulative | ns        | bb52e52b-1e42-4751-b3ac-45c52d83ba07 | b6e62aad26174382bc3781c12fe413c8 | cbfa8e3dfab64a27a87c8e24ecd5c60f |
     | cpu_util                | gauge      | %         | bb52e52b-1e42-4751-b3ac-45c52d83ba07 | b6e62aad26174382bc3781c12fe413c8 | cbfa8e3dfab64a27a87c8e24ecd5c60f |
+    | cpu_l3_cache            | gauge      | B         | bb52e52b-1e42-4751-b3ac-45c52d83ba07 | b6e62aad26174382bc3781c12fe413c8 | cbfa8e3dfab64a27a87c8e24ecd5c60f |
     | disk.ephemeral.size     | gauge      | GB        | bb52e52b-1e42-4751-b3ac-45c52d83ba07 | b6e62aad26174382bc3781c12fe413c8 | cbfa8e3dfab64a27a87c8e24ecd5c60f |
     | disk.read.bytes         | cumulative | B         | bb52e52b-1e42-4751-b3ac-45c52d83ba07 | b6e62aad26174382bc3781c12fe413c8 | cbfa8e3dfab64a27a87c8e24ecd5c60f |
     | disk.read.bytes.rate    | gauge      | B/s       | bb52e52b-1e42-4751-b3ac-45c52d83ba07 | b6e62aad26174382bc3781c12fe413c8 | cbfa8e3dfab64a27a87c8e24ecd5c60f |
@@ -513,6 +514,15 @@ file.
 
 The following publisher types are supported:
 
+direct
+    It can be specified in the form of ``direct://?dispatcher=http``. The
+    dispatcher's options include database, file, http, and gnocchi. For
+    more details on dispatcher, see :ref:`telemetry-storing-samples`.
+    It emits data in the configured dispatcher directly, default configuration
+    (the form is ``direct://``) is database dispatcher.
+    In the Mitaka release, this method can only emit data to the database
+    dispatcher, and the form is ``direct://``.
+
 notifier
     It can be specified in the form of
     ``notifier://?option1=value1&option2=value2``. It emits data over
@@ -613,3 +623,4 @@ specified. A sample ``publishers`` section in the
        - udp://10.0.0.2:1234
        - rpc://?per_meter_topic=1 (deprecated in Liberty)
        - notifier://?policy=drop&max_queue_length=512&topic=custom_target
+       - direct://?dispatcher=http

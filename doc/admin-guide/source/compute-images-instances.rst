@@ -31,7 +31,7 @@ flavors that you can edit or add to.
 
    -  For more information about image configuration options, see the
       `Image services
-      <http://docs.openstack.org/mitaka/config-reference/image-service.html>`__
+      <http://docs.openstack.org/newton/config-reference/image.html>`__
       section of the OpenStack Configuration Reference.
 
    -  For more information about flavors, see :ref:`compute-flavors`.
@@ -107,9 +107,9 @@ configuration file directs image traffic to the compute node.
    backed by network storage rather than a local disk.
 
 When you delete an instance, the state is reclaimed with the exception
-of the persistent volume. The ephemeral storage is purged. Memory and
-vCPU resources are released. The image remains unchanged throughout this
-process.
+of the persistent volume. The ephemeral storage, whether encrypted or not,
+is purged. Memory and vCPU resources are released. The image remains
+unchanged throughout this process.
 
 |
 
@@ -268,7 +268,7 @@ can also be used to set policies for Image service actions.
 
    To view a sample configuration file, see
    `glance-api.conf
-   <http://docs.openstack.org/mitaka/config-reference/image-service/sample-configuration-files.html#glance-api-conf>`__.
+   <http://docs.openstack.org/newton/config-reference/image/glance-api.conf.html>`__.
 
 #. Optionally, in the ``glance-api.conf`` file, specify whether roles or
    policies are used in the property protections configuration file
@@ -281,7 +281,7 @@ can also be used to set policies for Image service actions.
 
    To view a sample configuration file, see
    `glance-api.conf
-   <http://docs.openstack.org/mitaka/config-reference/image-service/sample-configuration-files.html#glance-api-conf>`__.
+   <http://docs.openstack.org/newton/config-reference/image/glance-api.conf.html>`__.
 
 Image download: how it works
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -317,7 +317,7 @@ Compute nodes also implement caching of images, meaning that if an image
 has been used before it won't necessarily be downloaded every time.
 Information on the configuration options for caching on compute nodes
 can be found in the `Configuration
-Reference <http://docs.openstack.org/mitaka/config-reference/>`__.
+Reference <http://docs.openstack.org/newton/config-reference/>`__.
 
 Instance building blocks
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -334,19 +334,16 @@ restarts. To get a list of available images on your system, run:
 
 .. code-block:: console
 
-   $ nova image-list
-   +---------------------------+------------------+--------+----------------+
-   | ID                        | Name             | Status | Server         |
-   +---------------------------+------------------+--------+----------------+
-   | aee1d242-730f-431f-88c1-  |                  |        |                |
-   | 87630c0f07ba              | Ubuntu 14.04     |        |                |
-   |                           | cloudimg amd64   | ACTIVE |                |
-   | 0b27baa1-0ca6-49a7-b3f4-  |                  |        |                |
-   | 48388e440245              | Ubuntu 14.10     |        |                |
-   |                           | cloudimg amd64   | ACTIVE |                |
-   | df8d56fc-9cea-4dfd-a8d3-  |                  |        |                |
-   | 28764de3cb08              | jenkins          | ACTIVE |                |
-   +---------------------------+------------------+--------+----------------+
+   $ openstack image list
+   +--------------------------------------+-----------------------------+--------+
+   | ID                                   | Name                        | Status |
+   +--------------------------------------+-----------------------------+--------+
+   | aee1d242-730f-431f-88c1-87630c0f07ba | Ubuntu 14.04 cloudimg amd64 | active |
+   +--------------------------------------+-----------------------------+--------+
+   | 0b27baa1-0ca6-49a7-b3f4-48388e440245 | Ubuntu 14.10 cloudimg amd64 | active |
+   +--------------------------------------+-----------------------------+--------+
+   | df8d56fc-9cea-4dfd-a8d3-28764de3cb08 | jenkins                     | active |
+   +--------------------------------------+-----------------------------+--------+
 
 The displayed image attributes are:
 
@@ -372,16 +369,16 @@ For a list of flavors that are available on your system, run:
 
 .. code-block:: console
 
-   $ nova flavor-list
-   +----+----------+----------+-----+----------+-----+------+------------+----------+
-   | ID | Name     | Memory_MB| Disk| Ephemeral| Swap| VCPUs| RXTX_Factor| Is_Public|
-   +----+----------+----------+-----+----------+-----+------+------------+----------+
-   | 1  | m1.tiny  | 512      | 1   | 0        |     | 1    | 1.0        | True     |
-   | 2  | m1.small | 2048     | 20  | 0        |     | 1    | 1.0        | True     |
-   | 3  | m1.medium| 4096     | 40  | 0        |     | 2    | 1.0        | True     |
-   | 4  | m1.large | 8192     | 80  | 0        |     | 4    | 1.0        | True     |
-   | 5  | m1.xlarge| 16384    | 160 | 0        |     | 8    | 1.0        | True     |
-   +----+----------+----------+-----+----------+-----+------+------------+----------+
+   $ openstack flavor list
+   +-----+-----------+-------+------+-----------+-------+-----------+
+   | ID  | Name      |   RAM | Disk | Ephemeral | VCPUs | Is_Public |
+   +-----+-----------+-------+------+-----------+-------+-----------+
+   | 1   | m1.tiny   |   512 |    1 |         0 |     1 | True      |
+   | 2   | m1.small  |  2048 |   20 |         0 |     1 | True      |
+   | 3   | m1.medium |  4096 |   40 |         0 |     2 | True      |
+   | 4   | m1.large  |  8192 |   80 |         0 |     4 | True      |
+   | 5   | m1.xlarge | 16384 |  160 |         0 |     8 | True      |
+   +-----+-----------+-------+------+-----------+-------+-----------+
 
 By default, administrative users can configure the flavors. You can
 change this behavior by redefining the access controls for
@@ -413,8 +410,9 @@ Guide <http://docs.openstack.org/user-guide/cli.html>`__.
 Control where instances run
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The `OpenStack Configuration
-Reference <http://docs.openstack.org/mitaka/config-reference/>`__
+The `Scheduling section
+<http://docs.openstack.org/newton/config-reference/compute/scheduler.html>`__
+of OpenStack Configuration Reference
 provides detailed information on controlling where your instances run,
 including ensuring a set of instances run on different compute nodes for
 service resiliency or on the same node for high performance

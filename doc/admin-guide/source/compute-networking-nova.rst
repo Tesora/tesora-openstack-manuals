@@ -94,28 +94,28 @@ Flat DHCP Network Manager
 
 VLAN Network Manager
     This is the default mode for OpenStack Compute. In this mode,
-    Compute creates a VLAN and bridge for each tenant. For
+    Compute creates a VLAN and bridge for each project. For
     multiple-machine installations, the VLAN Network Mode requires a
-    switch that supports VLAN tagging (IEEE 802.1Q). The tenant gets a
+    switch that supports VLAN tagging (IEEE 802.1Q). The project gets a
     range of private IPs that are only accessible from inside the VLAN.
-    In order for a user to access the instances in their tenant, a
+    In order for a user to access the instances in their project, a
     special VPN instance (code named ``cloudpipe``) needs to be created.
     Compute generates a certificate and key for the user to access the
     VPN and starts the VPN automatically. It provides a private network
-    segment for each tenant's instances that can be accessed through a
+    segment for each project's instances that can be accessed through a
     dedicated VPN connection from the internet. In this mode, each
-    tenant gets its own VLAN, Linux networking bridge, and subnet.
+    project gets its own VLAN, Linux networking bridge, and subnet.
 
     The subnets are specified by the network administrator, and are
-    assigned dynamically to a tenant when required. A DHCP server is
+    assigned dynamically to a project when required. A DHCP server is
     started for each VLAN to pass out IP addresses to VM instances from
-    the subnet assigned to the tenant. All instances belonging to one
-    tenant are bridged into the same VLAN for that tenant. OpenStack
+    the subnet assigned to the project. All instances belonging to one
+    project are bridged into the same VLAN for that project. OpenStack
     Compute creates the Linux networking bridges and VLANs when
     required.
 
 These network managers can co-exist in a cloud system. However, because
-you cannot select the type of network for a given tenant, you cannot
+you cannot select the type of network for a given project, you cannot
 configure multiple network types in a single Compute installation.
 
 All network managers configure the network using network drivers. For
@@ -135,7 +135,7 @@ compute node runs its own ``nova-network`` service. In both cases, all
 traffic between VMs and the internet flows through ``nova-network``. Each
 mode has benefits and drawbacks. For more on this, see the Network
 Topology section in the `OpenStack Operations Guide
-<http://docs.openstack.org/openstack-ops/content/network_design.html#network_topology>`__.
+<http://docs.openstack.org/ops-guide/arch-network-design.html#network-topology>`__.
 
 All networking options require network connectivity to be already set up
 between OpenStack physical nodes. OpenStack does not configure any
@@ -155,7 +155,7 @@ All machines must have a public and internal network interface
 interface, and ``flat_interface`` and ``vlan_interface`` for the
 internal interface with flat or VLAN managers). This guide refers to the
 public network as the external network and the private network as the
-internal or tenant network.
+internal or project network.
 
 For flat and flat DHCP modes, use the :command:`nova network-create` command
 to create a network:
@@ -195,7 +195,7 @@ configuration file. Specify the configuration file using the
 
 For more information about creating a dnsmasq configuration file, see
 the `OpenStack Configuration
-Reference <http://docs.openstack.org/mitaka/config-reference/>`__,
+Reference <http://docs.openstack.org/newton/config-reference/>`__,
 and `the dnsmasq
 documentation <http://www.thekelleys.org.uk/dnsmasq/docs/dnsmasq.conf.example>`__.
 
@@ -544,7 +544,7 @@ commands.
    the ``.bashrc`` file are for an unprivileged user, you must run
    these commands as that user instead.
 
-Enable ping and SSH with :command:`nova` commands:
+Enable ping and SSH with :command:`nova secgroup-add-rule` commands:
 
 .. code-block:: console
 
@@ -719,7 +719,7 @@ to perform floating IP operations:
 
 For more information about how administrators can associate floating IPs
 with instances, see `Manage IP
-addresses <http://docs.openstack.org/admin-guide/cli_admin_manage_ip_addresses.html>`__
+addresses <http://docs.openstack.org/admin-guide/cli-admin-manage-ip-addresses.html>`__
 in the OpenStack Administrator Guide.
 
 Automatically add floating IPs
@@ -751,7 +751,8 @@ In order to disassociate the network, you will need the ID of the
 project it has been associated to. To get the project ID, you will need
 to be an administrator.
 
-Disassociate the network from the project using the :command:`scrub` command,
+Disassociate the network from the project using the
+:command:`nova-manage project scrub` command,
 with the project ID as the final parameter:
 
 .. code-block:: console
@@ -788,7 +789,7 @@ Using multinic
 --------------
 
 In order to use multinic, create two networks, and attach them to the
-tenant (named ``project`` on the command line):
+project (named ``project`` on the command line):
 
 .. code-block:: console
 
@@ -833,7 +834,7 @@ Edit the ``/etc/network/interfaces`` file:
 
 If the Virtual Network Service Neutron is installed, you can specify the
 networks to attach to the interfaces by using the :option:`--nic` flag with
-the :command:`nova` command:
+the :command:`nova boot` command:
 
 .. code-block:: console
 
@@ -858,13 +859,13 @@ Solution
 
    .. code-block:: console
 
-      $ nova secgroup-list-rules default
-      +-------------+-----------+---------+-----------+--------------+
-      | IP Protocol | From Port | To Port |  IP Range | Source Group |
-      +-------------+-----------+---------+-----------+--------------+
-      | icmp        | -1        | -1      | 0.0.0.0/0 |              |
-      | tcp         | 22        | 22      | 0.0.0.0/0 |              |
-      +-------------+-----------+---------+-----------+--------------+
+      $ openstack security group rule list default
+      +--------------------------------------+-------------+-----------+-----------------+-----------------------+
+      | ID                                   | IP Protocol | IP Range  | Port Range      | Remote Security Group |
+      +--------------------------------------+-------------+-----------+-----------------+-----------------------+
+      | 63536865-e5b6-4df1-bac5-ca6d97d8f54d | tcp         | 0.0.0.0/0 | 22:22           | None                  |
+      | e9d3200f-647a-4293-a9fc-e65ceee189ae | icmp        | 0.0.0.0/0 | type=1:code=-1  | None                  |
+      +--------------------------------------+-------------+-----------+-----------------+-----------------------+
 
 -  Check the NAT rules have been added to iptables on the node that is
    running ``nova-network``:
@@ -875,7 +876,7 @@ Solution
       -A nova-network-PREROUTING -d 68.99.26.170/32 -j DNAT --to-destination 10.0.0.3
       -A nova-network-floating-snat -s 10.0.0.3/32 -j SNAT --to-source 68.99.26.170
 
--  Check that the public address (`68.99.26.170 <68.99.26.170>`__ in
+-  Check that the public address (``68.99.26.170`` in
    this example), has been added to your public interface. You should
    see the address in the listing when you use the :command:`ip addr` command:
 

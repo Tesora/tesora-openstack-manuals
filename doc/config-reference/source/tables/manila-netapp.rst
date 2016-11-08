@@ -20,6 +20,8 @@
      -
    * - ``netapp_aggregate_name_search_pattern`` = ``(.*)``
      - (String) Pattern for searching available aggregates for provisioning.
+   * - ``netapp_enabled_share_protocols`` = ``nfs3, nfs4.0``
+     - (List) The NFS protocol versions that will be enabled. Supported values include nfs3, nfs4.0, nfs4.1. This option only applies when the option driver_handles_share_servers is set to True.
    * - ``netapp_lif_name_template`` = ``os_%(net_allocation_id)s``
      - (String) Logical interface (LIF) name template
    * - ``netapp_login`` = ``None``
@@ -35,7 +37,7 @@
    * - ``netapp_server_hostname`` = ``None``
      - (String) The hostname (or IP address) for the storage system.
    * - ``netapp_server_port`` = ``None``
-     - (Unknown) The TCP port to use for communication with the storage system or proxy server. If not specified, Data ONTAP drivers will use 80 for HTTP and 443 for HTTPS.
+     - (Port number) The TCP port to use for communication with the storage system or proxy server. If not specified, Data ONTAP drivers will use 80 for HTTP and 443 for HTTPS.
    * - ``netapp_snapmirror_quiesce_timeout`` = ``3600``
      - (Integer) The maximum time in seconds to wait for existing snapmirror transfers to complete before aborting when promoting a replica.
    * - ``netapp_storage_family`` = ``ontap_cluster``

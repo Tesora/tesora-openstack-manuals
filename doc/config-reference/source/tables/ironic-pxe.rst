@@ -20,8 +20,6 @@
      -
    * - ``default_ephemeral_format`` = ``ext4``
      - (String) Default file system format for ephemeral partition, if one is created.
-   * - ``disk_devices`` = ``cciss/c0d0,sda,hda,vda``
-     - (String) The disk devices to scan while doing the deploy.
    * - ``image_cache_size`` = ``20480``
      - (Integer) Maximum size (in MiB) of cache for master images, including those in use.
    * - ``image_cache_ttl`` = ``10080``
@@ -38,6 +36,8 @@
      - (Boolean) Enable iPXE boot.
    * - ``ipxe_timeout`` = ``0``
      - (Integer) Timeout value (in seconds) for downloading an image via iPXE. Defaults to 0 (no timeout)
+   * - ``ipxe_use_swift`` = ``False``
+     - (Boolean) Download deploy images directly from swift using temporary URLs. If set to false (default), images are downloaded to the ironic-conductor node and served over its local HTTP server. Applicable only when 'ipxe_enabled' option is set to true.
    * - ``pxe_append_params`` = ``nofb nomodeset vga=normal``
      - (String) Additional append parameters for baremetal PXE boot.
    * - ``pxe_bootfile_name`` = ``pxelinux.0``
@@ -50,7 +50,7 @@
      - (String) ironic-conductor node's TFTP root path. The ironic-conductor must have read/write access to this path.
    * - ``tftp_server`` = ``$my_ip``
      - (String) IP address of ironic-conductor node's TFTP server.
-   * - ``uefi_pxe_bootfile_name`` = ``elilo.efi``
+   * - ``uefi_pxe_bootfile_name`` = ``bootx64.efi``
      - (String) Bootfile DHCP parameter for UEFI boot mode.
-   * - ``uefi_pxe_config_template`` = ``$pybasedir/drivers/modules/elilo_efi_pxe_config.template``
+   * - ``uefi_pxe_config_template`` = ``$pybasedir/drivers/modules/pxe_grub_config.template``
      - (String) On ironic-conductor node, template file for PXE configuration for UEFI boot loader.

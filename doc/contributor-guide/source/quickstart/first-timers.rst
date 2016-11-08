@@ -5,22 +5,9 @@ First timers
 ============
 
 One of the best ways to start contributing to OpenStack documentation
-is to walk through the Installation guide and complete it by hand.
+is to walk through the Installation Tutorial and complete it by hand.
 Keep notes as you go, and offer suggestions for improvement by filing
 documentation bugs at Launchpad.
-
-Other good first-time documentation tasks are bug triaging and bug fixing:
-
-#. Go to the bug lists at https://bugs.launchpad.net/openstack-manuals/+bugs
-   and https://bugs.launchpad.net/openstack-api-site/+bugs.
-
-#. When you can confirm a bug, give it a status based on
-   the :ref:`documentation bug triaging guidelines <doc_bugs_triaging>`.
-   You may skip this step and proceed with bug fixing.
-
-#. If you are up for it, assign the bug to yourself after it has been
-   confirmed by one other person. Fix it by committing the required changes
-   to OpenStack documentation.
 
 The following diagram shows the basic setup workflow:
 
@@ -34,13 +21,11 @@ Setting up for contribution
 
 To get started, complete the following steps:
 
-#. Set up your account and agree to the Individual Contributor License
-   Agreement (ICLA). See `Account Setup`_ for details.
+#. Set up your account and agree to the ``Individual Contributor License
+   Agreement (ICLA)``. See `Account Setup`_ for details.
 
-#. Join the Launchpad `OpenStack Documentation Bug Team`_.
-
-To set up your environment for contributions, proceed with the subsections
-below.
+To set up your environment for contributions, proceed with the
+subsections below.
 
 Set up a text editor
 --------------------
@@ -48,23 +33,8 @@ Set up a text editor
 Use any text editor of your choice to work with the documentation. For
 example:
 
-* To edit **RST** content:
-
-  * https://wiki.gnome.org/Apps/Gedit
-  * https://wiki.typo3.org/Editors_%28reST%29#Open_source_.28.3D_free_of_cost.29
-
-* To edit **XML** content:
-
-  * If you prefer Vi, there are ways to make DocBook editing easier:
-
-    https://fedoraproject.org/wiki/Editing_DocBook_with_Vi
-
-  * If you prefer a text-based editor but with validation, you can use Emacs.
-    Here are some resources on DocBook and Emacs' NXML mode:
-
-    * http://paul.frields.org/2011/02/09/xml-editing-with-emacs/
-    * https://fedoraproject.org/wiki/How_to_use_Emacs_for_XML_editing
-    * http://infohost.nmt.edu/tcc/help/pubs/nxml/
+* https://wiki.gnome.org/Apps/Gedit
+* https://wiki.typo3.org/Editors_%28reST%29#Open_source_.28.3D_free_of_cost.29
 
 To keep the documents clean and easy to compare, all of the OpenStack
 projects require that text is wrapped at `79 characters maximum`_,
@@ -88,13 +58,13 @@ For example, in the :file:`.vimrc`:
 Set up git and git-review
 -------------------------
 
-#. Install git. See `GitHub help`_ for details.
+#. Install ``git``. See `GitHub help`_ for details.
 
    If you use Windows to contribute to OpenStack, install
    `Git for Windows <https://git-for-windows.github.io/>`_.
    In the subsequent procedures, run commands from the Git Bash console.
 
-#. Install git-review so that you are able to submit patches.
+#. Install ``git-review`` so that you are able to submit patches.
    See `Installing git-review`_ for details.
 
    .. note::
@@ -118,13 +88,23 @@ Set up SSH
 
 #. View and copy your SSH key:
 
+   **Linux/Mac**
+
    .. code-block:: console
 
       $ less ~/.ssh/id_rsa.pub
 
-#. Add your SSH key by logging into gerrit and viewing
-   the `Settings > SSH Public Keys`_ page.
+   **Windows**
 
+   .. code-block:: console
+
+      $ notepad ~/.ssh/id_rsa.pub
+
+#. Sign into gerrit at https://review.openstack.org/.
+
+#. In the upper right, click your username. Click the `Settings > SSH Public
+   Keys`_ page. Click ``Add Key``. Paste the key in the ``Add SSH Public Key``
+   web form and click ``Add``.
 
 Set up a repository
 -------------------
@@ -138,13 +118,23 @@ of the Infrastructure manual.
    Substitute ``<projectname>`` in the examples included in this section
    with ``openstack-manuals`` as the documentation is mostly stored in
    the *openstack-manuals* repository. However, if you need specific
-   guide sources, refer to *openstack/api-site*, *openstack/operations-guide*,
-   *openstack/security-guide*, *openstack/training-guides*,
-   or *openstack/ha-guide* repository.
+   guide sources, refer to *openstack/api-site*,
+   *openstack/security-guide*, or *openstack/training-guides*
+   repository.
 
 See :ref:`troubleshoot_setup` if you have difficulty with a repository
 setup.
 
+Finding a bug
+~~~~~~~~~~~~~
+
+After setting up your environment for contribution, it is time to find
+something to work on:
+
+#. Go to the bug lists at https://bugs.launchpad.net/openstack-manuals/+bugs.
+
+#. Find a bug that has been confirmed by another contributor and assign it
+   to yourself.
 
 Committing a change
 ~~~~~~~~~~~~~~~~~~~
@@ -162,7 +152,7 @@ Committing a change
 #. Create a patch for review.openstack.org following the `Submitting a Change
    for Review`_ instructions.
 
-#. Follow the URL returned from git-review to check your commit::
+#. Follow the URL returned from ``git-review`` to check your commit::
 
      http://review.openstack.org/<COMMIT-NUMBER>
 
@@ -310,7 +300,7 @@ as explained in the Infrastructure Manual.
 Python
 ------
 
-If you see this this error:
+If you see this error:
 
 .. code-block:: console
 

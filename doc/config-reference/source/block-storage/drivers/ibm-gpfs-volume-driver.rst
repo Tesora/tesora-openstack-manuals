@@ -73,7 +73,8 @@ system labeled ``newfs`` and direct IO enabled:
 
 .. code-block:: console
 
-   $ cinder create --metadata fstype=ext4 fslabel=newfs dio=yes --display-name volume_1 50
+   $ openstack volume create --property fstype=ext4 fslabel=newfs dio=yes \
+     --size 50 VOLUME
 
 Operational notes for GPFS driver
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -88,3 +89,7 @@ existing volume, the same approach is taken. The same approach is also
 used when a new volume is created from an Image service image, if the
 source image is in raw format, and ``gpfs_images_share_mode`` is set to
 ``copy_on_write``.
+
+The GPFS driver supports encrypted volume back end feature.
+To encrypt a volume at rest, specify the extra specification
+``gpfs_encryption_rest = True``.
