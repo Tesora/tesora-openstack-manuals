@@ -64,12 +64,12 @@ This example assumes access to the following NFS server and mount point:
 
 This example demonstrates the usage of this driver with one NFS server.
 
-Set the ``nas_ip`` option to the IP address or host name of your NFS
+Set the ``nas_host`` option to the IP address or host name of your NFS
 server, and the ``nas_share_path`` option to the NFS export path:
 
 .. code-block:: ini
 
-   nas_ip = 192.168.1.200
+   nas_host = 192.168.1.200
    nas_share_path = /storage
 
 Configure with multiple NFS servers
@@ -80,7 +80,7 @@ Configure with multiple NFS servers
    You can use the multiple NFS servers with `cinder multi back ends
    <https://wiki.openstack.org/wiki/Cinder-multi-backend>`_ feature.
    Configure the :ref:`enabled_backends <cinder-storage>` option with
-   mutliple values, and use the ``nas_ip`` and ``nas_share`` options
+   multiple values, and use the ``nas_host`` and ``nas_share`` options
    for each back end as described above.
 
 The below example is another method to use multiple NFS servers,
@@ -126,7 +126,7 @@ This example assumes access to the following NFS servers and mount points:
 
    .. code-block:: console
 
-      $ nova volume-create --display-name myvol 5
+      $ openstack volume create --size 5 MYVOLUME
       # ls /var/lib/cinder/nfs/46c5db75dc3a3a50a10bfd1a456a9f3f
       volume-a8862558-e6d6-4648-b5df-bb84f31c8935
 

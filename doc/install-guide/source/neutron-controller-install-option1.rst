@@ -10,32 +10,20 @@ Install the components
 
    .. code-block:: console
 
-      # apt-get install neutron-server neutron-plugin-ml2 \
+      # apt install neutron-server neutron-plugin-ml2 \
         neutron-linuxbridge-agent neutron-dhcp-agent \
         neutron-metadata-agent
+
+   .. end
 
 .. only:: debian
 
    .. code-block:: console
 
-      # apt-get install neutron-server neutron-linuxbridge-agent \
-        neutron-dhcp-agent neutron-metadata-agent python-neutronclient
+      # apt install neutron-server neutron-linuxbridge-agent \
+        neutron-dhcp-agent neutron-metadata-agent neutron-l3-agent
 
-   Respond to prompts for `database
-   management <#debconf-dbconfig-common>`__, `Identity service
-   credentials <#debconf-keystone_authtoken>`__, `service endpoint
-   registration <#debconf-api-endpoints>`__, and `message queue
-   credentials <#debconf-rabbitmq>`__.
-
-   Select the ML2 plug-in:
-
-   .. image:: figures/debconf-screenshots/neutron_1_plugin_selection.png
-
-   .. note::
-
-      Selecting the ML2 plug-in also populates the ``core_plugin`` option
-      in the ``/etc/neutron/neutron.conf`` file with the appropriate values
-      (in this case, it is set to the value ``ml2``).
+   .. end
 
 .. only:: rdo
 
@@ -44,169 +32,149 @@ Install the components
       # yum install openstack-neutron openstack-neutron-ml2 \
         openstack-neutron-linuxbridge ebtables
 
+   .. end
+
 .. only:: obs
 
    .. code-block:: console
 
       # zypper install --no-recommends openstack-neutron \
         openstack-neutron-server openstack-neutron-linuxbridge-agent \
-        openstack-neutron-dhcp-agent openstack-neutron-metadata-agent
+        openstack-neutron-dhcp-agent openstack-neutron-metadata-agent \
+        bridge-utils
 
-.. only:: debian
+   .. end
 
-   Configure the server component
-   ------------------------------
+Configure the server component
+------------------------------
 
-   #. Edit the ``/etc/neutron/neutron.conf`` file and complete the following
-      actions:
+The Networking server component configuration includes the database,
+authentication mechanism, message queue, topology change notifications,
+and plug-in.
 
-      * In the ``[DEFAULT]`` section, disable additional plug-ins:
+.. include:: shared/note_configuration_vary_by_distribution.rst
 
-        .. code-block:: ini
+* Edit the ``/etc/neutron/neutron.conf`` file and complete the following
+  actions:
 
-           [DEFAULT]
-           ...
-           service_plugins =
+  * In the ``[database]`` section, configure database access:
 
-      * In the ``[DEFAULT]`` and ``[nova]`` sections, configure Networking to
-        notify Compute of network topology changes:
+    .. path /etc/neutron/neutron.conf
+    .. code-block:: ini
 
-        .. code-block:: ini
+       [database]
+       ...
+       connection = mysql+pymysql://neutron:NEUTRON_DBPASS@controller/neutron
 
-           [DEFAULT]
-           ...
-           notify_nova_on_port_status_changes = True
-           notify_nova_on_port_data_changes = True
+    .. end
 
-           [nova]
-           ...
-           auth_url = http://controller:35357
-           auth_type = password
-           project_domain_name = default
-           user_domain_name = default
-           region_name = RegionOne
-           project_name = service
-           username = nova
-           password = NOVA_PASS
+    Replace ``NEUTRON_DBPASS`` with the password you chose for the
+    database.
 
-        Replace ``NOVA_PASS`` with the password you chose for the ``nova``
-        user in the Identity service.
+    .. note::
 
-.. only:: ubuntu or rdo or obs
+       Comment out or remove any other ``connection`` options in the
+       ``[database]`` section.
 
-   Configure the server component
-   ------------------------------
+  * In the ``[DEFAULT]`` section, enable the Modular Layer 2 (ML2)
+    plug-in and disable additional plug-ins:
 
-   The Networking server component configuration includes the database,
-   authentication mechanism, message queue, topology change notifications,
-   and plug-in.
+    .. path /etc/neutron/neutron.conf
+    .. code-block:: ini
 
-   .. include:: shared/note_configuration_vary_by_distribution.rst
+       [DEFAULT]
+       ...
+       core_plugin = ml2
+       service_plugins =
 
-   * Edit the ``/etc/neutron/neutron.conf`` file and complete the following
-     actions:
+    .. end
 
-     * In the ``[database]`` section, configure database access:
+  * In the ``[DEFAULT]`` section, configure ``RabbitMQ``
+    message queue access:
 
+    .. path /etc/neutron/neutron.conf
+    .. code-block:: ini
+
+       [DEFAULT]
+       ...
+       transport_url = rabbit://openstack:RABBIT_PASS@controller
+
+    .. end
+
+    Replace ``RABBIT_PASS`` with the password you chose for the
+    ``openstack`` account in RabbitMQ.
+
+  * In the ``[DEFAULT]`` and ``[keystone_authtoken]`` sections, configure
+    Identity service access:
+
+    .. path /etc/neutron/neutron.conf
+    .. code-block:: ini
+
+       [DEFAULT]
+       ...
+       auth_strategy = keystone
+
+       [keystone_authtoken]
+       ...
+       auth_uri = http://controller:5000
+       auth_url = http://controller:35357
+       memcached_servers = controller:11211
+       auth_type = password
+       project_domain_name = default
+       user_domain_name = default
+       project_name = service
+       username = neutron
+       password = NEUTRON_PASS
+
+    .. end
+
+    Replace ``NEUTRON_PASS`` with the password you chose for the ``neutron``
+    user in the Identity service.
+
+    .. note::
+
+       Comment out or remove any other options in the
+       ``[keystone_authtoken]`` section.
+
+  * In the ``[DEFAULT]`` and ``[nova]`` sections, configure Networking to
+    notify Compute of network topology changes:
+
+    .. path /etc/neutron/neutron.conf
+    .. code-block:: ini
+
+       [DEFAULT]
+       ...
+       notify_nova_on_port_status_changes = True
+       notify_nova_on_port_data_changes = True
+
+       [nova]
+       ...
+       auth_url = http://controller:35357
+       auth_type = password
+       project_domain_name = default
+       user_domain_name = default
+       region_name = RegionOne
+       project_name = service
+       username = nova
+       password = NOVA_PASS
+
+    .. end
+
+    Replace ``NOVA_PASS`` with the password you chose for the ``nova``
+    user in the Identity service.
+
+  .. only:: rdo
+
+     * In the ``[oslo_concurrency]`` section, configure the lock path:
+
+       .. path /etc/neutron/neutron.conf
        .. code-block:: ini
 
-          [database]
+          [oslo_concurrency]
           ...
-          connection = mysql+pymysql://neutron:NEUTRON_DBPASS@controller/neutron
+          lock_path = /var/lib/neutron/tmp
 
-       Replace ``NEUTRON_DBPASS`` with the password you chose for the
-       database.
-
-     * In the ``[DEFAULT]`` section, enable the Modular Layer 2 (ML2)
-       plug-in and disable additional plug-ins:
-
-       .. code-block:: ini
-
-          [DEFAULT]
-          ...
-          core_plugin = ml2
-          service_plugins =
-
-     * In the ``[DEFAULT]`` and ``[oslo_messaging_rabbit]`` sections,
-       configure RabbitMQ message queue access:
-
-       .. code-block:: ini
-
-          [DEFAULT]
-          ...
-          rpc_backend = rabbit
-
-          [oslo_messaging_rabbit]
-          ...
-          rabbit_host = controller
-          rabbit_userid = openstack
-          rabbit_password = RABBIT_PASS
-
-       Replace ``RABBIT_PASS`` with the password you chose for the
-       ``openstack`` account in RabbitMQ.
-
-     * In the ``[DEFAULT]`` and ``[keystone_authtoken]`` sections, configure
-       Identity service access:
-
-       .. code-block:: ini
-
-          [DEFAULT]
-          ...
-          auth_strategy = keystone
-
-          [keystone_authtoken]
-          ...
-          auth_uri = http://controller:5000
-          auth_url = http://controller:35357
-          memcached_servers = controller:11211
-          auth_type = password
-          project_domain_name = default
-          user_domain_name = default
-          project_name = service
-          username = neutron
-          password = NEUTRON_PASS
-
-       Replace ``NEUTRON_PASS`` with the password you chose for the ``neutron``
-       user in the Identity service.
-
-       .. note::
-
-          Comment out or remove any other options in the
-          ``[keystone_authtoken]`` section.
-
-     * In the ``[DEFAULT]`` and ``[nova]`` sections, configure Networking to
-       notify Compute of network topology changes:
-
-       .. code-block:: ini
-
-          [DEFAULT]
-          ...
-          notify_nova_on_port_status_changes = True
-          notify_nova_on_port_data_changes = True
-
-          [nova]
-          ...
-          auth_url = http://controller:35357
-          auth_type = password
-          project_domain_name = default
-          user_domain_name = default
-          region_name = RegionOne
-          project_name = service
-          username = nova
-          password = NOVA_PASS
-
-       Replace ``NOVA_PASS`` with the password you chose for the ``nova``
-       user in the Identity service.
-
-     .. only:: rdo
-
-        * In the ``[oslo_concurrency]`` section, configure the lock path:
-
-          .. code-block:: ini
-
-             [oslo_concurrency]
-             ...
-             lock_path = /var/lib/neutron/tmp
+       .. end
 
 Configure the Modular Layer 2 (ML2) plug-in
 -------------------------------------------
@@ -219,27 +187,36 @@ and switching) virtual networking infrastructure for instances.
 
   * In the ``[ml2]`` section, enable flat and VLAN networks:
 
+    .. path /etc/neutron/plugins/ml2/ml2_conf.ini
     .. code-block:: ini
 
        [ml2]
        ...
        type_drivers = flat,vlan
 
+    .. end
+
   * In the ``[ml2]`` section, disable self-service networks:
 
+    .. path /etc/neutron/plugins/ml2/ml2_conf.ini
     .. code-block:: ini
 
        [ml2]
        ...
        tenant_network_types =
 
+    .. end
+
   * In the ``[ml2]`` section, enable the Linux bridge mechanism:
 
+    .. path /etc/neutron/plugins/ml2/ml2_conf.ini
     .. code-block:: ini
 
        [ml2]
        ...
        mechanism_drivers = linuxbridge
+
+    .. end
 
     .. warning::
 
@@ -248,29 +225,38 @@ and switching) virtual networking infrastructure for instances.
 
   * In the ``[ml2]`` section, enable the port security extension driver:
 
+    .. path /etc/neutron/plugins/ml2/ml2_conf.ini
     .. code-block:: ini
 
        [ml2]
        ...
        extension_drivers = port_security
 
+    .. end
+
   * In the ``[ml2_type_flat]`` section, configure the provider virtual
     network as a flat network:
 
+    .. path /etc/neutron/plugins/ml2/ml2_conf.ini
     .. code-block:: ini
 
        [ml2_type_flat]
        ...
        flat_networks = provider
 
+    .. end
+
   * In the ``[securitygroup]`` section, enable :term:`ipset` to increase
     efficiency of security group rules:
 
+    .. path /etc/neutron/plugins/ml2/ml2_conf.ini
     .. code-block:: ini
 
        [securitygroup]
        ...
        enable_ipset = True
+
+    .. end
 
 Configure the Linux bridge agent
 --------------------------------
@@ -284,10 +270,13 @@ networking infrastructure for instances and handles security groups.
   * In the ``[linux_bridge]`` section, map the provider virtual network to the
     provider physical network interface:
 
+    .. path /etc/neutron/plugins/ml2/linuxbridge_agent.ini
     .. code-block:: ini
 
       [linux_bridge]
       physical_interface_mappings = provider:PROVIDER_INTERFACE_NAME
+
+    .. end
 
     Replace ``PROVIDER_INTERFACE_NAME`` with the name of the underlying
     provider physical network interface. See :ref:`environment-networking`
@@ -295,20 +284,26 @@ networking infrastructure for instances and handles security groups.
 
   * In the ``[vxlan]`` section, disable VXLAN overlay networks:
 
+    .. path /etc/neutron/plugins/ml2/linuxbridge_agent.ini
     .. code-block:: ini
 
        [vxlan]
        enable_vxlan = False
 
+    .. end
+
   * In the ``[securitygroup]`` section, enable security groups and
     configure the Linux bridge :term:`iptables` firewall driver:
 
+    .. path /etc/neutron/plugins/ml2/linuxbridge_agent.ini
     .. code-block:: ini
 
        [securitygroup]
        ...
        enable_security_group = True
        firewall_driver = neutron.agent.linux.iptables_firewall.IptablesFirewallDriver
+
+    .. end
 
 Configure the DHCP agent
 ------------------------
@@ -322,6 +317,7 @@ The :term:`DHCP agent` provides DHCP services for virtual networks.
     Dnsmasq DHCP driver, and enable isolated metadata so instances on provider
     networks can access metadata over the network:
 
+    .. path /etc/neutron/dhcp_agent.ini
     .. code-block:: ini
 
        [DEFAULT]
@@ -329,6 +325,8 @@ The :term:`DHCP agent` provides DHCP services for virtual networks.
        interface_driver = neutron.agent.linux.interface.BridgeInterfaceDriver
        dhcp_driver = neutron.agent.linux.dhcp.Dnsmasq
        enable_isolated_metadata = True
+
+    .. end
 
 Return to
 :ref:`Networking controller node configuration

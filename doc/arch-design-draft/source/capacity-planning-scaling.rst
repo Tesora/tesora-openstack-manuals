@@ -1,402 +1,432 @@
+.. _capacity-planning-scaling:
+
 =============================
 Capacity planning and scaling
 =============================
 
-An important consideration in running a cloud over time is projecting growth
-and utilization trends in order to plan capital expenditures for the short and
-long term. Gather utilization meters for compute, network, and storage, along
-with historical records of these meters. While securing major anchor tenants
-can lead to rapid jumps in the utilization of resources, the average rate of
-adoption of cloud services through normal usage also needs to be carefully
-monitored.
+Whereas traditional applications required larger hardware to scale
+(vertical scaling), cloud-based applications typically request more,
+discrete hardware (horizontal scaling).
 
-General storage considerations
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-A wide variety of operator-specific requirements dictates the nature of the
-storage back end. Examples of such requirements are as follows:
+OpenStack is designed to be horizontally scalable. Rather than switching
+to larger servers, you procure more servers and simply install identically
+configured services. Ideally, you scale out and load balance among groups of
+functionally identical services (for example, compute nodes or ``nova-api``
+nodes), that communicate on a message bus.
 
-* Public, private or a hybrid cloud, and associated SLA requirements
-* The need for encryption-at-rest, for data on storage nodes
-* Whether live migration will be offered
+The Starting Point
+~~~~~~~~~~~~~~~~~~
 
-We recommend that data be encrypted both in transit and at-rest.
-If you plan to use live migration, a shared storage configuration is highly
-recommended.
+Determining the scalability of your cloud and how to improve it requires
+balancing many variables. No one solution meets everyone's scalability goals.
+However, it is helpful to track a number of metrics. Since you can define
+virtual hardware templates, called "flavors" in OpenStack, you can start to
+make scaling decisions based on the flavors you'll provide. These templates
+define sizes for memory in RAM, root disk size, amount of ephemeral data disk
+space available, and number of cores for starters.
 
-Capacity planning for a multi-site cloud
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-An OpenStack cloud can be designed in a variety of ways to handle individual
-application needs. A multi-site deployment has additional challenges compared
-to single site installations.
+The default OpenStack flavors are shown in :ref:`table_default_flavors`.
 
-When determining capacity options, take into account technical, economic and
-operational issues that might arise from specific decisions.
+.. _table_default_flavors:
 
-Inter-site link capacity describes the connectivity capability between
-different OpenStack sites. This includes parameters such as
-bandwidth, latency, whether or not a link is dedicated, and any business
-policies applied to the connection. The capability and number of the
-links between sites determine what kind of options are available for
-deployment. For example, if two sites have a pair of high-bandwidth
-links available between them, it may be wise to configure a separate
-storage replication network between the two sites to support a single
-swift endpoint and a shared Object Storage capability between them. An
-example of this technique, as well as a configuration walk-through, is
-available at
-http://docs.openstack.org/developer/swift/replication_network.html#dedicated-replication-network.
-Another option in this scenario is to build a dedicated set of tenant
-private networks across the secondary link, using overlay networks with
-a third party mapping the site overlays to each other.
+.. list-table:: Table. OpenStack default flavors
+   :widths: 20 20 20 20 20
+   :header-rows: 1
 
-The capacity requirements of the links between sites is driven by
-application behavior. If the link latency is too high, certain
-applications that use a large number of small packets, for example
-:term:`RPC <Remote Procedure Call (RPC)>` API calls, may encounter
-issues communicating with each other or operating
-properly. OpenStack may also encounter similar types of issues.
-To mitigate this, the Identity service provides service call timeout
-tuning to prevent issues authenticating against a central Identity services.
+   * - Name
+     - Virtual cores
+     - Memory
+     - Disk
+     - Ephemeral
+   * - m1.tiny
+     - 1
+     - 512 MB
+     - 1 GB
+     - 0 GB
+   * - m1.small
+     - 1
+     - 2 GB
+     - 10 GB
+     - 20 GB
+   * - m1.medium
+     - 2
+     - 4 GB
+     - 10 GB
+     - 40 GB
+   * - m1.large
+     - 4
+     - 8 GB
+     - 10 GB
+     - 80 GB
+   * - m1.xlarge
+     - 8
+     - 16 GB
+     - 10 GB
+     - 160 GB
 
-Another network capacity consideration for a multi-site deployment is
-the amount and performance of overlay networks available for tenant
-networks. If using shared tenant networks across zones, it is imperative
-that an external overlay manager or controller be used to map these
-overlays together. It is necessary to ensure the amount of possible IDs
-between the zones are identical.
+The starting point is the core count of your cloud. By applying
+some ratios, you can gather information about:
+
+-  The number of virtual machines (VMs) you expect to run,
+   ``((overcommit fraction × cores) / virtual cores per instance)``
+
+-  How much storage is required ``(flavor disk size × number of instances)``
+
+You can use these ratios to determine how much additional infrastructure
+you need to support your cloud.
+
+Here is an example using the ratios for gathering scalability
+information for the number of VMs expected as well as the storage
+needed. The following numbers support (200 / 2) × 16 = 1600 VM instances
+and require 80 TB of storage for ``/var/lib/nova/instances``:
+
+-  200 physical cores.
+
+-  Most instances are size m1.medium (two virtual cores, 50 GB of
+   storage).
+
+-  Default CPU overcommit ratio (``cpu_allocation_ratio`` in nova.conf)
+   of 16:1.
+
+.. note::
+   Regardless of the overcommit ratio, an instance can not be placed
+   on any physical node with fewer raw (pre-overcommit) resources than
+   instance flavor requires.
+
+However, you need more than the core count alone to estimate the load
+that the API services, database servers, and queue servers are likely to
+encounter. You must also consider the usage patterns of your cloud.
+
+As a specific example, compare a cloud that supports a managed
+web-hosting platform with one running integration tests for a
+development project that creates one VM per code commit. In the former,
+the heavy work of creating a VM happens only every few months, whereas
+the latter puts constant heavy load on the cloud controller. You must
+consider your average VM lifetime, as a larger number generally means
+less load on the cloud controller.
+
+.. TODO Perhaps relocate the above paragraph under the web scale use case?
+
+Aside from the creation and termination of VMs, you must consider the
+impact of users accessing the service particularly on ``nova-api`` and
+its associated database. Listing instances garners a great deal of
+information and, given the frequency with which users run this
+operation, a cloud with a large number of users can increase the load
+significantly. This can occur even without their knowledge. For example,
+leaving the OpenStack dashboard instances tab open in the browser
+refreshes the list of VMs every 30 seconds.
+
+After you consider these factors, you can determine how many cloud
+controller cores you require. A typical eight core, 8 GB of RAM server
+is sufficient for up to a rack of compute nodes — given the above
+caveats.
+
+You must also consider key hardware specifications for the performance
+of user VMs, as well as budget and performance needs, including storage
+performance (spindles/core), memory availability (RAM/core), network
+bandwidth hardware specifications and (Gbps/core), and overall
+CPU performance (CPU/core).
+
+.. tip::
+
+   For a discussion of metric tracking, including how to extract
+   metrics from your cloud, see the .`OpenStack Operations Guide
+   <http://docs.openstack.org/ops-guide/ops-logging-monitoring.html>`_.
+
+Adding Cloud Controller Nodes
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+You can facilitate the horizontal expansion of your cloud by adding
+nodes. Adding compute nodes is straightforward since they are easily picked up
+by the existing installation. However, you must consider some important
+points when you design your cluster to be highly available.
+
+A cloud controller node runs several different services. You
+can install services that communicate only using the message queue
+internally— ``nova-scheduler`` and ``nova-console`` on a new server for
+expansion. However, other integral parts require more care.
+
+You should load balance user-facing services such as dashboard,
+``nova-api``, or the Object Storage proxy. Use any standard HTTP
+load-balancing method (DNS round robin, hardware load balancer, or
+software such as Pound or HAProxy). One caveat with dashboard is the VNC
+proxy, which uses the WebSocket protocol— something that an L7 load
+balancer might struggle with. See also `Horizon session storage
+<http://docs.openstack.org/developer/horizon/topics/deployment.html#session-storage>`_.
+
+You can configure some services, such as ``nova-api`` and
+``glance-api``, to use multiple processes by changing a flag in their
+configuration file allowing them to share work between multiple cores on
+the one machine.
+
+.. tip::
+
+   Several options are available for MySQL load balancing, and the
+   supported AMQP brokers have built-in clustering support. Information
+   on how to configure these and many of the other services can be
+   found in the `operations chapter
+   <http://docs.openstack.org/ops-guide/operations.html>`_ in the Operations
+   Guide.
+
+Segregating Your Cloud
+~~~~~~~~~~~~~~~~~~~~~~
+
+When you want to offer users different regions to provide legal
+considerations for data storage, redundancy across earthquake fault
+lines, or for low-latency API calls, you segregate your cloud. Use one
+of the following OpenStack methods to segregate your cloud: *cells*,
+*regions*, *availability zones*, or *host aggregates*.
+
+Each method provides different functionality and can be best divided
+into two groups:
+
+-  Cells and regions, which segregate an entire cloud and result in
+   running separate Compute deployments.
+
+-  :term:`Availability zones <availability zone>` and host aggregates,
+   which merely divide a single Compute deployment.
+
+:ref:`table_segregation_methods` provides a comparison view of each
+segregation method currently provided by OpenStack Compute.
+
+.. _table_segregation_methods:
+
+.. list-table:: Table. OpenStack segregation methods
+   :widths: 20 20 20 20 20
+   :header-rows: 1
+
+   * -
+     - Cells
+     - Regions
+     - Availability zones
+     - Host aggregates
+   * - **Use**
+     - A single :term:`API endpoint` for compute, or you require a second
+       level of scheduling.
+     - Discrete regions with separate API endpoints and no coordination
+       between regions.
+     - Logical separation within your nova deployment for physical isolation
+       or redundancy.
+     - To schedule a group of hosts with common features.
+   * - **Example**
+     - A cloud with multiple sites where you can schedule VMs "anywhere" or on
+       a particular site.
+     - A cloud with multiple sites, where you schedule VMs to a particular
+       site and you want a shared infrastructure.
+     - A single-site cloud with equipment fed by separate power supplies.
+     - Scheduling to hosts with trusted hardware support.
+   * - **Overhead**
+     - Considered experimental. A new service, nova-cells. Each cell has a full
+       nova installation except nova-api.
+     - A different API endpoint for every region. Each region has a full nova
+       installation.
+     - Configuration changes to ``nova.conf``.
+     - Configuration changes to ``nova.conf``.
+   * - **Shared services**
+     - Keystone, ``nova-api``
+     - Keystone
+     - Keystone, All nova services
+     - Keystone, All nova services
+
+Cells and Regions
+-----------------
+
+OpenStack Compute cells are designed to allow running the cloud in a
+distributed fashion without having to use more complicated technologies,
+or be invasive to existing nova installations. Hosts in a cloud are
+partitioned into groups called *cells*. Cells are configured in a tree.
+The top-level cell ("API cell") has a host that runs the ``nova-api``
+service, but no ``nova-compute`` services. Each child cell runs all of
+the other typical ``nova-*`` services found in a regular installation,
+except for the ``nova-api`` service. Each cell has its own message queue
+and database service and also runs ``nova-cells``, which manages the
+communication between the API cell and child cells.
+
+This allows for a single API server being used to control access to
+multiple cloud installations. Introducing a second level of scheduling
+(the cell selection), in addition to the regular ``nova-scheduler``
+selection of hosts, provides greater flexibility to control where
+virtual machines are run.
+
+Unlike having a single API endpoint, regions have a separate API
+endpoint per installation, allowing for a more discrete separation.
+Users wanting to run instances across sites have to explicitly select a
+region. However, the additional complexity of a running a new service is
+not required.
+
+The OpenStack dashboard (horizon) can be configured to use multiple
+regions. This can be configured through the ``AVAILABLE_REGIONS``
+parameter.
+
+Availability Zones and Host Aggregates
+--------------------------------------
+
+You can use availability zones, host aggregates, or both to partition a
+nova deployment.
+
+Availability zones are implemented through and configured in a similar
+way to host aggregates.
+
+However, you can use them for different reasons.
+
+Availability zone
+^^^^^^^^^^^^^^^^^
+
+This enables you to arrange OpenStack compute hosts into logical groups
+and provides a form of physical isolation and redundancy from other
+availability zones, such as by using a separate power supply or network
+equipment.
+
+You define the availability zone in which a specified compute host
+resides locally on each server. An availability zone is commonly used to
+identify a set of servers that have a common attribute. For instance, if
+some of the racks in your data center are on a separate power source,
+you can put servers in those racks in their own availability zone.
+Availability zones can also help separate different classes of hardware.
+
+When users provision resources, they can specify from which availability
+zone they want their instance to be built. This allows cloud consumers
+to ensure that their application resources are spread across disparate
+machines to achieve high availability in the event of hardware failure.
+
+Host aggregates zone
+^^^^^^^^^^^^^^^^^^^^
+
+This enables you to partition OpenStack Compute deployments into logical
+groups for load balancing and instance distribution. You can use host
+aggregates to further partition an availability zone. For example, you
+might use host aggregates to partition an availability zone into groups
+of hosts that either share common resources, such as storage and
+network, or have a special property, such as trusted computing
+hardware.
+
+A common use of host aggregates is to provide information for use with
+the ``nova-scheduler``. For example, you might use a host aggregate to
+group a set of hosts that share specific flavors or images.
+
+The general case for this is setting key-value pairs in the aggregate
+metadata and matching key-value pairs in flavor's ``extra_specs``
+metadata. The ``AggregateInstanceExtraSpecsFilter`` in the filter
+scheduler will enforce that instances be scheduled only on hosts in
+aggregates that define the same key to the same value.
+
+An advanced use of this general concept allows different flavor types to
+run with different CPU and RAM allocation ratios so that high-intensity
+computing loads and low-intensity development and testing systems can
+share the same cloud without either starving the high-use systems or
+wasting resources on low-utilization systems. This works by setting
+``metadata`` in your host aggregates and matching ``extra_specs`` in
+your flavor types.
+
+The first step is setting the aggregate metadata keys
+``cpu_allocation_ratio`` and ``ram_allocation_ratio`` to a
+floating-point value. The filter schedulers ``AggregateCoreFilter`` and
+``AggregateRamFilter`` will use those values rather than the global
+defaults in ``nova.conf`` when scheduling to hosts in the aggregate. Be
+cautious when using this feature, since each host can be in multiple
+aggregates, but should have only one allocation ratio for
+each resources. It is up to you to avoid putting a host in multiple
+aggregates that define different values for the same resource.
+
+This is the first half of the equation. To get flavor types that are
+guaranteed a particular ratio, you must set the ``extra_specs`` in the
+flavor type to the key-value pair you want to match in the aggregate.
+For example, if you define ``extra_specs`` ``cpu_allocation_ratio`` to
+"1.0", then instances of that type will run in aggregates only where the
+metadata key ``cpu_allocation_ratio`` is also defined as "1.0." In
+practice, it is better to define an additional key-value pair in the
+aggregate metadata to match on rather than match directly on
+``cpu_allocation_ratio`` or ``core_allocation_ratio``. This allows
+better abstraction. For example, by defining a key ``overcommit`` and
+setting a value of "high," "medium," or "low," you could then tune the
+numeric allocation ratios in the aggregates without also needing to
+change all flavor types relating to them.
 
 .. note::
 
-   As of the Kilo release, OpenStack Networking was not capable of
-   managing tunnel IDs across installations. So if one site runs out of
-   IDs, but another does not, that tenant's network is unable to reach
-   the other site.
+    Previously, all services had an availability zone. Currently, only
+    the ``nova-compute`` service has its own availability zone. Services
+    such as ``nova-scheduler``, ``nova-network``, and ``nova-conductor``
+    have always spanned all availability zones.
 
-The ability for a region to grow depends on scaling out the number of
-available compute nodes. However, it may be necessary to grow cells in an
-individual region, depending on the size of your cluster and the ratio of
-virtual machines per hypervisor.
+    When you run any of the following operations, the services appear in
+    their own internal availability zone
+    (CONF.internal_service_availability_zone):
 
-A third form of capacity comes in the multi-region-capable components of
-OpenStack. Centralized Object Storage is capable of serving objects
-through a single namespace across multiple regions. Since this works by
-accessing the object store through swift proxy, it is possible to
-overload the proxies. There are two options available to mitigate this
-issue:
+    -  :command:`nova host-list` (os-hosts)
 
-* Deploy a large number of swift proxies. The drawback is that the
-  proxies are not load-balanced and a large file request could
-  continually hit the same proxy.
+    -  :command:`euca-describe-availability-zones verbose`
 
-* Add a caching HTTP proxy and load balancer in front of the swift
-  proxies. Since swift objects are returned to the requester via HTTP,
-  this load balancer alleviates the load required on the swift
-  proxies.
+    -  :command:`nova service-list`
 
-Capacity planning for a compute-focused cloud
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    The internal availability zone is hidden in
+    euca-describe-availability_zones (nonverbose).
 
-Adding extra capacity to an compute-focused cloud is a horizontally scaling
-process.
+    CONF.node_availability_zone has been renamed to
+    CONF.default_availability_zone and is used only by the
+    ``nova-api`` and ``nova-scheduler`` services.
 
-We recommend using similar CPUs when adding extra nodes to the environment.
-This reduces the chance of breaking live-migration features if they are
-present. Scaling out hypervisor hosts also has a direct effect on network
-and other data center resources. We recommend you factor in this increase
-when reaching rack capacity or when requiring extra network switches.
+    CONF.node_availability_zone still works but is deprecated.
 
-Changing the internal components of a Compute host to account for increases in
-demand is a process known as vertical scaling. Swapping a CPU for one with more
-cores, or increasing the memory in a server, can help add extra capacity for
-running applications.
+Scalable Hardware
+~~~~~~~~~~~~~~~~~
 
-Another option is to assess the average workloads and increase the number of
-instances that can run within the compute environment by adjusting the
-overcommit ratio.
+While several resources already exist to help with deploying and
+installing OpenStack, it's very important to make sure that you have
+your deployment planned out ahead of time. This guide presumes that you
+have set aside a rack for the OpenStack cloud but also offers
+suggestions for when and what to scale.
 
-.. note::
-   It is important to remember that changing the CPU overcommit ratio can
-   have a detrimental effect and cause a potential increase in a noisy
-   neighbor.
+Hardware Procurement
+--------------------
 
-The added risk of increasing the overcommit ratio is that more instances fail
-when a compute host fails. We do not recommend that you increase the CPU
-overcommit ratio in compute-focused OpenStack design architecture. It can
-increase the potential for noisy neighbor issues.
+“The Cloud” has been described as a volatile environment where servers
+can be created and terminated at will. While this may be true, it does
+not mean that your servers must be volatile. Ensuring that your cloud's
+hardware is stable and configured correctly means that your cloud
+environment remains up and running.
 
-Capacity planning for a hybrid cloud
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+OpenStack can be deployed on any hardware supported by an
+OpenStack compatible Linux distribution.
 
-One of the primary reasons many organizations use a hybrid cloud is to
-increase capacity without making large capital investments.
+Hardware does not have to be consistent, but it should at least have the
+same type of CPU to support instance migration.
 
-Capacity and the placement of workloads are key design considerations for
-hybrid clouds. The long-term capacity plan for these designs must incorporate
-growth over time to prevent permanent consumption of more expensive external
-clouds. To avoid this scenario, account for future applications’ capacity
-requirements and plan growth appropriately.
+The typical hardware recommended for use with OpenStack is the standard
+value-for-money offerings that most hardware vendors stock. It should be
+straightforward to divide your procurement into building blocks such as
+"compute," "object storage," and "cloud controller," and request as many
+of these as you need. Alternatively, any existing servers you have that meet
+performance requirements and virtualization technology are likely to support
+OpenStack.
 
-It is difficult to predict the amount of load a particular application might
-incur if the number of users fluctuate, or the application experiences an
-unexpected increase in use. It is possible to define application requirements
-in terms of vCPU, RAM, bandwidth, or other resources and plan appropriately.
-However, other clouds might not use the same meter or even the same
-oversubscription rates.
+Capacity Planning
+-----------------
 
-Oversubscription is a method to emulate more capacity than may physically be
-present. For example, a physical hypervisor node with 32 GB RAM may host 24
-instances, each provisioned with 2 GB RAM. As long as all 24 instances do not
-concurrently use 2 full gigabytes, this arrangement works well. However, some
-hosts take oversubscription to extremes and, as a result, performance can be
-inconsistent. If at all possible, determine what the oversubscription rates
-of each host are and plan capacity accordingly.
+OpenStack is designed to increase in size in a straightforward manner.
+Taking into account the considerations previous mentioned, particularly on the
+sizing of the cloud controller, it should be possible to procure additional
+compute or object storage nodes as needed. New nodes do not need to be the same
+specification or vendor as existing nodes.
 
-Block Storage
-~~~~~~~~~~~~~
+For compute nodes, ``nova-scheduler`` will manage differences in
+sizing with core count and RAM. However, you should consider that the user
+experience changes with differing CPU speeds. When adding object storage
+nodes, a :term:`weight` should be specified that reflects the
+:term:`capability` of the node.
 
-Configure Block Storage resource nodes with advanced RAID controllers
-and high-performance disks to provide fault tolerance at the hardware
-level.
+Monitoring the resource usage and user growth will enable you to know
+when to procure. The `Logging and Monitoring
+<http://docs.openstack.org/ops-guide/ops-logging-monitoring.html>`_
+chapte in the Operations Guide details some useful metrics.
 
-Deploy high performing storage solutions such as SSD drives or
-flash storage systems for applications requiring additional performance out
-of Block Storage devices.
+Burn-in Testing
+---------------
 
-In environments that place substantial demands on Block Storage, we
-recommend using multiple storage pools. In this case, each pool of
-devices should have a similar hardware design and disk configuration
-across all hardware nodes in that pool. This allows for a design that
-provides applications with access to a wide variety of Block Storage
-pools, each with their own redundancy, availability, and performance
-characteristics. When deploying multiple pools of storage, it is also
-important to consider the impact on the Block Storage scheduler which is
-responsible for provisioning storage across resource nodes. Ideally,
-ensure that applications can schedule volumes in multiple regions, each with
-their own network, power, and cooling infrastructure. This will give tenants
-the option of building fault-tolerant applications that are distributed
-across multiple availability zones.
+The chances of failure for the server's hardware are high at the start
+and the end of its life. As a result, dealing with hardware failures
+while in production can be avoided by appropriate burn-in testing to
+attempt to trigger the early-stage failures. The general principle is to
+stress the hardware to its limits. Examples of burn-in tests include
+running a CPU or disk benchmark for several days.
 
-In addition to the Block Storage resource nodes, it is important to
-design for high availability and redundancy of the APIs, and related
-services that are responsible for provisioning and providing access to
-storage. We recommend designing a layer of hardware or software load
-balancers in order to achieve high availability of the appropriate REST
-API services to provide uninterrupted service. In some cases, it may
-also be necessary to deploy an additional layer of load balancing to
-provide access to back-end database services responsible for servicing
-and storing the state of Block Storage volumes. It is imperative that a
-highly available database cluster is used to store the Block
-Storage metadata.
-
-In a cloud with significant demands on Block Storage, the network
-architecture should take into account the amount of East-West bandwidth
-required for instances to make use of the available storage resources.
-The selected network devices should support jumbo frames for
-transferring large blocks of data, and utilize a dedicated network for
-providing connectivity between instances and Block Storage.
-
-Scaling Block Storage
----------------------
-
-You can upgrade Block Storage pools to add storage capacity without
-interrupting the overall Block Storage service. Add nodes to the pool by
-installing and configuring the appropriate hardware and software and
-then allowing that node to report in to the proper storage pool through the
-message bus. Block Storage nodes generally report into the scheduler
-service advertising their availability. As a result, after the node is
-online and available, tenants can make use of those storage resources
-instantly.
-
-In some cases, the demand on Block Storage may exhaust the available
-network bandwidth. As a result, design network infrastructure that
-services Block Storage resources in such a way that you can add capacity
-and bandwidth easily. This often involves the use of dynamic routing
-protocols or advanced networking solutions to add capacity to downstream
-devices easily. Both the front-end and back-end storage network designs
-should encompass the ability to quickly and easily add capacity and
-bandwidth.
-
-.. note::
-
-   Sufficient monitoring and data collection should be in-place
-   from the start, such that timely decisions regarding capacity,
-   input/output metrics (IOPS) or storage-associated bandwidth can
-   be made.
-
-Object Storage
-~~~~~~~~~~~~~~
-
-While consistency and partition tolerance are both inherent features of
-the Object Storage service, it is important to design the overall
-storage architecture to ensure that the implemented system meets those
-goals. The OpenStack Object Storage service places a specific number of
-data replicas as objects on resource nodes. Replicas are distributed
-throughout the cluster, based on a consistent hash ring also stored on
-each node in the cluster.
-
-Design the Object Storage system with a sufficient number of zones to
-provide quorum for the number of replicas defined. For example, with
-three replicas configured in the swift cluster, the recommended number
-of zones to configure within the Object Storage cluster in order to
-achieve quorum is five. While it is possible to deploy a solution with
-fewer zones, the implied risk of doing so is that some data may not be
-available and API requests to certain objects stored in the cluster
-might fail. For this reason, ensure you properly account for the number
-of zones in the Object Storage cluster.
-
-Each Object Storage zone should be self-contained within its own
-availability zone. Each availability zone should have independent access
-to network, power, and cooling infrastructure to ensure uninterrupted
-access to data. In addition, a pool of Object Storage proxy servers
-providing access to data stored on the object nodes should service each
-availability zone. Object proxies in each region should leverage local
-read and write affinity so that local storage resources facilitate
-access to objects wherever possible. We recommend deploying upstream
-load balancing to ensure that proxy services are distributed across the
-multiple zones and, in some cases, it may be necessary to make use of
-third-party solutions to aid with geographical distribution of services.
-
-A zone within an Object Storage cluster is a logical division. Any of
-the following may represent a zone:
-
-*  A disk within a single node
-*  One zone per node
-*  Zone per collection of nodes
-*  Multiple racks
-*  Multiple data centers
-
-Selecting the proper zone design is crucial for allowing the Object
-Storage cluster to scale while providing an available and redundant
-storage system. It may be necessary to configure storage policies that
-have different requirements with regards to replicas, retention, and
-other factors that could heavily affect the design of storage in a
-specific zone.
-
-Scaling Object Storage
-----------------------
-
-Adding back-end storage capacity to an Object Storage cluster requires
-careful planning and forethought. In the design phase, it is important
-to determine the maximum partition power required by the Object Storage
-service, which determines the maximum number of partitions which can
-exist. Object Storage distributes data among all available storage, but
-a partition cannot span more than one disk, so the maximum number of
-partitions can only be as high as the number of disks.
-
-For example, a system that starts with a single disk and a partition
-power of 3 can have 8 (2^3) partitions. Adding a second disk means that
-each has 4 partitions. The one-disk-per-partition limit means that this
-system can never have more than 8 disks, limiting its scalability.
-However, a system that starts with a single disk and a partition power
-of 10 can have up to 1024 (2^10) disks.
-
-As you add back-end storage capacity to the system, the partition maps
-redistribute data amongst the storage nodes. In some cases, this
-involves replication of extremely large data sets. In these cases, we
-recommend using back-end replication links that do not contend with
-tenants' access to data.
-
-As more tenants begin to access data within the cluster and their data
-sets grow, it is necessary to add front-end bandwidth to service data
-access requests. Adding front-end bandwidth to an Object Storage cluster
-requires careful planning and design of the Object Storage proxies that
-tenants use to gain access to the data, along with the high availability
-solutions that enable easy scaling of the proxy layer. We recommend
-designing a front-end load balancing layer that tenants and consumers
-use to gain access to data stored within the cluster. This load
-balancing layer may be distributed across zones, regions or even across
-geographic boundaries, which may also require that the design encompass
-geo-location solutions.
-
-In some cases, you must add bandwidth and capacity to the network
-resources servicing requests between proxy servers and storage nodes.
-For this reason, the network architecture used for access to storage
-nodes and proxy servers should make use of a design which is scalable.
-
-Compute resource design
-~~~~~~~~~~~~~~~~~~~~~~~
-
-When designing compute resource pools, consider the number of processors,
-amount of memory, and the quantity of storage required for each hypervisor.
-
-Consider whether compute resources will be provided in a single pool or in
-multiple pools. In most cases, multiple pools of resources can be allocated
-and addressed on demand, commonly referred to as bin packing.
-
-In a bin packing design, each independent resource pool provides service
-for specific flavors. Since instances are scheduled onto compute hypervisors,
-each independent node's resources will be allocated to efficiently use the
-available hardware. Bin packing also requires a common hardware design,
-with all hardware nodes within a compute resource pool sharing a common
-processor, memory, and storage layout. This makes it easier to deploy,
-support, and maintain nodes throughout their lifecycle.
-
-Increasing the size of the supporting compute environment increases the
-network traffic and messages, adding load to the controller or
-networking nodes. Effective monitoring of the environment will help with
-capacity decisions on scaling.
-
-Compute nodes automatically attach to OpenStack clouds, resulting in a
-horizontally scaling process when adding extra compute capacity to an
-OpenStack cloud. Additional processes are required to place nodes into
-appropriate availability zones and host aggregates. When adding
-additional compute nodes to environments, ensure identical or functional
-compatible CPUs are used, otherwise live migration features will break.
-It is necessary to add rack capacity or network switches as scaling out
-compute hosts directly affects network and data center resources.
-
-Compute host components can also be upgraded to account for increases in
-demand, known as vertical scaling. Upgrading CPUs with more
-cores, or increasing the overall server memory, can add extra needed
-capacity depending on whether the running applications are more CPU
-intensive or memory intensive.
-
-When selecting a processor, compare features and performance
-characteristics. Some processors include features specific to
-virtualized compute hosts, such as hardware-assisted virtualization, and
-technology related to memory paging (also known as EPT shadowing). These
-types of features can have a significant impact on the performance of
-your virtual machine.
-
-The number of processor cores and threads impacts the number of worker
-threads which can be run on a resource node. Design decisions must
-relate directly to the service being run on it, as well as provide a
-balanced infrastructure for all services.
-
-Another option is to assess the average workloads and increase the
-number of instances that can run within the compute environment by
-adjusting the overcommit ratio.
-
-An overcommit ratio is the ratio of available virtual resources to
-available physical resources. This ratio is configurable for CPU and
-memory. The default CPU overcommit ratio is 16:1, and the default memory
-overcommit ratio is 1.5:1. Determining the tuning of the overcommit
-ratios during the design phase is important as it has a direct impact on
-the hardware layout of your compute nodes.
-
-.. note::
-
-   Changing the CPU overcommit ratio can have a detrimental effect
-   and cause a potential increase in a noisy neighbor.
-
-Insufficient disk capacity could also have a negative effect on overall
-performance including CPU and memory usage. Depending on the back-end
-architecture of the OpenStack Block Storage layer, capacity includes
-adding disk shelves to enterprise storage systems or installing
-additional block storage nodes. Upgrading directly attached storage
-installed in compute hosts, and adding capacity to the shared storage
-for additional ephemeral storage to instances, may be necessary.
-
-Consider the compute requirements of non-hypervisor nodes (also referred to as
-resource nodes). This includes controller, object storage, and block storage
-nodes, and networking services.
-
-The ability to add compute resource pools for unpredictable workloads should
-be considered. In some cases, the demand for certain instance types or flavors
-may not justify individual hardware design. Allocate hardware designs that are
-capable of servicing the most common instance requests. Adding hardware to the
-overall architecture can be done later.
-
-For more information on these topics, refer to the `OpenStack
-Operations Guide <http://docs.openstack.org/ops>`_.
-
-.. TODO Add information on control plane API services and horizon.

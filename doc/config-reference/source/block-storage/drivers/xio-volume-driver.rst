@@ -5,8 +5,8 @@ X-IO volume driver
 The X-IO volume driver for OpenStack Block Storage enables ISE products to be
 managed by OpenStack Block Storage nodes. This driver can be configured to work
 with iSCSI and Fibre Channel storage protocols. The X-IO volume driver allows
-the cloud operator to take advantage of ISE features like Quality of Service
-(QOS) and Continuous Adaptive Data Placement (CADP). It also supports
+the cloud operator to take advantage of ISE features like :term:`Quality of
+Service (QOS)` and Continuous Adaptive Data Placement (CADP). It also supports
 creating thin volumes and specifying volume media affinity.
 
 Requirements
@@ -18,19 +18,13 @@ support. The X-IO volume driver will not work with older ISE FW.
 Supported operations
 ~~~~~~~~~~~~~~~~~~~~
 
--  Create, delete, attach, detach, retype, clone, and extend volumes.
-
--  Create a volume from snapshot.
-
--  Create, list, and delete volume snapshots.
-
--  Manage and unmanage a volume.
-
--  Get volume statistics.
-
--  Create a thin provisioned volume.
-
--  Create volumes with QoS specifications.
+- Create, delete, attach, detach, retype, clone, and extend volumes.
+- Create a volume from snapshot.
+- Create, list, and delete volume snapshots.
+- Manage and unmanage a volume.
+- Get volume statistics.
+- Create a thin provisioned volume.
+- Create volumes with QoS specifications.
 
 Configure X-IO Volume driver
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -69,8 +63,9 @@ Multipath
 ---------
 
 The X-IO ISE supports a multipath configuration, but multipath must be enabled
-on the compute node (see *ISE Storage Blade Best Practices Guide*). For more
-information, see `*www.openstack.org* <http://www.openstack.org/>`__.
+on the compute node (see *ISE Storage Blade Best Practices Guide*).
+For more information, see `X-IO Document Library
+<http://xiostorage.com/document_library/>`__.
 
 Volume types
 ------------
@@ -115,13 +110,13 @@ storage:
 
 .. code-block:: console
 
-   $ cinder type-create xio1-flash
-   $ cinder type-key xio1-flash set Affinity:Type=flash
+   $ openstack volume type create xio1-flash
+   $ openstack volume type set --property Affinity:Type=flash xio1-flash
 
 Create a volume type called xio1 and set QoS min and max:
 
 .. code-block:: console
 
-   $ cinder type-create xio1
-   $ cinder type-key xio1 set QoS:minIOPS=20
-   $ cinder type-key xio1 set QoS:maxIOPS=5000
+   $ openstack volume type create xio1
+   $ openstack volume type set --property QoS:minIOPS=20 xio1
+   $ openstack volume type set --property QoS:maxIOPS=5000 xio1

@@ -18,7 +18,7 @@
      - Description
    * - **[DEFAULT]**
      -
-   * - ``pydev_worker_debug_host`` = ``None``
-     - (String) The hostname/IP of the pydev process listening for debug connections
+   * - ``pydev_worker_debug_host`` = ``localhost``
+     - (String) Host address of the pydev server.$sentinal$Provide a string value representing the hostname or IP of the pydev server to use for debugging. The pydev server listens for debug connections on this address, facilitating remote debugging in Glance.$sentinal$Possible values: * Valid hostname * Valid IP address$sentinal$Related options: * None
    * - ``pydev_worker_debug_port`` = ``5678``
-     - (Unknown) The port on which a pydev process is listening for connections.
+     - (Port number) Port number that the pydev server will listen on.$sentinal$Provide a port number to bind the pydev server to. The pydev process accepts debug connections on this port and facilitates remote debugging in Glance.$sentinal$Possible values: * A valid port number$sentinal$Related options: * None

@@ -20,22 +20,26 @@
      -
    * - ``api_strategy`` = ``trove.common.strategies.cluster.experimental.galera_common.api.GaleraCommonAPIStrategy``
      - (String) Class that implements datastore-specific API logic.
-   * - ``backup_incremental_strategy`` = ``{'InnoBackupEx': 'InnoBackupExIncremental'}``
+   * - ``backup_incremental_strategy`` = ``{'MariaDBInnoBackupEx': 'MariaDBInnoBackupExIncremental'}``
      - (Dict) Incremental Backup Runner based on the default strategy. For strategies that do not implement an incremental backup, the runner will use the default full backup.
-   * - ``backup_namespace`` = ``trove.guestagent.strategies.backup.mysql_impl``
+   * - ``backup_namespace`` = ``trove.guestagent.strategies.backup.experimental.mariadb_impl``
      - (String) Namespace to load backup strategies from.
-   * - ``backup_strategy`` = ``InnoBackupEx``
+   * - ``backup_strategy`` = ``MariaDBInnoBackupEx``
      - (String) Default strategy to perform backups.
    * - ``cluster_support`` = ``True``
      - (Boolean) Enable clusters to be created and managed.
+   * - ``default_password_length`` = ``${mysql.default_password_length}``
+     - (Integer) Character length of generated passwords.
    * - ``device_path`` = ``/dev/vdb``
      - (String) Device path for volume if volume support is enabled.
    * - ``guest_log_exposed_logs`` = ``general,slow_query``
      - (String) List of Guest Logs to expose for publishing.
    * - ``guest_log_long_query_time`` = ``1000``
-     - (Integer) The time in milliseconds that a statement must take in in order to be logged in the slow_query log.
+     - (Integer) DEPRECATED: The time in milliseconds that a statement must take in in order to be logged in the slow_query log. Will be replaced by a configuration group option: long_query_time
    * - ``guestagent_strategy`` = ``trove.common.strategies.cluster.experimental.galera_common.guestagent.GaleraCommonGuestAgentStrategy``
      - (String) Class that implements datastore-specific Guest Agent API logic.
+   * - ``icmp`` = ``False``
+     - (Boolean) Whether to permit ICMP.
    * - ``ignore_dbs`` = ``mysql, information_schema, performance_schema``
      - (List) Databases to exclude when listing databases.
    * - ``ignore_users`` = ``os_admin, root``
@@ -48,7 +52,7 @@
      - (String) Namespace to load replication strategies from.
    * - ``replication_strategy`` = ``MariaDBGTIDReplication``
      - (String) Default strategy for replication.
-   * - ``restore_namespace`` = ``trove.guestagent.strategies.restore.mysql_impl``
+   * - ``restore_namespace`` = ``trove.guestagent.strategies.restore.experimental.mariadb_impl``
      - (String) Namespace to load restore strategies from.
    * - ``root_controller`` = ``trove.extensions.common.service.DefaultRootController``
      - (String) Root controller implementation for mysql.

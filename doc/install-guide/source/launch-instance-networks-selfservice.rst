@@ -43,26 +43,42 @@ Create the self-service network
 
       $ . demo-openrc
 
+   .. end
+
 #. Create the network:
 
    .. code-block:: console
 
-      $ neutron net-create selfservice
+      $ openstack network create selfservice
+
       Created a new network:
-      +-----------------------+--------------------------------------+
-      | Field                 | Value                                |
-      +-----------------------+--------------------------------------+
-      | admin_state_up        | True                                 |
-      | id                    | 7c6f9b37-76b4-463e-98d8-27e5686ed083 |
-      | mtu                   | 0                                    |
-      | name                  | selfservice                          |
-      | port_security_enabled | True                                 |
-      | router:external       | False                                |
-      | shared                | False                                |
-      | status                | ACTIVE                               |
-      | subnets               |                                      |
-      | tenant_id             | f5b2ccaa75ac413591f12fcaa096aa5c     |
-      +-----------------------+--------------------------------------+
+      +-------------------------+--------------------------------------+
+      | Field                   | Value                                |
+      +-------------------------+--------------------------------------+
+      | admin_state_up          | UP                                   |
+      | availability_zone_hints |                                      |
+      | availability_zones      |                                      |
+      | created_at              | 2016-11-04T18:20:59Z                 |
+      | description             |                                      |
+      | headers                 |                                      |
+      | id                      | 7c6f9b37-76b4-463e-98d8-27e5686ed083 |
+      | ipv4_address_scope      | None                                 |
+      | ipv6_address_scope      | None                                 |
+      | mtu                     | 1450                                 |
+      | name                    | selfservice                          |
+      | port_security_enabled   | True                                 |
+      | project_id              | 3828e7c22c5546e585f27b9eb5453788     |
+      | project_id              | 3828e7c22c5546e585f27b9eb5453788     |
+      | revision_number         | 3                                    |
+      | router:external         | Internal                             |
+      | shared                  | False                                |
+      | status                  | ACTIVE                               |
+      | subnets                 |                                      |
+      | tags                    | []                                   |
+      | updated_at              | 2016-11-04T18:20:59Z                 |
+      +-------------------------+--------------------------------------+
+
+   .. end
 
    Non-privileged users typically cannot supply additional parameters to
    this command. The service automatically chooses parameters using
@@ -78,13 +94,17 @@ Create the self-service network
       [ml2_type_vxlan]
       vni_ranges = 1:1000
 
+   .. end
+
 #. Create a subnet on the network:
 
    .. code-block:: console
 
-      $ neutron subnet-create --name selfservice \
+      $ openstack subnet create --network selfservice \
         --dns-nameserver DNS_RESOLVER --gateway SELFSERVICE_NETWORK_GATEWAY \
-        selfservice SELFSERVICE_NETWORK_CIDR
+        --subnet-range SELFSERVICE_NETWORK_CIDR selfservice
+
+   .. end
 
    Replace ``DNS_RESOLVER`` with the IP address of a DNS resolver. In
    most cases, you can use one from the ``/etc/resolv.conf`` file on
@@ -105,28 +125,38 @@ Create the self-service network
 
    .. code-block:: console
 
-      $ neutron subnet-create --name selfservice \
+      $ openstack subnet create --network selfservice \
         --dns-nameserver 8.8.4.4 --gateway 172.16.1.1 \
-        selfservice 172.16.1.0/24
+        --subnet-range 172.16.1.0/24 selfservice
+
       Created a new subnet:
-      +-------------------+------------------------------------------------+
-      | Field             | Value                                          |
-      +-------------------+------------------------------------------------+
-      | allocation_pools  | {"start": "172.16.1.2", "end": "172.16.1.254"} |
-      | cidr              | 172.16.1.0/24                                  |
-      | dns_nameservers   | 8.8.4.4                                        |
-      | enable_dhcp       | True                                           |
-      | gateway_ip        | 172.16.1.1                                     |
-      | host_routes       |                                                |
-      | id                | 3482f524-8bff-4871-80d4-5774c2730728           |
-      | ip_version        | 4                                              |
-      | ipv6_address_mode |                                                |
-      | ipv6_ra_mode      |                                                |
-      | name              | selfservice                                    |
-      | network_id        | 7c6f9b37-76b4-463e-98d8-27e5686ed083           |
-      | subnetpool_id     |                                                |
-      | tenant_id         | f5b2ccaa75ac413591f12fcaa096aa5c               |
-      +-------------------+------------------------------------------------+
+      +-------------------+--------------------------------------+
+      | Field             | Value                                |
+      +-------------------+--------------------------------------+
+      | allocation_pools  | 172.16.1.2-172.16.1.254              |
+      | cidr              | 172.16.1.0/24                        |
+      | created_at        | 2016-11-04T18:30:54Z                 |
+      | description       |                                      |
+      | dns_nameservers   | 8.8.4.4                              |
+      | enable_dhcp       | True                                 |
+      | gateway_ip        | 172.16.1.1                           |
+      | headers           |                                      |
+      | host_routes       |                                      |
+      | id                | 5c37348e-e7da-439b-8c23-2af47d93aee5 |
+      | ip_version        | 4                                    |
+      | ipv6_address_mode | None                                 |
+      | ipv6_ra_mode      | None                                 |
+      | name              | selfservice                          |
+      | network_id        | b9273876-5946-4f02-a4da-838224a144e7 |
+      | project_id        | 3828e7c22c5546e585f27b9eb5453788     |
+      | project_id        | 3828e7c22c5546e585f27b9eb5453788     |
+      | revision_number   | 2                                    |
+      | service_types     | []                                   |
+      | subnetpool_id     | None                                 |
+      | updated_at        | 2016-11-04T18:30:54Z                 |
+      +-------------------+--------------------------------------+
+
+   .. end
 
 Create a router
 ---------------
@@ -148,12 +178,17 @@ to the existing ``provider`` provider network.
 
       $ . admin-openrc
 
+   .. end
+
 #. Add the ``router: external`` option to the ``provider`` network:
 
    .. code-block:: console
 
       $ neutron net-update provider --router:external
+
       Updated network: provider
+
+   .. end
 
 #. Source the ``demo`` credentials to gain access to user-only CLI commands:
 
@@ -161,37 +196,57 @@ to the existing ``provider`` provider network.
 
       $ . demo-openrc
 
+   .. end
+
 #. Create the router:
 
    .. code-block:: console
 
-      $ neutron router-create router
+      $ openstack router create router
+
       Created a new router:
-      +-----------------------+--------------------------------------+
-      | Field                 | Value                                |
-      +-----------------------+--------------------------------------+
-      | admin_state_up        | True                                 |
-      | external_gateway_info |                                      |
-      | id                    | 89dd2083-a160-4d75-ab3a-14239f01ea0b |
-      | name                  | router                               |
-      | routes                |                                      |
-      | status                | ACTIVE                               |
-      | tenant_id             | f5b2ccaa75ac413591f12fcaa096aa5c     |
-      +-----------------------+--------------------------------------+
+      +-------------------------+--------------------------------------+
+      | Field                   | Value                                |
+      +-------------------------+--------------------------------------+
+      | admin_state_up          | UP                                   |
+      | availability_zone_hints |                                      |
+      | availability_zones      |                                      |
+      | created_at              | 2016-11-04T18:32:56Z                 |
+      | description             |                                      |
+      | external_gateway_info   | null                                 |
+      | flavor_id               | None                                 |
+      | headers                 |                                      |
+      | id                      | 67324374-396a-4db6-9443-c70be167a42b |
+      | name                    | router                               |
+      | project_id              | 3828e7c22c5546e585f27b9eb5453788     |
+      | project_id              | 3828e7c22c5546e585f27b9eb5453788     |
+      | revision_number         | 2                                    |
+      | routes                  |                                      |
+      | status                  | ACTIVE                               |
+      | updated_at              | 2016-11-04T18:32:56Z                 |
+      +-------------------------+--------------------------------------+
+
+   .. end
 
 #. Add the self-service network subnet as an interface on the router:
 
    .. code-block:: console
 
       $ neutron router-interface-add router selfservice
+
       Added interface bff6605d-824c-41f9-b744-21d128fc86e1 to router router.
+
+   .. end
 
 #. Set a gateway on the provider network on the router:
 
    .. code-block:: console
 
       $ neutron router-gateway-set router provider
+
       Set gateway for router router
+
+   .. end
 
 Verify operation
 ----------------
@@ -207,15 +262,20 @@ creation examples.
 
       $ . admin-openrc
 
+   .. end
+
 #. List network namespaces. You should see one ``qrouter`` namespace and two
    ``qdhcp`` namespaces.
 
    .. code-block:: console
 
       $ ip netns
+
       qrouter-89dd2083-a160-4d75-ab3a-14239f01ea0b
       qdhcp-7c6f9b37-76b4-463e-98d8-27e5686ed083
       qdhcp-0e62efcd-8cee-46c7-b163-d8df05c3c5ad
+
+   .. end
 
 #. List ports on the router to determine the gateway IP address on the
    provider network:
@@ -223,6 +283,7 @@ creation examples.
    .. code-block:: console
 
       $ neutron router-port-list router
+
       +--------------------------------------+------+-------------------+------------------------------------------+
       | id                                   | name | mac_address       | fixed_ips                                |
       +--------------------------------------+------+-------------------+------------------------------------------+
@@ -234,12 +295,15 @@ creation examples.
       |                                      |      |                   | "ip_address": "203.0.113.102"}           |
       +--------------------------------------+------+-------------------+------------------------------------------+
 
+   .. end
+
 #. Ping this IP address from the controller node or any host on the physical
    provider network:
 
    .. code-block:: console
 
       $ ping -c 4 203.0.113.102
+
       PING 203.0.113.102 (203.0.113.102) 56(84) bytes of data.
       64 bytes from 203.0.113.102: icmp_req=1 ttl=64 time=0.619 ms
       64 bytes from 203.0.113.102: icmp_req=2 ttl=64 time=0.189 ms
@@ -248,6 +312,8 @@ creation examples.
 
       --- 203.0.113.102 ping statistics ---
       rtt min/avg/max/mdev = 0.165/0.297/0.619/0.187 ms
+
+   .. end
 
 Return to :ref:`Launch an instance - Create virtual networks
 <launch-instance-networks>`.

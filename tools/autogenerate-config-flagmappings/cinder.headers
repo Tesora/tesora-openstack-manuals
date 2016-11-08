@@ -1,7 +1,9 @@
 backups backups
 backups_ceph Ceph backup driver
 backups_gcs GCS backup driver
+backups_glusterfs GlusterFS backup driver
 backups_nfs NFS backup driver
+backups_posix POSIX backup driver
 backups_swift Swift backup driver
 backups_tsm IBM Tivoli Storage Manager backup driver
 block-device block device
@@ -9,6 +11,7 @@ blockbridge BlockBridge EPS volume driver
 cloudbyte CloudByte volume driver
 coho Coho volume driver
 coordination Coordination
+coprhd Coprhd volume driver
 datera Datera volume driver
 dellsc Dell Storage Center volume driver
 disco Disco volume driver
@@ -16,8 +19,10 @@ dothill Dot Hill volume driver
 drbd DRBD
 emc EMC
 emc_sio EMC SIO volume driver
+emc_xtremio EMC XtremIO volume driver
 eqlx Dell EqualLogic volume driver
 eternus Eternus volume driver
+falconstor Falconstor volume driver
 flashsystem IBM FlashSystem volume driver
 fujitsu_eternus_dx Fujitsu ETERNUS DX volume driver
 fusionio Fusion-io driver
@@ -34,6 +39,7 @@ hyperv HyperV volume driver
 ibmnas IBM SONAS and Storwise V7000 volume driver
 images images
 infortrend Infortrend volume driver
+kaminario Kaminario volume driver
 lenovo Lenovo volume driver
 lvm LVM
 nas NAS
@@ -42,11 +48,14 @@ netapp_7mode_nfs NetApp 7-Mode NFS driver
 netapp_cdot_iscsi NetApp cDOT iSCSI driver
 netapp_cdot_nfs NetApp cDOT NFS driver
 netapp_eseries_iscsi NetApp E-Series driver
+nexenta Nexenta driver
+nexenta_edge NexentaEdge driver
 nexenta_iscsi Nexenta iSCSI driver
 nexenta_nfs Nexenta NFS driver
-nexenta Nexenta driver
+nexenta5 NexentaStor 5 driver
 nimble Nimble driver
 openvstorage Open vStorage driver
+osbrick os-brick
 prophetstor_dpl ProphetStor Fibre Channel and iSCSi drivers
 pure Pure Storage driver
 quobyte Quobyte USP volume driver
@@ -66,17 +75,22 @@ storage_xen Xen storage
 storpool StorPool volume driver
 storwize IBM Storwise driver
 srb Scality REST Block storage driver
+synology Synology volume driver
 tegile Tegile volume driver
 tintri Tintri volume driver
 violin Violin volume driver
-vzstorage VidZapper Storage volume driver
+vzstorage Virtuozzo Storage volume driver
 windows Windows
 xio X-IO volume driver
-xiv IBM XIV and DS8000 volume driver
+ibm_storage IBM Storage driver
 zadara Zadara Storage driver
 zfssa-iscsi ZFS Storage Appliance iSCSI driver
 zfssa-nfs ZFS Storage Appliance NFS driver
 zones zones
 zoning zoning
-zoning_fabric zoning fabrics
 zoning_manager zoning manager
+zoning_fabric_brcd brocade zoning fabrics
+zoning_fabric_cisco cisco zoning fabrics
+zoning_manager_brcd brocade zoning manager
+zoning_manager_cisco cisco zoning manager
+zte Zte volume driver

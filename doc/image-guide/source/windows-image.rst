@@ -41,9 +41,10 @@ using the :command:`virt-install` command and the KVM hypervisor.
    The disk is not detected by default by the Windows installer.
    When requested to choose an installation target, click
    :guilabel:`Load driver` and browse the file system to select
-   the ``E:\WIN8\AMD64`` folder. The Windows installer displays
-   a list of drivers to install. Select the :guilabel:`VirtIO SCSI` and
-   :guilabel:`network drivers` and continue the installation.
+   the ``E:\virtio-win-0.1XX\viostor\w7\amd64`` folder. The Windows
+   installer displays a list of drivers to install. Select the
+   :guilabel:`VirtIO SCSI` and :guilabel:`network drivers` and
+   continue the installation.
 
    Once the installation is completed, the VM restarts.
    Define a password for the administrator when prompted.
@@ -55,7 +56,7 @@ using the :command:`virt-install` command and the KVM hypervisor.
 
    .. code-block:: console
 
-      C:\pnputil -i -a E:\WIN8\AMD64\*.INF
+      C:\pnputil -i -a E:\virtio-win-0.1XX\viostor\w7\amd64\*.INF
 
 #. To allow the :term:`Cloudbase-Init` to run scripts during an instance
    boot, set the PowerShell execution policy to be unrestricted:
@@ -69,7 +70,7 @@ using the :command:`virt-install` command and the KVM hypervisor.
 
    .. code-block:: console
 
-      C:\Invoke-WebRequest -UseBasicParsing http://www.cloudbase.it/downloads/CloudbaseInitSetup_Stable_x64.msi -OutFile cloudbaseinit.msi
+      C:\Invoke-WebRequest -UseBasicParsing https://cloudbase.it/downloads/CloudbaseInitSetup_Stable_x64.msi -OutFile cloudbaseinit.msi
       C:\.\cloudbaseinit.msi
 
    In the :guilabel:`configuration options` window,
@@ -90,5 +91,4 @@ Your image is ready to upload to the Image service:
 
 .. code-block:: console
 
-   $ glance image-create --name WS2012 --disk-format qcow2 \
-     --container-format bare --file ws2012.qcow2
+   $ openstack image create --disk-format qcow2 --file ws2012.qcow2 WS2012

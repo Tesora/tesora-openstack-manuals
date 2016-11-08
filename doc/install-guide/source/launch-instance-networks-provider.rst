@@ -37,35 +37,52 @@ Create the provider network
 
       $ . admin-openrc
 
+   .. end
+
 #. Create the network:
 
    .. code-block:: console
 
-      $ neutron net-create --shared --provider:physical_network provider \
-        --provider:network_type flat provider
+      $ openstack network create  --share \
+        --provider-physical-network provider \
+        --provider-network-type flat provider
+
       Created a new network:
+
       +---------------------------+--------------------------------------+
       | Field                     | Value                                |
       +---------------------------+--------------------------------------+
-      | admin_state_up            | True                                 |
-      | id                        | 0e62efcd-8cee-46c7-b163-d8df05c3c5ad |
+      | admin_state_up            | UP                                   |
+      | availability_zone_hints   |                                      |
+      | availability_zones        |                                      |
+      | created_at                | 2016-11-02T20:36:18Z                 |
+      | description               |                                      |
+      | headers                   |                                      |
+      | id                        | 9793a02d-4f05-40d2-a280-407c48db0161 |
+      | ipv4_address_scope        | None                                 |
+      | ipv6_address_scope        | None                                 |
       | mtu                       | 1500                                 |
       | name                      | provider                             |
       | port_security_enabled     | True                                 |
+      | project_id                | 7e188c33604d4b02ae0a99b5da68cae0     |
       | provider:network_type     | flat                                 |
       | provider:physical_network | provider                             |
-      | provider:segmentation_id  |                                      |
-      | router:external           | False                                |
+      | provider:segmentation_id  | None                                 |
+      | revision_number           | 3                                    |
+      | router:external           | Internal                             |
       | shared                    | True                                 |
       | status                    | ACTIVE                               |
       | subnets                   |                                      |
-      | tenant_id                 | d84313397390425c8ed50b2f6e18d092     |
+      | tags                      | []                                   |
+      | updated_at                | 2016-11-02T20:36:18Z                 |
       +---------------------------+--------------------------------------+
 
-   The ``--shared`` option allows all projects to use the virtual network.
+   .. end
 
-   The ``--provider:physical_network provider`` and
-   ``--provider:network_type flat`` options connect the flat virtual network
+   The ``--share`` option allows all projects to use the virtual network.
+
+   The ``--provider-physical-network provider`` and
+   ``--provider-network-type flat`` options connect the flat virtual network
    to the flat (native/untagged) physical network on the ``eth1`` interface
    on the host using information from the following files:
 
@@ -76,6 +93,8 @@ Create the provider network
       [ml2_type_flat]
       flat_networks = provider
 
+   .. end
+
    ``linuxbridge_agent.ini``:
 
    .. code-block:: ini
@@ -83,14 +102,18 @@ Create the provider network
       [linux_bridge]
       physical_interface_mappings = provider:eth1
 
+   .. end
+
 #. Create a subnet on the network:
 
    .. code-block:: console
 
-      $ neutron subnet-create --name provider \
+      $ openstack subnet create --network provider \
         --allocation-pool start=START_IP_ADDRESS,end=END_IP_ADDRESS \
         --dns-nameserver DNS_RESOLVER --gateway PROVIDER_NETWORK_GATEWAY \
-        provider PROVIDER_NETWORK_CIDR
+        --subnet-range PROVIDER_NETWORK_CIDR provider
+
+   .. end
 
    Replace ``PROVIDER_NETWORK_CIDR`` with the subnet on the provider
    physical network in CIDR notation.
@@ -115,29 +138,38 @@ Create the provider network
 
    .. code-block:: console
 
-      $ neutron subnet-create --name provider \
+      $ openstack subnet create --network provider \
         --allocation-pool start=203.0.113.101,end=203.0.113.250 \
         --dns-nameserver 8.8.4.4 --gateway 203.0.113.1 \
-        provider 203.0.113.0/24
+        --subnet-range 203.0.113.0/24 provider
+
       Created a new subnet:
-      +-------------------+----------------------------------------------------+
-      | Field             | Value                                              |
-      +-------------------+----------------------------------------------------+
-      | allocation_pools  | {"start": "203.0.113.101", "end": "203.0.113.250"} |
-      | cidr              | 203.0.113.0/24                                     |
-      | dns_nameservers   | 8.8.4.4                                            |
-      | enable_dhcp       | True                                               |
-      | gateway_ip        | 203.0.113.1                                        |
-      | host_routes       |                                                    |
-      | id                | 5cc70da8-4ee7-4565-be53-b9c011fca011               |
-      | ip_version        | 4                                                  |
-      | ipv6_address_mode |                                                    |
-      | ipv6_ra_mode      |                                                    |
-      | name              | provider                                           |
-      | network_id        | 0e62efcd-8cee-46c7-b163-d8df05c3c5ad               |
-      | subnetpool_id     |                                                    |
-      | tenant_id         | d84313397390425c8ed50b2f6e18d092                   |
-      +-------------------+----------------------------------------------------+
+      +-------------------+--------------------------------------+
+      | Field             | Value                                |
+      +-------------------+--------------------------------------+
+      | allocation_pools  | 203.0.113.101-203.0.113.250          |
+      | cidr              | 203.0.113.0/24                       |
+      | created_at        | 2016-11-02T20:45:04Z                 |
+      | description       |                                      |
+      | dns_nameservers   | 8.8.4.4                              |
+      | enable_dhcp       | True                                 |
+      | gateway_ip        | 203.0.113.1                          |
+      | headers           |                                      |
+      | host_routes       |                                      |
+      | id                | 2c65ef8c-a5f3-4f51-94c1-4df0daaaab5c |
+      | ip_version        | 4                                    |
+      | ipv6_address_mode | None                                 |
+      | ipv6_ra_mode      | None                                 |
+      | name              | provider                             |
+      | network_id        | 9793a02d-4f05-40d2-a280-407c48db0161 |
+      | project_id        | 7e188c33604d4b02ae0a99b5da68cae0     |
+      | revision_number   | 2                                    |
+      | service_types     | []                                   |
+      | subnetpool_id     | None                                 |
+      | updated_at        | 2016-11-02T20:45:04Z                 |
+      +-------------------+--------------------------------------+
+
+   .. end
 
 Return to :ref:`Launch an instance - Create virtual networks
 <launch-instance-networks>`.

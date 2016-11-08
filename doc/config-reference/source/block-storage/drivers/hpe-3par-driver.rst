@@ -117,7 +117,7 @@ pairs and associate them with a volume type, run the following command:
 
 .. code-block:: console
 
-   $ cinder help type-key
+   $ openstack help volume type
 
 .. note::
 
@@ -179,19 +179,14 @@ pairs and associate them with a volume type, run the following commands:
 
 .. code-block:: console
 
-   $ cinder help qos-create
-
-   $ cinder help qos-key
-
-   $ cinder help qos-associate
-
+   $ openstack help volume qos
 
 The following keys require that the HPE 3PAR StoreServ storage array has a
 Priority Optimization license installed.
 
 ``hpe3par:vvs``
  The virtual volume set name that has been predefined by the Administrator
- with Quality of Service (QoS) rules associated to it. If you specify
+ with :term:`quality of service (QoS)` rules associated to it. If you specify
  extra_specs ``hpe3par:vvs``, the qos_specs ``minIOPS``, ``maxIOPS``,
  ``minBWS``, and ``maxBWS`` settings are ignored.
 
@@ -229,6 +224,15 @@ Adaptive Flash Cache license installed.
 
 * ``hpe3par:flash_cache`` - The flash-cache policy, which can be turned on and
   off by setting the value to ``true`` or ``false``.
+
+LDAP and AD authentication is now supported in the HPE 3PAR driver.
+
+The 3PAR back end must be properly configured for LDAP and AD authentication
+prior to configuring the volume driver. For details on setting up LDAP with
+3PAR, see the 3PAR user guide.
+
+Once configured, ``hpe3par_username`` and ``hpe3par_password`` parameters in
+``cinder.conf`` can be used with LDAP and AD credentials.
 
 Enable the HPE 3PAR Fibre Channel and iSCSI drivers
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -361,13 +365,11 @@ OpenStack software.
    .. note::
 
       You can configure one or more iSCSI addresses by using the
-      ``hpe3par_iscsi_ips`` option. When you configure multiple addresses, the
-      driver selects the iSCSI port with the fewest active volumes at attach
-      time. The IP address might include an IP port by using a colon (``:``)
-      to separate the address from port. If you do not define an IP port, the
-      default port 3260 is used. Separate IP addresses with a comma (``,``).
-      The ``iscsi_ip_address``/``iscsi_port`` options might be used as an
-      alternative to ``hpe3par_iscsi_ips`` for single port iSCSI configuration.
+      ``hpe3par_iscsi_ips`` option. Separate multiple IP addresses with a
+      comma (``,``). When you configure multiple addresses, the driver selects
+      the iSCSI port with the fewest active volumes at attach time. The 3PAR
+      array does not allow the default port 3260 to be changed, so IP ports
+      need not be specified.
 
 #. Save the changes to the ``cinder.conf`` file and restart the cinder-volume
    service.

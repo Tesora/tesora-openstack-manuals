@@ -150,7 +150,7 @@ architecture include:
 * There are a variety of well tested tools, for example ICMP, to
   monitor and manage traffic.
 
-* Layer-3 architectures enable the use of Quality of Service (QoS) to
+* Layer-3 architectures enable the use of :term:`quality of service (QoS)` to
   manage network performance.
 
 Layer-3 architecture limitations
@@ -339,7 +339,7 @@ Where appropriate, use a multi-site installation for these situations.
 
 You can implement networking in two separate ways. Legacy networking
 (nova-network) provides a flat DHCP network with a single broadcast
-domain. This implementation does not support tenant isolation networks
+domain. This implementation does not support project isolation networks
 or advanced plug-ins, but it is currently the only way to implement a
 distributed :term:`layer-3 (L3) agent` using the multi_host configuration.
 OpenStack Networking (neutron) is the official networking implementation and

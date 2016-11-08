@@ -46,7 +46,7 @@ to outside systems.
 
 Interaction with orchestration services is inevitable in larger-scale
 deployments. The Orchestration service is capable of allocating network
-resource defined in templates to map to tenant networks and for port
+resource defined in templates to map to project networks and for port
 creation, as well as allocating floating IPs. If there is a requirement
 to define and manage network resources when using orchestration, we
 recommend that the design include the Orchestration service to meet the
@@ -77,9 +77,9 @@ balancing solution. In the internal scenario, Networking's
 Load-Balancer-as-a-Service (LBaaS) can manage load balancing software,
 for example HAproxy. This is specifically to manage the Virtual IP (VIP)
 while a dual-homed connection from the HAproxy instance connects the
-public network with the tenant private network that hosts all of the
+public network with the project private network that hosts all of the
 content servers. In the external scenario, a load balancer needs to
-serve the VIP and also connect to the tenant overlay network through
+serve the VIP and also connect to the project overlay network through
 external means or through private addresses.
 
 Another kind of NAT that may be useful is protocol NAT. In some cases it
@@ -169,7 +169,7 @@ across the complete path the packets traverse. If one network component
 is not capable of handling jumbo frames then the entire path reverts to
 the default MTU.
 
-Quality of Service (QoS) also has a great impact on network intensive
+:term:`Quality of Service (QoS)` also has a great impact on network intensive
 workloads as it provides instant service to packets which have a higher
 priority due to the impact of poor network performance. In applications
 such as Voice over IP (VoIP), differentiated services code points are a

@@ -18,21 +18,28 @@ services.
       ``[pipeline:public_api]``, ``[pipeline:admin_api]``,
       and ``[pipeline:api_v3]`` sections.
 
+.. endonly
+
 .. only:: rdo
 
    #. For security reasons, disable the temporary authentication
       token mechanism:
 
-      Edit the ``/usr/share/keystone/keystone-dist-paste.ini``
+      Edit the ``/etc/keystone/keystone-paste.ini``
       file and remove ``admin_token_auth`` from the
       ``[pipeline:public_api]``, ``[pipeline:admin_api]``,
       and ``[pipeline:api_v3]`` sections.
 
-2. Unset the temporary ``OS_TOKEN`` and ``OS_URL`` environment variables:
+.. endonly
+
+2. Unset the temporary ``OS_AUTH_URL`` and ``OS_PASSWORD``
+   environment variable:
 
    .. code-block:: console
 
-      $ unset OS_TOKEN OS_URL
+      $ unset OS_AUTH_URL OS_PASSWORD
+
+   .. end
 
 3. As the ``admin`` user, request an authentication token:
 
@@ -41,6 +48,7 @@ services.
       $ openstack --os-auth-url http://controller:35357/v3 \
         --os-project-domain-name default --os-user-domain-name default \
         --os-project-name admin --os-username admin token issue
+
       Password:
       +------------+-----------------------------------------------------------------+
       | Field      | Value                                                           |
@@ -53,6 +61,8 @@ services.
       | user_id    | ac3377633149401296f6c0d92d79dc16                                |
       +------------+-----------------------------------------------------------------+
 
+   .. end
+
    .. note::
 
       This command uses the password for the ``admin`` user.
@@ -64,6 +74,7 @@ services.
       $ openstack --os-auth-url http://controller:5000/v3 \
         --os-project-domain-name default --os-user-domain-name default \
         --os-project-name demo --os-username demo token issue
+
       Password:
       +------------+-----------------------------------------------------------------+
       | Field      | Value                                                           |
@@ -75,6 +86,8 @@ services.
       | project_id | ed0b60bf607743088218b0a533d5943f                                |
       | user_id    | 58126687cbcc4888bfa9ab73a2256f27                                |
       +------------+-----------------------------------------------------------------+
+
+   .. end
 
    .. note::
 

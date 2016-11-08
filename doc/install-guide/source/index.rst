@@ -1,40 +1,46 @@
-.. title:: OpenStack Installation Guide
+.. title:: OpenStack Installation Tutorial
 
 .. Don't remove or change title tag manually, which is used by the build tool.
 
 .. only:: rdo
 
-   ====================================================================
-   OpenStack Installation Guide for Red Hat Enterprise Linux and CentOS
-   ====================================================================
+   =======================================================================
+   OpenStack Installation Tutorial for Red Hat Enterprise Linux and CentOS
+   =======================================================================
+
+.. endonly
 
 .. only:: obs
 
-   ===================================================================
-   OpenStack Installation Guide for openSUSE and SUSE Linux Enterprise
-   ===================================================================
+   ======================================================================
+   OpenStack Installation Tutorial for openSUSE and SUSE Linux Enterprise
+   ======================================================================
+
+.. endonly
 
 .. only:: ubuntu
 
-   =======================================
-   OpenStack Installation Guide for Ubuntu
-   =======================================
+   ==========================================
+   OpenStack Installation Tutorial for Ubuntu
+   ==========================================
+
+.. endonly
 
 .. only:: debian
 
-   =======================================
-   OpenStack Installation Guide for Debian
-   =======================================
+   ==========================================
+   OpenStack Installation Tutorial for Debian
+   ==========================================
 
+.. endonly
 
 Abstract
 ~~~~~~~~
 
 The OpenStack system consists of several key services that are separately
 installed. These services work together depending on your cloud
-needs. These services include Compute service, Identity service,
-Networking service, Image service, Block Storage service, Object Storage
-service, Telemetry service, Orchestration service, and Database service. You
+needs and include the Compute, Identity, Networking, Image, Block Storage,
+Object Storage, Telemetry, Orchestration, and Database services. You
 can install any of these projects separately and configure them stand-alone
 or as connected entities.
 
@@ -44,26 +50,50 @@ or as connected entities.
    available on Red Hat Enterprise Linux 7 and its derivatives through
    the RDO repository.
 
+.. endonly
+
 .. only:: ubuntu
 
    This guide will walk through an installation by using packages
-   available through Canonical's Ubuntu Cloud archive repository.
+   available through Canonical's Ubuntu Cloud archive repository for
+   Ubuntu 16.04 (LTS).
+
+.. endonly
 
 .. only:: obs
 
    This guide will show you how to install OpenStack by using packages
-   on openSUSE Leap 42.1 and SUSE Linux Enterprise Server 12 SP1
-   through the Open Build Service Cloud repository.
+   on openSUSE Leap 42.1 and SUSE Linux Enterprise Server 12 - for
+   both SP1 and SP2 - through the Open Build Service Cloud repository.
+
+.. endonly
 
 .. only:: debian
 
    This guide walks through an installation by using packages
    available through Debian 8 (code name: Jessie).
 
+   .. note::
+
+      This guide uses installation with debconf set to non-interactive
+      mode. That is, there will be no debconf prompt. To configure a computer
+      to use this mode, run the following command:
+
+      .. code-block:: console
+
+         # dpkg-reconfigure debconf
+
+      .. end
+
+      If you prefer to use debconf, refer to the debconf
+      install-guide for Debian.
+
+.. endonly
+
 Explanations of configuration options and sample configuration files
 are included.
 
-This guide documents OpenStack Mitaka release.
+This guide documents the OpenStack Newton release.
 
 .. warning::
 
@@ -75,61 +105,46 @@ This guide documents OpenStack Mitaka release.
 Contents
 ~~~~~~~~
 
+.. toctree::
+   :maxdepth: 2
+
+   common/conventions.rst
+   overview.rst
+   environment.rst
+   keystone.rst
+   glance.rst
+   nova.rst
+   neutron.rst
+   horizon.rst
+   cinder.rst
+   additional-services.rst
+   launch-instance.rst
+
 .. Pseudo only directive for each distribution used by the build tool.
    This pseudo only directive for toctree only works fine with Tox.
    When you directly build this guide with Sphinx,
    some navigation menu may not work properly.
-
+.. Keep this pseudo only directive not to break translation tool chain
+   at the openstack-doc-tools repo until it is changed.
 .. only:: obs or rdo or ubuntu
-
-   .. toctree::
-      :maxdepth: 2
-
-      common/conventions.rst
-      overview.rst
-      environment.rst
-      keystone.rst
-      glance.rst
-      nova.rst
-      neutron.rst
-      horizon.rst
-      cinder.rst
-      manila.rst
-      swift.rst
-      heat.rst
-      ceilometer.rst
-      trove.rst
-      launch-instance.rst
-
-      common/app_support.rst
-      common/glossary.rst
-
 .. only:: debian
-
-   .. toctree::
-      :maxdepth: 2
-
-      common/conventions.rst
-      overview.rst
-      environment.rst
-      debconf/debconf.rst
-      keystone.rst
-      glance.rst
-      nova.rst
-      neutron.rst
-      horizon.rst
-      cinder.rst
-      manila.rst
-      swift.rst
-      heat.rst
-      ceilometer.rst
-      trove.rst
-      launch-instance.rst
-
-      common/app_support.rst
-      common/glossary.rst
-
 .. end of contents
+
+Appendix
+~~~~~~~~
+
+.. toctree::
+   :maxdepth: 1
+
+   common/app-support.rst
+
+Glossary
+~~~~~~~~
+
+.. toctree::
+   :maxdepth: 1
+
+   common/glossary.rst
 
 Search in this guide
 ~~~~~~~~~~~~~~~~~~~~

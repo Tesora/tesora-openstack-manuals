@@ -2,48 +2,49 @@
 EMC VNX driver
 ==============
 
-EMC VNX driver consists of EMCCLIISCSIDriver and EMCCLIFCDriver, and supports
-both iSCSI and FC protocol. ``EMCCLIISCSIDriver`` (VNX iSCSI driver) and
-``EMCCLIFCDriver`` (VNX FC driver) are separately based on the ``ISCSIDriver``
-and ``FCDriver`` defined in the Block Storage service.
+EMC VNX driver interacts with configured VNX array. It supports
+both iSCSI and FC protocol.
 
-The VNX iSCSI driver and VNX FC driver perform the volume operations by
+The VNX cinder driver performs the volume operations by
 executing Navisphere CLI (NaviSecCLI) which is a command-line interface used
-for management, diagnostics, and reporting functions for VNX.
+for management, diagnostics, and reporting functions for VNX. It also
+supports both iSCSI and FC protocol.
+
 
 System requirements
 ~~~~~~~~~~~~~~~~~~~
 
--  VNX Operational Environment for Block version 5.32 or higher.
-
--  VNX Snapshot and Thin Provisioning license should be activated for VNX.
-
--  Navisphere CLI v7.32 or higher is installed along with the driver.
+- VNX Operational Environment for Block version 5.32 or higher.
+- VNX Snapshot and Thin Provisioning license should be activated for VNX.
+- Python library ``storops`` to interact with VNX.
+- Navisphere CLI v7.32 or higher is installed along with the driver.
 
 Supported operations
 ~~~~~~~~~~~~~~~~~~~~
 
--  Create, delete, attach, and detach volumes.
--  Create, list, and delete volume snapshots.
--  Create a volume from a snapshot.
--  Copy an image to a volume.
--  Clone a volume.
--  Extend a volume.
--  Migrate a volume.
--  Retype a volume.
--  Get volume statistics.
--  Create and delete consistency groups.
--  Create, list, and delete consistency group snapshots.
--  Modify consistency groups.
--  Efficient non-disruptive volume backup.
+- Create, delete, attach, and detach volumes.
+- Create, list, and delete volume snapshots.
+- Create a volume from a snapshot.
+- Copy an image to a volume.
+- Clone a volume.
+- Extend a volume.
+- Migrate a volume.
+- Retype a volume.
+- Get volume statistics.
+- Create and delete consistency groups.
+- Create, list, and delete consistency group snapshots.
+- Modify consistency groups.
+- Efficient non-disruptive volume backup.
+- Create a cloned consistency group.
+- Create a consistency group from consistency group snapshots.
+- Replication v2.1 support.
 
 Preparation
 ~~~~~~~~~~~
 
 This section contains instructions to prepare the Block Storage nodes to
-use the EMC VNX driver. You install the Navisphere CLI, install the
-driver, ensure you have correct zoning configurations, and register the
-driver.
+use the EMC VNX driver. You should install the Navisphere CLI and ensure you
+have correct zoning configurations.
 
 Install Navisphere CLI
 ----------------------
@@ -53,19 +54,25 @@ an OpenStack deployment. You need to download different versions for
 different platforms:
 
 -  For Ubuntu x64, DEB is available at `EMC OpenStack
-   Github <https://github.com/emc-openstack/naviseccli>`__.
+   Github <https://github.com/emc-openstack/naviseccli>`_.
 
 -  For all other variants of Linux, Navisphere CLI is available at
    `Downloads for VNX2
-   Series <https://support.emc.com/downloads/36656_VNX2-Series>`__ or
+   Series <https://support.emc.com/downloads/36656_VNX2-Series>`_ or
    `Downloads for VNX1
-   Series <https://support.emc.com/downloads/12781_VNX1-Series>`__.
+   Series <https://support.emc.com/downloads/12781_VNX1-Series>`_.
 
--  After installation, set the security level of Navisphere CLI to low:
+Install Python library storops
+------------------------------
 
-   .. code-block:: console
+``storops`` is a Python library that interacts with VNX array through
+Navisphere CLI.
+Use the following command to install the ``storops`` library:
 
-      $ /opt/Navisphere/bin/naviseccli security -certificate -setLevel low
+.. code-block:: console
+
+   $ pip install storops
+
 
 Check array software
 --------------------
@@ -120,9 +127,9 @@ Make the following changes in the ``/etc/cinder/cinder.conf`` file.
 Minimum configuration
 ---------------------
 
-Here is a sample of a minimum back-end configuration. See the following
-sections for the detail of each option. Replace ``EMCCLIFCDriver``
-with ``EMCCLIISCSIDriver`` if you are using the iSCSI driver.
+Here is a sample of minimum back-end configuration. See the following sections
+for the detail of each option.
+Set ``storage_protocol = iscsi`` if iSCSI protocol is used.
 
 .. code-block:: ini
 
@@ -134,15 +141,15 @@ with ``EMCCLIISCSIDriver`` if you are using the iSCSI driver.
    san_login = sysadmin
    san_password = sysadmin
    naviseccli_path = /opt/Navisphere/bin/naviseccli
-   volume_driver = cinder.volume.drivers.emc.emc_cli_fc.EMCCLIFCDriver
+   volume_driver = cinder.volume.drivers.emc.vnx.driver.EMCVNXDriver
    initiator_auto_registration = True
+   storage_protocol = fc
 
 Multiple back-end configuration
 -------------------------------
-
-Here is a sample of a multiple back-end configuration. See the following
-sections for the detail of each option. Replace ``EMCCLIFCDriver``
-with ``EMCCLIISCSIDriver`` if you are using the iSCSI driver.
+Here is a sample of a minimum back-end configuration. See following sections
+for the detail of each option.
+Set ``storage_protocol = iscsi`` if iSCSI protocol is used.
 
 .. code-block:: ini
 
@@ -154,8 +161,9 @@ with ``EMCCLIISCSIDriver`` if you are using the iSCSI driver.
    san_ip = 10.10.72.41
    storage_vnx_security_file_dir = /etc/secfile/array1
    naviseccli_path = /opt/Navisphere/bin/naviseccli
-   volume_driver = cinder.volume.drivers.emc.emc_cli_fc.EMCCLIFCDriver
+   volume_driver = cinder.volume.drivers.emc.vnx.driver.EMCVNXDriver
    initiator_auto_registration = True
+   storage_protocol = fc
 
    [backendB]
    storage_vnx_pool_names = Pool_02_SAS
@@ -163,23 +171,26 @@ with ``EMCCLIISCSIDriver`` if you are using the iSCSI driver.
    san_login = username
    san_password = password
    naviseccli_path = /opt/Navisphere/bin/naviseccli
-   volume_driver = cinder.volume.drivers.emc.emc_cli_fc.EMCCLIFCDriver
+   volume_driver = cinder.volume.drivers.emc.vnx.driver.EMCVNXDriver
    initiator_auto_registration = True
+   storage_protocol = fc
 
-For more details on multi-backends, see `OpenStack Administrator Guide
-<http://docs.openstack.org/admin-guide/index.html>`__
+The value of the option ``storage_protocol`` can be either ``fc`` or ``iscsi``,
+which is case insensitive.
+
+For more details on multiple back ends, see `Configure multiple-storage
+back ends <http://docs.openstack.org/admin-guide/blockstorage-multi-backend.html>`_
 
 Required configurations
 -----------------------
 
 **IP of the VNX Storage Processors**
 
-Specify the SP A and SP B IP to connect:
+Specify SP A or SP B IP to connect:
 
 .. code-block:: ini
 
-   san_ip = <IP of VNX Storage Processor A>
-   san_secondary_ip = <IP of VNX Storage Processor B>
+   san_ip = <IP of VNX Storage Processor>
 
 **VNX login credentials**
 
@@ -218,19 +229,21 @@ Specify the absolute path to your naviseccli:
 
    naviseccli_path = /opt/Navisphere/bin/naviseccli
 
-**Driver name**
+**Driver's storage protocol**
 
 -  For the FC Driver, add the following option:
 
    .. code-block:: ini
 
-      volume_driver = cinder.volume.drivers.emc.emc_cli_fc.EMCCLIFCDriver
+      volume_driver = cinder.volume.drivers.emc.vnx.driver.EMCVNXDriver
+      storage_protocol = fc
 
 -  For iSCSI Driver, add the following option:
 
    .. code-block:: ini
 
-      volume_driver = cinder.volume.drivers.emc.emc_cli_iscsi.EMCCLIISCSIDriver
+      volume_driver = cinder.volume.drivers.emc.vnx.driver.EMCVNXDriver
+      storage_protocol = iscsi
 
 Optional configurations
 ~~~~~~~~~~~~~~~~~~~~~~~
@@ -314,10 +327,10 @@ capacity) to be larger than the pool's total capacity.
 ``max_over_subscription_ratio`` in the back-end section is the ratio of
 provisioned capacity over total capacity.
 
-The default value of ``max_over_subscription_ratio`` is 20.0, which means the
-provisioned capacity can not exceed the total capacity. If the value of this
-ratio is set larger than 1.0, the provisioned capacity can exceed the total
-capacity.
+The default value of ``max_over_subscription_ratio`` is 20.0, which means
+the provisioned capacity can be 20 times of the total capacity.
+If the value of this ratio is set larger than 1.0, the provisioned
+capacity can exceed the total capacity.
 
 Storage group automatic deletion
 --------------------------------
@@ -337,15 +350,15 @@ Initiator auto deregistration
 
 Enabling storage group automatic deletion is the precondition of this function.
 If ``initiator_auto_deregistration`` is set to ``True`` is set, the driver will
-deregister all the initiators of the host after its storage group is deleted.
+deregister all FC and iSCSI initiators of the host after its storage group is
+deleted.
 
 FC SAN auto zoning
 ------------------
 
-The EMC VNX FC driver supports FC SAN auto zoning when ``ZoneManager`` is
-configured. Set ``zoning_mode`` to ``fabric`` in the ``[DEFAULT]`` section to
-enable this feature. For ZoneManager configuration, refer to Block
-Storage official guide.
+The EMC VNX driver supports FC SAN auto zoning when ``ZoneManager`` is
+configured and ``zoning_mode`` is set to ``fabric`` in ``cinder.conf``.
+For ZoneManager configuration, refer to :doc:`../fc-zoning`.
 
 Volume number threshold
 -----------------------
@@ -398,7 +411,7 @@ The default value for this option is ``infinite``.
 
 .. code-block:: ini
 
-   default_timeout = 10
+   default_timeout = 60
 
 Max LUNs per storage group
 --------------------------
@@ -427,13 +440,13 @@ Use the following command to create a volume type:
 
 .. code-block:: console
 
-   $ cinder type-create "demoVolumeType"
+   $ openstack volume type create demoVolumeType
 
 Use the following command to update the extra spec of a volume type:
 
 .. code-block:: console
 
-   $ cinder type-key "demoVolumeType" set provisioning:type=thin
+   $ openstack volume type set --property provisioning:type=thin thick_provisioning_support='<is> True' demoVolumeType
 
 The following sections describe the VNX extra keys.
 
@@ -452,8 +465,8 @@ Provisioning type
 
       .. code-block:: console
 
-         $ cinder type-create "ThickVolumeType"
-         $ cinder type-key "ThickVolumeType" set provisioning:type=thick thick_provisioning_support='<is> True'
+         $ openstack volume type create ThickVolumeType
+         $ openstack volume type set --property provisioning:type=thick thick_provisioning_support='<is> True' ThickVolumeType
 
    -  ``thin``
 
@@ -463,8 +476,8 @@ Provisioning type
 
       .. code-block:: console
 
-         $ cinder type-create "ThinVolumeType"
-         $ cinder type-key "ThinVolumeType" set provisioning:type=thin thin_provisioning_support='<is> True'
+         $ openstack volume type create ThinVolumeType
+         $ openstack volume type set --property provisioning:type=thin thin_provisioning_support='<is> True' ThinVolumeType
 
    -  ``deduplicated``
 
@@ -478,8 +491,8 @@ Provisioning type
 
       .. code-block:: console
 
-         $ cinder type-create "DeduplicatedVolumeType"
-         $ cinder type-key "DeduplicatedVolumeType" set provisioning:type=deduplicated deduplication_support='<is> True'
+         $ openstack volume type create DeduplicatedVolumeType
+         $ openstack volume type set --property provisioning:type=deduplicated deduplicated_support='<is> True' DeduplicatedVolumeType
 
    -  ``compressed``
 
@@ -494,37 +507,29 @@ Provisioning type
 
       .. code-block:: console
 
-         $ cinder type-create "CompressedVolumeType"
-         $ cinder type-key "CompressedVolumeType" set provisioning:type=compressed compression_support='<is> True'
+         $ openstack volume type create CompressedVolumeType
+         $ openstack volume type set --property provisioning:type=compressed compression_support='<is> True' CompressedVolumeType
 
 -  Default: ``thick``
 
 .. note::
 
-   ``provisioning:type`` replaces the old spec key
-   ``storagetype:provisioning``. The latter one will be obsoleted in the next
-   release. If both ``provisioning:type`` and ``storagetype:provisioning``
-   are set in the volume type, the value of ``provisioning:type`` will be
-   used.
+   ``provisioning:type`` replaces the old spec key ``storagetype:provisioning``.
+   The latter one is obsolete since the *Mitaka* release.
 
 Storage tiering support
 -----------------------
 
--  Key: ``storagetype:tiering``
+- Key: ``storagetype:tiering``
+- Possible values:
 
--  Possible values:
+  - ``StartHighThenAuto``
+  - ``Auto``
+  - ``HighestAvailable``
+  - ``LowestAvailable``
+  - ``NoMovement``
 
-   -  ``StartHighThenAuto``
-
-   -  ``Auto``
-
-   -  ``HighestAvailable``
-
-   -  ``LowestAvailable``
-
-   -  ``NoMovement``
-
--  Default: ``StartHighThenAuto``
+- Default: ``StartHighThenAuto``
 
 VNX supports fully automated storage tiering which requires the FAST license
 activated on the VNX. The OpenStack administrator can use the extra spec key
@@ -537,8 +542,8 @@ Run the following commands to create a volume type with tiering policy:
 
 .. code-block:: console
 
-   $ cinder type-create "ThinVolumeOnLowestAvaibleTier"
-   $ cinder type-key "CompressedVolumeOnLowestAvaibleTier" set provisioning:type=thin storagetype:tiering=Auto fast_support='<is> True'
+   $ openstack volume type create ThinVolumeOnAutoTier
+   $ openstack volume type set --property provisioning:type=thin storagetype:tiering=Auto fast_support='<is> True' ThinVolumeOnAutoTier
 
 .. note::
 
@@ -560,62 +565,7 @@ FAST cache support
 
 VNX has FAST Cache feature which requires the FAST Cache license activated on
 the VNX. Volume will be created on the backend with FAST cache enabled when
-``True`` is specified.
-
-Snap-copy
----------
-
--  Key: ``copytype:snap``
-
--  Possible values:
-
-   -  ``True``
-
-   -  ``False``
-
--  Default: ``False``
-
-The VNX driver supports snap-copy, which extremely accelerates the process for
-creating a copied volume.
-
-By default, the driver will do a full data copy while creating a volume from a
-snapshot or cloning a volume, which is time-consuming especially for large
-volumes. When the snap-copy is used, the driver will simply create a snapshot
-and mount it as a volume for the two types of operations which will be instant
-even for large volumes.
-
-To enable this functionality, the source volume should have
-``copytype:snap=True`` in the extra specs of its volume type. Then the new
-volume cloned from the source or copied from the snapshot for the source, will
-be in fact a snap-copy instead of a full copy. If a full copy is needed,
-retype/migration can be used to convert the snap-copy volume to a full-copy
-volume which may be time-consuming.
-
-.. code-block:: console
-
-   $ cinder type-create "SnapCopy"
-   $ cinder type-key "SnapCopy" set copytype:snap=True
-
-User can determine whether the volume is a snap-copy volume or not by
-showing its metadata. If the ``lun_type`` in metadata is ``smp``, the
-volume is a snap-copy volume. Otherwise, it is a full-copy volume.
-
-.. code-block:: console
-
-   $ cinder metadata-show <volume>
-
-**Constraints**
-
--  ``copytype:snap=True`` is not allowed in the volume type of a
-   consistency group.
-
--  Clone and snapshot creation are not allowed on a copied volume
-   created through the snap-copy before it is converted to a full copy.
-
--  The number of snap-copy volume created from a source volume is
-   limited to 255 at one point in time.
-
--  The source volume which has snap-copy volume can not be deleted.
+``<is> True`` is specified.
 
 Pool name
 ---------
@@ -635,26 +585,78 @@ Run the following commands to create the volume type:
 
 .. code-block:: console
 
-   $ cinder type-create "HighPerf"
-   $ cinder type-key "HighPerf" set pool_name=Pool_02_SASFLASH volume_backend_name=vnx_41
+   $ openstack volume type create HighPerf
+   $ openstack volume type set --property pool_name=Pool_02_SASFLASH volume_backend_name=vnx_41 HighPerf
+
+Obsolete extra specs
+--------------------
+
+.. note::
+
+   *DO NOT* use the following obsolete extra spec keys:
+
+   - ``storagetype:provisioning``
+   - ``storagetype:pool``
 
 
 Advanced features
 ~~~~~~~~~~~~~~~~~
 
-Read-only volumes
------------------
+Snap copy
+---------
 
-OpenStack supports read-only volumes. The following command can be used
-to set a volume as read-only.
+- Metadata Key: ``snapcopy``
+- Possible Values:
+
+  - ``True`` or ``true``
+  - ``False`` or ``false``
+
+- Default: `False`
+
+VNX driver supports snap copy which accelerates the process for
+creating a copied volume.
+
+By default, the driver will do full data copy when creating a
+volume from a snapshot or cloning a volume. This is time-consuming, especially
+for large volumes. When snap copy is used, driver creates a
+snapshot and mounts it as a volume for the 2 kinds of operations which will be
+instant even for large volumes.
+
+To enable this functionality, append ``--metadata snapcopy=True``
+when creating cloned volume or creating volume from snapshot.
 
 .. code-block:: console
 
-   $ cinder readonly-mode-update <volume> True
+   $ cinder create --source-volid <source-void> --name "cloned_volume" --metadata snapcopy=True
 
-After a volume is marked as read-only, the driver will forward the
-information when a hypervisor is attaching the volume and the hypervisor
-will make sure the volume is read-only.
+Or
+
+.. code-block:: console
+
+   $ cinder create --snapshot-id <snapshot-id> --name "vol_from_snapshot" --metadata snapcopy=True
+
+
+The newly created volume is a snap copy instead of
+a full copy. If a full copy is needed, retype or migrate can be used
+to convert the snap-copy volume to a full-copy volume which may be
+time-consuming.
+
+You can determine whether the volume is a snap-copy volume or not by
+showing its metadata. If the ``snapcopy`` in metadata is ``True`` or ``true``,
+the volume is a snap-copy volume. Otherwise, it is a full-copy volume.
+
+.. code-block:: console
+
+   $ cinder metadata-show <volume>
+
+**Constraints**
+
+- The number of snap-copy volumes created from a single source volume is
+  limited to 255 at one point in time.
+- The source volume which has snap-copy volume can not be deleted or migrated.
+- snapcopy volume will be change to full-copy volume after host-assisted or
+  storage-assisted migration.
+- snapcopy volume can not be added to consisgroup because of VNX limitation.
 
 Efficient non-disruptive volume backup
 --------------------------------------
@@ -670,6 +672,102 @@ volume backup. This eliminates migration time involved in volume clone.
 
 -  Backup creation for a snap-copy volume is not allowed if the volume
    status is ``in-use`` since snapshot cannot be taken from this volume.
+
+Configurable migration rate
+---------------------------
+
+VNX cinder driver is leveraging the LUN migration from the VNX. LUN migration
+is involved in cloning, migrating, retyping, and creating volume from snapshot.
+When admin set ``migrate_rate`` in volume's ``metadata``, VNX driver can start
+migration with specified rate. The available values for the ``migrate_rate``
+are ``high``, ``asap``, ``low`` and ``medium``.
+
+The following is an example to set ``migrate_rate`` to ``asap``:
+
+.. code-block:: console
+
+   $ cinder metadata <volume-id> set migrate_rate=asap
+
+After set, any cinder volume operations involving VNX LUN migration will
+take the value as the migration rate. To restore the migration rate to
+default, unset the metadata as following:
+
+.. code-block:: console
+
+   $ cinder metadata <volume-id> unset migrate_rate
+
+.. note::
+
+   Do not use the ``asap`` migration rate when the system is in production, as the normal
+   host I/O may be interrupted. Use asap only when the system is offline
+   (free of any host-level I/O).
+
+Replication v2.1 support
+------------------------
+
+Cinder introduces Replication v2.1 support in Mitaka, it supports
+fail-over and fail-back replication for specific back end. In VNX cinder
+driver, **MirrorView** is used to set up replication for the volume.
+
+To enable this feature, you need to set configuration in ``cinder.conf`` as
+below:
+
+.. code-block:: ini
+
+   replication_device = backend_id:<secondary VNX serial number>,
+                        san_ip:192.168.1.2,
+                        san_login:admin,
+                        san_password:admin,
+                        naviseccli_path:/opt/Navisphere/bin/naviseccli,
+                        storage_vnx_authentication_type:global,
+                        storage_vnx_security_file_dir:
+
+Currently, only synchronized mode **MirrorView** is supported, and one volume
+can only have 1 secondary storage system. Therefore, you can have only one
+``replication_device`` presented in driver configuration section.
+
+To create a replication enabled volume, you need to create a volume type:
+
+.. code-block:: console
+
+   $ cinder type-create replication-type
+   $ cinder type-key replication-type set replication_enabled="<is> True"
+
+And then create volume with above volume type:
+
+.. code-block:: console
+
+   $ cinder create --volume-type replication-type --name replication-volume 1
+
+**Supported operations**
+
+- Create volume
+- Create cloned volume
+- Create volume from snapshot
+- Fail-over volume:
+
+  .. code-block:: console
+
+     $ cinder failover-host --backend_id <secondary VNX serial number> <hostname>
+
+- Fail-back volume:
+
+  .. code-block:: console
+
+     $ cinder failover-host --backend_id default <hostname>
+
+**Requirements**
+
+- 2 VNX systems must be in same domain.
+- For iSCSI MirrorView, user needs to setup iSCSI connection before enable
+  replication in Cinder.
+- For FC MirrorView, user needs to zone specific FC ports from 2
+  VNX system together.
+- MirrorView Sync enabler( **MirrorView/S** ) installed on both systems.
+- Write intent log enabled on both VNX systems.
+
+For more information on how to configure, please refer to: `MirrorView-Knowledgebook:-Releases-30-–-33 <https://support.emc.com/docu32906_MirrorView-Knowledgebook:-Releases-30-%E2%80%93-33---A-Detailed-Review.pdf?language=en_US>`_
+
 
 Best practice
 ~~~~~~~~~~~~~
@@ -742,7 +840,7 @@ to ``yes`` because it may fail operations such as VM live migration.
 
    When multipath is used in OpenStack, multipath faulty devices may
    come out in Nova-Compute nodes due to different issues (`Bug
-   1336683 <https://bugs.launchpad.net/nova/+bug/1336683>`__ is a
+   1336683 <https://bugs.launchpad.net/nova/+bug/1336683>`_ is a
    typical example).
 
 A solution to completely avoid faulty devices has not been found yet.
@@ -750,7 +848,7 @@ A solution to completely avoid faulty devices has not been found yet.
 used. Cloud administrators can deploy the script in all Nova-Compute nodes and
 use a CRON job to run the script on each Nova-Compute node periodically so that
 faulty devices will not stay too long. Refer to: `VNX faulty device
-cleanup <https://github.com/emc-openstack/vnx-faulty-device-cleanup>`__ for
+cleanup <https://github.com/emc-openstack/vnx-faulty-device-cleanup>`_ for
 detailed usage and the script.
 
 Restrictions and limitations
@@ -811,10 +909,9 @@ native volume migration functionality.
 In following scenarios, VNX storage-assisted volume migration will not be
 triggered:
 
-1. Volume migration between back ends with different storage protocol,
-   for example, FC and iSCSI.
-
-2. Volume is to be migrated across arrays.
+- ``in-use`` volume migration between back ends with different storage
+  protocol, for example, FC and iSCSI.
+- Volume is to be migrated across arrays.
 
 Appendix
 ~~~~~~~~

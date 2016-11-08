@@ -20,10 +20,10 @@
      -
    * - ``allow_bulk`` = ``True``
      - (Boolean) Allow the usage of the bulk API
-   * - ``allow_pagination`` = ``False``
-     - (Boolean) Allow the usage of the pagination
-   * - ``allow_sorting`` = ``False``
-     - (Boolean) Allow the usage of the sorting
+   * - ``allow_pagination`` = ``True``
+     - (Boolean) DEPRECATED: Allow the usage of the pagination. This option has been deprecated and will now be enabled unconditionally.
+   * - ``allow_sorting`` = ``True``
+     - (Boolean) DEPRECATED: Allow the usage of the sorting. This option has been deprecated and will now be enabled unconditionally.
    * - ``api_extensions_path`` =
      - (String) The path for API extensions. Note that this can be a colon-separated list of paths. For example: api_extensions_path = extensions:/path/to/more/exts:/even/more/exts. The __path__ of neutron.extensions is appended to this, so if your extensions are in there you don't need to specify them here.
    * - ``api_paste_config`` = ``api-paste.ini``
@@ -42,21 +42,23 @@
      - (List) The service plugins Neutron will use
    * - ``tcp_keepidle`` = ``600``
      - (Integer) Sets the value of TCP_KEEPIDLE in seconds for each server socket. Not supported on OS X.
+   * - ``use_ssl`` = ``False``
+     - (Boolean) Enable SSL on the API server
    * - ``wsgi_default_pool_size`` = ``100``
      - (Integer) Size of the pool of greenthreads used by wsgi
    * - ``wsgi_keep_alive`` = ``True``
      - (Boolean) If False, closes the client socket connection explicitly.
+   * - ``wsgi_log_format`` = ``%(client_ip)s "%(request_line)s" status: %(status_code)s  len: %(body_length)s time: %(wall_seconds).7f``
+     - (String) A python format string that is used as the template to generate log lines. The following values can beformatted into it: client_ip, date_time, request_line, status_code, body_length, wall_seconds.
    * - **[oslo_middleware]**
      -
+   * - ``enable_proxy_headers_parsing`` = ``False``
+     - (Boolean) Whether the application is behind a proxy or not. This determines if the middleware should parse the headers or not.
    * - ``max_request_body_size`` = ``114688``
      - (Integer) The maximum body size for each request, in bytes.
    * - ``secure_proxy_ssl_header`` = ``X-Forwarded-Proto``
-     - (String) DEPRECATED: The HTTP Header that will be used to determine what the original request protocol scheme was, even if it was hidden by an SSL termination proxy.
-   * - **[oslo_policy]**
+     - (String) DEPRECATED: The HTTP Header that will be used to determine what the original request protocol scheme was, even if it was hidden by a SSL termination proxy.
+   * - **[oslo_versionedobjects]**
      -
-   * - ``policy_default_rule`` = ``default``
-     - (String) Default rule. Enforced when a requested rule is not found.
-   * - ``policy_dirs`` = ``['policy.d']``
-     - (Multi-valued) Directories where policy configuration files are stored. They can be relative to any directory in the search path defined by the config_dir option, or absolute paths. The file defined by policy_file must exist for these directories to be searched. Missing or empty directories are ignored.
-   * - ``policy_file`` = ``policy.json``
-     - (String) The JSON file that defines policies.
+   * - ``fatal_exception_format_errors`` = ``False``
+     - (Boolean) Make exception message format errors fatal

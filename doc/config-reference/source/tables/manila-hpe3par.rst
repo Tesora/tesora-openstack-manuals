@@ -28,8 +28,8 @@
      - (String) File system admin user name for CIFS.
    * - ``hpe3par_debug`` = ``False``
      - (Boolean) Enable HTTP debugging to 3PAR
-   * - ``hpe3par_fpg`` = ``OpenStack``
-     - (String) The File Provisioning Group (FPG) to use
+   * - ``hpe3par_fpg`` = ``None``
+     - (Unknown) The File Provisioning Group (FPG) to use
    * - ``hpe3par_fstore_per_share`` = ``False``
      - (Boolean) Use one filestore per share
    * - ``hpe3par_password`` =
@@ -43,9 +43,7 @@
    * - ``hpe3par_san_password`` =
      - (String) Password for SAN controller
    * - ``hpe3par_san_ssh_port`` = ``22``
-     - (Unknown) SSH port to use with SAN
-   * - ``hpe3par_share_ip_address`` =
-     - (String) The IP address for shares not using a share server
+     - (Port number) SSH port to use with SAN
    * - ``hpe3par_share_mount_path`` = ``/mnt/``
      - (String) The path where shares will be mounted when deleting nested file trees.
    * - ``hpe3par_username`` =

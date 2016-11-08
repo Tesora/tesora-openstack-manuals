@@ -5,7 +5,11 @@ OpenStack Command-Line Interface Reference
 Abstract
 ~~~~~~~~
 
-This guide documents the OpenStack command-line clients.
+This guide provides information about OpenStack command-line client commands.
+For more information about installing and using command-line clients,
+see the `OpenStack command-line clients
+<http://docs.openstack.org/user-guide/cli.html>`_
+in the OpenStack End User Guide.
 
 Contents
 ~~~~~~~~
@@ -15,37 +19,31 @@ Contents
 .. toctree::
    :maxdepth: 1
 
-   common/conventions
-   overview
    openstack
 
    murano
+   freezer
    ironic
    cinder
    senlin
-   nova
+   compute
    magnum
-   sahara
-   trove
-   trove-misc
+   database
    designate
-   keystone
-   glance
+   image
+   watcher
    barbican
    monasca
-   neutron
-   neutron-misc
+   networking
+   tacker
    swift
    heat
    cloudkitty
    manila
+   solum
    ceilometer
    gnocchi
    mistral
-
-   common/app_support
-
-   common/glossary
 
 Search in this guide
 ~~~~~~~~~~~~~~~~~~~~

@@ -11,10 +11,10 @@ network with one instance that uses it and one self-service (private)
 network with one instance that uses it. The instructions in this
 section use command-line interface (CLI) tools on the controller
 node. For more information on the CLI tools, see the
-`OpenStack User Guide
-<http://docs.openstack.org/user-guide/cli_launch_instances.html>`__.
+`OpenStack End User Guide
+<http://docs.openstack.org/user-guide/cli-launch-instances.html>`__.
 To use the dashboard, see the
-`OpenStack User Guide
+`OpenStack End User Guide
 <http://docs.openstack.org/user-guide/dashboard.html>`__.
 
 .. _launch-instance-networks:
@@ -48,6 +48,7 @@ purposes.
 .. code-block:: console
 
    $ openstack flavor create --id 0 --vcpus 1 --ram 64 --disk 1 m1.nano
+
    +----------------------------+---------+
    | Field                      | Value   |
    +----------------------------+---------+
@@ -63,6 +64,8 @@ purposes.
    | vcpus                      | 1       |
    +----------------------------+---------+
 
+.. end
+
 Generate a key pair
 -------------------
 
@@ -70,11 +73,13 @@ Most cloud images support :term:`public key authentication` rather than
 conventional password authentication. Before launching an instance, you
 must add a public key to the Compute service.
 
-#. Source the ``demo`` tenant credentials:
+#. Source the ``demo`` project credentials:
 
    .. code-block:: console
 
       $ . demo-openrc
+
+   .. end
 
 #. Generate and add a key pair:
 
@@ -82,6 +87,7 @@ must add a public key to the Compute service.
 
       $ ssh-keygen -q -N ""
       $ openstack keypair create --public-key ~/.ssh/id_rsa.pub mykey
+
       +-------------+-------------------------------------------------+
       | Field       | Value                                           |
       +-------------+-------------------------------------------------+
@@ -89,6 +95,8 @@ must add a public key to the Compute service.
       | name        | mykey                                           |
       | user_id     | 58126687cbcc4888bfa9ab73a2256f27                |
       +-------------+-------------------------------------------------+
+
+   .. end
 
    .. note::
 
@@ -100,11 +108,14 @@ must add a public key to the Compute service.
    .. code-block:: console
 
       $ openstack keypair list
+
       +-------+-------------------------------------------------+
       | Name  | Fingerprint                                     |
       +-------+-------------------------------------------------+
       | mykey | ee:3d:2e:97:d4:e2:6a:54:6d:0d:ce:43:39:2c:ba:4d |
       +-------+-------------------------------------------------+
+
+   .. end
 
 Add security group rules
 ------------------------
@@ -116,37 +127,63 @@ secure shell (SSH).
 
 * Add rules to the ``default`` security group:
 
-  * Permit :term:`ICMP` (ping):
+  * Permit :term:`ICMP <Internet Control Message Protocol (ICMP)>` (ping):
 
     .. code-block:: console
 
        $ openstack security group rule create --proto icmp default
-       +-----------------------+--------------------------------------+
-       | Field                 | Value                                |
-       +-----------------------+--------------------------------------+
-       | id                    | a1876c06-7f30-4a67-a324-b6b5d1309546 |
-       | ip_protocol           | icmp                                 |
-       | ip_range              | 0.0.0.0/0                            |
-       | parent_group_id       | b0d53786-5ebb-4729-9e4a-4b675016a958 |
-       | port_range            |                                      |
-       | remote_security_group |                                      |
-       +-----------------------+--------------------------------------+
+
+       +-------------------+--------------------------------------+
+       | Field             | Value                                |
+       +-------------------+--------------------------------------+
+       | created_at        | 2016-10-05T09:52:31Z                 |
+       | description       |                                      |
+       | direction         | ingress                              |
+       | ethertype         | IPv4                                 |
+       | headers           |                                      |
+       | id                | 6ee8d630-9803-4d3d-9aea-8c795abbedc2 |
+       | port_range_max    | None                                 |
+       | port_range_min    | None                                 |
+       | project_id        | 77ae8d7104024123af342ffb0a6f1d88     |
+       | project_id        | 77ae8d7104024123af342ffb0a6f1d88     |
+       | protocol          | icmp                                 |
+       | remote_group_id   | None                                 |
+       | remote_ip_prefix  | 0.0.0.0/0                            |
+       | revision_number   | 1                                    |
+       | security_group_id | 4ceee3d4-d2fe-46c1-895c-382033e87b0d |
+       | updated_at        | 2016-10-05T09:52:31Z                 |
+       +-------------------+--------------------------------------+
+
+    .. end
 
   * Permit secure shell (SSH) access:
 
     .. code-block:: console
 
        $ openstack security group rule create --proto tcp --dst-port 22 default
-       +-----------------------+--------------------------------------+
-       | Field                 | Value                                |
-       +-----------------------+--------------------------------------+
-       | id                    | 3d95e59c-e98d-45f1-af04-c750af914f14 |
-       | ip_protocol           | tcp                                  |
-       | ip_range              | 0.0.0.0/0                            |
-       | parent_group_id       | b0d53786-5ebb-4729-9e4a-4b675016a958 |
-       | port_range            | 22:22                                |
-       | remote_security_group |                                      |
-       +-----------------------+--------------------------------------+
+
+       +-------------------+--------------------------------------+
+       | Field             | Value                                |
+       +-------------------+--------------------------------------+
+       | created_at        | 2016-10-05T09:54:50Z                 |
+       | description       |                                      |
+       | direction         | ingress                              |
+       | ethertype         | IPv4                                 |
+       | headers           |                                      |
+       | id                | 3cd0a406-43df-4741-ab29-b5e7dcb7469d |
+       | port_range_max    | 22                                   |
+       | port_range_min    | 22                                   |
+       | project_id        | 77ae8d7104024123af342ffb0a6f1d88     |
+       | project_id        | 77ae8d7104024123af342ffb0a6f1d88     |
+       | protocol          | tcp                                  |
+       | remote_group_id   | None                                 |
+       | remote_ip_prefix  | 0.0.0.0/0                            |
+       | revision_number   | 1                                    |
+       | security_group_id | 4ceee3d4-d2fe-46c1-895c-382033e87b0d |
+       | updated_at        | 2016-10-05T09:54:50Z                 |
+       +-------------------+--------------------------------------+
+
+    .. end
 
 Launch an instance
 ------------------
@@ -180,18 +217,15 @@ Orchestration
 If your environment includes the Orchestration service, you can create
 a stack that launches an instance.
 
-.. toctree::
-   :maxdepth: 1
-
-   launch-instance-heat.rst
+For more information, see the
+`Orchestration installation guide <http://docs.openstack.org/project-install-guide/orchestration/draft/launch-instance.html>`_.
 
 Shared File Systems
 -------------------
 
 If your environment includes the Shared File Systems service, you can create
-a share and mount it in an instance:
+a share and mount it in an instance.
 
-.. toctree::
-   :maxdepth: 1
-
-   launch-instance-manila.rst
+For more information, see the
+`Shared File Systems installation guide
+<http://docs.openstack.org/project-install-guide/shared-file-systems/draft>`_.

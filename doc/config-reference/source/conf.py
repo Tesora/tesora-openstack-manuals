@@ -44,7 +44,7 @@ requestsexceptions.squelch_warnings(requestsexceptions.InsecureRequestWarning)
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
-extensions = ['ext.remote']
+extensions = ['ext.remote', 'sphinxmark']
 
 # Add any paths that contain templates here, relative to this directory.
 # templates_path = ['_templates']
@@ -95,9 +95,8 @@ html_context = {"gitsha": gitsha, "bug_tag": bug_tag,
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
-exclude_patterns = ['common/cli*', 'common/nova*', 'common/get_started_*',
-                    'tables/*.rst', 'tables/manual/*.rst',
-                    'tables/conf-changes/ironic.rst']
+exclude_patterns = ['common/cli*', 'common/nova*', 'common/get-started-*',
+                    'tables/*.rst', 'tables/manual/*.rst']
 
 # The reST default role (used for this markup: `text`) to use for all
 # documents.
@@ -298,3 +297,9 @@ texinfo_documents = [
 
 # -- Options for Internationalization output ------------------------------
 locale_dirs = ['locale/']
+
+# -- Options for sphinxmark -----------------------------------------------
+sphinxmark_enable = True
+sphinxmark_div = 'docs-body'
+sphinxmark_image = 'text'
+sphinxmark_text = 'Newton'

@@ -16,6 +16,10 @@
 
    * - Configuration option = Default value
      - Description
+   * - **[cisco_csr_ipsec]**
+     -
+   * - ``status_check_interval`` = ``60``
+     - (Integer) Status check interval for Cisco CSR IPSec connections
    * - **[ipsec]**
      -
    * - ``config_base_dir`` = ``$state_path/ipsec``
@@ -26,6 +30,8 @@
      - (Integer) Interval for checking ipsec status
    * - **[pluto]**
      -
+   * - ``restart_check_config`` = ``False``
+     - (Boolean) Enable this flag to avoid from unnecessary restart
    * - ``shutdown_check_back_off`` = ``1.5``
      - (Floating point) A factor to increase the retry interval for each retry
    * - ``shutdown_check_retries`` = ``5``

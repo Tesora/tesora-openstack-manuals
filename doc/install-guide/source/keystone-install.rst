@@ -5,58 +5,55 @@ Install and configure
 
 This section describes how to install and configure the OpenStack
 Identity service, code-named keystone, on the controller node. For
-performance, this configuration deploys Fernet tokens and the Apache
-HTTP server to handle requests.
+scalability purposes, this configuration deploys Fernet tokens and
+the Apache HTTP server to handle requests.
 
-.. only:: obs or rdo or ubuntu
+Prerequisites
+-------------
 
-   Prerequisites
-   -------------
+Before you configure the OpenStack Identity service, you must create a
+database and an administration token.
 
-   Before you configure the OpenStack Identity service, you must create a
-   database and an administration token.
+#. To create the database, complete the following actions:
 
-   #. To create the database, complete the following actions:
+   * Use the database access client to connect to the database server as the
+     ``root`` user:
 
-      * Use the database access client to connect to the database server as the
-        ``root`` user:
+     .. code-block:: console
 
-        .. code-block:: console
+        $ mysql -u root -p
 
-           $ mysql -u root -p
+     .. end
 
-      * Create the ``keystone`` database:
+   * Create the ``keystone`` database:
 
-        .. code-block:: console
+     .. code-block:: console
 
-           CREATE DATABASE keystone;
+        mysql> CREATE DATABASE keystone;
 
-      * Grant proper access to the ``keystone`` database:
+     .. end
 
-        .. code-block:: console
+   * Grant proper access to the ``keystone`` database:
 
-           GRANT ALL PRIVILEGES ON keystone.* TO 'keystone'@'localhost' \
-             IDENTIFIED BY 'KEYSTONE_DBPASS';
-           GRANT ALL PRIVILEGES ON keystone.* TO 'keystone'@'%' \
-             IDENTIFIED BY 'KEYSTONE_DBPASS';
+     .. code-block:: console
 
-        Replace ``KEYSTONE_DBPASS`` with a suitable password.
+        mysql> GRANT ALL PRIVILEGES ON keystone.* TO 'keystone'@'localhost' \
+          IDENTIFIED BY 'KEYSTONE_DBPASS';
+        mysql> GRANT ALL PRIVILEGES ON keystone.* TO 'keystone'@'%' \
+          IDENTIFIED BY 'KEYSTONE_DBPASS';
 
-      * Exit the database access client.
+     .. end
 
-   #. Generate a random value to use as the administration token during
-      initial configuration:
+     Replace ``KEYSTONE_DBPASS`` with a suitable password.
 
-      .. code-block:: console
+   * Exit the database access client.
 
-         $ openssl rand -hex 10
+Install and configure components
+--------------------------------
 
-.. only:: obs or rdo or ubuntu
+.. include:: shared/note_configuration_vary_by_distribution.rst
 
-   Install and configure components
-   --------------------------------
-
-   .. include:: shared/note_configuration_vary_by_distribution.rst
+.. only:: obs or rdo
 
    .. note::
 
@@ -65,489 +62,292 @@ HTTP server to handle requests.
       keystone service still listens on these ports. Therefore, this guide
       manually disables the keystone service.
 
-   .. only:: ubuntu
+.. endonly
 
-      #. Disable the keystone service from starting automatically after
-         installation:
+.. only:: ubuntu or debian
 
-         .. code-block:: console
+   .. note::
 
-            # echo "manual" > /etc/init/keystone.override
-
-      #. Run the following command to install the packages:
-
-         .. only:: ubuntu
-
-            .. code-block:: console
-
-               # apt-get install keystone apache2 libapache2-mod-wsgi
-
-   .. only:: obs or rdo
-
-      #. Run the following command to install the packages:
-
-         .. only:: rdo
-
-            .. code-block:: console
-
-               # yum install openstack-keystone httpd mod_wsgi
-
-         .. only:: obs
-
-            .. code-block:: console
-
-               # zypper install openstack-keystone apache2-mod_wsgi
-
-   .. only:: obs or rdo or ubuntu
-
-      3. Edit the ``/etc/keystone/keystone.conf`` file and complete the following
-         actions:
-
-         * In the ``[DEFAULT]`` section, define the value of the initial
-           administration token:
-
-           .. code-block:: ini
-
-              [DEFAULT]
-              ...
-              admin_token = ADMIN_TOKEN
-
-           Replace ``ADMIN_TOKEN`` with the random value that you generated in a
-           previous step.
-
-         * In the ``[database]`` section, configure database access:
-
-           .. code-block:: ini
-
-              [database]
-              ...
-              connection = mysql+pymysql://keystone:KEYSTONE_DBPASS@controller/keystone
-
-           Replace ``KEYSTONE_DBPASS`` with the password you chose for the database.
-
-         * In the ``[token]`` section, configure the Fernet token provider:
-
-           .. code-block:: ini
-
-              [token]
-              ...
-              provider = fernet
-
-   .. only:: rdo or ubuntu or obs
-
-      4. Populate the Identity service database:
-
-         .. code-block:: console
-
-            # su -s /bin/sh -c "keystone-manage db_sync" keystone
-
-      5. Initialize Fernet keys:
-
-         .. code-block:: console
-
-            # keystone-manage fernet_setup --keystone-user keystone --keystone-group keystone
-
-.. only:: debian
-
-   Install and configure the components
-   ------------------------------------
+      This guide uses the Apache HTTP server with ``mod_wsgi`` to serve
+      Identity service requests on ports 5000 and 35357. By default, the
+      keystone service still listens on these ports. The package handles
+      all of the Apache configuration for you (including the activation of
+      the ``mod_wsgi`` apache2 module and keystone configuration in Apache).
 
    #. Run the following command to install the packages:
 
       .. code-block:: console
 
-         # apt-get install keystone
+         # apt install keystone
 
-   #. Respond to prompts for :doc:`debconf/debconf-dbconfig-common`,
-      which will fill the below database access directive.
+      .. end
 
-      .. code-block:: ini
+.. endonly
 
-         [database]
-         ...
-         connection = mysql+pymysql://keystone:KEYSTONE_DBPASS@controller/keystone
 
-      If you decide to not use ``dbconfig-common``, then you have to
-      create the database and manage its access rights yourself, and run the
-      following by hand.
+.. only:: rdo
+
+   #. Run the following command to install the packages:
 
       .. code-block:: console
 
-         # keystone-manage db_sync
+         # yum install openstack-keystone httpd mod_wsgi
 
-   #. Generate a random value to use as the administration token during
-      initial configuration:
+      .. end
 
-      .. code-block:: console
+.. endonly
 
-         $ openssl rand -hex 10
+.. only:: obs
 
-   #. Configure the initial administration token:
-
-      .. image:: figures/debconf-screenshots/keystone_1_admin_token.png
-         :scale: 50
-
-      Use the random value that you generated in a previous step. If you
-      install using non-interactive mode or you do not specify this token, the
-      configuration tool generates a random value.
-
-      Later on, the package will configure the below directive with the value
-      you entered:
-
-      .. code-block:: ini
-
-         [DEFAULT]
-         ...
-         admin_token = ADMIN_TOKEN
-
-   #. Create the ``admin`` project and user:
-
-      During the final stage of the package installation, it is possible to
-      automatically create an ``admin`` and ``service`` project, and an ``admin`` user.
-      This can later be used for other OpenStack services to contact the
-      Identity service. This is the equivalent of running the below commands:
+   #. Run the following command to install the packages:
 
       .. code-block:: console
 
-         # openstack --os-token ${AUTH_TOKEN} \
-           --os-url=http://127.0.0.1:35357/v3/ \
-           --os-domain-name default \
-           --os-identity-api-version=3 \
-           project create --or-show \
-           admin --domain default \
-           --description "Default Debian admin project"
+         # zypper install openstack-keystone apache2-mod_wsgi
 
-         # openstack --os-token ${AUTH_TOKEN} \
-           --os-url=http://127.0.0.1:35357/v3/ \
-           --os-domain-name default \
-           --os-identity-api-version=3 \
-           project create --or-show \
-           service --domain default \
-           --description "Default Debian admin project"
+      .. end
 
-         # openstack --os-token ${AUTH_TOKEN} \
-           --os-url=http://127.0.0.1:35357/v3/ \
-           --os-domain-name default \
-           --os-identity-api-version=3 \
-           user create --or-show \
-           --password ADMIN_PASS \
-           --project admin \
-           --email root@localhost \
-           --enable \
-           admin \
-           --domain default \
-           --description "Default Debian admin user"
+.. endonly
 
-         # openstack --os-token ${AUTH_TOKEN} \
-           --os-url=http://127.0.0.1:35357/v3/ \
-           --os-domain-name default \
-           --os-identity-api-version=3 \
-           role create --or-show admin
+2. Edit the ``/etc/keystone/keystone.conf`` file and complete the following
+   actions:
 
-         # openstack  --os-token ${AUTH_TOKEN} \
-           --os-url=http://127.0.0.1:35357/v3/ \
-           --os-domain-name default \
-           --os-identity-api-version=3 \
-           role add --project admin --user admin admin
+   * In the ``[database]`` section, configure database access:
 
-      .. image:: figures/debconf-screenshots/keystone_2_register_admin_tenant_yes_no.png
-         :scale: 50
+     .. path /etc/keystone/keystone.conf
+     .. code-block:: ini
 
-      .. image:: figures/debconf-screenshots/keystone_3_admin_user_name.png
-         :scale: 50
+        [database]
+        ...
+        connection = mysql+pymysql://keystone:KEYSTONE_DBPASS@controller/keystone
 
-      .. image:: figures/debconf-screenshots/keystone_4_admin_user_email.png
-         :scale: 50
+     .. end
 
-      .. image:: figures/debconf-screenshots/keystone_5_admin_user_pass.png
-         :scale: 50
+     Replace ``KEYSTONE_DBPASS`` with the password you chose for the database.
 
-      .. image:: figures/debconf-screenshots/keystone_6_admin_user_pass_confirm.png
-         :scale: 50
+   * In the ``[token]`` section, configure the Fernet token provider:
 
-      In Debian, the Keystone package offers automatic registration of
-      Keystone in the service catalogue. This is equivalent of running the
-      below commands:
+     .. path /etc/keystone/keystone.conf
+     .. code-block:: ini
+
+        [token]
+        ...
+        provider = fernet
+
+     .. end
+
+3. Populate the Identity service database:
+
+   .. code-block:: console
+
+      # su -s /bin/sh -c "keystone-manage db_sync" keystone
+
+   .. end
+
+   .. note::
+
+     Ignore any deprecation messages in this output.
+
+4. Initialize Fernet key repositories:
+
+   .. code-block:: console
+
+      # keystone-manage fernet_setup --keystone-user keystone --keystone-group keystone
+      # keystone-manage credential_setup --keystone-user keystone --keystone-group keystone
+
+   .. end
+
+5. Bootstrap the Identity service:
+
+   .. code-block:: console
+
+      # keystone-manage bootstrap --bootstrap-password ADMIN_PASS \
+        --bootstrap-admin-url http://controller:35357/v3/ \
+        --bootstrap-internal-url http://controller:35357/v3/ \
+        --bootstrap-public-url http://controller:5000/v3/ \
+        --bootstrap-region-id RegionOne
+
+   .. end
+
+   Replace ``ADMIN_PASS`` with a suitable password for an administrative user.
+
+Configure the Apache HTTP server
+--------------------------------
+
+.. only:: rdo
+
+   #. Edit the ``/etc/httpd/conf/httpd.conf`` file and configure the
+      ``ServerName`` option to reference the controller node:
+
+      .. path /etc/httpd/conf/httpd
+      .. code-block:: apache
+
+         ServerName controller
+
+      .. end
+
+   #. Create a link to the ``/usr/share/keystone/wsgi-keystone.conf`` file:
 
       .. code-block:: console
 
-         # openstack --os-token ${AUTH_TOKEN} \
-           --os-url=http://127.0.0.1:35357/v3/ \
-           --os-domain-name default \
-           --os-identity-api-version=3 \
-           service create \
-           --name keystone \
-           --description "OpenStack Identity" \
-           identity
-
-         # openstack --os-token ${AUTH_TOKEN} \
-           --os-url=http://127.0.0.1:35357/v3/ \
-           --os-domain-name default \
-           --os-identity-api-version=3 \
-           keystone public http://controller:5000/v2.0
-
-         # openstack --os-token ${AUTH_TOKEN} \
-           --os-url=http://127.0.0.1:35357/v3/ \
-           --os-domain-name default \
-           --os-identity-api-version=3 \
-           keystone internal http://controller:5000/v2.0
-
-         # openstack --os-token ${AUTH_TOKEN} \
-           --os-url=http://127.0.0.1:35357/v3/ \
-           --os-domain-name default \
-           --os-identity-api-version=3 \
-           keystone admin http://controller:35357/v2.0
-
-      .. image:: figures/debconf-screenshots/keystone_7_register_endpoint.png
-
-.. only:: obs or rdo or ubuntu
-
-   Configure the Apache HTTP server
-   --------------------------------
-
-   .. only:: rdo
-
-      #. Edit the ``/etc/httpd/conf/httpd.conf`` file and configure the
-         ``ServerName`` option to reference the controller node:
-
-         .. code-block:: apache
-
-            ServerName controller
-
-      #. Create the ``/etc/httpd/conf.d/wsgi-keystone.conf`` file with
-         the following content:
-
-         .. code-block:: apache
-
-            Listen 5000
-            Listen 35357
-
-            <VirtualHost *:5000>
-                WSGIDaemonProcess keystone-public processes=5 threads=1 user=keystone group=keystone display-name=%{GROUP}
-                WSGIProcessGroup keystone-public
-                WSGIScriptAlias / /usr/bin/keystone-wsgi-public
-                WSGIApplicationGroup %{GLOBAL}
-                WSGIPassAuthorization On
-                <IfVersion >= 2.4>
-                  ErrorLogFormat "%{cu}t %M"
-                </IfVersion>
-                ErrorLog /var/log/httpd/keystone-error.log
-                CustomLog /var/log/httpd/keystone-access.log combined
-
-                <Directory /usr/bin>
-                    <IfVersion >= 2.4>
-                        Require all granted
-                    </IfVersion>
-                    <IfVersion < 2.4>
-                        Order allow,deny
-                        Allow from all
-                    </IfVersion>
-                </Directory>
-            </VirtualHost>
-
-            <VirtualHost *:35357>
-                WSGIDaemonProcess keystone-admin processes=5 threads=1 user=keystone group=keystone display-name=%{GROUP}
-                WSGIProcessGroup keystone-admin
-                WSGIScriptAlias / /usr/bin/keystone-wsgi-admin
-                WSGIApplicationGroup %{GLOBAL}
-                WSGIPassAuthorization On
-                <IfVersion >= 2.4>
-                  ErrorLogFormat "%{cu}t %M"
-                </IfVersion>
-                ErrorLog /var/log/httpd/keystone-error.log
-                CustomLog /var/log/httpd/keystone-access.log combined
-
-                <Directory /usr/bin>
-                    <IfVersion >= 2.4>
-                        Require all granted
-                    </IfVersion>
-                    <IfVersion < 2.4>
-                        Order allow,deny
-                        Allow from all
-                    </IfVersion>
-                </Directory>
-            </VirtualHost>
-
-   .. only:: ubuntu
-
-      #. Edit the ``/etc/apache2/apache2.conf`` file and configure the
-         ``ServerName`` option to reference the controller node:
-
-         .. code-block:: apache
-
-            ServerName controller
-
-      #. Create the ``/etc/apache2/sites-available/wsgi-keystone.conf`` file
-         with the following content:
-
-         .. code-block:: apache
-
-            Listen 5000
-            Listen 35357
-
-            <VirtualHost *:5000>
-                WSGIDaemonProcess keystone-public processes=5 threads=1 user=keystone group=keystone display-name=%{GROUP}
-                WSGIProcessGroup keystone-public
-                WSGIScriptAlias / /usr/bin/keystone-wsgi-public
-                WSGIApplicationGroup %{GLOBAL}
-                WSGIPassAuthorization On
-                <IfVersion >= 2.4>
-                  ErrorLogFormat "%{cu}t %M"
-                </IfVersion>
-                ErrorLog /var/log/apache2/keystone.log
-                CustomLog /var/log/apache2/keystone_access.log combined
-
-                <Directory /usr/bin>
-                    <IfVersion >= 2.4>
-                        Require all granted
-                    </IfVersion>
-                    <IfVersion < 2.4>
-                        Order allow,deny
-                        Allow from all
-                    </IfVersion>
-                </Directory>
-            </VirtualHost>
-
-            <VirtualHost *:35357>
-                WSGIDaemonProcess keystone-admin processes=5 threads=1 user=keystone group=keystone display-name=%{GROUP}
-                WSGIProcessGroup keystone-admin
-                WSGIScriptAlias / /usr/bin/keystone-wsgi-admin
-                WSGIApplicationGroup %{GLOBAL}
-                WSGIPassAuthorization On
-                <IfVersion >= 2.4>
-                  ErrorLogFormat "%{cu}t %M"
-                </IfVersion>
-                ErrorLog /var/log/apache2/keystone.log
-                CustomLog /var/log/apache2/keystone_access.log combined
-
-                <Directory /usr/bin>
-                    <IfVersion >= 2.4>
-                        Require all granted
-                    </IfVersion>
-                    <IfVersion < 2.4>
-                        Order allow,deny
-                        Allow from all
-                    </IfVersion>
-                </Directory>
-            </VirtualHost>
-
-      #. Enable the Identity service virtual hosts:
-
-         .. code-block:: console
-
-            # ln -s /etc/apache2/sites-available/wsgi-keystone.conf /etc/apache2/sites-enabled
-
-   .. only:: obs
-
-      #. Edit the ``/etc/sysconfig/apache2`` file and configure the
-         ``APACHE_SERVERNAME`` option to reference the controller node:
+         # ln -s /usr/share/keystone/wsgi-keystone.conf /etc/httpd/conf.d/
 
-         .. code-block:: apache
+      .. end
 
-            APACHE_SERVERNAME="controller"
+.. endonly
 
-      #. Create the ``/etc/apache2/conf.d/wsgi-keystone.conf`` file
-         with the following content:
+.. only:: ubuntu or debian
 
-         .. code-block:: apache
+   #. Edit the ``/etc/apache2/apache2.conf`` file and configure the
+      ``ServerName`` option to reference the controller node:
 
-            Listen 5000
-            Listen 35357
+      .. path /etc/apache2/apache2.conf
+      .. code-block:: apache
 
-            <VirtualHost *:5000>
-                WSGIDaemonProcess keystone-public processes=5 threads=1 user=keystone group=keystone display-name=%{GROUP}
-                WSGIProcessGroup keystone-public
-                WSGIScriptAlias / /usr/bin/keystone-wsgi-public
-                WSGIApplicationGroup %{GLOBAL}
-                WSGIPassAuthorization On
-                <IfVersion >= 2.4>
-                  ErrorLogFormat "%{cu}t %M"
-                </IfVersion>
-                ErrorLog /var/log/apache2/keystone.log
-                CustomLog /var/log/apache2/keystone_access.log combined
+         ServerName controller
 
-                <Directory /usr/bin>
-                    <IfVersion >= 2.4>
-                        Require all granted
-                    </IfVersion>
-                    <IfVersion < 2.4>
-                        Order allow,deny
-                        Allow from all
-                    </IfVersion>
-                </Directory>
-            </VirtualHost>
+      .. end
 
-            <VirtualHost *:35357>
-                WSGIDaemonProcess keystone-admin processes=5 threads=1 user=keystone group=keystone display-name=%{GROUP}
-                WSGIProcessGroup keystone-admin
-                WSGIScriptAlias / /usr/bin/keystone-wsgi-admin
-                WSGIApplicationGroup %{GLOBAL}
-                WSGIPassAuthorization On
-                <IfVersion >= 2.4>
-                  ErrorLogFormat "%{cu}t %M"
-                </IfVersion>
-                ErrorLog /var/log/apache2/keystone.log
-                CustomLog /var/log/apache2/keystone_access.log combined
+.. endonly
 
-                <Directory /usr/bin>
-                    <IfVersion >= 2.4>
-                        Require all granted
-                    </IfVersion>
-                    <IfVersion < 2.4>
-                        Order allow,deny
-                        Allow from all
-                    </IfVersion>
-                </Directory>
-            </VirtualHost>
+.. only:: debian
 
-      6. Recursively change the ownership of the ``/etc/keystone`` directory:
+   .. note::
 
-         .. code-block:: console
+      The Debian package will perform the below operations for you:
 
-            # chown -R keystone:keystone /etc/keystone
+      .. code-block:: console
 
-.. only:: ubuntu or rdo or obs
+         # a2enmod wsgi
+         # a2ensite wsgi-keystone.conf
+         # invoke-rc.d apache2 restart
 
-   Finalize the installation
-   -------------------------
+      .. end
 
-   .. only:: ubuntu
+.. endonly
 
-      #. Restart the Apache HTTP server:
+.. only:: obs
 
-         .. code-block:: console
+   #. Edit the ``/etc/sysconfig/apache2`` file and configure the
+      ``APACHE_SERVERNAME`` option to reference the controller node:
 
-            # service apache2 restart
+      .. path /etc/sysconfig/apache2
+      .. code-block:: apache
 
-      #. By default, the Ubuntu packages create an SQLite database.
+         APACHE_SERVERNAME="controller"
 
-         Because this configuration uses an SQL database server, you can remove
-         the SQLite database file:
+      .. end
 
-         .. code-block:: console
+   #. Create the ``/etc/apache2/conf.d/wsgi-keystone.conf`` file
+      with the following content:
 
-            # rm -f /var/lib/keystone/keystone.db
+      .. path /etc/apache2/conf.d/wsgi-keystone.conf
+      .. code-block:: apache
 
-   .. only:: rdo
+         Listen 5000
+         Listen 35357
 
-      * Start the Apache HTTP service and configure it to start when the system boots:
+         <VirtualHost *:5000>
+             WSGIDaemonProcess keystone-public processes=5 threads=1 user=keystone group=keystone display-name=%{GROUP}
+             WSGIProcessGroup keystone-public
+             WSGIScriptAlias / /usr/bin/keystone-wsgi-public
+             WSGIApplicationGroup %{GLOBAL}
+             WSGIPassAuthorization On
+             ErrorLogFormat "%{cu}t %M"
+             ErrorLog /var/log/apache2/keystone.log
+             CustomLog /var/log/apache2/keystone_access.log combined
 
-        .. code-block:: console
+             <Directory /usr/bin>
+                 Require all granted
+             </Directory>
+         </VirtualHost>
 
-           # systemctl enable httpd.service
-           # systemctl start httpd.service
+         <VirtualHost *:35357>
+             WSGIDaemonProcess keystone-admin processes=5 threads=1 user=keystone group=keystone display-name=%{GROUP}
+             WSGIProcessGroup keystone-admin
+             WSGIScriptAlias / /usr/bin/keystone-wsgi-admin
+             WSGIApplicationGroup %{GLOBAL}
+             WSGIPassAuthorization On
+             ErrorLogFormat "%{cu}t %M"
+             ErrorLog /var/log/apache2/keystone.log
+             CustomLog /var/log/apache2/keystone_access.log combined
 
-   .. only:: obs
+             <Directory /usr/bin>
+                 Require all granted
+             </Directory>
+         </VirtualHost>
 
-      #. Activate the Apache module ``mod_version``:
+      .. end
 
-         .. code-block:: console
+   #. Recursively change the ownership of the ``/etc/keystone`` directory:
 
-            # a2enmod version
+      .. code-block:: console
 
-      #. Start the Apache HTTP service and configure it to start when the system boots:
+         # chown -R keystone:keystone /etc/keystone
 
-         .. code-block:: console
+      .. end
 
-            # systemctl enable apache2.service
-            # systemctl start apache2.service
+.. endonly
+
+
+Finalize the installation
+-------------------------
+
+.. only:: ubuntu
+
+   #. Restart the Apache service and remove the default SQLite database:
+
+      .. code-block:: console
+
+         # service apache2 restart
+         # rm -f /var/lib/keystone/keystone.db
+
+      .. end
+
+.. endonly
+
+.. only:: rdo
+
+   #. Start the Apache HTTP service and configure it to start when the system
+      boots:
+
+      .. code-block:: console
+
+         # systemctl enable httpd.service
+         # systemctl start httpd.service
+
+      .. end
+
+.. endonly
+
+.. only:: obs
+
+   #. Start the Apache HTTP service and configure it to start when the system
+      boots:
+
+      .. code-block:: console
+
+         # systemctl enable apache2.service
+         # systemctl start apache2.service
+
+      .. end
+
+.. endonly
+
+2. Configure the administrative account
+
+   .. code-block:: console
+
+      $ export OS_USERNAME=admin
+      $ export OS_PASSWORD=ADMIN_PASS
+      $ export OS_PROJECT_NAME=admin
+      $ export OS_USER_DOMAIN_NAME=default
+      $ export OS_PROJECT_DOMAIN_NAME=default
+      $ export OS_AUTH_URL=http://controller:35357/v3
+      $ export OS_IDENTITY_API_VERSION=3
+
+   .. end
+
+   Replace ``ADMIN_PASS`` with the password used in the
+   ``keystone-manage bootstrap`` command from the section called
+   :ref:`keystone-install`.

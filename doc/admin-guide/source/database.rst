@@ -23,7 +23,7 @@ configuration, patching, backups, restores, and monitoring.
 You can modify various cluster characteristics by editing the
 ``/etc/trove/trove.conf`` file. A comprehensive list of the Database
 service configuration options is described in the `Database service
-<http://docs.openstack.org/mitaka/config-reference/database-service.html>`_
+<http://docs.openstack.org/newton/config-reference/database.html>`_
 chapter in the *Configuration Reference*.
 
 Create a data store
@@ -410,6 +410,57 @@ different data stores.
      - Cassandra, MongoDB
    * - Experimental
      - All others
+
+Redis data store replication
+----------------------------
+
+Replication strategies are available for Redis with
+several commands located in the Redis data store
+manager:
+
+- :command:`create`
+- :command:`detach-replica`
+- :command:`eject-replica-source`
+- :command:`promote-to-replica-source`
+
+Additional arguments for the :command:`create` command
+include :command:`--replica_of` and
+:command:`--replica_count`.
+
+Redis integration and unit tests
+--------------------------------
+
+Unit tests and integration tests are also available for
+Redis.
+
+#. Install redstack:
+
+   .. code-block:: console
+
+      $ ./redstack install
+
+      .. note::
+
+         Redstack is a development script used for integration
+         testing and Database service development installations.
+         Do not use Redstack in a production environment. For
+         more information, see `the Database service
+         developer docs <http://docs.openstack.org/developer/trove/dev/install.html#running-redstack-to-install-trove>`_
+
+#. Start Redis:
+
+   .. code-block:: console
+
+      $ ./redstack kick-start redis
+
+#. Run integration tests:
+
+   .. code-block:: console
+
+      $ ./redstack int-tests --group=replication
+
+   You can run :command:`--group=redis_supported`
+   instead of :command:`--group=replication` if needed.
 
 Configure a cluster
 ~~~~~~~~~~~~~~~~~~~

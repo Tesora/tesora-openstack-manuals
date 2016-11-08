@@ -22,12 +22,16 @@
      - (Dict) Incremental Backup Runner based on the default strategy. For strategies that do not implement an incremental, the runner will use the default full backup.
    * - ``backup_namespace`` = ``trove.guestagent.strategies.backup.experimental.db2_impl``
      - (String) Namespace to load backup strategies from.
-   * - ``backup_strategy`` = ``DB2Backup``
+   * - ``backup_strategy`` = ``DB2OfflineBackup``
      - (String) Default strategy to perform backups.
+   * - ``default_password_length`` = ``36``
+     - (Integer) Character length of generated passwords.
    * - ``device_path`` = ``/dev/vdb``
      - (String) Device path for volume if volume support is enabled.
    * - ``guest_log_exposed_logs`` =
      - (String) List of Guest Logs to expose for publishing.
+   * - ``icmp`` = ``False``
+     - (Boolean) Whether to permit ICMP.
    * - ``ignore_users`` = ``PUBLIC, DB2INST1``
      - (List) No help text available for this option.
    * - ``mount_point`` = ``/home/db2inst1/db2inst1``

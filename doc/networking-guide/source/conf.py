@@ -38,7 +38,7 @@ import openstackdocstheme
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
-extensions = ['sphinx.ext.todo']
+extensions = ['sphinx.ext.todo', 'sphinxmark']
 
 # Add any paths that contain templates here, relative to this directory.
 # templates_path = ['_templates']
@@ -89,8 +89,8 @@ html_context = {"gitsha": gitsha, "bug_tag": bug_tag,
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
-exclude_patterns = ['common/cli*', 'common/nova*', 'common/get_started_*',
-                    'common/dashboard_customizing.rst']
+exclude_patterns = ['common/cli*', 'common/nova*', 'common/get-started-*',
+                    'common/dashboard-customizing.rst']
 
 # The reST default role (used for this markup: `text`) to use for all
 # documents.
@@ -290,3 +290,9 @@ texinfo_documents = [
 
 # -- Options for Internationalization output ------------------------------
 locale_dirs = ['locale/']
+
+# -- Options for sphinxmark -----------------------------------------------
+sphinxmark_enable = True
+sphinxmark_div = 'docs-body'
+sphinxmark_image = 'text'
+sphinxmark_text = 'Newton'

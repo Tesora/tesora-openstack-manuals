@@ -12,6 +12,8 @@ service because most distributions support it. If you prefer to
 implement a different message queue service, consult the documentation
 associated with it.
 
+The message queue runs on the controller node.
+
 Install and configure components
 --------------------------------
 
@@ -21,7 +23,11 @@ Install and configure components
 
       .. code-block:: console
 
-         # apt-get install rabbitmq-server
+         # apt install rabbitmq-server
+
+      .. end
+
+   .. endonly
 
    .. only:: rdo
 
@@ -29,11 +35,19 @@ Install and configure components
 
          # yum install rabbitmq-server
 
+      .. end
+
+   .. endonly
+
    .. only:: obs
 
       .. code-block:: console
 
          # zypper install rabbitmq-server
+
+      .. end
+
+   .. endonly
 
 .. only:: rdo or obs
 
@@ -45,12 +59,17 @@ Install and configure components
          # systemctl enable rabbitmq-server.service
          # systemctl start rabbitmq-server.service
 
+      .. end
+
    3. Add the ``openstack`` user:
 
       .. code-block:: console
 
          # rabbitmqctl add_user openstack RABBIT_PASS
-           Creating user "openstack" ...
+
+         Creating user "openstack" ...
+
+      .. end
 
       Replace ``RABBIT_PASS`` with a suitable password.
 
@@ -60,7 +79,12 @@ Install and configure components
       .. code-block:: console
 
          # rabbitmqctl set_permissions openstack ".*" ".*" ".*"
-           Setting permissions for user "openstack" in vhost "/" ...
+
+         Setting permissions for user "openstack" in vhost "/" ...
+
+      .. end
+
+.. endonly
 
 .. only:: ubuntu or debian
 
@@ -69,7 +93,10 @@ Install and configure components
       .. code-block:: console
 
          # rabbitmqctl add_user openstack RABBIT_PASS
-           Creating user "openstack" ...
+
+         Creating user "openstack" ...
+
+      .. end
 
       Replace ``RABBIT_PASS`` with a suitable password.
 
@@ -79,4 +106,9 @@ Install and configure components
       .. code-block:: console
 
          # rabbitmqctl set_permissions openstack ".*" ".*" ".*"
-           Setting permissions for user "openstack" in vhost "/" ...
+
+         Setting permissions for user "openstack" in vhost "/" ...
+
+      .. end
+
+.. endonly

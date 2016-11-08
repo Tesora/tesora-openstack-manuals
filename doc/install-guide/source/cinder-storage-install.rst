@@ -11,9 +11,9 @@ value for your particular node.
 
 The service provisions logical volumes on this device using the
 :term:`LVM <Logical Volume Manager (LVM)>` driver and provides them
-to instances via :term:`iSCSI` transport. You can follow these
-instructions with minor modifications to horizontally scale your
-environment with additional storage nodes.
+to instances via :term:`iSCSI <iSCSI Qualified Name (IQN)>` transport.
+You can follow these instructions with minor modifications to horizontally
+scale your environment with additional storage nodes.
 
 Prerequisites
 -------------
@@ -35,12 +35,18 @@ storage node, you must prepare the storage device.
 
            # zypper install lvm2
 
+        .. end
+
       * (Optional) If you intend to use non-raw image types such as QCOW2
         and VMDK, install the QEMU package:
 
         .. code-block:: console
 
            # zypper install qemu
+
+        .. end
+
+   .. endonly
 
    .. only:: rdo
 
@@ -50,6 +56,8 @@ storage node, you must prepare the storage device.
 
            # yum install lvm2
 
+        .. end
+
       * Start the LVM metadata service and configure it to start when the
         system boots:
 
@@ -58,11 +66,19 @@ storage node, you must prepare the storage device.
            # systemctl enable lvm2-lvmetad.service
            # systemctl start lvm2-lvmetad.service
 
+        .. end
+
+   .. endonly
+
    .. only:: ubuntu
 
-        .. code-block:: console
+      .. code-block:: console
 
-           # apt-get install lvm2
+         # apt install lvm2
+
+      .. end
+
+   .. endonly
 
    .. note::
 
@@ -73,14 +89,20 @@ storage node, you must prepare the storage device.
    .. code-block:: console
 
       # pvcreate /dev/sdb
+
       Physical volume "/dev/sdb" successfully created
+
+   .. end
 
 #. Create the LVM volume group ``cinder-volumes``:
 
    .. code-block:: console
 
       # vgcreate cinder-volumes /dev/sdb
+
       Volume group "cinder-volumes" successfully created
+
+   .. end
 
    The Block Storage service creates logical volumes in this volume group.
 
@@ -92,17 +114,20 @@ storage node, you must prepare the storage device.
    tool detects these volumes and attempts to cache them which can cause
    a variety of problems with both the underlying operating system
    and project volumes. You must reconfigure LVM to scan only the devices
-   that contain the ``cinder-volume`` volume group. Edit the
+   that contain the ``cinder-volumes`` volume group. Edit the
    ``/etc/lvm/lvm.conf`` file and complete the following actions:
 
    * In the ``devices`` section, add a filter that accepts the
      ``/dev/sdb`` device and rejects all other devices:
 
+     .. path /etc/lvm/lvm.conf
      .. code-block:: ini
 
         devices {
         ...
         filter = [ "a/sdb/", "r/.*/"]
+
+     .. end
 
      Each item in the filter array begins with ``a`` for **accept** or
      ``r`` for **reject** and includes a regular expression for the
@@ -116,9 +141,12 @@ storage node, you must prepare the storage device.
         must also add the associated device to the filter. For example,
         if the ``/dev/sda`` device contains the operating system:
 
+        .. ignore_path /etc/lvm/lvm.conf
         .. code-block:: ini
 
            filter = [ "a/sda/", "a/sdb/", "r/.*/"]
+
+        .. end
 
         Similarly, if your compute nodes use LVM on the operating
         system disk, you must also modify the filter in the
@@ -126,9 +154,12 @@ storage node, you must prepare the storage device.
         the operating system disk. For example, if the ``/dev/sda``
         device contains the operating system:
 
+        .. path /etc/openstack-dashboard/local_settings.py
         .. code-block:: ini
 
            filter = [ "a/sda/", "r/.*/"]
+
+        .. end
 
 Install and configure components
 --------------------------------
@@ -141,50 +172,62 @@ Install and configure components
 
          # zypper install openstack-cinder-volume tgt
 
+      .. end
+
+.. endonly
+
 .. only:: rdo
 
    #. Install the packages:
 
       .. code-block:: console
 
-         # yum install openstack-cinder targetcli
+         # yum install openstack-cinder targetcli python-keystone
 
-.. only:: ubuntu
+      .. end
+
+.. endonly
+
+.. only:: ubuntu or debian
 
    #. Install the packages:
 
       .. code-block:: console
 
-        # apt-get install cinder-volume
+        # apt install cinder-volume
+
+      .. end
+
+.. endonly
 
 2. Edit the ``/etc/cinder/cinder.conf`` file
    and complete the following actions:
 
    * In the ``[database]`` section, configure database access:
 
+     .. path /etc/cinder/cinder.conf
      .. code-block:: ini
 
         [database]
         ...
         connection = mysql+pymysql://cinder:CINDER_DBPASS@controller/cinder
 
+     .. end
+
      Replace ``CINDER_DBPASS`` with the password you chose for
      the Block Storage database.
 
-   * In the ``[DEFAULT]`` and ``[oslo_messaging_rabbit]`` sections,
-     configure ``RabbitMQ`` message queue access:
+   * In the ``[DEFAULT]`` section, configure ``RabbitMQ``
+     message queue access:
 
+     .. path /etc/cinder/cinder.conf
      .. code-block:: ini
 
         [DEFAULT]
         ...
-        rpc_backend = rabbit
+        transport_url = rabbit://openstack:RABBIT_PASS@controller
 
-        [oslo_messaging_rabbit]
-        ...
-        rabbit_host = controller
-        rabbit_userid = openstack
-        rabbit_password = RABBIT_PASS
+     .. end
 
      Replace ``RABBIT_PASS`` with the password you chose for
      the ``openstack`` account in ``RabbitMQ``.
@@ -192,6 +235,7 @@ Install and configure components
    * In the ``[DEFAULT]`` and ``[keystone_authtoken]`` sections,
      configure Identity service access:
 
+     .. path /etc/cinder/cinder.conf
      .. code-block:: ini
 
         [DEFAULT]
@@ -210,6 +254,8 @@ Install and configure components
         username = cinder
         password = CINDER_PASS
 
+     .. end
+
      Replace ``CINDER_PASS`` with the password you chose for the
      ``cinder`` user in the Identity service.
 
@@ -220,11 +266,14 @@ Install and configure components
 
    * In the ``[DEFAULT]`` section, configure the ``my_ip`` option:
 
+     .. path /etc/cinder/cinder.conf
      .. code-block:: ini
 
         [DEFAULT]
         ...
         my_ip = MANAGEMENT_INTERFACE_IP_ADDRESS
+
+     .. end
 
      Replace ``MANAGEMENT_INTERFACE_IP_ADDRESS`` with the IP address
      of the management network interface on your storage node,
@@ -237,6 +286,7 @@ Install and configure components
         LVM driver, ``cinder-volumes`` volume group, iSCSI protocol,
         and appropriate iSCSI service:
 
+        .. path /etc/cinder/cinder.conf
         .. code-block:: ini
 
            [lvm]
@@ -246,28 +296,40 @@ Install and configure components
            iscsi_protocol = iscsi
            iscsi_helper = tgtadm
 
+        .. end
+
+   .. endonly
+
    .. only:: rdo
 
       * In the ``[lvm]`` section, configure the LVM back end with the
         LVM driver, ``cinder-volumes`` volume group, iSCSI protocol,
-        and appropriate iSCSI service:
+        and appropriate iSCSI service. If the ``[lvm]`` section does not exist,
+        create it:
 
+        .. path /etc/cinder/cinder.conf
         .. code-block:: ini
 
            [lvm]
-           ...
            volume_driver = cinder.volume.drivers.lvm.LVMVolumeDriver
            volume_group = cinder-volumes
            iscsi_protocol = iscsi
            iscsi_helper = lioadm
 
+        .. end
+
+   .. endonly
+
    * In the ``[DEFAULT]`` section, enable the LVM back end:
 
+     .. path /etc/cinder/cinder.conf
      .. code-block:: ini
 
         [DEFAULT]
         ...
         enabled_backends = lvm
+
+     .. end
 
      .. note::
 
@@ -277,19 +339,38 @@ Install and configure components
    * In the ``[DEFAULT]`` section, configure the location of the
      Image service API:
 
+     .. path /etc/cinder/cinder.conf
      .. code-block:: ini
 
         [DEFAULT]
         ...
         glance_api_servers = http://controller:9292
 
+     .. end
+
    * In the ``[oslo_concurrency]`` section, configure the lock path:
 
+     .. path /etc/cinder/cinder.conf
      .. code-block:: ini
 
         [oslo_concurrency]
         ...
         lock_path = /var/lib/cinder/tmp
+
+     .. end
+
+.. only:: obs
+
+   3. Create the ``/etc/tgt/conf.d/cinder.conf`` file
+      with the following data:
+
+      .. code-block:: ini
+
+         include /var/lib/cinder/volumes/*
+
+      .. end
+
+.. endonly
 
 Finalize installation
 ---------------------
@@ -304,6 +385,10 @@ Finalize installation
         # systemctl enable openstack-cinder-volume.service tgtd.service
         # systemctl start openstack-cinder-volume.service tgtd.service
 
+     .. end
+
+.. endonly
+
 .. only:: rdo
 
    * Start the Block Storage volume service including its dependencies
@@ -314,7 +399,11 @@ Finalize installation
         # systemctl enable openstack-cinder-volume.service target.service
         # systemctl start openstack-cinder-volume.service target.service
 
-.. only:: ubuntu
+     .. end
+
+.. endonly
+
+.. only:: ubuntu or debian
 
    #. Restart the Block Storage volume service including its dependencies:
 
@@ -323,10 +412,6 @@ Finalize installation
          # service tgt restart
          # service cinder-volume restart
 
-   #. By default, the Ubuntu packages create an SQLite database.
-      Because this configuration uses an SQL database server,
-      remove the SQLite database file:
+      .. end
 
-      .. code-block:: console
-
-         # rm -f /var/lib/cinder/cinder.sqlite
+.. endonly

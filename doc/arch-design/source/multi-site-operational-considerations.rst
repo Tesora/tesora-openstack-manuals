@@ -48,9 +48,9 @@ Logging and monitoring
 
 Logging and monitoring does not significantly differ for a multi-site
 OpenStack cloud. The tools described in the `Logging and monitoring
-chapter <http://docs.openstack.org/openstack-ops/content/logging_monitoring.html>`__
-of the Operations Guide remain applicable. Logging and monitoring can be
-provided on a per-site basis, and in a common centralized location.
+chapter <http://docs.openstack.org/ops-guide/ops-logging-monitoring.html>`__
+of the OpenStack Operations Guide remain applicable. Logging and monitoring
+can be provided on a per-site basis, and in a common centralized location.
 
 When attempting to deploy logging and monitoring facilities to a
 centralized location, care must be taken with the load placed on the
@@ -64,8 +64,8 @@ independent OpenStack installations which are linked together using
 shared centralized services such as OpenStack Identity. At a high level
 the recommended order of operations to upgrade an individual OpenStack
 environment is (see the `Upgrades
-chapter <http://docs.openstack.org/openstack-ops/content/ops_upgrades-general-steps.html>`__
-of the Operations Guide for details):
+chapter <http://docs.openstack.org/ops-guide/ops-upgrades.html>`__
+of the OpenStack Operations Guide for details):
 
 #. Upgrade the OpenStack Identity service (keystone).
 
@@ -103,10 +103,10 @@ Quota management
 
 Quotas are used to set operational limits to prevent system capacities
 from being exhausted without notification. They are currently enforced
-at the tenant (or project) level rather than at the user level.
+at the project level rather than at the user level.
 
 Quotas are defined on a per-region basis. Operators can define identical
-quotas for tenants in each region of the cloud to provide a consistent
+quotas for projects in each region of the cloud to provide a consistent
 experience, or even create a process for synchronizing allocated quotas
 across regions. It is important to note that only the operational limits
 imposed by the quotas will be aligned consumption of quotas by users
@@ -119,7 +119,7 @@ launch more than 25 instances in any single region.
 
 For more information on managing quotas refer to the `Managing projects
 and users
-chapter <http://docs.openstack.org/openstack-ops/content/projects_users.html>`__
+chapter <http://docs.openstack.org/ops-guide/ops-projects-users.html>`__
 of the OpenStack Operators Guide.
 
 Policy management

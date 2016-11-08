@@ -20,8 +20,8 @@ below.
    You may need to configure Telemetry or other OpenStack services in
    order to be able to collect all the samples you need. For further
    information about configuration requirements see the `Telemetry chapter
-   <http://docs.openstack.org/mitaka/install-guide-ubuntu/ceilometer.html>`__
-   in the OpenStack Installation Guide. Also check the `Telemetry manual
+   <http://docs.openstack.org/project-install-guide/telemetry/newton/>`__
+   in the Installation Tutorials and Guides. Also check the `Telemetry manual
    installation <http://docs.openstack.org/developer/ceilometer/install/manual.html>`__
    description.
 
@@ -122,9 +122,8 @@ The following meters are collected for OpenStack Compute:
 | cpu       | Cumu\ | ns   | instance | Pollster | Libvirt,| CPU time used    |
 |           | lative|      | ID       |          | Hyper-V |                  |
 +-----------+-------+------+----------+----------+---------+------------------+
-| cpu_util  | Gauge | %    | instance | Pollster | Libvirt,| Average CPU      |
-|           |       |      | ID       |          | Hyper-V,| utilization      |
-|           |       |      |          |          | vSphere |                  |
+| cpu_util  | Gauge | %    | instance | Pollster | vSphere | Average CPU      |
+|           |       |      | ID       |          |         | utilization      |
 +-----------+-------+------+----------+----------+---------+------------------+
 | vcpus     | Gauge | vcpu | instance | Notific\ | Libvirt,| Number of virtual|
 |           |       |      | ID       | ation    | Hyper-V | CPUs allocated to|
@@ -181,7 +180,7 @@ The following meters are collected for OpenStack Compute:
 | bytes.rate|       |      |          |          | vSphere |                  |
 +-----------+-------+------+----------+----------+---------+------------------+
 | network.\ | Cumu\ | pac\ | interface| Pollster | Libvirt,| Number of        |
-| incoming| | lative| ket  | ID       |          | Hyper-V | incoming packets |
+| incoming\ | lative| ket  | ID       |          | Hyper-V | incoming packets |
 | .packets  |       |      |          |          |         |                  |
 +-----------+-------+------+----------+----------+---------+------------------+
 | network.\ | Gauge | pack\| interface| Pollster | Libvirt,| Average rate of  |
@@ -190,7 +189,7 @@ The following meters are collected for OpenStack Compute:
 | .rate     |       |      |          |          |         |                  |
 +-----------+-------+------+----------+----------+---------+------------------+
 | network.\ | Cumu\ | pac\ | interface| Pollster | Libvirt,| Number of        |
-| outpoing\ | lative| ket  | ID       |          | Hyper-V | outgoing packets |
+| outgoing\ | lative| ket  | ID       |          | Hyper-V | outgoing packets |
 | .packets  |       |      |          |          |         |                  |
 +-----------+-------+------+----------+----------+---------+------------------+
 | network.\ | Gauge | pac\ | interface| Pollster | Libvirt,| Average rate of  |
@@ -216,10 +215,8 @@ The following meters are collected for OpenStack Compute:
 |           |       |      |          |          |         | amount of its    |
 |           |       |      |          |          |         | allocated memory |
 +-----------+-------+------+----------+----------+---------+------------------+
-| cpu_util  | Gauge | %    | instance | Pollster | Libvirt,| Average CPU      |
-|           |       |      | ID       |          | Hyper-V,| utilization      |
-|           |       |      |          |          | vSphere,|                  |
-|           |       |      |          |          | XenAPI  |                  |
+| cpu_util  | Gauge | %    | instance | Pollster | vSphere,| Average CPU      |
+|           |       |      | ID       |          | XenAPI  | utilization      |
 +-----------+-------+------+----------+----------+---------+------------------+
 | disk.read\| Gauge | B/s  | instance | Pollster | Libvirt,| Average rate of  |
 | .bytes.\  |       |      | ID       |          | Hyper-V,| reads            |
@@ -359,6 +356,35 @@ The following meters are collected for OpenStack Compute:
 |           |       |      | ID       |          | Hyper-V | ince previous d\ |
 |           |       |      |          |          |         | atapoint         |
 +-----------+-------+------+----------+----------+---------+------------------+
+| **Meters added in the Newton release**                                      |
++-----------+-------+------+----------+----------+---------+------------------+
+| cpu_l3_c\ | Gauge | B    | instance | Pollster | Libvirt | L3 cache used b\ |
+| ache      |       |      | ID       |          |         | y the instance   |
++-----------+-------+------+----------+----------+---------+------------------+
+| memory.b\ | Gauge | B/s  | instance | Pollster | Libvirt | Total system ba\ |
+| andwidth\ |       |      | ID       |          |         | ndwidth from on\ |
+| .total    |       |      |          |          |         | e level of cache |
++-----------+-------+------+----------+----------+---------+------------------+
+| memory.b\ | Gauge | B/s  | instance | Pollster | Libvirt | Bandwidth of me\ |
+| andwidth\ |       |      | ID       |          |         | mory traffic fo\ |
+| .local    |       |      |          |          |         | r a memory cont\ |
+|           |       |      |          |          |         | roller           |
++-----------+-------+------+----------+----------+---------+------------------+
+| perf.cpu\ | Gauge | cyc\ | instance | Pollster | Libvirt | the number of c\ |
+| .cycles   |       | le   | ID       |          |         | pu cycles one i\ |
+|           |       |      |          |          |         | nstruction needs |
++-----------+-------+------+----------+----------+---------+------------------+
+| perf.ins\ | Gauge | inst\| instance | Pollster | Libvirt | the count of in\ |
+| tructions |       | ruct\| ID       |          |         | structions       |
+|           |       | ion  |          |          |         |                  |
++-----------+-------+------+----------+----------+---------+------------------+
+| perf.cac\ | Gauge | cou\ | instance | Pollster | Libvirt | the count of ca\ |
+| he.refer\ |       | nt   | ID       |          |         | che hits         |
+| ences     |       |      |          |          |         |                  |
++-----------+-------+------+----------+----------+---------+------------------+
+| perf.cac\ | Gauge | cou\ | instance | Pollster | Libvirt | the count of ca\ |
+| he.misses |       | nt   | ID       |          |         | che misses       |
++-----------+-------+------+----------+----------+---------+------------------+
 
 |
 
@@ -424,7 +450,7 @@ the compute host machines. In order to use that you need to set the
 ``compute_monitors`` option to ``ComputeDriverCPUMonitor`` in the
 ``nova.conf`` configuration file. For further information see the
 Compute configuration section in the `Compute chapter
-<http://docs.openstack.org/mitaka/config-reference/compute/config-options.html>`__
+<http://docs.openstack.org/newton/config-reference/compute/config-options.html>`__
 of the OpenStack Configuration Reference.
 
 The following host machine related meters are collected for OpenStack
@@ -586,7 +612,7 @@ SNMP based meters
 ~~~~~~~~~~~~~~~~~
 
 Telemetry supports gathering SNMP based generic host meters. In order to
-be able to collect this data you need to run smpd on each target host.
+be able to collect this data you need to run snmpd on each target host.
 
 The following meters are available about the host machines by using
 SNMP:

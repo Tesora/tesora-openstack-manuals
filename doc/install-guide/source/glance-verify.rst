@@ -9,8 +9,8 @@ For more information about how to download and build images, see
 `OpenStack Virtual Machine Image Guide
 <http://docs.openstack.org/image-guide/>`__.
 For information about how to manage images, see the
-`OpenStack User Guide
-<http://docs.openstack.org/user-guide/common/cli_manage_images.html>`__.
+`OpenStack End User Guide
+<http://docs.openstack.org/user-guide/common/cli-manage-images.html>`__.
 
 .. note::
 
@@ -23,11 +23,15 @@ For information about how to manage images, see the
 
       $ . admin-openrc
 
+   .. end
+
 #. Download the source image:
 
    .. code-block:: console
 
       $ wget http://download.cirros-cloud.net/0.3.4/cirros-0.3.4-x86_64-disk.img
+
+   .. end
 
    .. note::
 
@@ -43,8 +47,9 @@ For information about how to manage images, see the
         --file cirros-0.3.4-x86_64-disk.img \
         --disk-format qcow2 --container-format bare \
         --public
+
       +------------------+------------------------------------------------------+
-      | Property         | Value                                                |
+      | Field            | Value                                                |
       +------------------+------------------------------------------------------+
       | checksum         | 133eae9fb1c98f45894a4e60d8736619                     |
       | container_format | bare                                                 |
@@ -66,10 +71,12 @@ For information about how to manage images, see the
       | visibility       | public                                               |
       +------------------+------------------------------------------------------+
 
+   .. end
+
    For information about the :command:`openstack image create` parameters,
-   see `Image service command-line client
-   <http://docs.openstack.org/cli-reference/openstack.html#openstack-image-create>`__
-   in the ``OpenStack Command-Line Interface Reference``.
+   see `Create or update an image (glance)
+   <http://docs.openstack.org/user-guide/common/cli-manage-images.html#create-or-update-an-image-glance>`__
+   in the ``OpenStack User Guide``.
 
    For information about disk and container formats for images, see
    `Disk and container formats for images
@@ -86,8 +93,11 @@ For information about how to manage images, see the
    .. code-block:: console
 
       $ openstack image list
-      +--------------------------------------+--------+
-      | ID                                   | Name   |
-      +--------------------------------------+--------+
-      | 38047887-61a7-41ea-9b49-27987d5e8bb9 | cirros |
-      +--------------------------------------+--------+
+
+      +--------------------------------------+--------+--------+
+      | ID                                   | Name   | Status |
+      +--------------------------------------+--------+--------+
+      | 38047887-61a7-41ea-9b49-27987d5e8bb9 | cirros | active |
+      +--------------------------------------+--------+--------+
+
+   .. end

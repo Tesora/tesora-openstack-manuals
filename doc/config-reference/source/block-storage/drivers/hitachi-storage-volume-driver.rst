@@ -38,6 +38,7 @@ Supported operations
 
 * Create, delete, attach, and detach volumes.
 * Create, list, and delete volume snapshots.
+* Manage and unmanage volume snapshots.
 * Create a volume from a snapshot.
 * Copy a volume to an image.
 * Copy an image to a volume.
@@ -119,8 +120,8 @@ Set up Hitachi storage volume driver
 
    .. code-block:: console
 
-      $ cinder type-create HUS100_SAMPLE
-      $ cinder type-key HUS100_SAMPLE set volume_backend_name=hus100_backend
+      $ openstack volume type create HUS100_SAMPLE
+      $ openstack volume type set --property volume_backend_name=hus100_backend HUS100_SAMPLE
 
 #. Specify any identical ``volume type`` name and ``volume key``.
 
@@ -129,7 +130,7 @@ Set up Hitachi storage volume driver
 
    .. code-block:: console
 
-      $ cinder extra-specs-list
+      $ openstack volume type list --long
 
 #. Edit the ``/etc/cinder/cinder.conf`` file as follows.
 
